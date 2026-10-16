@@ -1,6 +1,9 @@
+/*!
+ * Pesona Kahuripan - Official Landing Page Interactive Script
+ * Repository: https://github.com/pesonaku/landingpage
+ */
 
-    //<![CDATA[
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
 
       // ================= MASTER MARKETING SYNC ENGINE =================
       const masterData = document.getElementById('marketingMasterData');
@@ -1257,5 +1260,6 @@
       const box = document.getElementById('chat-box');
       if (box) box.classList.remove('open');
     }
-    //]]>
-    
+
+// Make sendWhatsAppMessage accessible globally for inline onsubmit handler
+window.sendWhatsAppMessage = sendWhatsAppMessage;

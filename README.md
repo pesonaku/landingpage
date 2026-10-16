@@ -8,29 +8,24 @@ Repositori resmi untuk berkas template, style (CSS), dan skrip interaktif (JS) w
 
 | Berkas | Keterangan |
 | :--- | :--- |
-| `example.xml` | Template tema XML Blogger (Blogspot) yang telah dimodernisasi dan modular |
+| `example.xml` | Template tema XML Blogger (Blogspot) yang modular, ringan, dan bebas kode usang |
 | `main_style.css` | Stylesheet CSS utama (Design System, tata letak responsif, kartu promo, ulasan, & kontak) |
-| `style.css` | Salinan alias dari `main_style.css` untuk kemudahan pemanggilan |
-| `main_script.js` | Skrip JavaScript interaktif (Sinkronisasi marketing dinamis, galeri, FAQ, popup detail, & WhatsApp) |
+| `main_script.js` | Skrip JavaScript interaktif (Sinkronisasi marketing dinamis, kalkulator KPR, galeri, FAQ, popup, & WhatsApp) |
 
 ---
 
 ## 🚀 Penggunaan CDN (Content Delivery Network)
 
-Stylesheet dan script dari repositori ini dapat dimuat secara instan melalui jsDelivr CDN dengan kompresi otomatis dan performa tinggi:
+Stylesheet dan script dari repositori ini dimuat secara instan melalui jsDelivr CDN dengan kompresi otomatis dan performa tinggi:
 
 ### 1. Stylesheet (CSS)
 ```html
 <link href="https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_style.css" rel="stylesheet"/>
 ```
-*(Atau menggunakan `style.css`)*
-```html
-<link href="https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/style.css" rel="stylesheet"/>
-```
 
 ### 2. JavaScript (JS)
 ```html
-<script src="https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_script.js"></script>
+<script defer="defer" src="https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_script.js"></script>
 ```
 
 ---
@@ -39,7 +34,7 @@ Stylesheet dan script dari repositori ini dapat dimuat secara instan melalui jsD
 
 1. Buka dasbor **Blogger** > menu **Tema (Theme)**.
 2. Klik tombol opsi (ikon panah bawah di sebelah *Sesuaikan*) > pilih **Pulihkan (Restore)** > unggah berkas `example.xml`.
-3. Seluruh gaya visual akan otomatis dimuat dari CDN GitHub repositori ini. Setiap perubahan CSS di repositori ini akan langsung diterapkan tanpa perlu mengunggah ulang tema XML ke Blogger.
+3. Seluruh gaya visual (CSS) dan skrip interaktif (JS) otomatis dimuat dari CDN GitHub repositori ini. Setiap perubahan pada CSS atau JS di repositori ini akan langsung diterapkan tanpa perlu mengunggah ulang tema XML ke Blogger.
 
 ---
 

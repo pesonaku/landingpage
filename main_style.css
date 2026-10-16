@@ -1,8 +1,7 @@
-/*
-<!-- THEME VARIABLES -->
-<Variable name="keycolor" description="Warna Utama" type="color" default="#0f9d58" value="#0f9d58"/>
-<Variable name="lebar" description="Lebar Kontainer" type="length" default="1140px" value="1140px"/>
-*/
+/*!
+ * Pesona Kahuripan - Official Landing Page Stylesheet
+ * Repository: https://github.com/pesonaku/landingpage
+ */
 
 :root {
   --key: #0f9d58;

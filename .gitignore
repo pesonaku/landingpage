@@ -2,6 +2,6 @@
 *.bak
 *.bak*
 *.tmp
-scratch/
-test_*.js
-real_script.js
+.DS_Store
+Thumbs.db
+node_modules/
