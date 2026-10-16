@@ -850,7 +850,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             panels.forEach(function(panel) {
               const panelType = panel.getAttribute('data-kpr-panel');
-              panel.classList.toggle('active', panelType === targetTab);
+              const isActive = (panelType === targetTab);
+              panel.classList.toggle('active', isActive);
+              const parentWidget = panel.closest('.widget');
+              if (parentWidget) {
+                parentWidget.style.display = isActive ? 'block' : 'none';
+              }
             });
           });
         });

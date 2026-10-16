@@ -2105,12 +2105,24 @@ body:not(#layout) #header.onScroll {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
 }
+/* .offer-section kini menggunakan tata letak single-container untuk Tab Switcher */
 .offer-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 30px;
-  max-width: 900px;
-  margin: 0 auto;
+  display: block !important;
+  max-width: 880px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+.offer-section .widget {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+.offer-section .widget:has(.kpr-panel:not(.active)) {
+  display: none !important;
+}
+.offer-section .widget:has(.kpr-panel.active) {
+  display: block !important;
 }
 .faq-section {
   max-width: 800px;

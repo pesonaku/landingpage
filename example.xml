@@ -1203,7 +1203,6 @@ Skema Cicilan = KPR Bank Mandiri / BTN / BSI Unit Eksklusif]]></b:widget-setting
       </section>
 
       <!-- ================= OFFER & SIMULASI ANGSURAN ================= -->
-            <!-- ================= OFFER & SIMULASI ANGSURAN ================= -->
       <section id='offer'>
         <div class='wrapper'>
           <div class='section-head reveal'>
@@ -1340,10 +1339,122 @@ Tenor 10 Tahun: Rp 3.692.300 / bln
 Tipe: komersial]]></b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
-                <div class='pricing-card kpr-panel reveal' data-kpr-panel='komersial' expr:data-title='data:title'>
+                                <div class='pricing-card kpr-panel reveal' data-kpr-panel='komersial' expr:data-title='data:title'>
                   <div class='pricing-raw-data' style='display:none;'><data:content/></div>
                   <div class='pricing-card-render'>
-                    <!-- Mount target for commercial interactive calculator -->
+                    <div class='kpr-panel-header'>
+                      <div class='kpr-panel-badge-row'>
+                        <span class='kpr-status-badge badge-comm-header'>SIMULASI ANGSURAN KOMERSIAL</span>
+                        <span class='kpr-popular-badge badge-comm-sub'>DESAIN MODERN MINIMALIS</span>
+                      </div>
+                      <h3>Kalkulator Simulasi KPR Komersial</h3>
+                      <p class='kpr-panel-sub'>Sesuaikan tipe rumah, uang muka (DP), tenor pinjaman, dan suku bunga bank rekanan untuk menghitung estimasi angsuran bulanan Anda.</p>
+                    </div>
+
+                    <div class='kpr-calc-layout'>
+                      <div class='kpr-calc-inputs'>
+                        <!-- Pilihan Tipe Rumah -->
+                        <div class='calc-field'>
+                          <label for='commUnitSelect'><strong>Pilih Tipe Rumah Komersil:</strong></label>
+                          <select class='calc-select' id='commUnitSelect'>
+                            <option selected='selected' value='435000000'>Pesona Kahuripan Type 36/60 — Rp 435.000.000</option>
+                            <option value='495000000'>Pesona Kahuripan Type 40/72 — Rp 495.000.000</option>
+                            <option value='custom'>Input Harga Kustom Sendiri</option>
+                          </select>
+                        </div>
+
+                        <!-- Harga Properti -->
+                        <div class='calc-field'>
+                          <label for='commPriceInput'><strong>Harga Properti (Rp):</strong></label>
+                          <div class='calc-input-wrap'>
+                            <span class='calc-prefix'>Rp</span>
+                            <input class='calc-input' id='commPriceInput' type='text' value='435.000.000'/>
+                          </div>
+                        </div>
+
+                        <!-- Uang Muka / DP -->
+                        <div class='calc-field'>
+                          <div class='calc-field-head'>
+                            <label><strong>Uang Muka (Down Payment):</strong></label>
+                            <span class='dp-percent-label' id='dpPercentLabel'>10%</span>
+                          </div>
+                          <div class='calc-chip-row' id='dpChipsRow'>
+                            <button class='calc-chip active' data-dp='10' type='button'>10%</button>
+                            <button class='calc-chip' data-dp='15' type='button'>15%</button>
+                            <button class='calc-chip' data-dp='20' type='button'>20%</button>
+                            <button class='calc-chip' data-dp='30' type='button'>30%</button>
+                          </div>
+                          <div class='calc-input-wrap' style='margin-top: 8px;'>
+                            <span class='calc-prefix'>Rp</span>
+                            <input class='calc-input' id='commDpNominal' type='text' value='43.500.000'/>
+                          </div>
+                        </div>
+
+                        <!-- Jangka Waktu (Tenor) -->
+                        <div class='calc-field'>
+                          <div class='calc-field-head'>
+                            <label><strong>Jangka Waktu Pinjaman (Tenor):</strong></label>
+                            <span class='tenor-val-label' id='tenorValLabel'>20 Tahun</span>
+                          </div>
+                          <div class='calc-chip-row' id='tenorChipsRow'>
+                            <button class='calc-chip' data-tenor='10' type='button'>10 Thn</button>
+                            <button class='calc-chip' data-tenor='15' type='button'>15 Thn</button>
+                            <button class='calc-chip active' data-tenor='20' type='button'>20 Thn</button>
+                            <button class='calc-chip' data-tenor='25' type='button'>25 Thn</button>
+                          </div>
+                          <input class='calc-range' id='commTenorRange' max='30' min='5' step='1' type='range' value='20'/>
+                        </div>
+
+                        <!-- Suku Bunga Bank Rekanan -->
+                        <div class='calc-field'>
+                          <div class='calc-field-head'>
+                            <label for='commBankSelect'><strong>Estimasi Suku Bunga Bank Rekanan:</strong></label>
+                            <span class='rate-val-label' id='rateValLabel'>5.50% / thn</span>
+                          </div>
+                          <select class='calc-select' id='commBankSelect'>
+                            <option selected='selected' value='5.5'>Bank Mandiri KPR (Promo Fixed 5.50%)</option>
+                            <option value='3.99'>Bank BTN KPR (Promo Fixed 3.99%)</option>
+                            <option value='6.25'>Bank BSI Griya Hasanah (Syariah Fixed 6.25%)</option>
+                            <option value='7.50'>Standard Fixed Promo (7.50%)</option>
+                            <option value='8.50'>Standard Floating Rate (8.50%)</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <!-- HASIL KALKULASI (LIVE RESULT CARD) -->
+                      <div class='kpr-calc-result-col'>
+                        <div class='calc-result-card'>
+                          <span class='result-badge'>ESTIMASI HASIL PERHITUNGAN</span>
+                          <div class='result-label'>Angsuran KPR Bulanan:</div>
+                          <div class='result-amount' id='resultInstallment'>Rp 2.688.400</div>
+                          <div class='result-period'>per bulan (estimasi anuitas)</div>
+
+                          <div class='result-details-list'>
+                            <div class='detail-row'>
+                              <span>Plafon Pinjaman Bank:</span>
+                              <strong id='resultPlafon'>Rp 391.500.000</strong>
+                            </div>
+                            <div class='detail-row'>
+                              <span>Total Uang Muka (DP):</span>
+                              <strong id='resultDp'>Rp 43.500.000</strong>
+                            </div>
+                            <div class='detail-row'>
+                              <span>Estimasi Penghasilan Min.:</span>
+                              <strong id='resultMinIncome' style='color:#ffffff;'>Rp 7.681.000 / bln</strong>
+                            </div>
+                          </div>
+
+                          <div class='result-disclaimer'>
+                            *Perhitungan bersifat simulasi estimasi. Suku bunga dan persetujuan plafon kredit mengikuti analisis bank rekanan (BTN, Mandiri, BSI).
+                          </div>
+
+                          <a class='btn-kpr-action btn-comm-cta wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20mau%20konsultasi%20KPR%20Komersial%20Type%2036%2F60%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23offer' id='ctaCommWa' target='_blank'>
+                            <svg viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
+                            <span>Konsultasikan Simulasi Ini via WhatsApp</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </b:includable>
