@@ -341,43 +341,67 @@ body:not(#layout) #header.onScroll {
   width: 14px; height: 14px; fill: #34d399;
 }
 
-/* SERVICE / TIPE RUMAH */
-#service { padding: 55px 0; background: var(--silver); }
-.service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+/* ================= 05. SERVICE / TIPE RUMAH PILIHAN ================= */
+#service {
+  padding: 65px 0;
+  background: var(--silver);
+  position: relative;
+}
+.service-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+@media (max-width: 1080px) {
+  .service-section {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+@media (max-width: 620px) {
+  .service-section {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
 .service-card {
   background: var(--white);
   border-radius: 18px;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
 }
 .service-card:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.09);
   border-color: #cbd5e1;
 }
+
 .service-card-img {
-  height: 220px;
+  height: 195px;
   overflow: hidden;
   position: relative;
+  background: #f1f5f9;
 }
 .service-card-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.45s ease;
 }
 .service-card:hover .service-card-img img {
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
+
 .service-badge {
   position: absolute;
-  top: 14px;
-  left: 14px;
-  padding: 6px 14px;
+  top: 12px;
+  left: 12px;
+  padding: 5px 12px;
   border-radius: 30px;
   font-size: 11px;
   font-weight: 800;
@@ -385,121 +409,133 @@ body:not(#layout) #header.onScroll {
   text-transform: uppercase;
   letter-spacing: 0.6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 2;
 }
 .service-badge.subsidi {
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
 }
 .service-badge.komersil {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
 }
-.service-badge.hook {
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-}
+
 .service-card-content {
-  padding: 24px 22px 20px;
+  padding: 20px 18px 18px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
-.service-card-content h3 {
+.service-card-title {
   font-size: 1.25rem;
   font-weight: 800;
-  margin-bottom: 6px;
-  color: var(--dark);
-  line-height: 1.35;
+  margin-bottom: 10px;
+  color: var(--black, #0f172a);
+  line-height: 1.25;
 }
-.service-card-content p {
-  color: #64748b;
-  font-size: 0.88rem;
-  line-height: 1.55;
-  margin-bottom: 12px;
+
+/* PRICE BLOCK */
+.service-price-block {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  transition: border-color 0.25s ease, background 0.25s ease;
 }
-/* BADGE TAG LIST (PENGGANTI ICON - MODERN & MUDAH DIEDIT) */
-.service-tags-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin: 6px 0 14px;
-}
-.service-tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 5px 12px;
+.service-card:hover .service-price-block {
+  border-color: #cbd5e1;
   background: #f1f5f9;
-  color: #334155;
-  border: 1px solid #cbd5e1;
-  border-radius: 20px;
+}
+.service-price-block .price-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+.service-price-block .price-amount {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--key, #0f9d58);
+  line-height: 1.2;
+  margin: 3px 0 2px;
+}
+.service-price-block .price-installment {
+  display: block;
   font-size: 0.78rem;
   font-weight: 600;
-  line-height: 1.25;
-  transition: all 0.25s ease;
-  white-space: nowrap;
+  color: #475569;
+  line-height: 1.2;
 }
-.service-tag:hover {
-  background: #e0f2fe;
-  border-color: #38bdf8;
-  color: #0284c7;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 6px rgba(56, 189, 248, 0.2);
-}
-.unit-detail-section {
-  display: none !important;
-}
-.service-spec-grid {
+
+/* SPECIFICATIONS GRID (6 INFORMASI: LB, LT, RUANG TAMU, KAMAR TIDUR, KAMAR MANDI, CARPORT) */
+.service-specs-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px 10px;
-  margin: 6px 0 16px;
-  background: #f8fafc;
-  padding: 12px 14px;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  gap: 8px;
+  margin-bottom: 16px;
 }
-.service-spec-item {
+.spec-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.82rem;
-  color: #334155;
-  font-weight: 500;
+  background: #f8fafc;
+  border: 1px solid #edf2f7;
+  border-radius: 9px;
+  padding: 7px 9px;
+  transition: all 0.2s ease;
 }
-.service-spec-item strong {
-  font-weight: 700;
-  color: #0f172a;
+.service-card:hover .spec-item {
+  background: #ffffff;
+  border-color: #e2e8f0;
 }
-.service-spec-item svg {
-  width: 17px;
-  height: 17px;
-  fill: var(--key);
+.spec-item svg {
+  width: 19px;
+  height: 19px;
+  fill: var(--key, #0f9d58);
   flex-shrink: 0;
 }
+.spec-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.spec-meta small {
+  font-size: 0.67rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.spec-meta strong {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* FOOTER BUTTON */
 .service-card-footer {
   margin-top: auto;
-  padding-top: 16px;
-  border-top: 1px solid #f1f5f9;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.service-price-tag small {
-  display: block;
-  font-size: 0.75rem;
-  color: #64748b;
-  font-weight: 600;
-}
-.service-price-tag strong {
-  font-size: 1.1rem;
-  color: var(--key);
-  font-weight: 800;
-  display: block;
+  padding-top: 10px;
 }
 .btn-service {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 10px 18px;
-  background: var(--key);
+  gap: 8px;
+  width: 100%;
+  padding: 11px 16px;
+  background: var(--key, #0f9d58);
   color: #ffffff !important;
   border-radius: 10px;
   font-size: 0.88rem;
@@ -507,18 +543,26 @@ body:not(#layout) #header.onScroll {
   cursor: pointer;
   text-decoration: none;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 12px rgba(15, 157, 88, 0.25);
+  box-shadow: 0 4px 12px rgba(15, 157, 88, 0.22);
   border: none;
+  text-align: center;
 }
 .btn-service:hover {
-  background: var(--key-dark);
+  background: var(--key-dark, #0b7e46);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(15, 157, 88, 0.35);
+  box-shadow: 0 6px 18px rgba(15, 157, 88, 0.32);
 }
 .btn-service svg {
   width: 16px;
   height: 16px;
   fill: currentColor;
+  transition: transform 0.2s ease;
+}
+.btn-service:hover svg {
+  transform: translateX(3px);
+}
+.unit-detail-section {
+  display: none !important;
 }
 
 
@@ -2134,11 +2178,6 @@ body:not(#layout) #header.onScroll {
 .delay-3 { transition-delay: 0.3s; }
 
 /* SECTION GRID / FLEX CONTAINER (KONSISTEN DENGAN SECTION 03) */
-.service-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 30px;
-}
 
 .faq-section {
   max-width: 800px;

@@ -407,6 +407,7 @@ function initLandingPage() {
     const SPEC_ICON_REGISTRY = {
       lb: '<svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 16H5v-6h7v6zm0-8H5V5h7v6zm7 8h-5v-6h5v6zm0-8h-5V5h5v6z"/></svg>',
       lt: '<svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>',
+      tamu: '<svg viewBox="0 0 24 24"><path d="M4 18v2h2v-2h12v2h2v-2c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2h-1V6c0-1.1-.9-2-2-2H7c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2zM7 6h10v2H7V6zm-3 6h16v4H4v-4z"/></svg>',
       kamar: '<svg viewBox="0 0 24 24"><path d="M19 7h-8v8H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4zm-9 6H5v-4h5v4zM7 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>',
       mandi: '<svg viewBox="0 0 24 24"><path d="M20 13V4.83C20 3.27 18.73 2 17.17 2c-.75 0-1.47.3-2 .83l-1.25 1.25c-.16-.05-.33-.08-.51-.08-.88 0-1.6.72-1.6 1.6 0 .42.17.81.44 1.1l-1.44 1.44C10.53 8.05 10.19 8 9.83 8H6c-2.21 0-4 1.79-4 4v1h18zm-2 2H4v3c0 2.21 1.79 4 4 4h8c2.21 0 4-1.79 4-4v-3z"/></svg>',
       carport: '<svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4.66l.12-.34h13.77l.11.34V17z"/></svg>',
@@ -421,7 +422,7 @@ function initLandingPage() {
 
     // Helper: Inisialisasi Icon Spesifikasi Dinamis (Auto-Detect Kata Kunci / Atribut data-icon)
     function initDynamicSpecIcons() {
-      document.querySelectorAll('.service-spec-item').forEach(function(item) {
+      document.querySelectorAll('.spec-item, .service-spec-item').forEach(function(item) {
         let iconKey = (item.getAttribute('data-icon') || '').toLowerCase().trim();
         const text = (item.textContent || '').toLowerCase();
         
@@ -429,8 +430,9 @@ function initLandingPage() {
         if (!iconKey) {
           if (text.includes('lb') || text.includes('bangunan')) iconKey = 'lb';
           else if (text.includes('lt') || text.includes('tanah')) iconKey = 'lt';
+          else if (text.includes('tamu') || text.includes('sofa') || text.includes('living')) iconKey = 'tamu';
           else if (text.includes('kamar') || text.includes('tidur')) iconKey = 'kamar';
-          else if (text.includes('mandi') || text.includes('wc')) iconKey = 'mandi';
+          else if (text.includes('mandi') || text.includes('wc') || text.includes('toilet')) iconKey = 'mandi';
           else if (text.includes('carport') || text.includes('garasi') || text.includes('mobil')) iconKey = 'carport';
           else if (text.includes('hebel') || text.includes('dinding') || text.includes('bata')) iconKey = 'hebel';
           else if (text.includes('taman') || text.includes('hook') || text.includes('sudut')) iconKey = 'taman';
@@ -545,7 +547,7 @@ function initLandingPage() {
 
     // Helper: Parser Tipe Rumah (Kartu, Galeri Tampak & Detail Modal Popup) Full Edit Tanpa Kode
     function initUnitCardAndPopupParser() {
-      // 1. PARSE & UPDATE KARTU DEPAN (TIPE RUMAH PILIHAN DENGAN BADGE TAGS)
+      // 1. PARSE & UPDATE KARTU DEPAN (TIPE RUMAH PILIHAN: 6 INFORMASI RESMI)
       document.querySelectorAll('.service-card').forEach(function(card) {
         const rawCaptionEl = card.querySelector('.unit-raw-caption');
         if (!rawCaptionEl) return;
@@ -554,10 +556,8 @@ function initLandingPage() {
 
         let badge = '';
         let price = '';
-        let priceLabel = '';
-        let desc = '';
-        let tags = [];
-        let lb = '', lt = '', kamar = '', fitur = '';
+        let installment = '';
+        let lb = '', lt = '', tamu = '', tidur = '', mandi = '', carport = '';
 
         const lines = rawText.split('\n');
         lines.forEach(function(line) {
@@ -569,34 +569,22 @@ function initLandingPage() {
             badge = trimmed.substring(trimmed.indexOf(':') + 1).trim();
           } else if (lower.startsWith('harga:')) {
             price = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-          } else if (lower.startsWith('cicilan:') || lower.startsWith('label:')) {
-            priceLabel = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-          } else if (lower.startsWith('tags:') || lower.startsWith('tag:')) {
-            const tagStr = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-            const sep = tagStr.includes('|') ? '|' : ',';
-            tags = tagStr.split(sep).map(function(t) { return t.trim(); }).filter(Boolean);
-          } else if (lower.startsWith('lb:')) {
+          } else if (lower.startsWith('cicilan:') || lower.startsWith('angsuran:') || lower.startsWith('label:')) {
+            installment = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+          } else if (lower.startsWith('lb:') || lower.startsWith('bangunan:')) {
             lb = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-          } else if (lower.startsWith('lt:')) {
+          } else if (lower.startsWith('lt:') || lower.startsWith('tanah:')) {
             lt = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-          } else if (lower.startsWith('kamar:')) {
-            kamar = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-          } else if (lower.startsWith('fitur:') || lower.startsWith('spesial:')) {
-            fitur = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-          } else if (lower.startsWith('deskripsi:') || lower.startsWith('keterangan:')) {
-            desc = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-          } else if (!badge && !price && !desc && !trimmed.startsWith('[')) {
-            desc = (desc ? desc + ' ' : '') + trimmed;
+          } else if (lower.startsWith('ruang tamu:') || lower.startsWith('tamu:')) {
+            tamu = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+          } else if (lower.startsWith('kamar tidur:') || lower.startsWith('tidur:') || lower.startsWith('kamar:')) {
+            tidur = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+          } else if (lower.startsWith('kamar mandi:') || lower.startsWith('mandi:') || lower.startsWith('toilet:')) {
+            mandi = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+          } else if (lower.startsWith('carport:') || lower.startsWith('garasi:')) {
+            carport = trimmed.substring(trimmed.indexOf(':') + 1).trim();
           }
         });
-
-        // Jika tags belum diisi langsung lewat Tags:, kumpulkan dari LB, LT, Kamar, Fitur
-        if (tags.length === 0) {
-          if (lb) tags.push('LB: ' + lb);
-          if (lt) tags.push('LT: ' + lt);
-          if (kamar) tags.push(kamar.toLowerCase().includes('kamar') ? kamar : (kamar + ' Kamar'));
-          if (fitur) tags.push(fitur);
-        }
 
         // Update Elemen Kartu Depan
         if (badge) {
@@ -604,36 +592,36 @@ function initLandingPage() {
           if (badgeEl) badgeEl.textContent = badge;
         }
         if (price) {
-          const priceValEl = card.querySelector('.service-price-tag strong');
+          const priceValEl = card.querySelector('.price-amount') || card.querySelector('.service-price-tag strong');
           if (priceValEl) priceValEl.textContent = price;
         }
-        if (priceLabel) {
-          const priceLabelEl = card.querySelector('.service-price-tag small');
-          if (priceLabelEl) priceLabelEl.textContent = priceLabel;
+        if (installment) {
+          const instEl = card.querySelector('.price-installment') || card.querySelector('.service-price-tag small');
+          if (instEl) instEl.textContent = installment;
         }
-        if (desc) {
-          const cardDescEl = card.querySelector('.unit-desc-text') || card.querySelector('.service-card-content > p');
-          if (cardDescEl) cardDescEl.textContent = desc;
+        if (lb) {
+          const lbEl = card.querySelector('.spec-lb strong');
+          if (lbEl) lbEl.textContent = lb;
         }
-
-        // Render Badge Tags (Pill / Label Modern Tanpa Icon)
-        if (tags.length > 0) {
-          let tagsList = card.querySelector('.service-tags-list');
-          if (!tagsList) {
-            const oldSpecGrid = card.querySelector('.service-spec-grid');
-            if (oldSpecGrid) {
-              tagsList = document.createElement('div');
-              tagsList.className = 'service-tags-list';
-              oldSpecGrid.parentNode.replaceChild(tagsList, oldSpecGrid);
-            }
-          }
-          if (tagsList) {
-            let tagsHtml = '';
-            tags.forEach(function(t) {
-              tagsHtml += '<span class="service-tag">' + t + '</span>';
-            });
-            tagsList.innerHTML = tagsHtml;
-          }
+        if (lt) {
+          const ltEl = card.querySelector('.spec-lt strong');
+          if (ltEl) ltEl.textContent = lt;
+        }
+        if (tamu) {
+          const tamuEl = card.querySelector('.spec-tamu strong');
+          if (tamuEl) tamuEl.textContent = tamu;
+        }
+        if (tidur) {
+          const tidurEl = card.querySelector('.spec-tidur strong');
+          if (tidurEl) tidurEl.textContent = tidur;
+        }
+        if (mandi) {
+          const mandiEl = card.querySelector('.spec-mandi strong');
+          if (mandiEl) mandiEl.textContent = mandi;
+        }
+        if (carport) {
+          const carportEl = card.querySelector('.spec-carport strong');
+          if (carportEl) carportEl.textContent = carport;
         }
       });
 
