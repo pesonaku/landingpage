@@ -3,7 +3,7 @@
  * Repository: https://github.com/pesonaku/landingpage
  */
 
-document.addEventListener('DOMContentLoaded', function() {
+function initLandingPage() {
 
       // ================= MASTER MARKETING SYNC ENGINE =================
       const masterData = document.getElementById('marketingMasterData');
@@ -377,7 +377,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       }, 1000);
 
-    });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLandingPage);
+    } else {
+      initLandingPage();
+    }
 
     // Helper: Ganti Foto Utama di Popup Galeri Tampak Rumah
     window.switchPopImage = function(thumbEl, fullUrl) {
@@ -840,25 +846,31 @@ document.addEventListener('DOMContentLoaded', function() {
       const tabBtns = document.querySelectorAll('.kpr-tab-btn');
       const panels = document.querySelectorAll('.pricing-card.kpr-panel');
 
+      function switchKprTab(targetTab) {
+        tabBtns.forEach(function(b) {
+          b.classList.toggle('active', b.getAttribute('data-kpr-tab') === targetTab);
+        });
+        panels.forEach(function(panel) {
+          const panelType = panel.getAttribute('data-kpr-panel');
+          const isActive = (panelType === targetTab);
+          panel.classList.toggle('active', isActive);
+          const parentWidget = panel.closest('.widget');
+          if (parentWidget) {
+            parentWidget.style.display = isActive ? 'block' : 'none';
+          }
+        });
+      }
+
       if (tabNav && tabBtns.length > 0) {
         tabBtns.forEach(function(btn) {
           btn.addEventListener('click', function(e) {
             e.preventDefault();
             const targetTab = this.getAttribute('data-kpr-tab');
-            tabBtns.forEach(function(b) { b.classList.remove('active'); });
-            this.classList.add('active');
-
-            panels.forEach(function(panel) {
-              const panelType = panel.getAttribute('data-kpr-panel');
-              const isActive = (panelType === targetTab);
-              panel.classList.toggle('active', isActive);
-              const parentWidget = panel.closest('.widget');
-              if (parentWidget) {
-                parentWidget.style.display = isActive ? 'block' : 'none';
-              }
-            });
+            switchKprTab(targetTab);
           });
         });
+        // Pastikan kondisi tab awal aktif (default: subsidi)
+        switchKprTab('subsidi');
       }
 
       // 2. Parser Kartu Subsidi & Kartu Komersial
