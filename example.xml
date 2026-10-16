@@ -1203,13 +1203,35 @@ Skema Cicilan = KPR Bank Mandiri / BTN / BSI Unit Eksklusif]]></b:widget-setting
       </section>
 
       <!-- ================= OFFER & SIMULASI ANGSURAN ================= -->
+            <!-- ================= OFFER & SIMULASI ANGSURAN ================= -->
       <section id='offer'>
         <div class='wrapper'>
           <div class='section-head reveal'>
-            <span class='section-badge'>SKEMA PEMBIAYAAN</span>
+            <span class='section-badge'>SKEMA PEMBIAYAAN &amp; KALKULATOR</span>
             <h2>Simulasi Angsuran KPR</h2>
-            <p>Pilihan cicilan fleksibel sesuai kemampuan finansial keluarga Anda.</p>
+            <p>Pilih skema KPR Subsidi Pemerintah (FLPP) atau hitung estimasi cicilan KPR Komersial sesuai kebutuhan Anda.</p>
           </div>
+
+          <!-- TAB SWITCHER NAV -->
+          <div class='kpr-tab-nav reveal' id='kprTabNav'>
+            <button class='kpr-tab-btn active' data-kpr-tab='subsidi' type='button'>
+              <div class='kpr-tab-icon'>🏠</div>
+              <div class='kpr-tab-text'>
+                <span class='kpr-tab-badge badge-gov'>Subsidi Pemerintah</span>
+                <strong>KPR Subsidi (FLPP)</strong>
+                <small>Suku Bunga Flat 5% Tetap s/d Lunas</small>
+              </div>
+            </button>
+            <button class='kpr-tab-btn' data-kpr-tab='komersial' type='button'>
+              <div class='kpr-tab-icon'>🏢</div>
+              <div class='kpr-tab-text'>
+                <span class='kpr-tab-badge badge-comm'>Kalkulator Dinamis</span>
+                <strong>KPR Komersial</strong>
+                <small>Simulasi Fleksibel Per Tipe Rumah</small>
+              </div>
+            </button>
+          </div>
+
           <b:section class='offer-section' id='offer-section' name='[07. SIMULASI KPR] Tabel Angsuran &amp; Harga' showaddelement='false' version='3'>
             <!-- SIMULASI 1: SUBSIDI TYPE 30/60 (TEKS BERSIH TANPA KODE HTML) -->
             <b:widget id='Text51' locked='true' title='Subsidi Type 30/60' type='Text' version='3' visible='true'>
@@ -1223,19 +1245,84 @@ Tenor 10 Tahun: Rp 1.910.587 / bln
 Tipe: subsidi]]></b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
-                <div class='pricing-card featured reveal' expr:data-title='data:title'>
+                <div class='pricing-card kpr-panel active reveal' data-kpr-panel='subsidi' expr:data-title='data:title'>
                   <div class='pricing-raw-data' style='display:none;'><data:content/></div>
                   <div class='pricing-card-render'>
-                    <span style='background:var(--key); color:#fff; font-size:12px; font-weight:700; padding:4px 12px; border-radius:100px;'>TERLARIS</span>
-                    <h3 style='margin-top:15px;'><data:title/></h3>
-                    <div class='pricing-price'>Rp. 185.000.000,-</div>
-                    <p style='color:#6b7280; font-size:0.95rem;'>Double Dinding Hebel - Cicilan Flat Sampai Lunas</p>
-                    <ul class='pricing-list'>
-                      <li><span>Tenor 20 Tahun:</span> <strong>Rp 1.192.574 / bln</strong></li>
-                      <li><span>Tenor 15 Tahun:</span> <strong>Rp 1.427.023 / bln</strong></li>
-                      <li><span>Tenor 10 Tahun:</span> <strong>Rp 1.910.587 / bln</strong></li>
-                    </ul>
-                    <a class='btn-cta wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20mau%20booking%20Subsidi%20Type%2030%2F60%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23offer' style='width:100%; box-sizing:border-box;' target='_blank'>Booking Subsidi</a>
+                    <div class='kpr-panel-header'>
+                      <div class='kpr-panel-badge-row'>
+                        <span class='kpr-status-badge'>PROGRAM RESMI PEMERINTAH (FLPP)</span>
+                        <span class='kpr-popular-badge'>UNIT TERLARIS</span>
+                      </div>
+                      <h3>Pesona Kahuripan — Rumah Subsidi Type 30/60</h3>
+                      <p class='kpr-panel-sub'>Hunian subsidi berkualitas dengan konstruksi double dinding hebel, cicilan flat sampai lunas, dan bebas risiko kenaikan suku bunga.</p>
+                    </div>
+
+                    <div class='kpr-subsidi-price-banner'>
+                      <div class='price-banner-info'>
+                        <div class='price-banner-label'>Harga Patokan Resmi Pemerintah</div>
+                        <div class='price-banner-val'>Rp 185.000.000,-</div>
+                      </div>
+                      <div class='price-banner-chip'>
+                        <svg viewBox='0 0 24 24'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/></svg>
+                        <span>Bunga Flat 5.0% Tetap Sampai Lunas</span>
+                      </div>
+                    </div>
+
+                    <div class='kpr-tenor-selection'>
+                      <div class='tenor-selection-title'>Pilihan Jangka Waktu (Tenor) Angsuran:</div>
+                      <div class='tenor-options-grid'>
+                        <div class='tenor-option-card active' data-angsuran='Rp 1.192.574' data-tenor='20'>
+                          <span class='tenor-card-badge'>Paling Populer</span>
+                          <div class='tenor-duration'>Tenor 20 Tahun</div>
+                          <div class='tenor-installment'>Rp 1.192.574<span> / bln</span></div>
+                          <div class='tenor-note'>~ Rp 39.700 per hari</div>
+                        </div>
+                        <div class='tenor-option-card' data-angsuran='Rp 1.427.023' data-tenor='15'>
+                          <div class='tenor-duration'>Tenor 15 Tahun</div>
+                          <div class='tenor-installment'>Rp 1.427.023<span> / bln</span></div>
+                          <div class='tenor-note'>~ Rp 47.500 per hari</div>
+                        </div>
+                        <div class='tenor-option-card' data-angsuran='Rp 1.910.587' data-tenor='10'>
+                          <div class='tenor-duration'>Tenor 10 Tahun</div>
+                          <div class='tenor-installment'>Rp 1.910.587<span> / bln</span></div>
+                          <div class='tenor-note'>~ Rp 63.600 per hari</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class='kpr-benefits-grid'>
+                      <div class='kpr-benefit-item'>
+                        <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                        <div><strong>DP Ringan Mulai 1%</strong><small>Uang muka sangat terjangkau</small></div>
+                      </div>
+                      <div class='kpr-benefit-item'>
+                        <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                        <div><strong>Bantuan SBUM Rp 4 Juta</strong><small>Subsidi bantuan uang muka tunai</small></div>
+                      </div>
+                      <div class='kpr-benefit-item'>
+                        <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                        <div><strong>Bebas Pajak PPN 11%</strong><small>Hemat belasan juta rupiah</small></div>
+                      </div>
+                      <div class='kpr-benefit-item'>
+                        <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                        <div><strong>Double Dinding Hebel</strong><small>Kualitas bangunan kokoh &amp; rapi</small></div>
+                      </div>
+                    </div>
+
+                    <div class='kpr-requirements-box'>
+                      <div class='req-title'>Syarat Pokok Pengajuan KPR Subsidi:</div>
+                      <ul class='req-list'>
+                        <li>WNI usia minimal 21 tahun atau sudah menikah</li>
+                        <li>Belum pernah memiliki rumah dan belum pernah menerima subsidi perumahan</li>
+                        <li>Gaji pokok pemohon maksimal Rp 8.000.000 / bulan</li>
+                        <li>Memiliki rekam jejak kredit lancar (BI Checking / SLIK OJK aman)</li>
+                      </ul>
+                    </div>
+
+                    <a class='btn-kpr-action btn-subsidi-cta wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20KPR%20Subsidi%20Type%2030%2F60%20Pesona%20Kahuripan%20dengan%20Tenor%2020%20Tahun%20(Rp%201.192.574%2Fbln).%20Mohon%20info%20ketersediaan%20unit%20dan%20syarat%20lengkapnya.%20Terima%20kasih!' target='_blank'>
+                      <svg viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
+                      <span>Konsultasi &amp; Cek Kuota KPR Subsidi via WhatsApp</span>
+                    </a>
                   </div>
                 </div>
               </b:includable>
@@ -1253,19 +1340,10 @@ Tenor 10 Tahun: Rp 3.692.300 / bln
 Tipe: komersial]]></b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
-                <div class='pricing-card reveal delay-1' expr:data-title='data:title'>
+                <div class='pricing-card kpr-panel reveal' data-kpr-panel='komersial' expr:data-title='data:title'>
                   <div class='pricing-raw-data' style='display:none;'><data:content/></div>
                   <div class='pricing-card-render'>
-                    <span style='background:#f3f4f6; color:#374151; font-size:12px; font-weight:700; padding:4px 12px; border-radius:100px;'>KOMERSIAL</span>
-                    <h3 style='margin-top:15px;'><data:title/></h3>
-                    <div class='pricing-price'>Rp. 435.000.000,-</div>
-                    <p style='color:#6b7280; font-size:0.95rem;'>Desain Elegan Fasad Modern Langit-langit Tinggi</p>
-                    <ul class='pricing-list'>
-                      <li><span>Tenor 20 Tahun:</span> <strong>Rp 1.970.800 / bln</strong></li>
-                      <li><span>Tenor 15 Tahun:</span> <strong>Rp 2.604.300 / bln</strong></li>
-                      <li><span>Tenor 10 Tahun:</span> <strong>Rp 3.692.300 / bln</strong></li>
-                    </ul>
-                    <a class='btn-cta wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20mau%20booking%20Komersial%20Type%2036%2F60%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23offer' style='width:100%; box-sizing:border-box; background:var(--black);' target='_blank'>Booking Komersial</a>
+                    <!-- Mount target for commercial interactive calculator -->
                   </div>
                 </div>
               </b:includable>

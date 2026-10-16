@@ -833,107 +833,95 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
 
-    // Helper: Smart Parser Simulasi Angsuran KPR dari Widget Text Murni & Kalkulator Komersial
+        // Helper: Smart Parser Simulasi Angsuran KPR — Tab Switcher & Dynamic Calculator
     function initPricingTextParser() {
+      // 1. Inisialisasi Navigasi Tab KPR (Subsidi vs Komersial)
+      const tabNav = document.getElementById('kprTabNav');
+      const tabBtns = document.querySelectorAll('.kpr-tab-btn');
+      const panels = document.querySelectorAll('.pricing-card.kpr-panel');
+
+      if (tabNav && tabBtns.length > 0) {
+        tabBtns.forEach(function(btn) {
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetTab = this.getAttribute('data-kpr-tab');
+            tabBtns.forEach(function(b) { b.classList.remove('active'); });
+            this.classList.add('active');
+
+            panels.forEach(function(panel) {
+              const panelType = panel.getAttribute('data-kpr-panel');
+              panel.classList.toggle('active', panelType === targetTab);
+            });
+          });
+        });
+      }
+
+      // 2. Parser Kartu Subsidi & Kartu Komersial
       document.querySelectorAll('.pricing-card').forEach(function(card) {
         const rawDataEl = card.querySelector('.pricing-raw-data');
         const renderEl = card.querySelector('.pricing-card-render');
         if (!rawDataEl || !renderEl) return;
 
         const rawText = (rawDataEl.innerText || rawDataEl.textContent || '').trim();
-        if (!rawText) return;
-
-        const lines = rawText.split('\n');
-        let badge = 'PROGRAM SUBSIDI FLPP';
-        let title = card.getAttribute('data-title') || 'Type Rumah';
-        let price = 'Rp. 185.000.000,-';
-        let desc = 'Double Dinding Hebel • Suku Bunga Flat 5% Tetap Sampai Lunas';
-        let tenors = [];
-        let isKomersial = false;
+        const lines = rawText ? rawText.split('\n') : [];
+        let isKomersial = card.getAttribute('data-kpr-panel') === 'komersial';
+        let defaultPrice = 'Rp. 435.000.000,-';
+        let defaultTitle = card.getAttribute('data-title') || 'Type Rumah';
 
         lines.forEach(function(line) {
-          const trimmed = line.trim();
-          if (!trimmed) return;
-          const lower = trimmed.toLowerCase();
-          if (lower.startsWith('badge:')) {
-            badge = trimmed.split(':')[1].trim();
+          const lower = line.toLowerCase().trim();
+          if (lower.startsWith('tipe:') && (lower.includes('komersial') || lower.includes('komersil'))) {
+            isKomersial = true;
           } else if (lower.startsWith('harga:')) {
-            price = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-          } else if (lower.startsWith('deskripsi:') || lower.startsWith('keterangan:')) {
-            desc = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-          } else if (lower.startsWith('tenor')) {
-            const parts = trimmed.split(':');
-            if (parts.length >= 2) {
-              tenors.push({ label: parts[0].trim(), val: parts.slice(1).join(':').trim() });
-            }
-          } else if (lower.startsWith('tipe:')) {
-            if (lower.includes('komersial') || lower.includes('komersil')) isKomersial = true;
+            defaultPrice = line.substring(line.indexOf(':') + 1).trim();
+          } else if (lower.startsWith('badge:')) {
+            // badge info
           }
         });
 
-        // Jika tipe komersial, inisialisasi kalkulator simulasi KPR interaktif
-        if (isKomersial || card.classList.contains('commercial-calculator-card')) {
-          initCommercialKprCalculator(card, renderEl, { badge: badge, title: title, defaultPrice: price, desc: desc });
-          return;
+        if (isKomersial) {
+          initCommercialKprCalculator(card, renderEl, { defaultPrice: defaultPrice, title: defaultTitle });
+        } else {
+          initSubsidizedTenorInteraction(card, renderEl);
         }
-
-        if (tenors.length === 0) return; // Gunakan default jika format tidak cocok
-
-        let listHtml = '';
-        tenors.forEach(function(t, idx) {
-          const isFav = idx === 0 ? ' <span style="font-size:10px; background:var(--key); color:#fff; padding:2px 8px; border-radius:100px; margin-left:6px; font-weight:700;">TERPOPULER</span>' : '';
-          listHtml += `<li><span>${t.label}:</span> <strong>${t.val}${isFav}</strong></li>`;
-        });
-
-        const marketingPhone = (window.MARKETING_CONFIG && window.MARKETING_CONFIG.phone) || '6287870988073';
-        const marketingName = (window.MARKETING_CONFIG && window.MARKETING_CONFIG.name) || "Mas Ro'uf";
-        const unitName = 'Subsidi Type 30/60';
-
-        renderEl.innerHTML = `
-          <div class="pricing-badge-wrap">
-            <span class="pricing-card-badge badge-subsidi">
-              <svg style="width:14px; height:14px; fill:currentColor;" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-              ${badge}
-            </span>
-          </div>
-          <h3 class="pricing-card-title">${title}</h3>
-          <p class="pricing-card-desc">${desc}</p>
-          
-          <div class="pricing-card-price-wrap">
-            <div class="pricing-card-price-label">Harga Patokan Resmi Pemerintah</div>
-            <div class="pricing-card-price-val">${price}</div>
-          </div>
-
-          <ul class="pricing-list">
-            ${listHtml}
-          </ul>
-
-          <ul class="pricing-features-list">
-            <li>
-              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-              <span>Suku Bunga Flat 5% (Tidak Naik s/d Lunas)</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-              <span>Uang Muka (DP) Ringan Cukup 1%</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-              <span>Bantuan Subsidi Uang Muka (SBUM) &amp; Bebas PPN</span>
-            </li>
-          </ul>
-
-          <a class="btn-cta-kpr subsidi-btn wa-dynamic-btn" href="https://api.whatsapp.com/send?phone=${marketingPhone}&text=Halo%20${encodeURIComponent(marketingName)}%2C%20saya%20mau%20booking%20${encodeURIComponent(unitName)}%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23offer" target="_blank">
-            <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
-            <span>Booking Subsidi via WhatsApp</span>
-          </a>
-        `;
       });
     }
 
-    // Kalkulator Simulasi KPR Komersil Interaktif
+    // Helper: Interaksi Pilihan Tenor Tab Subsidi
+    function initSubsidizedTenorInteraction(card, renderEl) {
+      if (!card || !renderEl) return;
+      const tenorCards = renderEl.querySelectorAll('.tenor-option-card');
+      const ctaBtn = renderEl.querySelector('.btn-subsidi-cta');
+      if (!ctaBtn || tenorCards.length === 0) return;
+
+      const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
+      const marketingName = mConfig.name || "Mas Ro'uf";
+      const phone = mConfig.phone || "6287870988073";
+
+      function updateCta(tenorYrs, installmentStr) {
+        const fullMsg = `Halo ${marketingName}, saya tertarik KPR Subsidi Type 30/60 Pesona Kahuripan dengan Tenor ${tenorYrs} Tahun (${installmentStr}/bln).\n\n` +
+          `Mohon informasi ketersediaan unit dan kelengkapan berkas KPR-nya. Terima kasih!\n\n` +
+          `🌐 Referensi: https://www.pesonakahuripan.biz.id/#offer`;
+        ctaBtn.href = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(fullMsg)}`;
+      }
+
+      tenorCards.forEach(function(opt) {
+        opt.addEventListener('click', function() {
+          tenorCards.forEach(function(c) { c.classList.remove('active'); });
+          opt.classList.add('active');
+          const tenor = opt.getAttribute('data-tenor') || '20';
+          const angsuran = opt.getAttribute('data-angsuran') || 'Rp 1.192.574';
+          updateCta(tenor, angsuran);
+        });
+      });
+
+      // Default tenor 20 tahun
+      updateCta('20', 'Rp 1.192.574');
+    }
+
+    // Helper: Kalkulator Simulasi KPR Komersil Interaktif Mandiri
     function initCommercialKprCalculator(card, renderEl, config) {
-      if (!card) return;
+      if (!card || !renderEl) return;
 
       function fmtRupiah(val) { return 'Rp ' + Number(val || 0).toLocaleString('id-ID'); }
       function fmtDots(val) { const n = String(val).replace(/[^0-9]/g, ''); return n ? Number(n).toLocaleString('id-ID') : ''; }
@@ -941,224 +929,198 @@ document.addEventListener('DOMContentLoaded', function() {
       function calcInstallment(plafon, annualRate, tenorYrs) {
         if (plafon <= 0) return 0;
         const n = tenorYrs * 12;
-        if (!annualRate || annualRate <= 0) return Math.round(plafon / n);
         const r = (annualRate / 100) / 12;
-        const factor = Math.pow(1 + r, n);
-        return Math.round(plafon * (r * factor) / (factor - 1));
+        if (r === 0) return Math.round(plafon / n);
+        return Math.round(plafon * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1));
       }
 
-      let typeSelect = card.querySelector('#kpr-type-select');
-      if (!typeSelect && renderEl) {
-        const badgeText = (config && config.badge) || 'KALKULATOR KPR KOMERSIL';
-        const cardTitle = (config && config.title) || 'Simulasi KPR Komersil';
-        const cardDesc = (config && config.desc) || 'Sesuaikan tipe unit, uang muka (DP), dan tenor pinjaman untuk melihat estimasi cicilan per bulan.';
+      const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
+      const marketingName = mConfig.name || "Mas Ro'uf";
+      const phone = mConfig.phone || "6287870988073";
 
-        renderEl.innerHTML = `
-          <div class="pricing-badge-wrap">
-            <span class="pricing-card-badge badge-komersil">
-              <svg style="width:14px; height:14px; fill:currentColor;" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-              ${badgeText}
-            </span>
+      renderEl.innerHTML = `
+        <div class="kpr-panel-header">
+          <div class="kpr-panel-badge-row">
+            <span class="kpr-status-badge badge-comm-header">SIMULASI ANGSURAN KOMERSIAL</span>
+            <span class="kpr-popular-badge badge-comm-sub">DESAIN MODERN MINIMALIS</span>
           </div>
-          <h3 class="pricing-card-title">${cardTitle}</h3>
-          <p class="pricing-card-desc">${cardDesc}</p>
+          <h3>Kalkulator Simulasi KPR Komersial</h3>
+          <p class="kpr-panel-sub">Sesuaikan tipe rumah, uang muka (DP), tenor pinjaman, dan suku bunga bank rekanan untuk menghitung estimasi angsuran bulanan Anda.</p>
+        </div>
 
-          <div class="kpr-calc-body">
-            <div class="kpr-field">
-              <div class="kpr-field-head">
-                <label class="kpr-field-label" for="kpr-type-select">Pilih Tipe Rumah Komersil</label>
-              </div>
-              <select class="kpr-select" id="kpr-type-select">
-                <option value="435000000" data-name="Type 36/60 Minimalis" selected="selected">Type 36/60 - Minimalis Modern (Rp 435 Jt)</option>
-                <option value="485000000" data-name="Type 42/60 Modern">Type 42/60 - Standar Komersial (Rp 485 Jt)</option>
-                <option value="550000000" data-name="Type 50/78 Hook Premium">Type 50/78 - Hook Premium (Rp 550 Jt)</option>
-                <option value="custom" data-name="Custom / Tipe Lainnya">Custom / Input Harga Sendiri</option>
+        <div class="kpr-calc-layout">
+          <div class="kpr-calc-inputs">
+            <!-- Pilihan Tipe Rumah -->
+            <div class="calc-field">
+              <label for="commUnitSelect"><strong>Pilih Tipe Rumah Komersil:</strong></label>
+              <select class="calc-select" id="commUnitSelect">
+                <option value="435000000" selected="selected">Pesona Kahuripan Type 36/60 — Rp 435.000.000</option>
+                <option value="495000000">Pesona Kahuripan Type 40/72 — Rp 495.000.000</option>
+                <option value="custom">Input Harga Kustom Sendiri</option>
               </select>
             </div>
 
-            <div class="kpr-field">
-              <div class="kpr-field-head">
-                <label class="kpr-field-label" for="kpr-price-input">Harga Properti</label>
-                <span class="kpr-field-val-hint" id="kpr-type-tag">Type 36/60</span>
-              </div>
-              <div class="kpr-input-wrap">
-                <span class="kpr-input-prefix">Rp</span>
-                <input class="kpr-input" id="kpr-price-input" type="text" value="435.000.000"/>
+            <!-- Harga Properti -->
+            <div class="calc-field">
+              <label for="commPriceInput"><strong>Harga Properti (Rp):</strong></label>
+              <div class="calc-input-wrap">
+                <span class="calc-prefix">Rp</span>
+                <input class="calc-input" id="commPriceInput" type="text" value="435.000.000"/>
               </div>
             </div>
 
-            <div class="kpr-field">
-              <div class="kpr-field-head">
-                <label class="kpr-field-label">Uang Muka (DP)</label>
-                <span class="kpr-field-val-hint" id="kpr-dp-display">Rp 43.500.000 (10%)</span>
+            <!-- Uang Muka / DP -->
+            <div class="calc-field">
+              <div class="calc-field-head">
+                <label><strong>Uang Muka (Down Payment):</strong></label>
+                <span class="dp-percent-label" id="dpPercentLabel">10%</span>
               </div>
-              <div class="kpr-pills-grid" id="kpr-dp-pills">
-                <button class="kpr-pill-btn" data-dp="0" type="button">DP 0%</button>
-                <button class="kpr-pill-btn" data-dp="5" type="button">5%</button>
-                <button class="kpr-pill-btn active" data-dp="10" type="button">10%</button>
-                <button class="kpr-pill-btn" data-dp="20" type="button">20%</button>
+              <div class="calc-chip-row" id="dpChipsRow">
+                <button class="calc-chip active" type="button" data-dp="10">10%</button>
+                <button class="calc-chip" type="button" data-dp="15">15%</button>
+                <button class="calc-chip" type="button" data-dp="20">20%</button>
+                <button class="calc-chip" type="button" data-dp="30">30%</button>
               </div>
-            </div>
-
-            <div class="kpr-field">
-              <div class="kpr-field-head">
-                <label class="kpr-field-label">Jangka Waktu (Tenor)</label>
-                <span class="kpr-field-val-hint" id="kpr-tenor-hint">20 Tahun</span>
-              </div>
-              <div class="kpr-pills-grid" id="kpr-tenor-pills">
-                <button class="kpr-pill-btn" data-tenor="10" type="button">10 Thn</button>
-                <button class="kpr-pill-btn" data-tenor="15" type="button">15 Thn</button>
-                <button class="kpr-pill-btn active" data-tenor="20" type="button">20 Thn</button>
-                <button class="kpr-pill-btn" data-tenor="25" type="button">25 Thn</button>
+              <div class="calc-input-wrap" style="margin-top: 8px;">
+                <span class="calc-prefix">Rp</span>
+                <input class="calc-input" id="commDpNominal" type="text" value="43.500.000"/>
               </div>
             </div>
 
-            <div class="kpr-rate-row">
-              <div class="kpr-rate-info">
-                <span class="kpr-rate-title">Suku Bunga KPR / Tahun</span>
-                <span class="kpr-rate-desc">Promo Bank Rekanan (BTN/BSI/Mandiri)</span>
+            <!-- Jangka Waktu (Tenor) -->
+            <div class="calc-field">
+              <div class="calc-field-head">
+                <label><strong>Jangka Waktu Pinjaman (Tenor):</strong></label>
+                <span class="tenor-val-label" id="tenorValLabel">20 Tahun</span>
               </div>
-              <div class="kpr-rate-input-wrap">
-                <input class="kpr-rate-input" id="kpr-rate-input" max="15" min="1" step="0.1" type="number" value="5.5"/>
-                <span class="kpr-rate-suffix">%</span>
+              <div class="calc-chip-row" id="tenorChipsRow">
+                <button class="calc-chip" type="button" data-tenor="10">10 Thn</button>
+                <button class="calc-chip" type="button" data-tenor="15">15 Thn</button>
+                <button class="calc-chip active" type="button" data-tenor="20">20 Thn</button>
+                <button class="calc-chip" type="button" data-tenor="25">25 Thn</button>
               </div>
+              <input class="calc-range" id="commTenorRange" type="range" min="5" max="30" step="1" value="20"/>
             </div>
 
-            <div class="kpr-result-card">
-              <div class="kpr-result-header">ESTIMASI ANGSURAN PER BULAN</div>
-              <div class="kpr-result-amount">
-                <span id="kpr-monthly-val">Rp 2.693.000</span>
-                <small>/ bln*</small>
+            <!-- Suku Bunga Bank Rekanan -->
+            <div class="calc-field">
+              <div class="calc-field-head">
+                <label for="commBankSelect"><strong>Estimasi Suku Bunga Bank Rekanan:</strong></label>
+                <span class="rate-val-label" id="rateValLabel">5.50% / thn</span>
               </div>
-              <div class="kpr-result-details">
-                <span>Plafon: <strong id="kpr-plafon-val">Rp 391.500.000</strong></span>
-                <span>Tenor: <strong id="kpr-tenor-val">20 Tahun</strong></span>
-                <span>Bunga: <strong id="kpr-rate-val">5.5% p.a.</strong></span>
-              </div>
+              <select class="calc-select" id="commBankSelect">
+                <option value="5.5" selected="selected">Bank Mandiri KPR (Promo Fixed 5.50%)</option>
+                <option value="3.99">Bank BTN KPR (Promo Fixed 3.99%)</option>
+                <option value="6.25">Bank BSI Griya Hasanah (Syariah Fixed 6.25%)</option>
+                <option value="7.50">Standard Fixed Promo (7.50%)</option>
+                <option value="8.50">Standard Floating Rate (8.50%)</option>
+              </select>
             </div>
-
-            <div class="kpr-matrix-section">
-              <div class="kpr-matrix-title">Pilihan Tenor Lainnya:</div>
-              <div class="kpr-matrix-grid" id="kpr-matrix-grid">
-                <div class="kpr-matrix-item" data-tenor="10">
-                  <span class="kpr-m-tenor">10 Tahun</span>
-                  <span class="kpr-m-val" id="kpr-m-10">Rp 4.249.000</span>
-                </div>
-                <div class="kpr-matrix-item" data-tenor="15">
-                  <span class="kpr-m-tenor">15 Tahun</span>
-                  <span class="kpr-m-val" id="kpr-m-15">Rp 3.199.000</span>
-                </div>
-                <div class="kpr-matrix-item active" data-tenor="20">
-                  <span class="kpr-m-tenor">20 Tahun</span>
-                  <span class="kpr-m-val" id="kpr-m-20">Rp 2.693.000</span>
-                </div>
-                <div class="kpr-matrix-item" data-tenor="25">
-                  <span class="kpr-m-tenor">25 Tahun</span>
-                  <span class="kpr-m-val" id="kpr-m-25">Rp 2.404.000</span>
-                </div>
-              </div>
-            </div>
-
-            <a class="btn-cta-kpr komersil-btn wa-dynamic-btn" id="kpr-wa-cta-btn" href="https://api.whatsapp.com/send?phone=6287870988073&text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20simulasi%20KPR%20Komersial%20Pesona%20Kahuripan" target="_blank">
-              <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
-              <span>Konsultasi Simulasi KPR Ini via WhatsApp</span>
-            </a>
           </div>
-        `;
-        typeSelect = card.querySelector('#kpr-type-select');
-      }
 
-      const priceInput = card.querySelector('#kpr-price-input');
-      const typeTag = card.querySelector('#kpr-type-tag');
-      const dpDisplay = card.querySelector('#kpr-dp-display');
-      const dpPills = card.querySelectorAll('#kpr-dp-pills .kpr-pill-btn');
-      const tenorPills = card.querySelectorAll('#kpr-tenor-pills .kpr-pill-btn');
-      const tenorHint = card.querySelector('#kpr-tenor-hint');
-      const rateInput = card.querySelector('#kpr-rate-input');
-      const monthlyVal = card.querySelector('#kpr-monthly-val');
-      const plafonVal = card.querySelector('#kpr-plafon-val');
-      const tenorVal = card.querySelector('#kpr-tenor-val');
-      const rateVal = card.querySelector('#kpr-rate-val');
-      const matrixItems = card.querySelectorAll('#kpr-matrix-grid .kpr-matrix-item');
-      const waBtn = card.querySelector('#kpr-wa-cta-btn');
+          <!-- HASIL KALKULASI (LIVE RESULT CARD) -->
+          <div class="kpr-calc-result-col">
+            <div class="calc-result-card">
+              <span class="result-badge">ESTIMASI HASIL PERHITUNGAN</span>
+              <div class="result-label">Angsuran KPR Bulanan:</div>
+              <div class="result-amount" id="resultInstallment">Rp 2.688.400</div>
+              <div class="result-period">per bulan (estimasi anuitas)</div>
 
-      let currentDp = 10;
+              <div class="result-details-list">
+                <div class="detail-row">
+                  <span>Plafon Pinjaman Bank:</span>
+                  <strong id="resultPlafon">Rp 391.500.000</strong>
+                </div>
+                <div class="detail-row">
+                  <span>Total Uang Muka (DP):</span>
+                  <strong id="resultDp">Rp 43.500.000</strong>
+                </div>
+                <div class="detail-row">
+                  <span>Estimasi Penghasilan Min.:</span>
+                  <strong id="resultMinIncome" style="color:#ffffff;">Rp 7.681.000 / bln</strong>
+                </div>
+              </div>
+
+              <div class="result-disclaimer">
+                *Perhitungan bersifat simulasi estimasi. Suku bunga dan persetujuan plafon kredit mengikuti analisis bank rekanan (BTN, Mandiri, BSI).
+              </div>
+
+              <a class="btn-kpr-action btn-comm-cta wa-dynamic-btn" id="ctaCommWa" href="#" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+                <span>Konsultasikan Simulasi Ini via WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+
+      const unitSelect = renderEl.querySelector('#commUnitSelect');
+      const priceInput = renderEl.querySelector('#commPriceInput');
+      const dpNominalInput = renderEl.querySelector('#commDpNominal');
+      const dpPercentLabel = renderEl.querySelector('#dpPercentLabel');
+      const dpChips = renderEl.querySelectorAll('#dpChipsRow .calc-chip');
+      const tenorRange = renderEl.querySelector('#commTenorRange');
+      const tenorChips = renderEl.querySelectorAll('#tenorChipsRow .calc-chip');
+      const tenorValLabel = renderEl.querySelector('#tenorValLabel');
+      const bankSelect = renderEl.querySelector('#commBankSelect');
+      const rateValLabel = renderEl.querySelector('#rateValLabel');
+
+      const resultInstallment = renderEl.querySelector('#resultInstallment');
+      const resultPlafon = renderEl.querySelector('#resultPlafon');
+      const resultDp = renderEl.querySelector('#resultDp');
+      const resultMinIncome = renderEl.querySelector('#resultMinIncome');
+      const ctaCommWa = renderEl.querySelector('#ctaCommWa');
+
+      let currentPrice = 435000000;
+      let currentDpPercent = 10;
+      let currentDpNominal = 43500000;
       let currentTenor = 20;
       let currentRate = 5.5;
 
-      if (rateInput && rateInput.value) {
-        currentRate = parseFloat(rateInput.value) || 5.5;
-      }
-
       function updateCalculation() {
-        const rawPrice = parseDots(priceInput ? priceInput.value : '435000000');
-        const dpNominal = Math.round(rawPrice * (currentDp / 100));
-        const plafon = Math.max(0, rawPrice - dpNominal);
+        currentPrice = parseDots(priceInput.value);
+        if (currentPrice < 0) currentPrice = 0;
 
-        if (dpDisplay) {
-          dpDisplay.textContent = fmtRupiah(dpNominal) + ' (' + currentDp + '%)';
-        }
+        currentDpNominal = parseDots(dpNominalInput.value);
+        if (currentDpNominal > currentPrice) currentDpNominal = currentPrice;
 
-        if (typeTag && typeSelect) {
-          const opt = typeSelect.options[typeSelect.selectedIndex];
-          const optName = opt ? (opt.getAttribute('data-name') || opt.text) : 'Komersial';
-          typeTag.textContent = optName.split('-')[0].trim();
-        }
+        const plafon = Math.max(0, currentPrice - currentDpNominal);
+        const installment = calcInstallment(plafon, currentRate, currentTenor);
+        const minIncome = installment > 0 ? Math.round(installment / 0.35) : 0;
 
-        const monthlyInstallment = calcInstallment(plafon, currentRate, currentTenor);
+        if (resultInstallment) resultInstallment.textContent = fmtRupiah(installment);
+        if (resultPlafon) resultPlafon.textContent = fmtRupiah(plafon);
+        if (resultDp) resultDp.textContent = fmtRupiah(currentDpNominal);
+        if (resultMinIncome) resultMinIncome.textContent = fmtRupiah(minIncome) + ' / bln';
 
-        if (monthlyVal) {
-          monthlyVal.textContent = fmtRupiah(monthlyInstallment);
-        }
-        if (plafonVal) plafonVal.textContent = fmtRupiah(plafon);
-        if (tenorVal) tenorVal.textContent = currentTenor + ' Tahun (' + (currentTenor * 12) + ' Bulan)';
-        if (rateVal) rateVal.textContent = currentRate.toFixed(1) + '% p.a.';
-        if (tenorHint) tenorHint.textContent = currentTenor + ' Tahun';
+        const unitText = unitSelect && unitSelect.value !== 'custom' ? unitSelect.options[unitSelect.selectedIndex].text.split('—')[0].trim() : 'Unit Komersial';
+        const bankText = bankSelect ? bankSelect.options[bankSelect.selectedIndex].text : 'Bank Rekanan';
 
-        [10, 15, 20, 25].forEach(function(t) {
-          const mVal = calcInstallment(plafon, currentRate, t);
-          const mEl = card.querySelector('#kpr-m-' + t);
-          if (mEl) mEl.textContent = fmtRupiah(mVal);
+        const waMsg = `Halo ${marketingName}, saya ingin konsultasi simulasi KPR Komersial Pesona Kahuripan:\n\n` +
+          `🏠 *Unit:* ${unitText}\n` +
+          `💰 *Harga Properti:* ${fmtRupiah(currentPrice)}\n` +
+          `💵 *Uang Muka (DP):* ${fmtRupiah(currentDpNominal)} (${currentDpPercent}%)\n` +
+          `🏦 *Plafon KPR:* ${fmtRupiah(plafon)}\n` +
+          `⏱️ *Tenor:* ${currentTenor} Tahun\n` +
+          `📈 *Suku Bunga Bank:* ${currentRate.toFixed(2)}% (${bankText})\n` +
+          `📊 *Estimasi Cicilan:* ${fmtRupiah(installment)} / bln\n` +
+          `👥 *Estimasi Gaji Min.:* ${fmtRupiah(minIncome)} / bln\n\n` +
+          `🌐 *Referensi Website:* https://www.pesonakahuripan.biz.id/#offer\n\n` +
+          `Mohon dibantu info ketersediaan unit dan pengajuan berkasnya. Terima kasih!`;
 
-          const mItem = card.querySelector('.kpr-matrix-item[data-tenor="' + t + '"]');
-          if (mItem) {
-            if (t === currentTenor) {
-              mItem.classList.add('active');
-            } else {
-              mItem.classList.remove('active');
-            }
-          }
-        });
-
-        if (waBtn) {
-          const marketingPhone = (window.MARKETING_CONFIG && window.MARKETING_CONFIG.phone) || '6287870988073';
-          const marketingName = (window.MARKETING_CONFIG && window.MARKETING_CONFIG.name) || "Mas Ro'uf";
-          const opt = typeSelect ? typeSelect.options[typeSelect.selectedIndex] : null;
-          const unitName = opt ? (opt.getAttribute('data-name') || opt.text) : 'Unit Komersial';
-
-          const waMsg = 'Halo ' + marketingName + ', saya ingin konsultasi simulasi KPR Komersil Pesona Kahuripan:\n' +
-            '• Tipe Unit: ' + unitName + '\n' +
-            '• Harga Rumah: ' + fmtRupiah(rawPrice) + '\n' +
-            '• Uang Muka (DP): ' + fmtRupiah(dpNominal) + ' (' + currentDp + '%)\n' +
-            '• Plafon KPR: ' + fmtRupiah(plafon) + '\n' +
-            '• Tenor KPR: ' + currentTenor + ' Tahun (' + (currentTenor * 12) + ' Bulan)\n' +
-            '• Suku Bunga: ' + currentRate.toFixed(1) + '% / tahun (Estimasi Bank)\n' +
-            '• Estimasi Cicilan: ' + fmtRupiah(monthlyInstallment) + ' / bulan\n\n' +
-            'Mohon info ketersediaan unit, promo perbankan, dan jadwal survei lokasi. Terima kasih.\n' +
-            'Referensi: https://www.pesonakahuripan.biz.id/#offer';
-
-          waBtn.href = 'https://api.whatsapp.com/send?phone=' + marketingPhone + '&text=' + encodeURIComponent(waMsg);
+        if (ctaCommWa) {
+          ctaCommWa.href = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(waMsg)}`;
         }
       }
 
-      if (typeSelect) {
-        typeSelect.addEventListener('change', function() {
-          const val = typeSelect.value;
-          if (val !== 'custom') {
-            const num = parseInt(val, 10);
-            if (priceInput) priceInput.value = fmtDots(num);
-          } else {
-            if (priceInput) priceInput.focus();
+      if (unitSelect) {
+        unitSelect.addEventListener('change', function() {
+          if (this.value !== 'custom') {
+            const val = parseInt(this.value, 10);
+            priceInput.value = fmtDots(val);
+            currentPrice = val;
+            currentDpNominal = Math.round(currentPrice * (currentDpPercent / 100));
+            dpNominalInput.value = fmtDots(currentDpNominal);
           }
           updateCalculation();
         });
@@ -1166,72 +1128,78 @@ document.addEventListener('DOMContentLoaded', function() {
 
       if (priceInput) {
         priceInput.addEventListener('input', function() {
-          const parsed = parseDots(priceInput.value);
-          priceInput.value = fmtDots(parsed);
-
-          if (typeSelect) {
-            let matched = false;
-            for (let i = 0; i < typeSelect.options.length; i++) {
-              if (parseInt(typeSelect.options[i].value, 10) === parsed) {
-                typeSelect.selectedIndex = i;
-                matched = true;
-                break;
-              }
-            }
-            if (!matched) {
-              typeSelect.value = 'custom';
-            }
-          }
+          const p = parseDots(this.value);
+          this.value = p ? fmtDots(p) : '';
+          currentPrice = p;
+          currentDpNominal = Math.round(currentPrice * (currentDpPercent / 100));
+          dpNominalInput.value = currentDpNominal ? fmtDots(currentDpNominal) : '';
           updateCalculation();
         });
       }
 
-      dpPills.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          dpPills.forEach(function(b) { b.classList.remove('active'); });
-          btn.classList.add('active');
-          currentDp = parseInt(btn.getAttribute('data-dp'), 10) || 0;
+      dpChips.forEach(function(chip) {
+        chip.addEventListener('click', function(e) {
+          e.preventDefault();
+          dpChips.forEach(function(c) { c.classList.remove('active'); });
+          this.classList.add('active');
+          currentDpPercent = parseInt(this.getAttribute('data-dp'), 10);
+          if (dpPercentLabel) dpPercentLabel.textContent = currentDpPercent + '%';
+          currentDpNominal = Math.round(currentPrice * (currentDpPercent / 100));
+          if (dpNominalInput) dpNominalInput.value = fmtDots(currentDpNominal);
           updateCalculation();
         });
       });
 
-      tenorPills.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          tenorPills.forEach(function(b) { b.classList.remove('active'); });
-          btn.classList.add('active');
-          currentTenor = parseInt(btn.getAttribute('data-tenor'), 10) || 20;
-          updateCalculation();
-        });
-      });
-
-      if (rateInput) {
-        rateInput.addEventListener('input', function() {
-          currentRate = parseFloat(rateInput.value) || 0;
-          updateCalculation();
-        });
-      }
-
-      matrixItems.forEach(function(item) {
-        item.addEventListener('click', function() {
-          const t = parseInt(item.getAttribute('data-tenor'), 10);
-          if (t) {
-            currentTenor = t;
-            tenorPills.forEach(function(btn) {
-              if (parseInt(btn.getAttribute('data-tenor'), 10) === t) {
-                btn.classList.add('active');
-              } else {
-                btn.classList.remove('active');
-              }
+      if (dpNominalInput) {
+        dpNominalInput.addEventListener('input', function() {
+          const dp = parseDots(this.value);
+          this.value = dp ? fmtDots(dp) : '';
+          currentDpNominal = dp;
+          if (currentPrice > 0) {
+            currentDpPercent = Math.round((currentDpNominal / currentPrice) * 100);
+            if (dpPercentLabel) dpPercentLabel.textContent = currentDpPercent + '%';
+            dpChips.forEach(function(c) {
+              c.classList.toggle('active', parseInt(c.getAttribute('data-dp'), 10) === currentDpPercent);
             });
-            updateCalculation();
           }
+          updateCalculation();
+        });
+      }
+
+      tenorChips.forEach(function(chip) {
+        chip.addEventListener('click', function(e) {
+          e.preventDefault();
+          tenorChips.forEach(function(c) { c.classList.remove('active'); });
+          this.classList.add('active');
+          currentTenor = parseInt(this.getAttribute('data-tenor'), 10);
+          if (tenorRange) tenorRange.value = currentTenor;
+          if (tenorValLabel) tenorValLabel.textContent = currentTenor + ' Tahun';
+          updateCalculation();
         });
       });
+
+      if (tenorRange) {
+        tenorRange.addEventListener('input', function() {
+          currentTenor = parseInt(this.value, 10);
+          if (tenorValLabel) tenorValLabel.textContent = currentTenor + ' Tahun';
+          tenorChips.forEach(function(c) {
+            c.classList.toggle('active', parseInt(c.getAttribute('data-tenor'), 10) === currentTenor);
+          });
+          updateCalculation();
+        });
+      }
+
+      if (bankSelect) {
+        bankSelect.addEventListener('change', function() {
+          currentRate = parseFloat(this.value) || 5.5;
+          if (rateValLabel) rateValLabel.textContent = currentRate.toFixed(2) + '% / thn';
+          updateCalculation();
+        });
+      }
 
       updateCalculation();
     }
-
-    // F. Dispatch Pesan ke WhatsApp API (Dinamis dari Master Marketing & Site Link Referensi)
+// F. Dispatch Pesan ke WhatsApp API (Dinamis dari Master Marketing & Site Link Referensi)
     function sendWhatsAppMessage(event) {
       event.preventDefault();
       const name = document.getElementById('wa-name').value.trim();
