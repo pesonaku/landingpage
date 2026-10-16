@@ -856,9 +856,19 @@ function initLandingPage() {
           panel.classList.toggle('active', isActive);
           const parentWidget = panel.closest('.widget');
           if (parentWidget) {
-            parentWidget.style.display = isActive ? 'block' : 'none';
+            parentWidget.style.setProperty('display', isActive ? 'block' : 'none', 'important');
           }
         });
+
+        // Direct ID fallback for Blogger widget containers
+        const wSubsidi = document.getElementById('Text51');
+        const wKomersial = document.getElementById('Text52');
+        if (wSubsidi) {
+          wSubsidi.style.setProperty('display', targetTab === 'subsidi' ? 'block' : 'none', 'important');
+        }
+        if (wKomersial) {
+          wKomersial.style.setProperty('display', targetTab === 'komersial' ? 'block' : 'none', 'important');
+        }
       }
 
       if (tabNav && tabBtns.length > 0) {
@@ -955,7 +965,9 @@ function initLandingPage() {
       const marketingName = mConfig.name || "Mas Ro'uf";
       const phone = mConfig.phone || "6287870988073";
 
-      renderEl.innerHTML = `
+      // Hanya render template kalkulator jika belum tersedia di DOM
+      if (!renderEl.querySelector('#commUnitSelect')) {
+        renderEl.innerHTML = `
         <div class="kpr-panel-header">
           <div class="kpr-panel-badge-row">
             <span class="kpr-status-badge badge-comm-header">SIMULASI ANGSURAN KOMERSIAL</span>
@@ -1070,6 +1082,7 @@ function initLandingPage() {
           </div>
         </div>
       `;
+      }
 
       const unitSelect = renderEl.querySelector('#commUnitSelect');
       const priceInput = renderEl.querySelector('#commPriceInput');

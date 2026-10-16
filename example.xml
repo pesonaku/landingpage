@@ -67,7 +67,7 @@
     <!-- ======================================================================
          CSS SKIN & DESIGN SYSTEM
     ====================================================================== -->
-    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_style.css' rel='stylesheet'/>
+    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_style.css?v=2.2' rel='stylesheet'/>
     <b:skin><![CDATA[
 /*
 <!-- THEME VARIABLES -->
@@ -86,17 +86,20 @@
 ====================================================================== */
 #offer { padding: 65px 0; background: #f8fafc; }
 .offer-section { display: block !important; max-width: 880px !important; margin: 0 auto !important; width: 100% !important; }
-.offer-section .widget { margin: 0 !important; padding: 0 !important; border: none !important; background: transparent !important; }
-.offer-section .widget:has(.kpr-panel:not(.active)) { display: none !important; }
-.offer-section .widget:has(.kpr-panel.active) { display: block !important; }
+.offer-section .widget,
+.offer-section .widget-content { margin: 0 !important; padding: 0 !important; border: none !important; background: transparent !important; box-shadow: none !important; }
+.offer-section .widget > h2.title,
+.offer-section .widget > h3.title { display: none !important; }
+#offer-section #Text52 { display: none; }
 
-.kpr-tab-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 880px; margin: 0 auto 30px; }
-@media (max-width: 640px) { .kpr-tab-nav { grid-template-columns: 1fr; gap: 10px; } }
+.kpr-tab-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 880px; margin: 0 auto 32px; }
+@media (max-width: 640px) { .kpr-tab-nav { grid-template-columns: 1fr; gap: 12px; margin-bottom: 24px; } }
 .kpr-tab-btn { background: #ffffff; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; cursor: pointer; text-align: left; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 4px 12px rgba(0,0,0,0.03); width: 100%; font-family: inherit; }
-.kpr-tab-btn:hover { border-color: rgba(15, 157, 88, 0.4); transform: translateY(-2px); }
+.kpr-tab-btn:hover { border-color: rgba(15, 157, 88, 0.4); transform: translateY(-2px); box-shadow: 0 10px 25px -4px rgba(0,0,0,0.08); }
 .kpr-tab-btn.active { background: #ffffff; border-color: #0f9d58; box-shadow: 0 10px 25px -4px rgba(15, 157, 88, 0.2), 0 0 0 2px rgba(15, 157, 88, 0.12); }
-.kpr-tab-icon { font-size: 1.8rem; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: #f1f5f9; border-radius: 12px; flex-shrink: 0; }
-.kpr-tab-btn.active .kpr-tab-icon { background: #e8f5e9; }
+.kpr-tab-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: #f1f5f9; color: #64748b; border-radius: 12px; flex-shrink: 0; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+.kpr-tab-icon svg { width: 24px; height: 24px; fill: currentColor; }
+.kpr-tab-btn.active .kpr-tab-icon { background: #e8f5e9; color: #0f9d58; transform: scale(1.06); }
 .kpr-tab-text { display: flex; flex-direction: column; gap: 2px; }
 .kpr-tab-badge { align-self: flex-start; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; margin-bottom: 2px; }
 .badge-gov { background: #e8f5e9; color: #0b7e46; }
@@ -106,7 +109,7 @@
 
 .pricing-card.kpr-panel { display: none; background: #ffffff; border: 2px solid #e2e8f0; border-radius: 20px; padding: 36px 32px; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05); text-align: left; max-width: 880px; margin: 0 auto; box-sizing: border-box; }
 .pricing-card.kpr-panel.active { display: block !important; animation: kprFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-@media (max-width: 640px) { .pricing-card.kpr-panel { padding: 24px 18px; border-radius: 16px; } }
+@media (max-width: 640px) { .pricing-card.kpr-panel { padding: 22px 16px; border-radius: 16px; } }
 @keyframes kprFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
 .kpr-panel-header { margin-bottom: 24px; }
@@ -139,7 +142,7 @@
 .tenor-note { font-size: 0.78rem; color: #94a3b8; margin-top: 4px; }
 
 .kpr-benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 24px; }
-@media (max-width: 540px) { .kpr-benefits-grid { grid-template-columns: 1fr; } }
+@media (max-width: 540px) { .kpr-benefits-grid { grid-template-columns: 1fr; gap: 10px; } }
 .kpr-benefit-item { display: flex; align-items: flex-start; gap: 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 14px; }
 .kpr-benefit-item svg { width: 22px; height: 22px; fill: #0f9d58; flex-shrink: 0; margin-top: 2px; }
 .kpr-benefit-item strong { display: block; font-size: 0.92rem; color: #1e293b; }
@@ -167,11 +170,13 @@
 .calc-input-wrap .calc-input { padding-left: 42px !important; }
 .calc-chip-row { display: flex; gap: 8px; flex-wrap: wrap; }
 .calc-chip { flex: 1; min-width: 58px; height: 38px; border: 1.5px solid #e2e8f0; background: #f8fafc; border-radius: 8px; font-size: 0.86rem; font-weight: 700; color: #475569; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+.calc-chip:hover { border-color: #cbd5e1; background: #f1f5f9; }
 .calc-chip.active { background: #0f9d58; border-color: #0f9d58; color: #ffffff; box-shadow: 0 4px 10px rgba(15, 157, 88, 0.25); }
 .calc-range { -webkit-appearance: none; width: 100%; height: 8px; border-radius: 4px; background: #e2e8f0; outline: none; margin: 10px 0; }
 .calc-range::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #0f9d58; cursor: pointer; border: 2px solid #ffffff; box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
 
 .calc-result-card { background: linear-gradient(145deg, #0f9d58 0%, #0b7e46 100%); color: #ffffff; border-radius: 18px; padding: 26px 22px; box-shadow: 0 12px 28px rgba(15, 157, 88, 0.28); position: sticky; top: 90px; }
+@media (max-width: 768px) { .calc-result-card { position: static; top: auto; } }
 .result-badge { display: inline-block; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; background: rgba(255, 255, 255, 0.2); padding: 4px 10px; border-radius: 100px; margin-bottom: 12px; }
 .result-label { font-size: 0.88rem; font-weight: 600; opacity: 0.9; }
 .result-amount { font-size: 2.2rem; font-weight: 900; letter-spacing: -0.5px; line-height: 1.15; margin: 4px 0 2px; text-shadow: 0 2px 6px rgba(0,0,0,0.15); }
@@ -179,9 +184,11 @@
 .result-details-list { background: rgba(0, 0, 0, 0.12); border-radius: 12px; padding: 12px 14px; margin-bottom: 18px; }
 .detail-row { display: flex; justify-content: space-between; padding: 7px 0; font-size: 0.86rem; border-bottom: 1px dashed rgba(255, 255, 255, 0.15); }
 .detail-row:last-child { border-bottom: none; }
+.detail-row span { opacity: 0.9; }
 .detail-row strong { color: #ffffff !important; }
 .result-disclaimer { font-size: 0.72rem; line-height: 1.45; opacity: 0.75; margin-bottom: 18px; }
 .btn-comm-cta { background: #ffffff; color: #0b7e46 !important; font-weight: 800; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); }
+.btn-comm-cta:hover { background: #f8fafc; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); }
 
     ]]></b:skin>
 
@@ -1317,7 +1324,9 @@ Skema Cicilan = KPR Bank Mandiri / BTN / BSI Unit Eksklusif]]></b:widget-setting
           <!-- TAB SWITCHER NAV -->
           <div class='kpr-tab-nav reveal' id='kprTabNav'>
             <button class='kpr-tab-btn active' data-kpr-tab='subsidi' type='button'>
-              <div class='kpr-tab-icon'>🏠</div>
+              <div class='kpr-tab-icon'>
+                <svg viewBox='0 0 24 24'><path d='M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z'/></svg>
+              </div>
               <div class='kpr-tab-text'>
                 <span class='kpr-tab-badge badge-gov'>Subsidi Pemerintah</span>
                 <strong>KPR Subsidi (FLPP)</strong>
@@ -1325,7 +1334,9 @@ Skema Cicilan = KPR Bank Mandiri / BTN / BSI Unit Eksklusif]]></b:widget-setting
               </div>
             </button>
             <button class='kpr-tab-btn' data-kpr-tab='komersial' type='button'>
-              <div class='kpr-tab-icon'>🏢</div>
+              <div class='kpr-tab-icon'>
+                <svg viewBox='0 0 24 24'><path d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-6 2h5v3h-5V5zm-6 0h4v3H7V5zm0 5h4v3H7v-3zm6 0h5v3h-5v-3zm-6 5h4v3H7v-3zm6 0h5v3h-5v-3z'/></svg>
+              </div>
               <div class='kpr-tab-text'>
                 <span class='kpr-tab-badge badge-comm'>Kalkulator Dinamis</span>
                 <strong>KPR Komersial</strong>
@@ -2051,7 +2062,7 @@ YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
     <!-- ======================================================================
          5. NATIVE JAVASCRIPT MANDIRI (LOADED VIA GITHUB CDN)
     ====================================================================== -->
-    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_script.js'></script>
+    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_script.js?v=2.2'></script>
 
     <!-- Fancybox Initialization (Kemudahan Penggunaan & Tombol Close Responsif) -->
     <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js'></script>
