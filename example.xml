@@ -1,0 +1,2730 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<!-- ==========================================================================
+  Pesona Kahuripan - Clean Modern Blogger Landing Page Template
+  Framework : Google Blogger XML Layout Version 3
+  Re-architectured : Clean, Independent, Zero-Obfuscation, High Performance
+========================================================================== -->
+<html b:css='true' b:defaultwidgetversion='3' b:js='true' b:layoutsVersion='3' b:responsive='true' b:templateVersion='1.3.0' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+  <b:attr name='xmlns' value=''/>
+  <b:attr name='xmlns:b' value=''/>
+  <b:attr name='xmlns:expr' value=''/>
+  <b:attr name='xmlns:data' value=''/>
+
+  &lt;!--<head>--&gt;
+  &lt;head&gt;
+    <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
+    <meta content='width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes' name='viewport'/>
+
+    <!-- DNS Prefetch -->
+    <link href='//fonts.googleapis.com' rel='dns-prefetch'/>
+    <link href='//fonts.gstatic.com' rel='dns-prefetch'/>
+    <link href='//blogger.googleusercontent.com' rel='dns-prefetch'/>
+    <link href='//cdn.jsdelivr.net' rel='dns-prefetch'/>
+
+    <!-- Meta Title & Canonical -->
+    <title><data:view.title.escaped/></title>
+    <meta expr:content='data:view.description.escaped' name='description'/>
+    <link expr:href='data:view.url.canonical' rel='canonical'/>
+    <link expr:href='data:blog.blogspotFaviconUrl' rel='icon' type='image/x-icon'/>
+    <meta content='#0f9d58' name='theme-color'/>
+
+    <!-- Open Graph & Social Sharing -->
+    <meta expr:content='data:blog.localeUnderscoreDelimited' property='og:locale'/>
+    <b:if cond='data:view.isHomepage'>
+      <meta content='website' property='og:type'/>
+    <b:elseif cond='data:view.isSingleItem'/>
+      <meta content='article' property='og:type'/>
+    <b:else/>
+      <meta content='object' property='og:type'/>
+    </b:if>
+    <meta expr:content='data:view.title.escaped' property='og:title'/>
+    <meta expr:content='data:blog.title.escaped' property='og:site_name'/>
+    <meta expr:content='data:view.description.escaped' property='og:description'/>
+    <meta expr:content='data:blog.url.canonical' property='og:url'/>
+    <b:tag cond='data:view.featuredImage' expr:content='data:view.featuredImage resizeImage 1600' name='meta' property='og:image'/>
+
+    <!-- Twitter Card -->
+    <meta content='summary_large_image' name='twitter:card'/>
+    <meta expr:content='data:view.title.escaped' name='twitter:title'/>
+    <meta expr:content='data:view.description.escaped' name='twitter:description'/>
+    <b:tag cond='data:view.featuredImage' expr:content='data:view.featuredImage resizeImage 1600' name='meta' property='twitter:image'/>
+
+    <data:blog.feedLinks/><data:blog.meTag/>
+
+    <!-- Google Tag Manager (GTAG) -->
+    <script async='async' src='https://www.googletagmanager.com/gtag/js?id=AW-11372301881'></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-11372301881');
+    </script>
+
+    <!-- Fancybox v5 UI (Lightbox) -->
+    <link href='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css' rel='stylesheet'/>
+
+    <!-- ======================================================================
+         CSS SKIN & DESIGN SYSTEM
+    ====================================================================== -->
+    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_style.css' rel='stylesheet'/>
+    <b:skin><![CDATA[
+/*
+<!-- THEME VARIABLES -->
+<Variable name="keycolor" description="Warna Utama" type="color" default="#0f9d58" value="#0f9d58"/>
+<Variable name="lebar" description="Lebar Kontainer" type="length" default="1140px" value="1140px"/>
+*/
+/* ======================================================================
+   CSS Utama Pesona Kahuripan telah dipisahkan ke repositori GitHub:
+   Repository : https://github.com/pesonaku/landingpage
+   File CSS   : main_style.css / style.css
+   CDN Loader : https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_style.css
+====================================================================== */
+    ]]></b:skin>
+
+    <!-- ======================================================================
+         TATA LETAK LAYOUT EDITOR BLOGGER (PENGATUR WIDGET DASBOR)
+    ====================================================================== -->
+    <b:template-skin><![CDATA[
+/* ======================================================================
+   PENGATUR TATA LETAK DASBOR BLOGGER (BODY#LAYOUT)
+   Menjamin Semua Seksi [01] s/d [11] Tampil Rapi, Berurutan & Mudah Diedit
+====================================================================== */
+body#layout {
+  position: relative !important;
+  background-color: #f1f5f9 !important;
+  padding: 30px 24px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+/* HEADER BRANDING DASBOR */
+body#layout:before {
+  content: '🏢 PESONA KAHURIPAN GROUP — PENGELOLA TATA LETAK TEMA';
+  display: block !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  color: #0f9d58 !important;
+  text-align: center !important;
+  margin: 0 0 25px 0 !important;
+  padding: 16px 20px !important;
+  background: #ffffff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  border-left: 6px solid #0f9d58 !important;
+}
+
+/* RESET ELEMEN LANDING PAGE AGAR TIDAK MENGGANGGU EDITOR TATA LETAK */
+body#layout #header,
+body#layout header,
+body#layout main,
+body#layout #main,
+body#layout section,
+body#layout #cover,
+body#layout #about,
+body#layout #service,
+body#layout #gallery,
+body#layout #offer,
+body#layout #faq,
+body#layout #review,
+body#layout #contact,
+body#layout #blog-single,
+body#layout #footer,
+body#layout .wrapper {
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  float: none !important;
+  clear: both !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  z-index: auto !important;
+  display: block !important;
+  transform: none !important;
+  overflow: visible !important;
+}
+
+/* SEMBUNYIKAN ELEMEN STATIS / FLOATING YANG BUKAN WIDGET BLOGGER */
+body#layout .menu-toggle,
+body#layout #main-menu,
+body#layout nav.menu,
+body#layout #floating-chat,
+body#layout .chat-btn,
+body#layout .chat-box,
+body#layout .pop {
+  display: none !important;
+}
+
+/* WADAH SEKSI TATA LETAK (KARTU ELEGAN DENGAN BATAS JELAS) */
+body#layout div.section {
+  display: block !important;
+  position: static !important;
+  clear: both !important;
+  background-color: #ffffff !important;
+  margin: 0 0 20px 0 !important;
+  padding: 18px 22px 22px !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+body#layout div.section h4 {
+  font-size: 13.5px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  margin: 0 0 16px !important;
+  padding-bottom: 10px !important;
+  border-bottom: 2px solid #e2e8f0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+body#layout div.section h4:before {
+  content: '';
+  display: inline-block !important;
+  width: 10px !important;
+  height: 10px !important;
+  background-color: #0f9d58 !important;
+  border-radius: 50% !important;
+  margin-right: 10px !important;
+  flex-shrink: 0 !important;
+}
+
+/* KOTAK WIDGET DI DALAM SEKSI */
+body#layout .widget {
+  margin: 10px 0 !important;
+  position: static !important;
+}
+
+body#layout .widget-content {
+  background: #f8fafc !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 8px !important;
+  padding: 14px 16px !important;
+  margin: 0 !important;
+  transition: all 0.2s ease !important;
+}
+
+body#layout .widget-content:hover {
+  border-color: #0f9d58 !important;
+  box-shadow: 0 4px 14px rgba(15, 157, 88, 0.15) !important;
+  background: #ffffff !important;
+}
+
+body#layout .locked-widget .widget-content {
+  border-left: 5px solid #0f9d58 !important;
+}
+
+body#layout div.layout-title {
+  color: #1e293b !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+}
+
+body#layout .widget a.editlink {
+  color: #0f9d58 !important;
+  font-weight: 700 !important;
+  font-size: 12.5px !important;
+  text-decoration: none !important;
+  padding: 4px 10px !important;
+  background: #e8f5e9 !important;
+  border-radius: 6px !important;
+  transition: background 0.2s ease, color 0.2s ease !important;
+}
+
+body#layout .widget a.editlink:hover {
+  background: #0f9d58 !important;
+  color: #ffffff !important;
+}
+
+/* TATA LETAK KHUSUS PROMO, GALERI & CAROUSEL REVIEW */
+body#layout #promo, body#layout .promo-section {
+  position: static !important;
+  width: 100% !important;
+  display: block !important;
+}
+body#layout .promo-card {
+  grid-template-columns: 1fr !important;
+  background: #ffffff !important;
+  color: #1e293b !important;
+}
+body#layout .gallery-section {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+  gap: 16px !important;
+}
+body#layout .review-carousel {
+  overflow: visible !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+body#layout .review-controls {
+  display: none !important;
+}
+body#layout .review-section {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+  gap: 16px !important;
+  transform: none !important;
+  flex-wrap: wrap !important;
+}
+body#layout .review-section > .widget {
+  flex: none !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+body#layout .contact-section {
+  grid-template-columns: 1fr !important;
+}
+
+body#layout:after {
+  content: 'Pesona Kahuripan — Seluruh Widget Terstruktur Rapi & Aman Digunakan';
+  display: block !important;
+  font-size: 12px !important;
+  color: #94a3b8 !important;
+  text-align: center !important;
+  padding: 24px 0 10px 0 !important;
+}
+    ]]></b:template-skin>
+  </head>
+
+  <body id='top' itemscope='' itemtype='https://schema.org/WebPage'>
+
+    <!-- ======================================================================
+         1. HEADER & NAVIGASI RESMI
+    ====================================================================== -->
+    <header id='header'>
+      <div class='wrapper'>
+        <b:section class='header-section' id='header-section' name='[01. HEADER] Logo &amp; Menu Navigasi' showaddelement='false' version='3'>
+          
+          <!-- Widget Logo -->
+          <b:widget id='Header1' locked='true' title='Pesona Kahuripan Group' type='Header' version='3' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEgqB2QhrvsCgDSNo4roXgoDSo7oZV9mkCZY9kHDb2I7KC3FI4SCLuyWaBXShDGHDLHLEMsHpagl_CWKf-FI37FAR6GK_0dHZwHP-oJ_n3W3WKJQznbe3MC2tsXLbXZJG_iuohb17uim3-D974PuRgXDh8sCTfppDaP7yagLsthRMrIKieG4acIPb3VAiJU=s256</b:widget-setting>
+              <b:widget-setting name='displayHeight'>75</b:widget-setting>
+              <b:widget-setting name='sectionWidth'>462</b:widget-setting>
+              <b:widget-setting name='useImage'>true</b:widget-setting>
+              <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+              <b:widget-setting name='imagePlacement'>BEHIND</b:widget-setting>
+              <b:widget-setting name='displayWidth'>256</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
+              <a class='logo' expr:href='data:blog.homepageUrl' expr:title='data:title'>
+                <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl ?: &quot;https://blogger.googleusercontent.com/img/a/AVvXsEgqB2QhrvsCgDSNo4roXgoDSo7oZV9mkCZY9kHDb2I7KC3FI4SCLuyWaBXShDGHDLHLEMsHpagl_CWKf-FI37FAR6GK_0dHZwHP-oJ_n3W3WKJQznbe3MC2tsXLbXZJG_iuohb17uim3-D974PuRgXDh8sCTfppDaP7yagLsthRMrIKieG4acIPb3VAiJU=s256&quot;'/>
+              </a>
+            </b:includable>
+          </b:widget>
+
+          <!-- Widget Navigasi Menu -->
+          <b:widget cond='data:view.isHomepage' id='LinkList1' locked='true' title='Navigasi Beranda' type='LinkList' version='3' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='sorting'>NONE</b:widget-setting>
+              <b:widget-setting name='text-0'>Keunggulan</b:widget-setting>
+              <b:widget-setting name='link-0'>#about</b:widget-setting>
+              <b:widget-setting name='text-1'>Promo</b:widget-setting>
+              <b:widget-setting name='link-1'>#promo</b:widget-setting>
+              <b:widget-setting name='text-2'>Tipe Rumah</b:widget-setting>
+              <b:widget-setting name='link-2'>#service</b:widget-setting>
+              <b:widget-setting name='text-3'>Galeri</b:widget-setting>
+              <b:widget-setting name='link-3'>#gallery</b:widget-setting>
+              <b:widget-setting name='text-4'>Simulasi KPR</b:widget-setting>
+              <b:widget-setting name='link-4'>#offer</b:widget-setting>
+              <b:widget-setting name='text-5'>FAQ</b:widget-setting>
+              <b:widget-setting name='link-5'>#faq</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
+              <button class='menu-toggle' id='menu-toggle' aria-label='Buka Menu'>
+                <svg viewBox='0 0 512 512'><path d='M64 384h384v-42.666H64V384zm0-106.666h384v-42.667H64v42.667zM64 128v42.667h384V128H64z'/></svg>
+              </button>
+              <nav class='menu' id='main-menu'>
+                <ul>
+                  <b:loop values='data:links' var='link'>
+                    <li><a expr:href='data:link.target'><data:link.name/></a></li>
+                  </b:loop>
+                </ul>
+              </nav>
+            </b:includable>
+          </b:widget>
+
+        </b:section>
+      </div>
+    </header>
+
+    <!-- ======================================================================
+         2. WADAH KONTEN UTAMA (MAIN)
+    ====================================================================== -->
+    <main id='main'>
+
+      <!-- ================= COVER / HERO BANNER ================= -->
+      <section id='cover'>
+        <b:section class='cover-section' id='cover-section' name='[02. HERO] Banner Utama &amp; Tombol CTA' showaddelement='false' version='3'>
+          <b:widget id='Image11' locked='true' title='Wujudkan Rumah Impian di Pesona Kahuripan' type='Image' version='3' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEhOjPyTwQ9UE_J3NvG_uC0XA3ikhqWWm38emFk-0TTcbVpauB1wNnJIlgAwMaOwgfY7BkgwZPWy2_yH6VLDjMf7tO_B8TgU3Ebw5lG3NpDwmSAbP5ERqjhxgQrBVa88Z5lugjsmbiXj8I9azLJQmUqA0eOp3nxGhYVyIxIuRdB4NMQ99PsuXrgXcVpBhus=s1000</b:widget-setting>
+              <b:widget-setting name='displayHeight'>1000</b:widget-setting>
+              <b:widget-setting name='sectionWidth'>611</b:widget-setting>
+              <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+              <b:widget-setting name='displayWidth'>800</b:widget-setting>
+              <b:widget-setting name='link'>#offer</b:widget-setting>
+              <b:widget-setting name='caption'>Akad KPR Massal 324 unit telah sukses digelar. Wujudkan impian memiliki rumah subsidi berkualitas double dinding dengan cicilan terjangkau mulai 1 jutaan per bulan.</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
+              <div class='wrapper'>
+                <div class='hero-grid'>
+                  <div class='hero-content reveal'>
+                    <div class='hero-badge'>
+                      <span class='badge-dot'/>
+                      <span>Perumahan Subsidi &amp; Komersil Terpercaya</span>
+                    </div>
+                    <h1>Wujudkan Rumah Impian di <span class='highlight'>Pesona Kahuripan</span></h1>
+                    <p><data:caption/></p>
+                    <div class='hero-cta-group'>
+                      <a class='btn-cta' expr:href='data:link'>Booking Unit Sekarang</a>
+                      <a class='btn-secondary' href='#service'>Lihat Tipe Rumah</a>
+                    </div>
+                    <div class='hero-chips'>
+                      <span>
+                        <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                        DP Ringan 1%
+                      </span>
+                      <span>
+                        <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                        Cicilan Mulai 1 Jt-an
+                      </span>
+                      <span>
+                        <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                        Double Dinding Hebel
+                      </span>
+                    </div>
+                  </div>
+                  <div class='hero-image-wrap reveal delay-1'>
+                    <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                    <div class='hero-float-badge'>
+                      <strong>6.000+ Unit</strong>
+                      <small>Telah Terbangun &amp; Dihuni</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </b:includable>
+          </b:widget>
+        </b:section>
+      </section>
+
+      <!-- ================= PROMO & INFORMASI TERBARU ================= -->
+      <section id='promo'>
+        <div class='wrapper'>
+          <b:section class='promo-section' id='promo-section' name='[03. PROMO] Informasi Terbaru &amp; Penawaran Spesial' showaddelement='false' version='3'>
+            <b:widget id='Image15' locked='true' title='Promo Berkah Punya Rumah: Cukup Booking 1 Juta Langsung Akad!' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEhOjPyTwQ9UE_J3NvG_uC0XA3ikhqWWm38emFk-0TTcbVpauB1wNnJIlgAwMaOwgfY7BkgwZPWy2_yH6VLDjMf7tO_B8TgU3Ebw5lG3NpDwmSAbP5ERqjhxgQrBVa88Z5lugjsmbiXj8I9azLJQmUqA0eOp3nxGhYVyIxIuRdB4NMQ99PsuXrgXcVpBhus=s1000</b:widget-setting>
+                <b:widget-setting name='displayHeight'>800</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1200</b:widget-setting>
+                <b:widget-setting name='link'>https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20ingin%20klaim%20Promo%20Spesial%20Booking%201%20Juta%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23promo</b:widget-setting>
+                <b:widget-setting name='caption'><![CDATA[Badge: PENAWARAN TERBATAS BULAN INI
+Tag: SUBSIDI DP 1% RESMI
+Deskripsi: Spesial bulan ini: Bebas Biaya BPHTB & Notaris, Subsidi DP 1%, Cicilan flat 1 jutaan/bulan dan bonus pompa air terpasang siap huni.
+Benefit 1: Cukup Booking Fee 1 Juta | Langsung pilih unit idaman & kunci blok
+Benefit 2: Gratis Biaya Notaris & Surat-Surat | Sertifikat SHM, AJB & BPHTB ditanggung developer
+Benefit 3: Bonus Pompa Air Terpasang | Air sumur jernih langsung siap dinikmati keluarga
+Tombol: Klaim Promo Spesial via WhatsApp]]></b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='promo-card reveal'>
+                  <div class='promo-raw-caption' style='display:none;'><data:caption/></div>
+                  <div class='promo-content'>
+                    <div class='promo-badge-pulse'>
+                      <span class='promo-dot'/>
+                      <span>PENAWARAN TERBATAS BULAN INI</span>
+                    </div>
+                    <h2><data:title/></h2>
+                    <p class='promo-desc'><data:caption/></p>
+                    <div class='promo-benefits'>
+                      <div class='benefit-item'>
+                        <div class='benefit-icon'>
+                          <svg viewBox='0 0 24 24'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/></svg>
+                        </div>
+                        <div>
+                          <strong>Cukup Booking Fee 1 Juta</strong>
+                          <small>Langsung pilih unit idaman &amp; kunci blok</small>
+                        </div>
+                      </div>
+                      <div class='benefit-item'>
+                        <div class='benefit-icon'>
+                          <svg viewBox='0 0 24 24'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/></svg>
+                        </div>
+                        <div>
+                          <strong>Gratis Biaya Notaris &amp; Surat-Surat</strong>
+                          <small>Sertifikat SHM, AJB &amp; BPHTB ditanggung developer</small>
+                        </div>
+                      </div>
+                      <div class='benefit-item'>
+                        <div class='benefit-icon'>
+                          <svg viewBox='0 0 24 24'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/></svg>
+                        </div>
+                        <div>
+                          <strong>Bonus Pompa Air Terpasang</strong>
+                          <small>Air sumur jernih langsung siap dinikmati keluarga</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class='promo-action'>
+                      <a class='btn-promo-claim wa-dynamic-btn' expr:href='data:link' target='_blank'>
+                        <svg viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
+                        <span>Klaim Promo Spesial via WhatsApp</span>
+                      </a>
+                    </div>
+                  </div>
+                  <div class='promo-banner-visual'>
+                    <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                    <div class='promo-tag-float'>
+                      <span>SUBSIDI DP 1% RESMI</span>
+                    </div>
+                  </div>
+                </div>
+              </b:includable>
+            </b:widget>
+          </b:section>
+        </div>
+      </section>
+
+      <!-- ================= ABOUT US (KEUNGGULAN ZIG-ZAG) ================= -->
+      <section id='about'>
+        <div class='wrapper'>
+          <div class='section-head reveal'>
+            <span class='section-badge'>MENGAPA MEMILIH KAMI</span>
+            <h2>Keunggulan Pesona Kahuripan</h2>
+            <p>Kualitas bangunan terbaik dan lingkungan asri yang siap menyambut masa depan keluarga Anda.</p>
+          </div>
+          <b:section class='about-section' id='about-section' name='[04. KEUNGGULAN] 3 Nilai Plus Proyek (Zig-Zag)' showaddelement='false' version='3'>
+            <b:widget id='Image21' locked='true' title='Cicilan Ringan 1 Jutaan/Bulan' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEhZyEj8rBNZDwSwvKztR4NcCRUdW_Qr7CtrOf-YGrIerT1v_ZNk2ConOczo-aDu8Bua7C5cuFU5c8wgeGNC7LY1PTZ2Sz_SW-P2iA_0_xNeiT6a1idrKbp5spP8kkZGrQMUVxcznBT7FEKvAWHH-duek28BRa5JWGu37xmTrvKoRnLGLBOOcz5iVr5m2HY=s800</b:widget-setting>
+                <b:widget-setting name='displayHeight'>1080</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1080</b:widget-setting>
+                <b:widget-setting name='link'>#service</b:widget-setting>
+                <b:widget-setting name='caption'>Pesona Kahuripan adalah perumahan subsidi dengan skema angsuran KPR yang sangat terjangkau, flat sampai lunas hanya 1 jutaan per bulan.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='about-item reveal'>
+                  <div class='about-text'>
+                    <span class='about-number'>01 / KPR SUBSIDI</span>
+                    <h3><data:title/></h3>
+                    <p><data:caption/></p>
+                    <ul class='about-features'>
+                      <li>
+                        <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                        <span>Suku Bunga KPR Subsidi Flat 5% Sampai Lunas</span>
+                      </li>
+                      <li>
+                        <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                        <span>Kerjasama Resmi Bank BTN &amp; Bank Syariah Nasional</span>
+                      </li>
+                      <li>
+                        <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                        <span>Bebas PPN &amp; Subsidi Bantuan Uang Muka (SBUM)</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class='about-img'>
+                    <div class='about-img-wrap'>
+                      <div class='about-img-frame'>
+                        <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                      </div>
+                      <div class='about-img-tag'>
+                        <svg viewBox='0 0 24 24'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/></svg>
+                        <span>Angsuran Ringan Flat</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </b:includable>
+            </b:widget>
+            <b:widget id='Image22' locked='true' title='Uang Muka (DP) Hanya 1%' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEhYYguYlVlD6Q17fsYVzAjjirRMVwmCQGUq4fq3y1HZuHVNhP7sdeazbw71fDnXRJCtzw5aOUHie12AQhBkR9CCJ-GFISg4aztXqtkWtTJ5aogIuLOIyXzJ7eaTbJCmkSbZKaxRsgEkuSRuku-Q9y0Ha2eVCfXLG9SaUuqkhPTKH87OYGIH8o3-P_Zlr2A=s800</b:widget-setting>
+                <b:widget-setting name='displayHeight'>1080</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1080</b:widget-setting>
+                <b:widget-setting name='link'>#service</b:widget-setting>
+                <b:widget-setting name='caption'>Kemudahan kepemilikan rumah dengan biaya uang muka ringan 1% dari total harga perumahan nasional.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='about-item reveal'>
+                  <div class='about-text'>
+                    <span class='about-number'>02 / UANG MUKA RINGAN</span>
+                    <h3><data:title/></h3>
+                    <p><data:caption/></p>
+                    <ul class='about-features'>
+                      <li>
+                        <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                        <span>Total Biaya Awal Masuk Mulai 1,8 Juta-an Saja</span>
+                      </li>
+                      <li>
+                        <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                        <span>Pendampingan Pemberkasan Akad Hingga Terima Kunci</span>
+                      </li>
+                      <li>
+                        <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                        <span>Terbuka Bagi Karyawan Swasta, ASN, Guru &amp; Wirausaha</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class='about-img'>
+                    <div class='about-img-wrap'>
+                      <div class='about-img-frame'>
+                        <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                      </div>
+                      <div class='about-img-tag'>
+                        <svg viewBox='0 0 24 24'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/></svg>
+                        <span>DP Paling Ringan</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </b:includable>
+            </b:widget>
+            <b:widget id='Image23' locked='true' title='Konstruksi Double Dinding (Hebel)' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEiW6S9SgD3NI348DsDJvWhrYfjWrWQ3yBneuFB5v9Wite6aje3AKzRTyqNwH1aftgE7gRgPPnUsOdjB_cYIhWKrFOTlXNjtGP2tbMOq9RlsABzpIei9EZnWzVTOGofN-IUbXsoXv4TZkM1SGjqvKsy6In8tK9tOSGayCgkJzSW_Erybm2f-fz8bbBBWQvo=s800</b:widget-setting>
+                <b:widget-setting name='displayHeight'>1080</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1080</b:widget-setting>
+                <b:widget-setting name='link'>#service</b:widget-setting>
+                <b:widget-setting name='caption'>Setiap unit memiliki dinding mandiri (double dinding) sehingga lebih kedap suara, kokoh, dan privasi penghuni terjaga dengan maksimal.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='about-item reveal'>
+                  <div class='about-text'>
+                    <span class='about-number'>03 / KUALITAS BANGUNAN</span>
+                    <h3><data:title/></h3>
+                    <p><data:caption/></p>
+                    <ul class='about-features'>
+                      <li>
+                        <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                        <span>Setiap Rumah Memiliki Dinding Mandiri (Tidak Gabung)</span>
+                      </li>
+                      <li>
+                        <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                        <span>Lebih Kedap Suara, Kokoh, &amp; Suhu Ruang Sejuk</span>
+                      </li>
+                      <li>
+                        <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                        <span>Rangka Atap Baja Ringan &amp; Genteng Metal Berkualitas</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class='about-img'>
+                    <div class='about-img-wrap'>
+                      <div class='about-img-frame'>
+                        <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                      </div>
+                      <div class='about-img-tag'>
+                        <svg viewBox='0 0 24 24'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/></svg>
+                        <span>Double Dinding Hebel</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </b:includable>
+            </b:widget>
+          </b:section>
+        </div>
+      </section>
+
+      <!-- ================= SERVICE / TIPE RUMAH ================= -->
+      <section id='service'>
+        <div class='wrapper'>
+          <div class='section-head reveal'>
+            <span class='section-badge'>PILIHAN HUNIAN TERBAIK</span>
+            <h2>Tipe Rumah Pilihan</h2>
+            <p>Pilihan unit rumah subsidi pemerintah dan komersial dengan desain modern siap huni.</p>
+          </div>
+          <b:section class='service-section' id='service-section' name='[05. TIPE RUMAH] Pilihan Unit (Foto &amp; Harga Kartu)' showaddelement='false' version='3'>
+            <!-- TIPE 1: TYPE 30/60 (RUMAH SUBSIDI) -->
+            <b:widget id='Image31' locked='true' title='Type 30/60 (Rumah Subsidi)' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEjAiWMl-izhTXDQEvXwhDzb_7ucxmDCY2Ppnecuft9G9JTuBKoeiC5gwvQrS-vWVbdpnMXfK6g9WR296FvxmwHr9jwm4COLLz8FiGKdKyA3IOkilBW9IFGlJF7cJSTwiD6a394z97ur98oXrHBRuqRhtoPBYhSKFZHfHLVGXoIdJwl50_e4rF2SfzzwCGI=s1358</b:widget-setting>
+                <b:widget-setting name='displayHeight'>800</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1200</b:widget-setting>
+                <b:widget-setting name='link'>https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2030%2F60%20Rumah%20Subsidi%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service</b:widget-setting>
+                <b:widget-setting name='caption'><![CDATA[Badge: Subsidi Pemerintah
+Harga: Rp 1,1 Jt-an/bln
+Cicilan: Cicilan Flat Mulai
+Tags: LB: 30 m² | LT: 60 m² | 2 Kamar | Double Hebel
+Deskripsi: Hunian subsidi berkualitas dengan konstruksi double dinding hebel, cicilan flat 1 jutaan/bulan sampai lunas, dan fasilitas kawasan siap huni.]]></b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='service-card reveal' expr:data-id='data:widget.instanceId'>
+                  <div class='unit-raw-caption' style='display:none;'><data:caption/></div>
+                  <div class='service-card-img'>
+                    <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                    <span class='service-badge subsidi'>Subsidi Pemerintah</span>
+                  </div>
+                  <div class='service-card-content'>
+                    <h3><data:title/></h3>
+                    <div class='service-tags-list'>
+                      <span class='service-tag'>LB: 30 m²</span>
+                      <span class='service-tag'>LT: 60 m²</span>
+                      <span class='service-tag'>2 Kamar</span>
+                      <span class='service-tag'>Double Hebel</span>
+                    </div>
+                    <p class='unit-desc-text'>Hunian subsidi berkualitas dengan konstruksi double dinding hebel, cicilan flat 1 jutaan/bulan sampai lunas, dan fasilitas kawasan siap huni.</p>
+                    <div class='service-card-footer'>
+                      <div class='service-price-tag'>
+                        <small>Cicilan Flat Mulai</small>
+                        <strong>Rp 1,1 Jt-an/bln</strong>
+                      </div>
+                      <a class='btn-service' href='#detail' target='pop-service-Image31'>
+                        <span>Lihat Detail</span>
+                        <svg viewBox='0 0 24 24'><path d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/></svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- TIPE 2: TYPE 36/60 (KOMERSIAL MINIMALIS) -->
+            <b:widget id='Image32' locked='true' title='Type 36/60 (Komersial Minimalis)' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEhkGpWfRwGxuX098WL8oo3B-Q2jr4DlHxAv58iC4nZUd41mnD_izfy-hBeKCoHWVLd26PPrtBbHaN5Br6PJ4rU5CyJmNFOh1Ud56Q36CuX7rBKgLYZ6aqUXTX90LcPCUiXFkBPRM5Oj2Eq5o6Ki6l6VFHTWMvWs-eGXGBURS-numHaK6yd8W3BgZZcpGhs=s812</b:widget-setting>
+                <b:widget-setting name='displayHeight'>800</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1200</b:widget-setting>
+                <b:widget-setting name='link'>https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2036%2F60%20Komersial%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service</b:widget-setting>
+                <b:widget-setting name='caption'><![CDATA[Badge: Komersial Minimalis
+Harga: Mulai Rp 2,2 Jt/bln
+Cicilan: Angsuran Terjangkau
+Tags: LB: 36 m² | LT: 60 m² | 2 Kamar | Carport Beton
+Deskripsi: Desain fasad modern elegan dengan langit-langit tinggi, sirkulasi udara sejuk, tata ruang leluasa, dan carport beratap kokoh siap huni.]]></b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='service-card reveal delay-1' expr:data-id='data:widget.instanceId'>
+                  <div class='unit-raw-caption' style='display:none;'><data:caption/></div>
+                  <div class='service-card-img'>
+                    <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                    <span class='service-badge komersil'>Komersial Minimalis</span>
+                  </div>
+                  <div class='service-card-content'>
+                    <h3><data:title/></h3>
+                    <div class='service-tags-list'>
+                      <span class='service-tag'>LB: 36 m²</span>
+                      <span class='service-tag'>LT: 60 m²</span>
+                      <span class='service-tag'>2 Kamar</span>
+                      <span class='service-tag'>Carport Beton</span>
+                    </div>
+                    <p class='unit-desc-text'>Desain fasad modern elegan dengan langit-langit tinggi, sirkulasi udara sejuk, tata ruang leluasa, dan carport beratap kokoh siap huni.</p>
+                    <div class='service-card-footer'>
+                      <div class='service-price-tag'>
+                        <small>Angsuran Terjangkau</small>
+                        <strong>Mulai Rp 2,2 Jt/bln</strong>
+                      </div>
+                      <a class='btn-service' href='#detail' target='pop-service-Image32'>
+                        <span>Lihat Detail</span>
+                        <svg viewBox='0 0 24 24'><path d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/></svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- TIPE 3: TYPE 50/78 (KOMERSIAL HOOK) -->
+            <b:widget id='Image33' locked='true' title='Type 50/78 (Komersial Hook)' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEgbuWiPZvdpfCPLzzSOHpLx26jpHsCz6bbnmFf58SxHxdbWHfy0T1Ab-mx1F66Plkg2m9Lnma4kzvA6HK5RZGLr0JOVG48cF6hSc19NcRC8_WHKbPIaAXDgeHo83wVK01ec4inCdWjn1BCO0CMncizsFpGVqHSMv4Hj0-BPWl-XzyE7dbwQyVfyQKWUk8A=s1018</b:widget-setting>
+                <b:widget-setting name='displayHeight'>800</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1200</b:widget-setting>
+                <b:widget-setting name='link'>https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2050%2F78%20Hook%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service</b:widget-setting>
+                <b:widget-setting name='caption'><![CDATA[Badge: Tipe Hook Premium
+Harga: Sertifikat Hak Milik
+Cicilan: Unit Sudut Eksklusif
+Tags: LB: 50 m² | LT: 78 m² Hook | 3 Kamar | Taman Samping
+Deskripsi: Hunian posisi sudut dengan tanah ekstra luas, 3 kamar tidur, 2 kamar mandi, halaman samping asri dan potensi pengembangan masa depan.]]></b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='service-card reveal delay-2' expr:data-id='data:widget.instanceId'>
+                  <div class='unit-raw-caption' style='display:none;'><data:caption/></div>
+                  <div class='service-card-img'>
+                    <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                    <span class='service-badge premium'>Tipe Hook Premium</span>
+                  </div>
+                  <div class='service-card-content'>
+                    <h3><data:title/></h3>
+                    <div class='service-tags-list'>
+                      <span class='service-tag'>LB: 50 m²</span>
+                      <span class='service-tag'>LT: 78 m² Hook</span>
+                      <span class='service-tag'>3 Kamar</span>
+                      <span class='service-tag'>Taman Samping</span>
+                    </div>
+                    <p class='unit-desc-text'>Hunian posisi sudut dengan tanah ekstra luas, 3 kamar tidur, 2 kamar mandi, halaman samping asri dan potensi pengembangan masa depan.</p>
+                    <div class='service-card-footer'>
+                      <div class='service-price-tag'>
+                        <small>Sertifikat Hak Milik</small>
+                        <strong>Unit Eksklusif</strong>
+                      </div>
+                      <a class='btn-service' href='#detail' target='pop-service-Image33'>
+                        <span>Lihat Detail</span>
+                        <svg viewBox='0 0 24 24'><path d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/></svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </b:includable>
+            </b:widget>
+          </b:section>
+        </div>
+      </section>
+
+      <!-- ================= SECTION 05B: DETAIL TIPE RUMAH (POPUP GALERI & SPESIFIKASI) ================= -->
+      <b:section class='unit-detail-section' id='unit-detail-section' name='[05B. DETAIL TIPE RUMAH] Galeri Tampak &amp; Spesifikasi (Popup)' showaddelement='false' version='3'>
+        <!-- DETAIL UNIT 1: TYPE 30/60 -->
+        <b:widget id='Text31' locked='true' title='Detail Type 30/60 (Rumah Subsidi)' type='Text' version='3' visible='true'>
+          <b:widget-settings>
+            <b:widget-setting name='content'><![CDATA[Deskripsi: Hunian subsidi berkualitas dengan konstruksi double dinding hebel, cicilan flat 1 jutaan/bulan sampai lunas, dan fasilitas kawasan siap huni.
+
+[GALERI TAMPAK]
+Foto 1: https://blogger.googleusercontent.com/img/a/AVvXsEjAiWMl-izhTXDQEvXwhDzb_7ucxmDCY2Ppnecuft9G9JTuBKoeiC5gwvQrS-vWVbdpnMXfK6g9WR296FvxmwHr9jwm4COLLz8FiGKdKyA3IOkilBW9IFGlJF7cJSTwiD6a394z97ur98oXrHBRuqRhtoPBYhSKFZHfHLVGXoIdJwl50_e4rF2SfzzwCGI=s1358 | Tampak Depan
+Foto 2: https://blogger.googleusercontent.com/img/a/AVvXsEg3qDQjNzRietsr9QSOQoSs2fv9GUukYFGA8nul5Yfdg5AxRhWXlR1-2KXu62rcv6pqDmvjmSNZQymRVEKkl1QPqzt7_zS-8Ld3Q5DjEN116lUFjkxda4ZcWmXxICrKkPjYb9BtVAYBT0funPcVXqPy5E9oFDqjU8NArkpz7YmQQYYywrf_X3tW0dKReSc=s1080 | Ruang Tamu
+Foto 3: https://blogger.googleusercontent.com/img/a/AVvXsEiBJzxa8orMGHiuVakTmRSTAHG1d0k-zZPMojZyVFac5q-z3KMiuqwU7kuEuJ-sdvW40UqFrSuEuGCOJirO_bhD-xyHh3dpZEwrLT0xapr5-o0xwKJklveX4HOviRi9SyevTI9XoZHrKnyXePjRzI4pIN6o07sY3HXqOHwtlvWGBplleGz0Ry0fc31tzGA=s1080 | Kamar Tidur
+Foto 4: https://blogger.googleusercontent.com/img/a/AVvXsEiW6S9SgD3NI348DsDJvWhrYfjWrWQ3yBneuFB5v9Wite6aje3AKzRTyqNwH1aftgE7gRgPPnUsOdjB_cYIhWKrFOTlXNjtGP2tbMOq9RlsABzpIei9EZnWzVTOGofN-IUbXsoXv4TZkM1SGjqvKsy6In8tK9tOSGayCgkJzSW_Erybm2f-fz8bbBBWQvo=s1080 | Lingkungan
+
+[SPESIFIKASI TEKNIS]
+Kategori Unit = Rumah Subsidi Program Pemerintah
+Luas Bangunan / Tanah = 30 m² / 60 m² (6 × 10 m)
+Kamar Tidur / Mandi = 2 Kamar Tidur / 1 Kamar Mandi
+Struktur & Dinding = Pondasi Batu Kali, Double Dinding Hebel
+Rangka & Atap = Baja Ringan, Genteng Beton Berwarna
+Listrik & Air = PLN 1.300 Watt / Sumur Bor Pompa Air Jernih
+Carport & Halaman = Carport Rabat Beton + Taman Depan
+Skema Cicilan = KPR Subsidi BTN / BSI Flat Mulai Rp 1,1 Jt-an]]></b:widget-setting>
+          </b:widget-settings>
+          <b:includable id='main'>
+            <div class='unit-detail-source' data-unit-id='Image31' expr:data-pop-title='&quot;Detail Unit: &quot; + data:title' id='pop-service-Image31' style='display:none;'>
+              <div class='unit-raw-detail-content' style='display:none;'><data:content/></div>
+              <div class='popup-unit-grid'>
+                <div class='popup-unit-gallery'>
+                  <div class='pop-main-img-wrap'>
+                    <img class='pop-main-img' alt='Type 30/60' src='https://blogger.googleusercontent.com/img/a/AVvXsEjAiWMl-izhTXDQEvXwhDzb_7ucxmDCY2Ppnecuft9G9JTuBKoeiC5gwvQrS-vWVbdpnMXfK6g9WR296FvxmwHr9jwm4COLLz8FiGKdKyA3IOkilBW9IFGlJF7cJSTwiD6a394z97ur98oXrHBRuqRhtoPBYhSKFZHfHLVGXoIdJwl50_e4rF2SfzzwCGI=s1358'/>
+                  </div>
+                  <div class='pop-gallery-label'>Galeri Tampak Rumah &amp; Ruangan:</div>
+                  <div class='pop-gallery-thumbs'>
+                    <div class='pop-thumb-item active' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEjAiWMl-izhTXDQEvXwhDzb_7ucxmDCY2Ppnecuft9G9JTuBKoeiC5gwvQrS-vWVbdpnMXfK6g9WR296FvxmwHr9jwm4COLLz8FiGKdKyA3IOkilBW9IFGlJF7cJSTwiD6a394z97ur98oXrHBRuqRhtoPBYhSKFZHfHLVGXoIdJwl50_e4rF2SfzzwCGI=s1358&quot;)'>
+                      <img alt='Tampak Depan' src='https://blogger.googleusercontent.com/img/a/AVvXsEjAiWMl-izhTXDQEvXwhDzb_7ucxmDCY2Ppnecuft9G9JTuBKoeiC5gwvQrS-vWVbdpnMXfK6g9WR296FvxmwHr9jwm4COLLz8FiGKdKyA3IOkilBW9IFGlJF7cJSTwiD6a394z97ur98oXrHBRuqRhtoPBYhSKFZHfHLVGXoIdJwl50_e4rF2SfzzwCGI=s200'/>
+                      <span>Tampak Depan</span>
+                    </div>
+                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEg3qDQjNzRietsr9QSOQoSs2fv9GUukYFGA8nul5Yfdg5AxRhWXlR1-2KXu62rcv6pqDmvjmSNZQymRVEKkl1QPqzt7_zS-8Ld3Q5DjEN116lUFjkxda4ZcWmXxICrKkPjYb9BtVAYBT0funPcVXqPy5E9oFDqjU8NArkpz7YmQQYYywrf_X3tW0dKReSc=s1080&quot;)'>
+                      <img alt='Ruang Tamu' src='https://blogger.googleusercontent.com/img/a/AVvXsEg3qDQjNzRietsr9QSOQoSs2fv9GUukYFGA8nul5Yfdg5AxRhWXlR1-2KXu62rcv6pqDmvjmSNZQymRVEKkl1QPqzt7_zS-8Ld3Q5DjEN116lUFjkxda4ZcWmXxICrKkPjYb9BtVAYBT0funPcVXqPy5E9oFDqjU8NArkpz7YmQQYYywrf_X3tW0dKReSc=s200'/>
+                      <span>Ruang Tamu</span>
+                    </div>
+                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEiBJzxa8orMGHiuVakTmRSTAHG1d0k-zZPMojZyVFac5q-z3KMiuqwU7kuEuJ-sdvW40UqFrSuEuGCOJirO_bhD-xyHh3dpZEwrLT0xapr5-o0xwKJklveX4HOviRi9SyevTI9XoZHrKnyXePjRzI4pIN6o07sY3HXqOHwtlvWGBplleGz0Ry0fc31tzGA=s1080&quot;)'>
+                      <img alt='Kamar Tidur' src='https://blogger.googleusercontent.com/img/a/AVvXsEiBJzxa8orMGHiuVakTmRSTAHG1d0k-zZPMojZyVFac5q-z3KMiuqwU7kuEuJ-sdvW40UqFrSuEuGCOJirO_bhD-xyHh3dpZEwrLT0xapr5-o0xwKJklveX4HOviRi9SyevTI9XoZHrKnyXePjRzI4pIN6o07sY3HXqOHwtlvWGBplleGz0Ry0fc31tzGA=s200'/>
+                      <span>Kamar Tidur</span>
+                    </div>
+                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEiW6S9SgD3NI348DsDJvWhrYfjWrWQ3yBneuFB5v9Wite6aje3AKzRTyqNwH1aftgE7gRgPPnUsOdjB_cYIhWKrFOTlXNjtGP2tbMOq9RlsABzpIei9EZnWzVTOGofN-IUbXsoXv4TZkM1SGjqvKsy6In8tK9tOSGayCgkJzSW_Erybm2f-fz8bbBBWQvo=s1080&quot;)'>
+                      <img alt='Lingkungan' src='https://blogger.googleusercontent.com/img/a/AVvXsEiW6S9SgD3NI348DsDJvWhrYfjWrWQ3yBneuFB5v9Wite6aje3AKzRTyqNwH1aftgE7gRgPPnUsOdjB_cYIhWKrFOTlXNjtGP2tbMOq9RlsABzpIei9EZnWzVTOGofN-IUbXsoXv4TZkM1SGjqvKsy6In8tK9tOSGayCgkJzSW_Erybm2f-fz8bbBBWQvo=s200'/>
+                      <span>Lingkungan</span>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h4 style='font-size:1.25rem; font-weight:700; color:var(--dark); margin-bottom:8px;'>Type 30/60 - Rumah Subsidi Pemerintah</h4>
+                  <p class='pop-unit-desc' style='color:#64748b; font-size:0.9rem; line-height:1.5; margin-bottom:12px;'>Hunian subsidi berkualitas dengan konstruksi double dinding hebel, cicilan flat 1 jutaan/bulan sampai lunas, dan fasilitas kawasan siap huni.</p>
+                  <table class='popup-specs-table'>
+                    <tr><th>Kategori Unit</th><td>Rumah Subsidi Program Pemerintah</td></tr>
+                    <tr><th>Luas Bangunan / Tanah</th><td>30 m&#178; / 60 m&#178; (6 &#215; 10 m)</td></tr>
+                    <tr><th>Kamar Tidur / Mandi</th><td>2 Kamar Tidur / 1 Kamar Mandi</td></tr>
+                    <tr><th>Struktur &amp; Dinding</th><td>Pondasi Batu Kali, Double Dinding Hebel</td></tr>
+                    <tr><th>Rangka &amp; Atap</th><td>Baja Ringan, Genteng Beton Berwarna</td></tr>
+                    <tr><th>Listrik &amp; Air</th><td>PLN 1.300 Watt / Sumur Bor Pompa Air Jernih</td></tr>
+                    <tr><th>Carport &amp; Halaman</th><td>Carport Rabat Beton + Taman Depan</td></tr>
+                    <tr><th>Skema Cicilan</th><td>KPR Subsidi BTN / BSI Flat Mulai Rp 1,1 Jt-an</td></tr>
+                  </table>
+                  <div style='margin-top:20px; display:flex; gap:10px;'>
+                    <a class='btn-cta' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2030%2F60%20Rumah%20Subsidi%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service' style='display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 20px; background:#25D366; color:#fff; border-radius:10px; font-weight:700; font-size:0.95rem; text-decoration:none;' target='_blank'>
+                      <svg style='width:20px; height:20px; fill:currentColor;' viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
+                      <span>Konsultasi Unit via WhatsApp</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </b:includable>
+        </b:widget>
+
+        <!-- DETAIL UNIT 2: TYPE 36/60 -->
+        <b:widget id='Text32' locked='true' title='Detail Type 36/60 (Komersial Minimalis)' type='Text' version='3' visible='true'>
+          <b:widget-settings>
+            <b:widget-setting name='content'><![CDATA[Deskripsi: Desain fasad modern elegan dengan langit-langit tinggi, sirkulasi udara sejuk, tata ruang leluasa, dan carport beratap kokoh siap huni.
+
+[GALERI TAMPAK]
+Foto 1: https://blogger.googleusercontent.com/img/a/AVvXsEhkGpWfRwGxuX098WL8oo3B-Q2jr4DlHxAv58iC4nZUd41mnD_izfy-hBeKCoHWVLd26PPrtBbHaN5Br6PJ4rU5CyJmNFOh1Ud56Q36CuX7rBKgLYZ6aqUXTX90LcPCUiXFkBPRM5Oj2Eq5o6Ki6l6VFHTWMvWs-eGXGBURS-numHaK6yd8W3BgZZcpGhs=s812 | Tampak Depan
+Foto 2: https://blogger.googleusercontent.com/img/a/AVvXsEg2oO0e-EqmyBZjkQQ9UMznU2a8qe4sAnnP8TU3mrUnWHXYovkbGRCQu6h29yx9WeoHx-2q3ERfEursFIGrd32atH-czTdXzDMiIm1h1HsZwLJwW3CdT51b4hoBFuTWGZXiyvnMI1FZaVWqglvzQTwJQomtyMGS5-FkGhhQrai_UYu8Z02P62UWjEeW39Q=s1600 | Ruang Tamu
+Foto 3: https://blogger.googleusercontent.com/img/a/AVvXsEiqlA-RN00ExcU9M5l-zfR9MvUYUCudhVDpZwX5v0gLuANjB_Slrl4i1ixzl8voTARJXh7TGOb2PidL0qYTqkuMU3ghYwMlsr4E1o9NQV9M32Nu9PixotpY3rEs1SPSKTZRE-dR2_ZRqSuuUUgbgGVFgkCuWqyYB35AmdFV3Ml_Qp2-0_GPCkDVYGGoCRc=s1600 | Kamar Tidur
+Foto 4: https://blogger.googleusercontent.com/img/a/AVvXsEimBIBT9A4vSu4f10elvZAasZwcVj4vP7xmQoO3WzEiBzZ65decFIw1WupXOrGEyLUmOisy3MX93KwqN3aZojjUoKnbjK3uKIWrESgbvloJ8HZz8K-fPioM-m_sRPITF22f2bBoneMKlR9MFUP_IWvk8G5agCjVKOc4BOM9LWDJQw3WEYaML9vP5fZz52s=s1600 | Carport
+
+[SPESIFIKASI TEKNIS]
+Kategori Unit = Rumah Komersial Minimalis Modern
+Luas Bangunan / Tanah = 36 m² / 60 m²
+Kamar Tidur / Mandi = 2 Kamar Tidur Luas / 1 Kamar Mandi
+Struktur & Dinding = Double Dinding Bata Ringan (Hebel)
+Lantai & Plafon = Granit / Keramik Premium, Plafon Gypsum Tinggi
+Listrik & Air = PLN 2.200 Watt / Sumur Pantek & Pompa Listrik
+Carport & Halaman = Carport Beton 1 Mobil + Sisa Halaman Belakang
+Skema Cicilan = KPR Komersial Terjangkau Mulai Rp 2,2 Jt-an]]></b:widget-setting>
+          </b:widget-settings>
+          <b:includable id='main'>
+            <div class='unit-detail-source' data-unit-id='Image32' expr:data-pop-title='&quot;Detail Unit: &quot; + data:title' id='pop-service-Image32' style='display:none;'>
+              <div class='unit-raw-detail-content' style='display:none;'><data:content/></div>
+              <div class='popup-unit-grid'>
+                <div class='popup-unit-gallery'>
+                  <div class='pop-main-img-wrap'>
+                    <img class='pop-main-img' alt='Type 36/60' src='https://blogger.googleusercontent.com/img/a/AVvXsEhkGpWfRwGxuX098WL8oo3B-Q2jr4DlHxAv58iC4nZUd41mnD_izfy-hBeKCoHWVLd26PPrtBbHaN5Br6PJ4rU5CyJmNFOh1Ud56Q36CuX7rBKgLYZ6aqUXTX90LcPCUiXFkBPRM5Oj2Eq5o6Ki6l6VFHTWMvWs-eGXGBURS-numHaK6yd8W3BgZZcpGhs=s812'/>
+                  </div>
+                  <div class='pop-gallery-label'>Galeri Tampak Rumah &amp; Ruangan:</div>
+                  <div class='pop-gallery-thumbs'>
+                    <div class='pop-thumb-item active' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEhkGpWfRwGxuX098WL8oo3B-Q2jr4DlHxAv58iC4nZUd41mnD_izfy-hBeKCoHWVLd26PPrtBbHaN5Br6PJ4rU5CyJmNFOh1Ud56Q36CuX7rBKgLYZ6aqUXTX90LcPCUiXFkBPRM5Oj2Eq5o6Ki6l6VFHTWMvWs-eGXGBURS-numHaK6yd8W3BgZZcpGhs=s812&quot;)'>
+                      <img alt='Tampak Depan' src='https://blogger.googleusercontent.com/img/a/AVvXsEhkGpWfRwGxuX098WL8oo3B-Q2jr4DlHxAv58iC4nZUd41mnD_izfy-hBeKCoHWVLd26PPrtBbHaN5Br6PJ4rU5CyJmNFOh1Ud56Q36CuX7rBKgLYZ6aqUXTX90LcPCUiXFkBPRM5Oj2Eq5o6Ki6l6VFHTWMvWs-eGXGBURS-numHaK6yd8W3BgZZcpGhs=s200'/>
+                      <span>Tampak Depan</span>
+                    </div>
+                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEg2oO0e-EqmyBZjkQQ9UMznU2a8qe4sAnnP8TU3mrUnWHXYovkbGRCQu6h29yx9WeoHx-2q3ERfEursFIGrd32atH-czTdXzDMiIm1h1HsZwLJwW3CdT51b4hoBFuTWGZXiyvnMI1FZaVWqglvzQTwJQomtyMGS5-FkGhhQrai_UYu8Z02P62UWjEeW39Q=s1600&quot;)'>
+                      <img alt='Ruang Tamu' src='https://blogger.googleusercontent.com/img/a/AVvXsEg2oO0e-EqmyBZjkQQ9UMznU2a8qe4sAnnP8TU3mrUnWHXYovkbGRCQu6h29yx9WeoHx-2q3ERfEursFIGrd32atH-czTdXzDMiIm1h1HsZwLJwW3CdT51b4hoBFuTWGZXiyvnMI1FZaVWqglvzQTwJQomtyMGS5-FkGhhQrai_UYu8Z02P62UWjEeW39Q=s200'/>
+                      <span>Ruang Tamu</span>
+                    </div>
+                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEiqlA-RN00ExcU9M5l-zfR9MvUYUCudhVDpZwX5v0gLuANjB_Slrl4i1ixzl8voTARJXh7TGOb2PidL0qYTqkuMU3ghYwMlsr4E1o9NQV9M32Nu9PixotpY3rEs1SPSKTZRE-dR2_ZRqSuuUUgbgGVFgkCuWqyYB35AmdFV3Ml_Qp2-0_GPCkDVYGGoCRc=s1600&quot;)'>
+                      <img alt='Kamar Tidur' src='https://blogger.googleusercontent.com/img/a/AVvXsEiqlA-RN00ExcU9M5l-zfR9MvUYUCudhVDpZwX5v0gLuANjB_Slrl4i1ixzl8voTARJXh7TGOb2PidL0qYTqkuMU3ghYwMlsr4E1o9NQV9M32Nu9PixotpY3rEs1SPSKTZRE-dR2_ZRqSuuUUgbgGVFgkCuWqyYB35AmdFV3Ml_Qp2-0_GPCkDVYGGoCRc=s200'/>
+                      <span>Kamar Tidur</span>
+                    </div>
+                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEimBIBT9A4vSu4f10elvZAasZwcVj4vP7xmQoO3WzEiBzZ65decFIw1WupXOrGEyLUmOisy3MX93KwqN3aZojjUoKnbjK3uKIWrESgbvloJ8HZz8K-fPioM-m_sRPITF22f2bBoneMKlR9MFUP_IWvk8G5agCjVKOc4BOM9LWDJQw3WEYaML9vP5fZz52s=s1600&quot;)'>
+                      <img alt='Carport' src='https://blogger.googleusercontent.com/img/a/AVvXsEimBIBT9A4vSu4f10elvZAasZwcVj4vP7xmQoO3WzEiBzZ65decFIw1WupXOrGEyLUmOisy3MX93KwqN3aZojjUoKnbjK3uKIWrESgbvloJ8HZz8K-fPioM-m_sRPITF22f2bBoneMKlR9MFUP_IWvk8G5agCjVKOc4BOM9LWDJQw3WEYaML9vP5fZz52s=s200'/>
+                      <span>Carport</span>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h4 style='font-size:1.25rem; font-weight:700; color:var(--dark); margin-bottom:8px;'>Type 36/60 - Rumah Komersial Minimalis Modern</h4>
+                  <p class='pop-unit-desc' style='color:#64748b; font-size:0.9rem; line-height:1.5; margin-bottom:12px;'>Desain fasad modern elegan dengan langit-langit tinggi, sirkulasi udara sejuk, tata ruang leluasa, dan carport beratap kokoh siap huni.</p>
+                  <table class='popup-specs-table'>
+                    <tr><th>Kategori Unit</th><td>Rumah Komersial Minimalis Modern</td></tr>
+                    <tr><th>Luas Bangunan / Tanah</th><td>36 m&#178; / 60 m&#178;</td></tr>
+                    <tr><th>Kamar Tidur / Mandi</th><td>2 Kamar Tidur Luas / 1 Kamar Mandi</td></tr>
+                    <tr><th>Struktur &amp; Dinding</th><td>Double Dinding Bata Ringan (Hebel)</td></tr>
+                    <tr><th>Lantai &amp; Plafon</th><td>Granit / Keramik Premium, Plafon Gypsum Tinggi</td></tr>
+                    <tr><th>Listrik &amp; Air</th><td>PLN 2.200 Watt / Sumur Pantek &amp; Pompa Listrik</td></tr>
+                    <tr><th>Carport &amp; Halaman</th><td>Carport Beton 1 Mobil + Sisa Halaman Belakang</td></tr>
+                    <tr><th>Skema Cicilan</th><td>KPR Komersial Terjangkau Mulai Rp 2,2 Jt-an</td></tr>
+                  </table>
+                  <div style='margin-top:20px; display:flex; gap:10px;'>
+                    <a class='btn-cta' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2036%2F60%20Komersial%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service' style='display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 20px; background:#25D366; color:#fff; border-radius:10px; font-weight:700; font-size:0.95rem; text-decoration:none;' target='_blank'>
+                      <svg style='width:20px; height:20px; fill:currentColor;' viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
+                      <span>Konsultasi Unit via WhatsApp</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </b:includable>
+        </b:widget>
+
+        <!-- DETAIL UNIT 3: TYPE 50/78 -->
+        <b:widget id='Text33' locked='true' title='Detail Type 50/78 (Komersial Hook)' type='Text' version='3' visible='true'>
+          <b:widget-settings>
+            <b:widget-setting name='content'><![CDATA[Deskripsi: Hunian posisi sudut dengan tanah ekstra luas, 3 kamar tidur, 2 kamar mandi, halaman samping asri dan potensi pengembangan masa depan.
+
+[GALERI TAMPAK]
+Foto 1: https://blogger.googleusercontent.com/img/a/AVvXsEgbuWiPZvdpfCPLzzSOHpLx26jpHsCz6bbnmFf58SxHxdbWHfy0T1Ab-mx1F66Plkg2m9Lnma4kzvA6HK5RZGLr0JOVG48cF6hSc19NcRC8_WHKbPIaAXDgeHo83wVK01ec4inCdWjn1BCO0CMncizsFpGVqHSMv4Hj0-BPWl-XzyE7dbwQyVfyQKWUk8A=s1018 | Tampak Hook
+Foto 2: https://blogger.googleusercontent.com/img/a/AVvXsEhZyEj8rBNZDwSwvKztR4NcCRUdW_Qr7CtrOf-YGrIerT1v_ZNk2ConOczo-aDu8Bua7C5cuFU5c8wgeGNC7LY1PTZ2Sz_SW-P2iA_0_xNeiT6a1idrKbp5spP8kkZGrQMUVxcznBT7FEKvAWHH-duek28BRa5JWGu37xmTrvKoRnLGLBOOcz5iVr5m2HY=s1080 | Ruang Tamu
+Foto 3: https://blogger.googleusercontent.com/img/a/AVvXsEixRPiyuYkiZ7eR4Nu2wyZKE0rdbpdtsdR74O1_BUKG-xTG6m353qVOtnKdEKvNVw7GmwiaMbKk39p72kbMGBiF0DcqKEW1aNR7euFZ-92n8LSioabV5UdU_fVjDFaKOSLgZMqDWafHGWVw4SsK1g-V5BCyMxCbRa9k8MRudgLwJ1tIKP1OCCsi_fuLAYo=s1600 | Kamar Tidur
+Foto 4: https://blogger.googleusercontent.com/img/a/AVvXsEji8kvslGOMo4uERbqUfjLP2dZNzBTZW7qkA8BR9y_Z_UOfwnzGGNJWS4RIzns-5V12HBuV4Ht3d4Mp8SnwIKPiRSwSvyU9_LqXBlHilFwsRgHXBq6gI6QZElxesxmCd8qTJZhToNhjCw3xkNsQR2qzcO38HRXvEhdkRbi4NDeE-Q8J6yqFZNgWEMFRnb4=s1600 | Taman Samping
+
+[SPESIFIKASI TEKNIS]
+Kategori Unit = Rumah Komersial Sudut (Hook Premium)
+Luas Bangunan / Tanah = 50 m² / 78 m² (Posisi Hook)
+Kamar Tidur / Mandi = 3 Kamar Tidur Nyaman / 2 Kamar Mandi
+Struktur & Dinding = Beton Bertulang, Double Dinding Hebel
+Halaman Samping = Taman Samping & Halaman Belakang Lapang
+Listrik & Air = PLN 2.200 Watt / Sumur Bor Otomatis
+Status Legalitas = Sertifikat Hak Milik (SHM)
+Skema Cicilan = KPR Bank Mandiri / BTN / BSI Unit Eksklusif]]></b:widget-setting>
+          </b:widget-settings>
+          <b:includable id='main'>
+            <div class='unit-detail-source' data-unit-id='Image33' expr:data-pop-title='&quot;Detail Unit: &quot; + data:title' id='pop-service-Image33' style='display:none;'>
+              <div class='unit-raw-detail-content' style='display:none;'><data:content/></div>
+              <div class='popup-unit-grid'>
+                <div class='popup-unit-gallery'>
+                  <div class='pop-main-img-wrap'>
+                    <img class='pop-main-img' alt='Type 50/78' src='https://blogger.googleusercontent.com/img/a/AVvXsEgbuWiPZvdpfCPLzzSOHpLx26jpHsCz6bbnmFf58SxHxdbWHfy0T1Ab-mx1F66Plkg2m9Lnma4kzvA6HK5RZGLr0JOVG48cF6hSc19NcRC8_WHKbPIaAXDgeHo83wVK01ec4inCdWjn1BCO0CMncizsFpGVqHSMv4Hj0-BPWl-XzyE7dbwQyVfyQKWUk8A=s1018'/>
+                  </div>
+                  <div class='pop-gallery-label'>Galeri Tampak Rumah &amp; Ruangan:</div>
+                  <div class='pop-gallery-thumbs'>
+                    <div class='pop-thumb-item active' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEgbuWiPZvdpfCPLzzSOHpLx26jpHsCz6bbnmFf58SxHxdbWHfy0T1Ab-mx1F66Plkg2m9Lnma4kzvA6HK5RZGLr0JOVG48cF6hSc19NcRC8_WHKbPIaAXDgeHo83wVK01ec4inCdWjn1BCO0CMncizsFpGVqHSMv4Hj0-BPWl-XzyE7dbwQyVfyQKWUk8A=s1018&quot;)'>
+                      <img alt='Tampak Depan' src='https://blogger.googleusercontent.com/img/a/AVvXsEgbuWiPZvdpfCPLzzSOHpLx26jpHsCz6bbnmFf58SxHxdbWHfy0T1Ab-mx1F66Plkg2m9Lnma4kzvA6HK5RZGLr0JOVG48cF6hSc19NcRC8_WHKbPIaAXDgeHo83wVK01ec4inCdWjn1BCO0CMncizsFpGVqHSMv4Hj0-BPWl-XzyE7dbwQyVfyQKWUk8A=s200'/>
+                      <span>Tampak Hook</span>
+                    </div>
+                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEhZyEj8rBNZDwSwvKztR4NcCRUdW_Qr7CtrOf-YGrIerT1v_ZNk2ConOczo-aDu8Bua7C5cuFU5c8wgeGNC7LY1PTZ2Sz_SW-P2iA_0_xNeiT6a1idrKbp5spP8kkZGrQMUVxcznBT7FEKvAWHH-duek28BRa5JWGu37xmTrvKoRnLGLBOOcz5iVr5m2HY=s1080&quot;)'>
+                      <img alt='Ruang Tamu' src='https://blogger.googleusercontent.com/img/a/AVvXsEhZyEj8rBNZDwSwvKztR4NcCRUdW_Qr7CtrOf-YGrIerT1v_ZNk2ConOczo-aDu8Bua7C5cuFU5c8wgeGNC7LY1PTZ2Sz_SW-P2iA_0_xNeiT6a1idrKbp5spP8kkZGrQMUVxcznBT7FEKvAWHH-duek28BRa5JWGu37xmTrvKoRnLGLBOOcz5iVr5m2HY=s200'/>
+                      <span>Ruang Tamu</span>
+                    </div>
+                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEixRPiyuYkiZ7eR4Nu2wyZKE0rdbpdtsdR74O1_BUKG-xTG6m353qVOtnKdEKvNVw7GmwiaMbKk39p72kbMGBiF0DcqKEW1aNR7euFZ-92n8LSioabV5UdU_fVjDFaKOSLgZMqDWafHGWVw4SsK1g-V5BCyMxCbRa9k8MRudgLwJ1tIKP1OCCsi_fuLAYo=s1600&quot;)'>
+                      <img alt='Kamar Tidur' src='https://blogger.googleusercontent.com/img/a/AVvXsEixRPiyuYkiZ7eR4Nu2wyZKE0rdbpdtsdR74O1_BUKG-xTG6m353qVOtnKdEKvNVw7GmwiaMbKk39p72kbMGBiF0DcqKEW1aNR7euFZ-92n8LSioabV5UdU_fVjDFaKOSLgZMqDWafHGWVw4SsK1g-V5BCyMxCbRa9k8MRudgLwJ1tIKP1OCCsi_fuLAYo=s200'/>
+                      <span>Kamar Tidur</span>
+                    </div>
+                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEji8kvslGOMo4uERbqUfjLP2dZNzBTZW7qkA8BR9y_Z_UOfwnzGGNJWS4RIzns-5V12HBuV4Ht3d4Mp8SnwIKPiRSwSvyU9_LqXBlHilFwsRgHXBq6gI6QZElxesxmCd8qTJZhToNhjCw3xkNsQR2qzcO38HRXvEhdkRbi4NDeE-Q8J6yqFZNgWEMFRnb4=s1600&quot;)'>
+                      <img alt='Taman Samping' src='https://blogger.googleusercontent.com/img/a/AVvXsEji8kvslGOMo4uERbqUfjLP2dZNzBTZW7qkA8BR9y_Z_UOfwnzGGNJWS4RIzns-5V12HBuV4Ht3d4Mp8SnwIKPiRSwSvyU9_LqXBlHilFwsRgHXBq6gI6QZElxesxmCd8qTJZhToNhjCw3xkNsQR2qzcO38HRXvEhdkRbi4NDeE-Q8J6yqFZNgWEMFRnb4=s200'/>
+                      <span>Taman Samping</span>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h4 style='font-size:1.25rem; font-weight:700; color:var(--dark); margin-bottom:8px;'>Type 50/78 - Rumah Komersial Sudut (Hook)</h4>
+                  <p class='pop-unit-desc' style='color:#64748b; font-size:0.9rem; line-height:1.5; margin-bottom:12px;'>Hunian posisi sudut dengan tanah ekstra luas, 3 kamar tidur, 2 kamar mandi, halaman samping asri dan potensi pengembangan masa depan.</p>
+                  <table class='popup-specs-table'>
+                    <tr><th>Kategori Unit</th><td>Rumah Komersial Sudut (Hook Premium)</td></tr>
+                    <tr><th>Luas Bangunan / Tanah</th><td>50 m&#178; / 78 m&#178; (Posisi Hook)</td></tr>
+                    <tr><th>Kamar Tidur / Mandi</th><td>3 Kamar Tidur Nyaman / 2 Kamar Mandi</td></tr>
+                    <tr><th>Struktur &amp; Dinding</th><td>Beton Bertulang, Double Dinding Hebel</td></tr>
+                    <tr><th>Halaman Samping</th><td>Taman Samping &amp; Halaman Belakang Lapang</td></tr>
+                    <tr><th>Listrik &amp; Air</th><td>PLN 2.200 Watt / Sumur Bor Otomatis</td></tr>
+                    <tr><th>Status Legalitas</th><td>Sertifikat Hak Milik (SHM)</td></tr>
+                    <tr><th>Skema Cicilan</th><td>KPR Bank Mandiri / BTN / BSI Unit Eksklusif</td></tr>
+                  </table>
+                  <div style='margin-top:20px; display:flex; gap:10px;'>
+                    <a class='btn-cta' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2050%2F78%20Hook%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service' style='display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 20px; background:#25D366; color:#fff; border-radius:10px; font-weight:700; font-size:0.95rem; text-decoration:none;' target='_blank'>
+                      <svg style='width:20px; height:20px; fill:currentColor;' viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
+                      <span>Konsultasi Unit via WhatsApp</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </b:includable>
+        </b:widget>
+      </b:section>
+
+
+
+
+      <!-- ================= GALERI FOTO PROYEK ================= -->
+      <section id='gallery'>
+        <div class='wrapper'>
+          <div class='section-head reveal'>
+            <span class='section-badge'>DOKUMENTASI RESMI</span>
+            <h2>Galeri &amp; Dokumentasi Proyek</h2>
+            <p>Momen akad massal bersama ribuan debitur, pejabat kementerian, dan progres pembangunan kawasan.</p>
+          </div>
+          <b:section class='gallery-section' id='gallery-section' name='[06. GALERI] Dokumentasi Acara &amp; Akad Massal' showaddelement='true' version='3'>
+            <!-- FOTO GALERI 1 -->
+            <b:widget id='Image61' locked='false' title='Akad KPR Massal 324 Unit' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCy-ufFNBMfbacy2nLhvF-5k3zggivAZi_qCCHU8hKraoLtChYWOxNCCenvCKCZeVIiqqn8oXTuJFz9eXYrczUeOH9OPNAns5eq1B7eJ90nH76NkVTUsHSb-Y6pFSTq2rJxDNdhhF7HvYdQjhLjCHsTDtoHerahVBwKM2zUr635ep3RKKed7BjV9pqEhk/s1000/prabowo1.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>600</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1000</b:widget-setting>
+                <b:widget-setting name='link'>#gallery</b:widget-setting>
+                <b:widget-setting name='caption'>Disaksikan langsung oleh jajaran kementerian dan pejabat pemerintah.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='gallery-item reveal'>
+                  <a data-fancybox='proyek-album' expr:data-caption='data:title + &quot; - &quot; + data:caption' expr:href='data:sourceUrl ?: data:displayUrl'>
+                    <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                    <div class='gallery-overlay'>
+                      <h4><data:title/></h4>
+                      <p><data:caption/></p>
+                    </div>
+                    <div class='gallery-zoom-icon'>
+                      <svg viewBox='0 0 24 24'><path d='M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/></svg>
+                    </div>
+                  </a>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- FOTO GALERI 2 -->
+            <b:widget id='Image62' locked='false' title='Penyerahan Kunci Rumah' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXEHUCe2ocMw0CiXx-fe6b__Xb7e-M8-_DbjhcWhGnNhbLrtxze8TcAUh3p26A__EDXQUoPl46yvYrDZx_eVh_rk2FaK7qJj4_t2OaBBoHKtb02RJgTqN2zBfKR5KUSoe33gYgXyFB9LioxI1Fzoecb2SvRmY3qcJN8SCN2rd1zHMpwzXoacGgBgxCUjo/s1000/prabowo2.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>600</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1000</b:widget-setting>
+                <b:widget-setting name='link'>#gallery</b:widget-setting>
+                <b:widget-setting name='caption'>Momen bahagia debitur menerima kunci hunian resmi Pesona Kahuripan.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='gallery-item reveal delay-1'>
+                  <a data-fancybox='proyek-album' expr:data-caption='data:title + &quot; - &quot; + data:caption' expr:href='data:sourceUrl ?: data:displayUrl'>
+                    <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                    <div class='gallery-overlay'>
+                      <h4><data:title/></h4>
+                      <p><data:caption/></p>
+                    </div>
+                    <div class='gallery-zoom-icon'>
+                      <svg viewBox='0 0 24 24'><path d='M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/></svg>
+                    </div>
+                  </a>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- FOTO GALERI 3 -->
+            <b:widget id='Image63' locked='false' title='Pembangunan Berkelanjutan' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZ9B6ywxpmXhhVpQm9toSIwfHAnyId1AsAFFEO2Ea4uXSZ65bu49LEmyPKoCtkemlnijuVU3Fu1-im0wt6Mp2UWUbq2BWpnN5XEfoSkdW0erTBv_3evjk7fBCVTIXaTUDfalsGmabcj1_wHdFIYHjdWdigReKbj8hpb4r6A9nlbC7J5VDciNGG6ZLz3zA/s1000/prabowo3.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>600</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1000</b:widget-setting>
+                <b:widget-setting name='link'>#gallery</b:widget-setting>
+                <b:widget-setting name='caption'>Konstruksi kokoh dengan standar mutu material double dinding terbaik.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='gallery-item reveal delay-2'>
+                  <a data-fancybox='proyek-album' expr:data-caption='data:title + &quot; - &quot; + data:caption' expr:href='data:sourceUrl ?: data:displayUrl'>
+                    <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                    <div class='gallery-overlay'>
+                      <h4><data:title/></h4>
+                      <p><data:caption/></p>
+                    </div>
+                    <div class='gallery-zoom-icon'>
+                      <svg viewBox='0 0 24 24'><path d='M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/></svg>
+                    </div>
+                  </a>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- FOTO GALERI 4 -->
+            <b:widget id='Image64' locked='false' title='Peninjauan Mutu Bangunan' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUg6aTu1HxSeTl-v8OpG95WuUHj73j3CO_D6i2mAJMn8OVuvV25YPhybA83zkNNZz7-ILibxcFt2BpAG4DzxqgCwF3Fo8hgcQUM9CFU9L44rhVo1X11Wx5R70QxHbFByp6UVDovn_Bl3EGPusgqplWqcMbthBrbPUOR2rbo1nRVsP5Udqc96pFEi2WNK0/s1000/prabowo5.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>600</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1000</b:widget-setting>
+                <b:widget-setting name='link'>#gallery</b:widget-setting>
+                <b:widget-setting name='caption'>Pengawasan berkala memastikan rumah siap huni tepat waktu.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='gallery-item reveal'>
+                  <a data-fancybox='proyek-album' expr:data-caption='data:title + &quot; - &quot; + data:caption' expr:href='data:sourceUrl ?: data:displayUrl'>
+                    <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                    <div class='gallery-overlay'>
+                      <h4><data:title/></h4>
+                      <p><data:caption/></p>
+                    </div>
+                    <div class='gallery-zoom-icon'>
+                      <svg viewBox='0 0 24 24'><path d='M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/></svg>
+                    </div>
+                  </a>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- FOTO GALERI 5 -->
+            <b:widget id='Image65' locked='false' title='Antusiasme Ribuan Warga' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhDTGgl3eUQ0m9JaaPdjuR3mK2O9U5Y_tFzBo1SwiAdQJoY6zxdzQLuzzKuyy7l2ETAatDStIB6skGabltJlW8g7b5rLQm4m3i6AIIb1HVzzEcaXS5t9Xg4BzkoGiyd6kpfmgRhb4Iaxbe3yDlUA_D7ObuNxtS4umuUSmxMwfZWL8j31jvjl8VkByAZldU/s1000/prabowo7.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>600</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1000</b:widget-setting>
+                <b:widget-setting name='link'>#gallery</b:widget-setting>
+                <b:widget-setting name='caption'>Tingginya minat masyarakat pada hunian bersubsidi berkualitas.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='gallery-item reveal delay-1'>
+                  <a data-fancybox='proyek-album' expr:data-caption='data:title + &quot; - &quot; + data:caption' expr:href='data:sourceUrl ?: data:displayUrl'>
+                    <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                    <div class='gallery-overlay'>
+                      <h4><data:title/></h4>
+                      <p><data:caption/></p>
+                    </div>
+                    <div class='gallery-zoom-icon'>
+                      <svg viewBox='0 0 24 24'><path d='M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/></svg>
+                    </div>
+                  </a>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- FOTO GALERI 6 -->
+            <b:widget id='Image66' locked='false' title='Serah Terima Simbolis' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgklh4j_sTGmgbNQWmzxjPk1i0oQcBGFdcmV6bOYGK-ievVTE0I1yFbpgUbt4pu81LvGdETbcoYIqaMZsP6j0HcdJ_nNoNt6lbUEXGe8_uxYCrMEM546hN5-VOAN4AahUzCQkRYgZaQtn9BkeJWygXzrK8nQL-OW_5jgDCQpksm1jaJC9qOCL_OhWTTodM/s1000/prabowo8.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>600</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1000</b:widget-setting>
+                <b:widget-setting name='link'>#gallery</b:widget-setting>
+                <b:widget-setting name='caption'>Penghargaan atas komitmen membangun kawasan perumahan terpercaya.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='gallery-item reveal delay-2'>
+                  <a data-fancybox='proyek-album' expr:data-caption='data:title + &quot; - &quot; + data:caption' expr:href='data:sourceUrl ?: data:displayUrl'>
+                    <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                    <div class='gallery-overlay'>
+                      <h4><data:title/></h4>
+                      <p><data:caption/></p>
+                    </div>
+                    <div class='gallery-zoom-icon'>
+                      <svg viewBox='0 0 24 24'><path d='M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/></svg>
+                    </div>
+                  </a>
+                </div>
+              </b:includable>
+            </b:widget>
+          </b:section>
+        </div>
+      </section>
+
+      <!-- ================= OFFER & SIMULASI ANGSURAN ================= -->
+      <section id='offer'>
+        <div class='wrapper'>
+          <div class='section-head reveal'>
+            <span class='section-badge'>SKEMA PEMBIAYAAN</span>
+            <h2>Simulasi Angsuran KPR</h2>
+            <p>Pilihan cicilan fleksibel sesuai kemampuan finansial keluarga Anda.</p>
+          </div>
+          <b:section class='offer-section' id='offer-section' name='[07. SIMULASI KPR] Tabel Angsuran &amp; Harga' showaddelement='false' version='3'>
+            <!-- SIMULASI 1: SUBSIDI TYPE 30/60 (TEKS BERSIH TANPA KODE HTML) -->
+            <b:widget id='Text51' locked='true' title='Subsidi Type 30/60' type='Text' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='content'><![CDATA[Badge: TERLARIS
+Harga: Rp. 185.000.000,-
+Deskripsi: Double Dinding Hebel - Cicilan Flat Sampai Lunas
+Tenor 20 Tahun: Rp 1.192.574 / bln
+Tenor 15 Tahun: Rp 1.427.023 / bln
+Tenor 10 Tahun: Rp 1.910.587 / bln
+Tipe: subsidi]]></b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='pricing-card featured reveal' expr:data-title='data:title'>
+                  <div class='pricing-raw-data' style='display:none;'><data:content/></div>
+                  <div class='pricing-card-render'>
+                    <span style='background:var(--key); color:#fff; font-size:12px; font-weight:700; padding:4px 12px; border-radius:100px;'>TERLARIS</span>
+                    <h3 style='margin-top:15px;'><data:title/></h3>
+                    <div class='pricing-price'>Rp. 185.000.000,-</div>
+                    <p style='color:#6b7280; font-size:0.95rem;'>Double Dinding Hebel - Cicilan Flat Sampai Lunas</p>
+                    <ul class='pricing-list'>
+                      <li><span>Tenor 20 Tahun:</span> <strong>Rp 1.192.574 / bln</strong></li>
+                      <li><span>Tenor 15 Tahun:</span> <strong>Rp 1.427.023 / bln</strong></li>
+                      <li><span>Tenor 10 Tahun:</span> <strong>Rp 1.910.587 / bln</strong></li>
+                    </ul>
+                    <a class='btn-cta wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20mau%20booking%20Subsidi%20Type%2030%2F60%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23offer' style='width:100%; box-sizing:border-box;' target='_blank'>Booking Subsidi</a>
+                  </div>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- SIMULASI 2: KOMERSIAL TYPE 36/60 (TEKS BERSIH TANPA KODE HTML) -->
+            <b:widget id='Text52' locked='true' title='Komersial Type 36/60' type='Text' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='content'><![CDATA[Badge: KOMERSIAL
+Harga: Rp. 435.000.000,-
+Deskripsi: Desain Elegan Fasad Modern Langit-langit Tinggi
+Tenor 20 Tahun: Rp 1.970.800 / bln
+Tenor 15 Tahun: Rp 2.604.300 / bln
+Tenor 10 Tahun: Rp 3.692.300 / bln
+Tipe: komersial]]></b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='pricing-card reveal delay-1' expr:data-title='data:title'>
+                  <div class='pricing-raw-data' style='display:none;'><data:content/></div>
+                  <div class='pricing-card-render'>
+                    <span style='background:#f3f4f6; color:#374151; font-size:12px; font-weight:700; padding:4px 12px; border-radius:100px;'>KOMERSIAL</span>
+                    <h3 style='margin-top:15px;'><data:title/></h3>
+                    <div class='pricing-price'>Rp. 435.000.000,-</div>
+                    <p style='color:#6b7280; font-size:0.95rem;'>Desain Elegan Fasad Modern Langit-langit Tinggi</p>
+                    <ul class='pricing-list'>
+                      <li><span>Tenor 20 Tahun:</span> <strong>Rp 1.970.800 / bln</strong></li>
+                      <li><span>Tenor 15 Tahun:</span> <strong>Rp 2.604.300 / bln</strong></li>
+                      <li><span>Tenor 10 Tahun:</span> <strong>Rp 3.692.300 / bln</strong></li>
+                    </ul>
+                    <a class='btn-cta wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20mau%20booking%20Komersial%20Type%2036%2F60%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23offer' style='width:100%; box-sizing:border-box; background:var(--black);' target='_blank'>Booking Komersial</a>
+                  </div>
+                </div>
+              </b:includable>
+            </b:widget>
+          </b:section>
+        </div>
+      </section>
+
+      <!-- ================= FAQ ACCORDION ================= -->
+      <section id='faq'>
+        <div class='wrapper'>
+          <div class='section-head reveal'>
+            <span class='section-badge'>TANYA JAWAB</span>
+            <h2>Pertanyaan yang Sering Diajukan</h2>
+            <p>Informasi seputar syarat KPR, legalitas tanah, dan proses pengajuan.</p>
+          </div>
+          <b:section class='faq-section' id='faq-section' name='[08. FAQ] Pertanyaan &amp; Jawaban KPR' showaddelement='false' version='3'>
+            <!-- PERTANYAAN 1 -->
+            <b:widget id='Text71' locked='true' title='Apakah cicilan per bulan flat sampai lunas?' type='Text' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='content'>Ya, untuk rumah subsidi cicilan per bulan menggunakan suku bunga subsidi pemerintah sehingga bersifat flat (tetap) sampai masa cicilan lunas.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='faq-item active reveal'>
+                  <div class='faq-question'>
+                    <span><data:title/></span>
+                    <span class='faq-icon'><svg viewBox='0 0 24 24'><path d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z'/></svg></span>
+                  </div>
+                  <div class='faq-answer'>
+                    <p><data:content/></p>
+                  </div>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- PERTANYAAN 2 -->
+            <b:widget id='Text72' locked='true' title='Berapa batasan usia untuk pengajuan KPR subsidi?' type='Text' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='content'>Batas usia pemohon KPR subsidi adalah minimal 21 tahun dan maksimal 45 tahun pada saat awal pengajuan akad kredit.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='faq-item reveal delay-1'>
+                  <div class='faq-question'>
+                    <span><data:title/></span>
+                    <span class='faq-icon'><svg viewBox='0 0 24 24'><path d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z'/></svg></span>
+                  </div>
+                  <div class='faq-answer'>
+                    <p><data:content/></p>
+                  </div>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- PERTANYAAN 3 -->
+            <b:widget id='Text73' locked='true' title='Apakah karyawan kontrak bisa mengajukan rumah subsidi?' type='Text' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='content'>Bisa! Karyawan berstatus kontrak dapat mengajukan dengan syarat masa kerja minimal telah berjalan 2-3 tahun di perusahaan yang sama dilengkapi bukti mutasi rekening.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='faq-item reveal delay-2'>
+                  <div class='faq-question'>
+                    <span><data:title/></span>
+                    <span class='faq-icon'><svg viewBox='0 0 24 24'><path d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z'/></svg></span>
+                  </div>
+                  <div class='faq-answer'>
+                    <p><data:content/></p>
+                  </div>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- PERTANYAAN 4 -->
+            <b:widget id='Text74' locked='true' title='Bagaimana status legalitas surat tanah perumahan?' type='Text' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='content'>Untuk rumah subsidi legalitas awal adalah SHGB yang dapat ditingkatkan menjadi Sertifikat Hak Milik (SHM) setelah cicilan lunas. Khusus pembelian unit komersial langsung mendapatkan SHM.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='faq-item reveal delay-3'>
+                  <div class='faq-question'>
+                    <span><data:title/></span>
+                    <span class='faq-icon'><svg viewBox='0 0 24 24'><path d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z'/></svg></span>
+                  </div>
+                  <div class='faq-answer'>
+                    <p><data:content/></p>
+                  </div>
+                </div>
+              </b:includable>
+            </b:widget>
+          </b:section>
+        </div>
+      </section>
+
+      <!-- ================= REVIEW TESTIMONI ================= -->
+      <section id='review'>
+        <div class='wrapper'>
+          <div class='section-head reveal'>
+            <span class='section-badge'>KATA KONSUMEN</span>
+            <h2>Kepuasan Konsumen</h2>
+            <p>Pengalaman langsung dari keluarga yang telah menempati unit Pesona Kahuripan.</p>
+          </div>
+          <div class='review-carousel' id='reviewCarousel'>
+            <b:section class='review-section' id='review-section' name='[09. TESTIMONI] Ulasan Konsumen &amp; Pembeli' showaddelement='false' version='3'>
+              <!-- TESTIMONI 1 -->
+              <b:widget id='Image41' locked='true' title='Pak Agus Santoso' type='Image' version='3' visible='true'>
+                <b:widget-settings>
+                  <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEhsL5s5qokxvbT6Ha9oMjx50tSeBVdKDGZKwmRjJoFtQ6qtJGZApCnhue5U3SjJxnu2wgGM9X4LItZsyViD4OY2X5QJ6xHSIf_SgoRpxVZteniRefAk-VyPHBggku-M8U__UVbCRrV9qaveZ0BX0vqw9GoYUMNG20tdxRUeZODNp4jE_24knNiFEOhrYgs=s200</b:widget-setting>
+                  <b:widget-setting name='displayHeight'>200</b:widget-setting>
+                  <b:widget-setting name='sectionWidth'>908</b:widget-setting>
+                  <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                  <b:widget-setting name='displayWidth'>200</b:widget-setting>
+                  <b:widget-setting name='link'>Konsumen Pesona Kahuripan 11</b:widget-setting>
+                  <b:widget-setting name='caption'>Alhamdulillah proses KPR dibantu tuntas oleh Mas Ro&#39;uf dari awal survei hingga serah terima kunci. Bangunannya double dinding kokoh!</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                  <div class='review-card'>
+                    <div class='review-profile'>
+                      <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                      <div>
+                        <h4><data:title/></h4>
+                        <small><data:link/></small>
+                      </div>
+                    </div>
+                    <p class='review-text'><data:caption/></p>
+                    <div class='review-stars'>&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  </div>
+                </b:includable>
+              </b:widget>
+
+              <!-- TESTIMONI 2 -->
+              <b:widget id='Image42' locked='true' title='Ibu Siti Aminah' type='Image' version='3' visible='true'>
+                <b:widget-settings>
+                  <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEh86IwbejLWRqALWMMNGzHaGGGOi3y98AjN79Hy1ihdbQoi4zCFy5kjHR5HlBVuwqS5FkKm97ML7qT-7ahoyJYYi8JfINHVe4Al9vzEoWZpjrIM-zgO87FPoDZdzHMe8wT_oFNWRvyDFcEpuNf5sxU6n-sgK78dliwCh1OggbSoze-4YxC8D8HNnSl2zWo=s200</b:widget-setting>
+                  <b:widget-setting name='displayHeight'>200</b:widget-setting>
+                  <b:widget-setting name='sectionWidth'>908</b:widget-setting>
+                  <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                  <b:widget-setting name='displayWidth'>200</b:widget-setting>
+                  <b:widget-setting name='link'>Konsumen Pesona Kahuripan 12</b:widget-setting>
+                  <b:widget-setting name='caption'>Airnya jernih, akses jalan cor beton lebar dan lingkungan tetangga sudah ramai. Sangat cocok untuk anak-anak kami tumbuh berkembang.</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                  <div class='review-card'>
+                    <div class='review-profile'>
+                      <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                      <div>
+                        <h4><data:title/></h4>
+                        <small><data:link/></small>
+                      </div>
+                    </div>
+                    <p class='review-text'><data:caption/></p>
+                    <div class='review-stars'>&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  </div>
+                </b:includable>
+              </b:widget>
+
+              <!-- TESTIMONI 3 -->
+              <b:widget id='Image43' locked='true' title='Bapak Rizal Permana' type='Image' version='3' visible='true'>
+                <b:widget-settings>
+                  <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEi_T2ySzMuz8Rx7BU66PN9MUYsd26XqJgXxxXc1SD0Qo6q5dcWMVfrXiS3XqoaHNg1PfhUo1Ncy7UrvsytHfys5B7DJmSX0OoFs1ezWSn4ubolXaMxhxozjgwpU2EuKtQm076Ef6WVsGxmWNK7KdIIoV6unUxOsi-wH8_v2S1JsvCwPgsT1csaacwz6aqI=s200</b:widget-setting>
+                  <b:widget-setting name='displayHeight'>200</b:widget-setting>
+                  <b:widget-setting name='sectionWidth'>908</b:widget-setting>
+                  <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                  <b:widget-setting name='displayWidth'>200</b:widget-setting>
+                  <b:widget-setting name='link'>Konsumen Pesona Kahuripan 17</b:widget-setting>
+                  <b:widget-setting name='caption'>Cicilannya benar-benar 1 jutaan flat, tidak terpengaruh suku bunga naik. Sangat puas dengan pelayanan ramah Mas Ro&#39;uf!</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                  <div class='review-card'>
+                    <div class='review-profile'>
+                      <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                      <div>
+                        <h4><data:title/></h4>
+                        <small><data:link/></small>
+                      </div>
+                    </div>
+                    <p class='review-text'><data:caption/></p>
+                    <div class='review-stars'>&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  </div>
+                </b:includable>
+              </b:widget>
+
+              <!-- TESTIMONI 4 (TAMBAHAN ULASAN KONSUMEN SINKRON TATA LETAK) -->
+              <b:widget id='Image44' locked='true' title='Ibu Maya Anggraini' type='Image' version='3' visible='true'>
+                <b:widget-settings>
+                  <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEgqB2QhrvsCgDSNo4roXgoDSo7oZV9mkCZY9kHDb2I7KC3FI4SCLuyWaBXShDGHDLHLEMsHpagl_CWKf-FI37FAR6GK_0dHZwHP-oJ_n3W3WKJQznbe3MC2tsXLbXZJG_iuohb17uim3-D974PuRgXDh8sCTfppDaP7yagLsthRMrIKieG4acIPb3VAiJU=s200</b:widget-setting>
+                  <b:widget-setting name='displayHeight'>200</b:widget-setting>
+                  <b:widget-setting name='sectionWidth'>908</b:widget-setting>
+                  <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                  <b:widget-setting name='displayWidth'>200</b:widget-setting>
+                  <b:widget-setting name='link'>Konsumen Pesona Kahuripan 9</b:widget-setting>
+                  <b:widget-setting name='caption'>Akses perumahan sangat strategis dan airnya jernih. Mas Ro&#39;uf sangat teliti mendampingi proses KPR subsidi saya dari berkas awal sampai serah terima kunci. Puas sekali!</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                  <div class='review-card'>
+                    <div class='review-profile'>
+                      <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                      <div>
+                        <h4><data:title/></h4>
+                        <small><data:link/></small>
+                      </div>
+                    </div>
+                    <p class='review-text'><data:caption/></p>
+                    <div class='review-stars'>&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  </div>
+                </b:includable>
+              </b:widget>
+            </b:section>
+
+            <!-- KONTROL SLIDER AUTO-SLIDE -->
+            <div class='review-controls'>
+              <button aria-label='Ulasan Sebelumnya' class='review-btn prev' id='reviewPrev' type='button'>
+                <svg viewBox='0 0 24 24'><path d='M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z'/></svg>
+              </button>
+              <div class='review-dots' id='reviewDots'/>
+              <button aria-label='Ulasan Selanjutnya' class='review-btn next' id='reviewNext' type='button'>
+                <svg viewBox='0 0 24 24'><path d='M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z'/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= KONTAK KANTOR PEMASARAN ================= -->
+      <section id='contact'>
+        <div class='wrapper'>
+          <b:section class='contact-section' id='contact-section' name='[10. KONTAK] Lokasi Kantor &amp; Profil Marketing' showaddelement='false' version='3'>
+            <!-- WIDGET 1: KANTOR PEMASARAN RESMI -->
+            <b:widget id='Image80' locked='true' title='Kantor Pemasaran Resmi' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEhmbq_YFJtWFESGHoj347oKb5rm4MXOuTVpTcSFTQfOhE2oLSx99Rdlv47B_Rrp9STdrn1hRkUxWUBrIp1KDf7JXuYxLGUjLpF4gohU4R9NS6FeDY7mpWas47LcUBxwmyRxl8fQ2E6t_v-s9gxYc9FP9wdWJgSgasqixogNawtv8s4fKC610tRXmDUIers=s800</b:widget-setting>
+                <b:widget-setting name='displayHeight'>309</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>611</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>577</b:widget-setting>
+                <b:widget-setting name='link'>+62 878-7098-8073 / info@pesonakahuripan.biz.id</b:widget-setting>
+                <b:widget-setting name='caption'>Ruko Perkantoran Pesona Kahuripan 1, Blok L No. 8-9, Kelapanunggal, Kabupaten Bogor, Jawa Barat.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='contact-office-card reveal'>
+                  <div class='contact-office-img'>
+                    <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                  </div>
+                  <div class='contact-office-body'>
+                    <div>
+                      <h3><data:title/></h3>
+                      <p><data:caption/></p>
+                      <div class='contact-meta-item'>
+                        <svg viewBox='0 0 24 24'><path d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z'/></svg>
+                        <span>Kelapanunggal, Kab. Bogor, Jawa Barat</span>
+                      </div>
+                      <div class='contact-meta-item'>
+                        <svg viewBox='0 0 24 24'><path d='M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z'/></svg>
+                        <span>Jam Operasional: Setiap Hari (08.00 - 17.00 WIB)</span>
+                      </div>
+                      <div class='contact-meta-item'>
+                        <svg viewBox='0 0 24 24'><path d='M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z'/></svg>
+                        <span><data:link/></span>
+                      </div>
+                    </div>
+                    <div style='margin-top:20px;'>
+                      <a class='btn-cta wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20ingin%20jadwalkan%20kunjungan%20survei%20ke%20kantor%20pemasaran%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23contact' style='width:100%; box-sizing:border-box; text-align:center;' target='_blank'>Jadwalkan Kunjungan Survei</a>
+                    </div>
+                  </div>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- WIDGET 2: [FITUR MARKETING DINAMIS] PROFIL & PUSAT WHATSAPP -->
+            <b:widget id='Image81' locked='true' title='Mas Ro&#39;uf' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s200</b:widget-setting>
+                <b:widget-setting name='displayHeight'>200</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>611</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>200</b:widget-setting>
+                <b:widget-setting name='link'>6287870988073</b:widget-setting>
+                <b:widget-setting name='caption'>Konsultan KPR Resmi Pesona Kahuripan</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <!-- ELEMEN KONFIGURASI DINAMIS MASTER MARKETING -->
+                <div expr:data-name='data:title'
+                     expr:data-phone='data:link'
+                     expr:data-photo='data:sourceUrl ?: data:displayUrl'
+                     expr:data-role='data:caption'
+                     id='marketingMasterData'
+                     style='display:none;'/>
+
+                <!-- KARTU PROFIL MARKETING RESMI -->
+                <div class='marketing-profile-card reveal delay-1'>
+                  <div class='marketing-profile-body'>
+                    <div>
+                      <div class='marketing-header'>
+                        <div class='marketing-avatar-wrap'>
+                          <img class='marketing-avatar marketing-avatar-target' expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                          <span class='marketing-status-pulse'/>
+                        </div>
+                        <div class='marketing-title-info'>
+                          <h3 class='marketing-name-target'><data:title/></h3>
+                          <span class='marketing-badge'>
+                            <svg style='width:12px;height:12px;fill:currentColor;' viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                            <span class='marketing-role-target'><data:caption/></span>
+                          </span>
+                        </div>
+                      </div>
+
+                      <p class='marketing-desc'>
+                        Konsultan properti resmi berpengalaman mendampingi ratusan debitur hingga serah terima kunci. Siap memandu pengecekan BI Checking / SLIK OJK, kelengkapan berkas KPR, serta pemilihan posisi unit rumah terbaik.
+                      </p>
+
+                      <ul class='marketing-perks'>
+                        <li>
+                          <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                          <span>Konsultasi &amp; Pengecekan Berkas KPR 100% Gratis</span>
+                        </li>
+                        <li>
+                          <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                          <span>Dukungan Penuh Simulasi Angsuran Flat Bank BTN &amp; BSI</span>
+                        </li>
+                        <li>
+                          <svg viewBox='0 0 24 24'><path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>
+                          <span>Pendampingan Langsung saat Survei Lokasi Proyek</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div style='margin-top:20px;'>
+                      <a class='btn-cta wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20ingin%20konsultasi%20langsung%20perumahan%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23contact' style='width:100%; box-sizing:border-box; text-align:center; background:linear-gradient(135deg, #10b981 0%, #059669 100%); display:flex; align-items:center; justify-content:center; gap:8px;' target='_blank'>
+                        <svg style='width:18px;height:18px;fill:currentColor;' viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
+                        <span>Konsultasi dengan <span class='marketing-name-target'><data:title/></span></span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </b:includable>
+            </b:widget>
+          </b:section>
+        </div>
+      </section>
+
+      <!-- ================= BLOG / ARTIKEL HALAMAN DALAM & 404 ================= -->
+      <section id='blog-single'>
+        <!-- View 404 Error -->
+        <b:if cond='data:view.isError'>
+          <div class='wrapper' style='text-align: center; padding: 60px 0;'>
+            <h1 style='font-size: 5rem; color: var(--key); font-weight: 800;'>404</h1>
+            <h2 style='font-size: 2rem; margin-bottom: 15px;'>Halaman Tidak Ditemukan</h2>
+            <p style='color: var(--text-muted); margin-bottom: 30px;'>Mohon maaf, halaman yang Anda cari tidak tersedia atau tautan telah berpindah.</p>
+            <a class='btn-cta' expr:href='data:blog.homepageUrl'>Kembali ke Beranda</a>
+          </div>
+        <b:else/>
+
+          <!-- View Single Post / Artikel Halaman Dalam -->
+          <b:if cond='!data:view.isHomepage'>
+            <div class='wrapper'>
+              <b:section class='post-section' id='post-section' name='[11. BLOG &amp; HALAMAN] Artikel &amp; Tampilan Dalam' showaddelement='true' version='3'>
+                <b:widget id='Blog1' locked='true' title='Postingan Blog' type='Blog' version='3' visible='true'>
+                  <b:includable id='main'>
+                    <b:loop values='data:posts' var='post'>
+                      <article class='article-wrap'>
+                        <h1><data:post.title/></h1>
+                        <div class='article-meta'>
+                          <span>Tanggal: <data:post.date/></span> &#8226; <span>Penulis: <data:post.author.name/></span>
+                        </div>
+                        <b:if cond='data:post.featuredImage'>
+                          <img class='article-feat-img' expr:alt='data:post.title' expr:src='data:post.featuredImage'/>
+                        </b:if>
+                        <div class='article-body'>
+                          <data:post.body/>
+                        </div>
+                      </article>
+                    </b:loop>
+                  </b:includable>
+                </b:widget>
+              </b:section>
+            </div>
+          </b:if>
+        </b:if>
+      </section>
+
+    </main>
+
+    <!-- ======================================================================
+         3. FOOTER RESMI
+    ====================================================================== -->
+    <footer id='footer'>
+      <div class='wrapper'>
+        <b:section class='footer-section' id='footer-section' name='[12. FOOTER] Hak Cipta &amp; Sosial Media Resmi' showaddelement='false' version='3'>
+          <b:widget id='Text91' locked='true' title='Hak Cipta &amp; Sosial Media' type='Text' version='3' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='content'><![CDATA[Copyright: &copy; 2025 Pesona Kahuripan Group. Seluruh Hak Cipta Dilindungi.
+Instagram: https://www.instagram.com/pesonakahuripan.tigor
+TikTok: https://www.tiktok.com/@tigorpesonakahuripan
+YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
+              <div class='footer-wrap'>
+                <div class='footer-raw-content' style='display:none;'><data:content/></div>
+                <div class='footer-copy'>
+                  <p>&amp;copy; 2025 <strong>Pesona Kahuripan Group</strong>. Seluruh Hak Cipta Dilindungi.</p>
+                </div>
+                <div class='footer-socmed'>
+                  <a class='socmed-ig' href='https://www.instagram.com/pesonakahuripan.tigor' rel='noopener' target='_blank'>
+                    <svg viewBox='0 0 24 24'><path d='M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z'/></svg>
+                    <span>Instagram</span>
+                  </a>
+                  <a class='socmed-tiktok' href='https://www.tiktok.com/@tigorpesonakahuripan' rel='noopener' target='_blank'>
+                    <svg viewBox='0 0 24 24'><path d='M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .58.04.85.12V9.4a6.33 6.33 0 0 0-.85-.06A6.34 6.34 0 0 0 3.14 15.7a6.34 6.34 0 0 0 10.82 4.48 6.27 6.27 0 0 0 1.86-4.48V8.71a8.21 8.21 0 0 0 4.77 1.52v-3.4c-.34 0-.68-.05-1-.14z'/></svg>
+                    <span>TikTok</span>
+                  </a>
+                  <a class='socmed-yt' href='https://www.youtube.com/pesonakuofficial' rel='noopener' target='_blank'>
+                    <svg viewBox='0 0 24 24'><path d='M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z'/></svg>
+                    <span>YouTube</span>
+                  </a>
+                </div>
+              </div>
+            </b:includable>
+          </b:widget>
+        </b:section>
+      </div>
+    </footer>
+
+    <!-- ======================================================================
+         4. FLOATING WHATSAPP CHAT RESMI (SECTION 13)
+    ====================================================================== -->
+    <b:section class='floating-section' id='floating-section' name='[13. FLOATING WHATSAPP] Tombol Chat &amp; Formulir Kontak' showaddelement='false' version='3'>
+      <b:widget id='HTML95' locked='true' title='Floating Chat WhatsApp (Mas Ro&#39;uf)' type='HTML' version='3' visible='true'>
+        <b:widget-settings>
+          <b:widget-setting name='content'><![CDATA[
+      <div id='floating-chat'>
+        <div class='chat-box' id='chat-box'>
+          <div class='chat-header'>
+            <div class='chat-header-user'>
+              <img alt='Mas Ro&#39;uf' class='marketing-avatar-target' src='https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s100'/>
+              <div class='chat-header-info'>
+                <h4 class='marketing-name-target'>Mas Ro&#39;uf</h4>
+                <div class='chat-status-badge'>
+                  <span class='chat-status-dot'></span>
+                  <span class='chat-status-text'>Online - Marketing Resmi</span>
+                </div>
+              </div>
+            </div>
+            <button aria-label='Tutup Chat' class='chat-close' id='chat-close' type='button'>&#215;</button>
+          </div>
+          <div class='chat-body'>
+            <div class='chat-bubble'>
+              <p>Halo! Butuh informasi brosur perumahan, cek ketersediaan unit, atau jadwal survei lokasi Pesona Kahuripan?</p>
+            </div>
+            <div class='chat-chips'>
+              <button class='chat-chip' data-msg='Halo Mas Ro&#39;uf, saya ingin jadwal survei lokasi perumahan Pesona Kahuripan.' type='button'>📍 Jadwal Survei</button>
+              <button class='chat-chip' data-msg='Halo Mas Ro&#39;uf, boleh minta pricelist &amp; syarat berkas KPR perumahan Pesona Kahuripan?' type='button'>📑 Syarat &amp; Brosur</button>
+              <button class='chat-chip' data-msg='Halo Mas Ro&#39;uf, saya ingin cek ketersediaan unit rumah di Pesona Kahuripan.' type='button'>🏠 Cek Stok Unit</button>
+            </div>
+            <form class='chat-form' onsubmit='sendWhatsAppMessage(event)'>
+              <div class='form-group'>
+                <label for='wa-name'>Nama Lengkap</label>
+                <input id='wa-name' placeholder='Contoh: Budi Santoso' required='' type='text'/>
+              </div>
+              <div class='form-group'>
+                <label for='wa-phone-user'>Nomor WhatsApp</label>
+                <input id='wa-phone-user' placeholder='Contoh: 08123456789' required='' type='tel'/>
+              </div>
+              <div class='form-group'>
+                <label for='wa-message'>Pertanyaan / Minat Unit</label>
+                <textarea id='wa-message' placeholder='Contoh: Ingin tanya brosur Type 30/60 dan jadwal survei lokasi' required='' rows='2'></textarea>
+              </div>
+              <button class='btn-wa-submit' type='submit'>
+                <svg viewBox='0 0 24 24'><path d='M2.01 21L23 12 2.01 3 2 10l15 2-15 2z'/></svg>
+                <span>Kirim via WhatsApp</span>
+              </button>
+              <small class='chat-privacy'>🔒 Data Anda aman &amp; langsung terhubung ke marketing resmi.</small>
+            </form>
+          </div>
+        </div>
+        <div class='chat-btn-wrap'>
+          <div class='chat-pill'>
+            <span>Tanya Marketing</span>
+          </div>
+          <button class='chat-btn' id='chat-toggle' aria-label='Chat WhatsApp Marketing' type='button'>
+            <span class='chat-badge'>1</span>
+            <svg viewBox='0 0 512 512'><path d='M260.062 32C138.605 32 40 130.605 40 252.062c0 44.421 13.109 85.807 35.65 120.48L32 480l111.45-42.548c32.884 19.344 71.168 30.61 116.612 30.61 121.457 0 220.062-98.605 220.062-220.062C480.124 130.605 381.519 32 260.062 32z'/></svg>
+          </button>
+        </div>
+      </div>
+          ]]></b:widget-setting>
+        </b:widget-settings>
+        <b:includable id='main'>
+          <data:content/>
+        </b:includable>
+      </b:widget>
+    </b:section>
+
+    <!-- ======================================================================
+         5. NATIVE JAVASCRIPT MANDIRI (ZERO OBFUSCATION)
+    ====================================================================== -->
+    <script type='text/javascript'>
+    //<![CDATA[
+    document.addEventListener('DOMContentLoaded', function() {
+
+      // ================= MASTER MARKETING SYNC ENGINE =================
+      const masterData = document.getElementById('marketingMasterData');
+      if (masterData) {
+        const rawName = (masterData.getAttribute('data-name') || "Mas Ro'uf").trim();
+        const rawPhone = (masterData.getAttribute('data-phone') || '6287870988073').trim();
+        const rawPhoto = (masterData.getAttribute('data-photo') || '').trim();
+        const rawRole = (masterData.getAttribute('data-role') || 'Konsultan KPR Resmi Pesona Kahuripan').trim();
+
+        // Normalisasi nomor telepon: hapus spasi/simbol, ubah 08xx jadi 628xx
+        let cleanPhone = rawPhone.replace(/[^0-9]/g, '');
+        if (cleanPhone.startsWith('0')) {
+          cleanPhone = '62' + cleanPhone.slice(1);
+        }
+        if (!cleanPhone) cleanPhone = '6287870988073';
+
+        // 1. Sinkronkan Foto Profil Marketing di Seluruh Halaman (Termasuk Floating WA Header)
+        if (rawPhoto) {
+          document.querySelectorAll('.marketing-avatar-target').forEach(function(img) {
+            img.src = rawPhoto;
+            img.alt = rawName;
+          });
+        }
+
+        // 2. Sinkronkan Nama Marketing di Seluruh Halaman
+        document.querySelectorAll('.marketing-name-target').forEach(function(el) {
+          el.innerText = rawName;
+        });
+
+        // 3. Sinkronkan Role / Jabatan Marketing
+        document.querySelectorAll('.marketing-role-target').forEach(function(el) {
+          el.innerText = rawRole;
+        });
+
+        // 4. Sinkronkan Quick Chips Floating WhatsApp
+        document.querySelectorAll('.chat-chip').forEach(function(chip) {
+          let msg = chip.getAttribute('data-msg') || '';
+          msg = msg.replace(/Halo\s+[^,]+,/gi, 'Halo ' + rawName + ',');
+          chip.setAttribute('data-msg', msg);
+        });
+
+        // 5. Sinkronkan SEMUA Tombol Direct WhatsApp di Seluruh Halaman
+        document.querySelectorAll('a[href*="whatsapp.com"]').forEach(function(link) {
+          let href = link.getAttribute('href');
+          if (href) {
+            // Update nomor telepon tujuan
+            href = href.replace(/phone=[0-9]+/g, 'phone=' + cleanPhone);
+
+            // Update sapaan nama di teks WhatsApp URL
+            try {
+              let urlObj = new URL(href);
+              let textParam = urlObj.searchParams.get('text');
+              if (textParam) {
+                textParam = textParam.replace(/Halo\s+[^,]+,/gi, 'Halo ' + rawName + ',');
+                urlObj.searchParams.set('text', textParam);
+                href = urlObj.toString();
+              }
+            } catch (err) {
+              href = href.replace(/Halo%20[^%]+%2C/gi, 'Halo%20' + encodeURIComponent(rawName) + '%2C');
+            }
+            link.setAttribute('href', href);
+          }
+        });
+
+        // Simpan ke konfigurasi global untuk fungsi sendWhatsAppMessage
+        window.MARKETING_CONFIG = {
+          name: rawName,
+          phone: cleanPhone,
+          photo: rawPhoto
+        };
+      }
+
+      // Inisialisasi parser Promo & Sinkronisasi WhatsApp
+      if (typeof initPromoParser === 'function') {
+        initPromoParser();
+      }
+
+      // Inisialisasi parser Footer & Sosial Media
+      if (typeof initFooterParser === 'function') {
+        initFooterParser();
+      }
+
+      // Inisialisasi parser Tipe Rumah & Detail Popup
+      if (typeof initUnitCardAndPopupParser === 'function') {
+        initUnitCardAndPopupParser();
+      }
+
+      // Inisialisasi Icon Spesifikasi Dinamis
+      if (typeof initDynamicSpecIcons === 'function') {
+        initDynamicSpecIcons();
+      }
+
+      // Inisialisasi parser harga bersih KPR
+      if (typeof initPricingTextParser === 'function') {
+        initPricingTextParser();
+      }
+
+      // A. Header OnScroll Effect
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 40) {
+          header.classList.add('onScroll');
+        } else {
+          header.classList.remove('onScroll');
+        }
+      });
+
+      // B. Mobile Menu Drawer Toggle & Auto-Close on Item Click
+      const menuToggle = document.getElementById('menu-toggle');
+      const mainMenu = document.getElementById('main-menu');
+      if (menuToggle && mainMenu) {
+        const ul = mainMenu.querySelector('ul');
+        menuToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          ul.classList.toggle('active');
+        });
+
+        // Menutup menu otomatis saat tautan apapun diklik (misal klik Galeri)
+        mainMenu.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function(e) {
+            ul.classList.remove('active');
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+              const target = document.querySelector(href);
+              if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+                if (history.pushState) {
+                  history.pushState(null, null, href);
+                }
+              }
+            }
+          });
+        });
+
+        // Menutup menu saat klik di luar area menu
+        document.addEventListener('click', function(e) {
+          if (!mainMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+            ul.classList.remove('active');
+          }
+        });
+      }
+
+      // C. FAQ Accordion Toggle
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(function(item) {
+        const question = item.querySelector('.faq-question');
+        if (question) {
+          question.addEventListener('click', function() {
+            const isActive = item.classList.contains('active');
+            faqItems.forEach(i => i.classList.remove('active'));
+            if (!isActive) item.classList.add('active');
+          });
+        }
+      });
+
+      // D. Floating WhatsApp Box Toggle
+      const chatToggle = document.getElementById('chat-toggle');
+      const chatBox = document.getElementById('chat-box');
+      const chatClose = document.getElementById('chat-close');
+      if (chatToggle && chatBox) {
+        chatToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          chatBox.classList.toggle('open');
+        });
+        if (chatClose) {
+          chatClose.addEventListener('click', function(e) {
+            e.stopPropagation();
+            chatBox.classList.remove('open');
+          });
+        }
+        document.addEventListener('click', function(e) {
+          if (!chatBox.contains(e.target) && !chatToggle.contains(e.target)) {
+            chatBox.classList.remove('open');
+          }
+        });
+      }
+
+      // D2. Quick Chips Click to fill WhatsApp message
+      document.querySelectorAll('.chat-chip').forEach(function(chip) {
+        chip.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const msgArea = document.getElementById('wa-message');
+          if (msgArea) {
+            msgArea.value = this.getAttribute('data-msg') || this.innerText;
+            msgArea.focus();
+          }
+        });
+      });
+
+      // E. Native Modal Popup Engine (Trigger: [target^="pop-"])
+      document.querySelectorAll('[target^="pop-"]').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const popId = this.getAttribute('target');
+          const source = document.getElementById(popId);
+          if (!source) return;
+
+          const title = source.getAttribute('data-pop-title') || 'Detail Informasi';
+          const modal = document.createElement('div');
+          modal.className = 'pop open';
+          modal.innerHTML = `
+            <div class="pop-wrap">
+              <div class="pop-header">
+                <div class="pop-title"><h3>${title}</h3></div>
+                <button aria-label="Tutup Detail" class="pop-close">&times;</button>
+              </div>
+              <div class="pop-content">${source.innerHTML}</div>
+            </div>
+          `;
+
+          document.body.appendChild(modal);
+          document.body.style.overflow = 'hidden';
+
+          const closeModal = function() {
+            modal.classList.remove('open');
+            setTimeout(() => { modal.remove(); document.body.style.overflow = ''; }, 200);
+          };
+
+          const closeBtn = modal.querySelector('.pop-close');
+          if (closeBtn) {
+            closeBtn.addEventListener('click', function(evt) {
+              evt.preventDefault();
+              closeModal();
+            });
+            closeBtn.addEventListener('pointerup', function(evt) {
+              evt.preventDefault();
+              closeModal();
+            });
+          }
+          modal.addEventListener('click', function(evt) {
+            if (evt.target === modal) closeModal();
+          });
+        });
+      });
+
+      // G. Testimoni Carousel Auto-Slide & Touch Swiping
+      const reviewTrack = document.querySelector('.review-section');
+      const reviewContainer = document.getElementById('reviewCarousel');
+      const prevBtn = document.getElementById('reviewPrev');
+      const nextBtn = document.getElementById('reviewNext');
+      const dotsContainer = document.getElementById('reviewDots');
+
+      if (reviewTrack && reviewContainer) {
+        const slides = reviewTrack.querySelectorAll('.widget');
+        const totalSlides = slides.length;
+        let currentIndex = 0;
+        let autoSlideTimer = null;
+
+        // Render dot indikator
+        if (dotsContainer) {
+          dotsContainer.innerHTML = '';
+          for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'review-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+            dot.setAttribute('type', 'button');
+            dot.addEventListener('click', function(e) {
+              e.preventDefault();
+              goToSlide(i);
+              resetAutoSlide();
+            });
+            dotsContainer.appendChild(dot);
+          }
+        }
+
+        function updateSlider() {
+          reviewTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+          if (dotsContainer) {
+            const dots = dotsContainer.querySelectorAll('.review-dot');
+            dots.forEach((dot, idx) => {
+              dot.classList.toggle('active', idx === currentIndex);
+            });
+          }
+        }
+
+        function goToSlide(index) {
+          currentIndex = (index + totalSlides) % totalSlides;
+          updateSlider();
+        }
+
+        function nextSlide() {
+          goToSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+          goToSlide(currentIndex - 1);
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            nextSlide();
+            resetAutoSlide();
+          });
+        }
+        if (prevBtn) {
+          prevBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            prevSlide();
+            resetAutoSlide();
+          });
+        }
+
+        function startAutoSlide() {
+          stopAutoSlide();
+          autoSlideTimer = setInterval(nextSlide, 4500);
+        }
+
+        function stopAutoSlide() {
+          if (autoSlideTimer) clearInterval(autoSlideTimer);
+        }
+
+        function resetAutoSlide() {
+          stopAutoSlide();
+          startAutoSlide();
+        }
+
+        // Pause on hover
+        reviewContainer.addEventListener('mouseenter', stopAutoSlide);
+        reviewContainer.addEventListener('mouseleave', startAutoSlide);
+
+        // Touch swiping pada layar sentuh
+        let touchStartX = 0;
+        let touchEndX = 0;
+        reviewContainer.addEventListener('touchstart', function(e) {
+          touchStartX = e.changedTouches[0].screenX;
+          stopAutoSlide();
+        }, { passive: true });
+
+        reviewContainer.addEventListener('touchend', function(e) {
+          touchEndX = e.changedTouches[0].screenX;
+          const diff = touchStartX - touchEndX;
+          if (Math.abs(diff) > 40) {
+            if (diff > 0) nextSlide();
+            else prevSlide();
+          }
+          startAutoSlide();
+        }, { passive: true });
+
+        startAutoSlide();
+      }
+
+      // F. Smooth Scroll Reveal Effect via IntersectionObserver (Responsif & Anti-Macet)
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver(function(entries, observer) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.05,
+          rootMargin: '0px 0px 60px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach(function(el) {
+          revealObserver.observe(el);
+        });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function(el) {
+          el.classList.add('revealed');
+        });
+      }
+
+      // Safety Fallback: Pastikan seluruh section yang memiliki .reveal tetap terlihat jika observer terhambat
+      setTimeout(function() {
+        document.querySelectorAll('.reveal:not(.revealed)').forEach(function(el) {
+          el.classList.add('revealed');
+        });
+      }, 1000);
+
+    });
+
+    // Helper: Ganti Foto Utama di Popup Galeri Tampak Rumah
+    window.switchPopImage = function(thumbEl, fullUrl) {
+      const modalWrap = thumbEl.closest('.pop-wrap') || thumbEl.closest('.popup-unit-grid');
+      if (!modalWrap) return;
+      const mainImg = modalWrap.querySelector('.pop-main-img');
+      if (mainImg) {
+        mainImg.style.opacity = '0.35';
+        setTimeout(function() {
+          mainImg.src = fullUrl;
+          mainImg.style.opacity = '1';
+        }, 120);
+      }
+      modalWrap.querySelectorAll('.pop-thumb-item').forEach(function(t) {
+        t.classList.remove('active');
+      });
+      thumbEl.classList.add('active');
+    };
+
+    // KAMUS SVG ICON DINAMIS & MUDAH DIEDIT UNTUK TIPE RUMAH PILIHAN
+    const SPEC_ICON_REGISTRY = {
+      lb: '<svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 16H5v-6h7v6zm0-8H5V5h7v6zm7 8h-5v-6h5v6zm0-8h-5V5h5v6z"/></svg>',
+      lt: '<svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>',
+      kamar: '<svg viewBox="0 0 24 24"><path d="M19 7h-8v8H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4zm-9 6H5v-4h5v4zM7 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>',
+      mandi: '<svg viewBox="0 0 24 24"><path d="M20 13V4.83C20 3.27 18.73 2 17.17 2c-.75 0-1.47.3-2 .83l-1.25 1.25c-.16-.05-.33-.08-.51-.08-.88 0-1.6.72-1.6 1.6 0 .42.17.81.44 1.1l-1.44 1.44C10.53 8.05 10.19 8 9.83 8H6c-2.21 0-4 1.79-4 4v1h18zm-2 2H4v3c0 2.21 1.79 4 4 4h8c2.21 0 4-1.79 4-4v-3z"/></svg>',
+      carport: '<svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4.66l.12-.34h13.77l.11.34V17z"/></svg>',
+      hebel: '<svg viewBox="0 0 24 24"><path d="M19 4H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-9 2h4v3h-4V6zM5 6h3v3H5V6zm0 5h5v3H5v-3zm7 0h7v3h-7v-3zm7 5v2h-3v-2h3zm-5 2h-4v-2h4v2zm-6 0H5v-2h3v2zm11-7v-2h-3v-3h3v5z"/></svg>',
+      dinding: '<svg viewBox="0 0 24 24"><path d="M19 4H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-9 2h4v3h-4V6zM5 6h3v3H5V6zm0 5h5v3H5v-3zm7 0h7v3h-7v-3zm7 5v2h-3v-2h3zm-5 2h-4v-2h4v2zm-6 0H5v-2h3v2zm11-7v-2h-3v-3h3v5z"/></svg>',
+      taman: '<svg viewBox="0 0 24 24"><path d="M17 12c0-2.76-2.24-5-5-5s-5 2.24-5 5c0 2.05 1.23 3.81 3 4.58V20h4v-3.42c1.77-.77 3-2.53 3-4.58zm-5-3c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3z"/></svg>',
+      hook: '<svg viewBox="0 0 24 24"><path d="M17 12c0-2.76-2.24-5-5-5s-5 2.24-5 5c0 2.05 1.23 3.81 3 4.58V20h4v-3.42c1.77-.77 3-2.53 3-4.58zm-5-3c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3z"/></svg>',
+      listrik: '<svg viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>',
+      air: '<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
+      shm: '<svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>'
+    };
+
+    // Helper: Inisialisasi Icon Spesifikasi Dinamis (Auto-Detect Kata Kunci / Atribut data-icon)
+    function initDynamicSpecIcons() {
+      document.querySelectorAll('.service-spec-item').forEach(function(item) {
+        let iconKey = (item.getAttribute('data-icon') || '').toLowerCase().trim();
+        const text = (item.textContent || '').toLowerCase();
+        
+        // Auto-detect jika belum dispesifikasikan secara eksplisit
+        if (!iconKey) {
+          if (text.includes('lb') || text.includes('bangunan')) iconKey = 'lb';
+          else if (text.includes('lt') || text.includes('tanah')) iconKey = 'lt';
+          else if (text.includes('kamar') || text.includes('tidur')) iconKey = 'kamar';
+          else if (text.includes('mandi') || text.includes('wc')) iconKey = 'mandi';
+          else if (text.includes('carport') || text.includes('garasi') || text.includes('mobil')) iconKey = 'carport';
+          else if (text.includes('hebel') || text.includes('dinding') || text.includes('bata')) iconKey = 'hebel';
+          else if (text.includes('taman') || text.includes('hook') || text.includes('sudut')) iconKey = 'taman';
+          else if (text.includes('listrik') || text.includes('watt') || text.includes('pln')) iconKey = 'listrik';
+          else if (text.includes('air') || text.includes('sumur') || text.includes('pdam')) iconKey = 'air';
+          else if (text.includes('shm') || text.includes('sertifikat')) iconKey = 'shm';
+        }
+
+        if (iconKey && SPEC_ICON_REGISTRY[iconKey]) {
+          const existingSvg = item.querySelector('svg');
+          if (existingSvg) {
+            existingSvg.outerHTML = SPEC_ICON_REGISTRY[iconKey];
+          } else {
+            item.insertAdjacentHTML('afterbegin', SPEC_ICON_REGISTRY[iconKey]);
+          }
+        }
+      });
+    }
+
+    // Helper: Parser Section Promo Dinamis & Sinkronisasi Direct WhatsApp
+    function initPromoParser() {
+      const promoCard = document.querySelector('.promo-card');
+      if (!promoCard) return;
+      const rawCaptionEl = promoCard.querySelector('.promo-raw-caption');
+      if (!rawCaptionEl) return;
+
+      const rawText = (rawCaptionEl.innerText || rawCaptionEl.textContent || '').trim();
+      if (!rawText) return;
+
+      let badge = '';
+      let tag = '';
+      let desc = '';
+      let btnLabel = '';
+      let benefits = [];
+
+      const lines = rawText.split('\n');
+      lines.forEach(function(line) {
+        const trimmed = line.trim();
+        if (!trimmed) return;
+        const lower = trimmed.toLowerCase();
+
+        if (lower.startsWith('badge:')) {
+          badge = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+        } else if (lower.startsWith('tag:')) {
+          tag = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+        } else if (lower.startsWith('deskripsi:') || lower.startsWith('keterangan:')) {
+          desc = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+        } else if (lower.startsWith('tombol:') || lower.startsWith('cta:')) {
+          btnLabel = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+        } else if (lower.startsWith('benefit') || trimmed.startsWith('*') || trimmed.startsWith('-') || trimmed.startsWith('•')) {
+          let bText = trimmed;
+          if (bText.includes(':')) bText = bText.substring(bText.indexOf(':') + 1).trim();
+          bText = bText.replace(/^[\*\-•]\s*/, '').trim();
+          const parts = bText.split('|');
+          const bTitle = parts[0].trim();
+          const bSub = parts.length > 1 ? parts.slice(1).join('|').trim() : '';
+          if (bTitle) benefits.push({ title: bTitle, sub: bSub });
+        } else if (!badge && !tag && !desc) {
+          desc = (desc ? desc + ' ' : '') + trimmed;
+        }
+      });
+
+      if (badge) {
+        const badgeSpan = promoCard.querySelector('.promo-badge-pulse span:last-child');
+        if (badgeSpan) badgeSpan.textContent = badge;
+      }
+      if (tag) {
+        const tagSpan = promoCard.querySelector('.promo-tag-float span');
+        if (tagSpan) tagSpan.textContent = tag;
+      }
+      if (desc) {
+        const descP = promoCard.querySelector('.promo-desc');
+        if (descP) descP.textContent = desc;
+      }
+      if (btnLabel) {
+        const btnSpan = promoCard.querySelector('.btn-promo-claim span');
+        if (btnSpan) btnSpan.textContent = btnLabel;
+      }
+      if (benefits.length > 0) {
+        const benContainer = promoCard.querySelector('.promo-benefits');
+        if (benContainer) {
+          let bHtml = '';
+          benefits.forEach(function(b) {
+            bHtml += `
+              <div class='benefit-item'>
+                <div class='benefit-icon'>
+                  <svg viewBox='0 0 24 24'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/></svg>
+                </div>
+                <div>
+                  <strong>${b.title}</strong>
+                  ${b.sub ? '<small>' + b.sub + '</small>' : ''}
+                </div>
+              </div>
+            `;
+          });
+          benContainer.innerHTML = bHtml;
+        }
+      }
+
+      // Sinkronkan Tombol WhatsApp Promo secara Dinamis dengan Master Marketing
+      const promoBtn = promoCard.querySelector('.btn-promo-claim');
+      if (promoBtn) {
+        const promoH2 = promoCard.querySelector('h2');
+        const promoTitle = promoH2 ? promoH2.textContent.trim() : 'Promo Spesial';
+        const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
+        const mName = mConfig.name || "Mas Ro'uf";
+        const mPhone = mConfig.phone || "6287870988073";
+        const waText = `Halo ${mName}, saya ingin klaim ${promoTitle} Pesona Kahuripan.\n\nReferensi: https://www.pesonakahuripan.biz.id/#promo`;
+        promoBtn.href = `https://api.whatsapp.com/send?phone=${mPhone}&text=${encodeURIComponent(waText)}`;
+      }
+    }
+
+    // Helper: Parser Tipe Rumah (Kartu, Galeri Tampak & Detail Modal Popup) Full Edit Tanpa Kode
+    function initUnitCardAndPopupParser() {
+      // 1. PARSE & UPDATE KARTU DEPAN (TIPE RUMAH PILIHAN DENGAN BADGE TAGS)
+      document.querySelectorAll('.service-card').forEach(function(card) {
+        const rawCaptionEl = card.querySelector('.unit-raw-caption');
+        if (!rawCaptionEl) return;
+        const rawText = (rawCaptionEl.innerText || rawCaptionEl.textContent || '').trim();
+        if (!rawText) return;
+
+        let badge = '';
+        let price = '';
+        let priceLabel = '';
+        let desc = '';
+        let tags = [];
+        let lb = '', lt = '', kamar = '', fitur = '';
+
+        const lines = rawText.split('\n');
+        lines.forEach(function(line) {
+          const trimmed = line.trim();
+          if (!trimmed) return;
+          const lower = trimmed.toLowerCase();
+
+          if (lower.startsWith('badge:')) {
+            badge = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+          } else if (lower.startsWith('harga:')) {
+            price = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+          } else if (lower.startsWith('cicilan:') || lower.startsWith('label:')) {
+            priceLabel = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+          } else if (lower.startsWith('tags:') || lower.startsWith('tag:')) {
+            const tagStr = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+            const sep = tagStr.includes('|') ? '|' : ',';
+            tags = tagStr.split(sep).map(function(t) { return t.trim(); }).filter(Boolean);
+          } else if (lower.startsWith('lb:')) {
+            lb = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+          } else if (lower.startsWith('lt:')) {
+            lt = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+          } else if (lower.startsWith('kamar:')) {
+            kamar = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+          } else if (lower.startsWith('fitur:') || lower.startsWith('spesial:')) {
+            fitur = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+          } else if (lower.startsWith('deskripsi:') || lower.startsWith('keterangan:')) {
+            desc = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+          } else if (!badge && !price && !desc && !trimmed.startsWith('[')) {
+            desc = (desc ? desc + ' ' : '') + trimmed;
+          }
+        });
+
+        // Jika tags belum diisi langsung lewat Tags:, kumpulkan dari LB, LT, Kamar, Fitur
+        if (tags.length === 0) {
+          if (lb) tags.push('LB: ' + lb);
+          if (lt) tags.push('LT: ' + lt);
+          if (kamar) tags.push(kamar.toLowerCase().includes('kamar') ? kamar : (kamar + ' Kamar'));
+          if (fitur) tags.push(fitur);
+        }
+
+        // Update Elemen Kartu Depan
+        if (badge) {
+          const badgeEl = card.querySelector('.service-badge');
+          if (badgeEl) badgeEl.textContent = badge;
+        }
+        if (price) {
+          const priceValEl = card.querySelector('.service-price-tag strong');
+          if (priceValEl) priceValEl.textContent = price;
+        }
+        if (priceLabel) {
+          const priceLabelEl = card.querySelector('.service-price-tag small');
+          if (priceLabelEl) priceLabelEl.textContent = priceLabel;
+        }
+        if (desc) {
+          const cardDescEl = card.querySelector('.unit-desc-text') || card.querySelector('.service-card-content > p');
+          if (cardDescEl) cardDescEl.textContent = desc;
+        }
+
+        // Render Badge Tags (Pill / Label Modern Tanpa Icon)
+        if (tags.length > 0) {
+          let tagsList = card.querySelector('.service-tags-list');
+          if (!tagsList) {
+            const oldSpecGrid = card.querySelector('.service-spec-grid');
+            if (oldSpecGrid) {
+              tagsList = document.createElement('div');
+              tagsList.className = 'service-tags-list';
+              oldSpecGrid.parentNode.replaceChild(tagsList, oldSpecGrid);
+            }
+          }
+          if (tagsList) {
+            let tagsHtml = '';
+            tags.forEach(function(t) {
+              tagsHtml += '<span class="service-tag">' + t + '</span>';
+            });
+            tagsList.innerHTML = tagsHtml;
+          }
+        }
+      });
+
+      // 2. PARSE & SINKRONKAN WIDGET DETAIL TERPISAH (POPUP GALERI & SPESIFIKASI)
+      document.querySelectorAll('.unit-detail-source').forEach(function(detailSource) {
+        const rawDetailEl = detailSource.querySelector('.unit-raw-detail-content');
+        if (!rawDetailEl) return;
+        const rawContent = (rawDetailEl.innerText || rawDetailEl.textContent || '').trim();
+        if (!rawContent) return;
+
+        const unitId = detailSource.getAttribute('data-unit-id') || '';
+        // Cari kartu depan terkait
+        const matchingCard = unitId ? document.querySelector(`.service-card[data-id="${unitId}"]`) : null;
+        const unitTitle = matchingCard ? (matchingCard.querySelector('h3') ? matchingCard.querySelector('h3').textContent.trim() : '') : '';
+
+        let desc = '';
+        let photos = [];
+        let tableRows = [];
+        let currentMode = 'DESC'; // DESC, PHOTOS, SPECS
+
+        const lines = rawContent.split('\n');
+        lines.forEach(function(line) {
+          const trimmed = line.trim();
+          if (!trimmed) return;
+          const lower = trimmed.toLowerCase();
+
+          // Deteksi Section Header
+          if (lower.includes('[galeri') || lower.includes('galeri tampak') || lower.includes('foto tampak')) {
+            currentMode = 'PHOTOS';
+            return;
+          } else if (lower.includes('[spesifikasi') || lower.includes('[detail') || lower.startsWith('tabel:')) {
+            currentMode = 'SPECS';
+            return;
+          } else if (lower.startsWith('deskripsi:') || lower.startsWith('keterangan:')) {
+            currentMode = 'DESC';
+            desc = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+            return;
+          }
+
+          if (currentMode === 'DESC') {
+            if (!desc && !trimmed.startsWith('[')) {
+              desc = trimmed;
+            } else if (desc && !trimmed.startsWith('[')) {
+              desc += ' ' + trimmed;
+            }
+          } else if (currentMode === 'PHOTOS') {
+            let pText = trimmed;
+            if (pText.includes(':') && !pText.toLowerCase().startsWith('http')) {
+              pText = pText.substring(pText.indexOf(':') + 1).trim();
+            }
+            if (pText.includes('=') && !pText.includes('|')) {
+              const eqParts = pText.split('=');
+              const pLabel = eqParts[0].trim();
+              const pUrl = eqParts.slice(1).join('=').trim();
+              if (pUrl.toLowerCase().startsWith('http')) {
+                photos.push({ url: pUrl, label: pLabel });
+                return;
+              }
+            }
+            const parts = pText.split('|');
+            const url = parts[0].trim();
+            const label = parts.length > 1 ? parts.slice(1).join('|').trim() : ('Tampak ' + (photos.length + 1));
+            if (url.toLowerCase().startsWith('http')) {
+              photos.push({ url: url, label: label });
+            }
+          } else if (currentMode === 'SPECS') {
+            let sep = trimmed.includes('=') ? '=' : ':';
+            const parts = trimmed.split(sep);
+            if (parts.length >= 2) {
+              const k = parts[0].trim();
+              const v = parts.slice(1).join(sep).trim();
+              if (k && v) tableRows.push({ key: k, val: v });
+            }
+          }
+        });
+
+        // Sinkronisasi Judul Popup
+        if (unitTitle) {
+          detailSource.setAttribute('data-pop-title', 'Detail Unit: ' + unitTitle);
+          const modalH4 = detailSource.querySelector('h4');
+          if (modalH4) modalH4.textContent = unitTitle;
+        }
+
+        // Update Deskripsi Detail Popup
+        if (desc) {
+          const popDescEl = detailSource.querySelector('.pop-unit-desc') || detailSource.querySelector('p');
+          if (popDescEl) popDescEl.textContent = desc;
+        }
+
+        // Update Galeri Tampak (Thumbnail Buttons & Foto Utama)
+        if (photos.length > 0) {
+          const thumbsContainer = detailSource.querySelector('.pop-gallery-thumbs');
+          if (thumbsContainer) {
+            let thumbsHtml = '';
+            photos.forEach(function(p, idx) {
+              const activeClass = idx === 0 ? ' active' : '';
+              thumbsHtml += `
+                <div class="pop-thumb-item${activeClass}" onclick="switchPopImage(this, '${p.url}')">
+                  <img alt="${p.label}" src="${p.url}"/>
+                  <span>${p.label}</span>
+                </div>
+              `;
+            });
+            thumbsContainer.innerHTML = thumbsHtml;
+
+            const mainImg = detailSource.querySelector('.pop-main-img');
+            if (mainImg) mainImg.src = photos[0].url;
+          }
+        }
+
+        // Update Tabel Spesifikasi Teknis
+        if (tableRows.length > 0) {
+          const tableEl = detailSource.querySelector('.popup-specs-table');
+          if (tableEl) {
+            let rowsHtml = '';
+            tableRows.forEach(function(row) {
+              rowsHtml += '<tr><th>' + row.key + '</th><td>' + row.val + '</td></tr>';
+            });
+            tableEl.innerHTML = rowsHtml;
+          }
+        }
+
+        // Sinkronisasi Direct WhatsApp Button di Modal
+        const ctaBtn = detailSource.querySelector('a.btn-cta');
+        if (ctaBtn) {
+          const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
+          const mName = mConfig.name || "Mas Ro'uf";
+          const mPhone = mConfig.phone || "6287870988073";
+          const finalTitle = unitTitle || 'Tipe Rumah';
+          const waText = `Halo ${mName}, saya tertarik konsultasi Unit ${finalTitle} Pesona Kahuripan.\n\nReferensi: https://www.pesonakahuripan.biz.id/#service`;
+          ctaBtn.href = `https://api.whatsapp.com/send?phone=${mPhone}&text=${encodeURIComponent(waText)}`;
+        }
+      });
+    }
+
+    // Helper: Parser Konfigurasi Footer & Sosial Media
+    function initFooterParser() {
+      const footerWrap = document.querySelector('.footer-wrap');
+      if (!footerWrap) return;
+      const rawDataEl = footerWrap.querySelector('.footer-raw-content');
+      if (!rawDataEl) return;
+
+      const rawText = (rawDataEl.innerText || rawDataEl.textContent || '').trim();
+      if (!rawText) return;
+
+      let copyright = '';
+      let socmed = {};
+
+      const lines = rawText.split('\n');
+      lines.forEach(function(line) {
+        const trimmed = line.trim();
+        if (!trimmed) return;
+        const lower = trimmed.toLowerCase();
+
+        if (lower.startsWith('copyright:') || lower.startsWith('hak cipta:')) {
+          copyright = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+        } else if (lower.startsWith('instagram:') || lower.startsWith('ig:')) {
+          socmed.ig = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+        } else if (lower.startsWith('tiktok:')) {
+          socmed.tiktok = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+        } else if (lower.startsWith('youtube:') || lower.startsWith('yt:')) {
+          socmed.yt = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+        } else if (lower.startsWith('facebook:') || lower.startsWith('fb:')) {
+          socmed.fb = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+        } else if (lower.startsWith('whatsapp:') || lower.startsWith('wa:')) {
+          socmed.wa = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+        } else if (!copyright && !lower.includes('http')) {
+          copyright = trimmed;
+        }
+      });
+
+      if (copyright) {
+        const copyP = footerWrap.querySelector('.footer-copy p');
+        if (copyP) copyP.innerHTML = copyright;
+      }
+
+      if (socmed.ig) {
+        const igLink = footerWrap.querySelector('.socmed-ig');
+        if (igLink) igLink.href = socmed.ig;
+      }
+      if (socmed.tiktok) {
+        const ttLink = footerWrap.querySelector('.socmed-tiktok');
+        if (ttLink) ttLink.href = socmed.tiktok;
+      }
+      if (socmed.yt) {
+        const ytLink = footerWrap.querySelector('.socmed-yt');
+        if (ytLink) ytLink.href = socmed.yt;
+      }
+      if (socmed.fb) {
+        let fbLink = footerWrap.querySelector('.socmed-fb');
+        if (!fbLink) {
+          const container = footerWrap.querySelector('.footer-socmed');
+          if (container) {
+            fbLink = document.createElement('a');
+            fbLink.className = 'socmed-fb';
+            fbLink.target = '_blank';
+            fbLink.rel = 'noopener';
+            fbLink.innerHTML = `<svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg><span>Facebook</span>`;
+            container.appendChild(fbLink);
+          }
+        }
+        if (fbLink) fbLink.href = socmed.fb;
+      }
+    }
+
+    // Helper: Smart Parser Simulasi Angsuran KPR dari Widget Text Murni
+    function initPricingTextParser() {
+      document.querySelectorAll('.pricing-card').forEach(function(card) {
+        const rawDataEl = card.querySelector('.pricing-raw-data');
+        const renderEl = card.querySelector('.pricing-card-render');
+        if (!rawDataEl || !renderEl) return;
+
+        const rawText = (rawDataEl.innerText || rawDataEl.textContent || '').trim();
+        if (!rawText) return;
+
+        const lines = rawText.split('\n');
+        let badge = 'PILIHAN TERBAIK';
+        let title = card.getAttribute('data-title') || 'Type Rumah';
+        let price = 'Rp. 185.000.000,-';
+        let desc = 'Cicilan Flat Sampai Lunas';
+        let tenors = [];
+        let isKomersial = false;
+
+        lines.forEach(function(line) {
+          const trimmed = line.trim();
+          if (!trimmed) return;
+          const lower = trimmed.toLowerCase();
+          if (lower.startsWith('badge:')) {
+            badge = trimmed.split(':')[1].trim();
+          } else if (lower.startsWith('harga:')) {
+            price = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+          } else if (lower.startsWith('deskripsi:') || lower.startsWith('keterangan:')) {
+            desc = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+          } else if (lower.startsWith('tenor')) {
+            const parts = trimmed.split(':');
+            if (parts.length >= 2) {
+              tenors.push({ label: parts[0].trim(), val: parts.slice(1).join(':').trim() });
+            }
+          } else if (lower.startsWith('tipe:')) {
+            if (lower.includes('komersial')) isKomersial = true;
+          }
+        });
+
+        if (tenors.length === 0) return; // Gunakan default jika format tidak cocok
+
+        const badgeStyle = isKomersial ? 'background:#f3f4f6; color:#374151;' : 'background:var(--key); color:#fff;';
+        const btnStyle = isKomersial ? 'background:var(--black);' : '';
+        const btnText = isKomersial ? 'Booking Komersial' : 'Booking Subsidi';
+        const unitName = isKomersial ? 'Type 36/60 Komersial' : 'Subsidi Type 30/60';
+
+        let listHtml = '';
+        tenors.forEach(function(t) {
+          listHtml += `<li><span>${t.label}:</span> <strong>${t.val}</strong></li>`;
+        });
+
+        renderEl.innerHTML = `
+          <span style="${badgeStyle} font-size:12px; font-weight:700; padding:4px 12px; border-radius:100px;">${badge}</span>
+          <h3 style="margin-top:15px;">${title}</h3>
+          <div class="pricing-price">${price}</div>
+          <p style="color:#6b7280; font-size:0.95rem;">${desc}</p>
+          <ul class="pricing-list">
+            ${listHtml}
+          </ul>
+          <a class="btn-cta wa-dynamic-btn" href="https://api.whatsapp.com/send?phone=6287870988073&text=Halo%20Mas%20Ro%27uf%2C%20saya%20mau%20booking%20${encodeURIComponent(unitName)}%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23offer" style="width:100%; box-sizing:border-box; ${btnStyle}" target="_blank">${btnText}</a>
+        `;
+      });
+    }
+
+    // F. Dispatch Pesan ke WhatsApp API (Dinamis dari Master Marketing & Site Link Referensi)
+    function sendWhatsAppMessage(event) {
+      event.preventDefault();
+      const name = document.getElementById('wa-name').value.trim();
+      const phoneUser = document.getElementById('wa-phone-user').value.trim();
+      const message = document.getElementById('wa-message').value.trim();
+
+      // Ambil nama dan nomor dari Master Marketing Config jika ada
+      const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
+      const marketingName = mConfig.name || "Mas Ro'uf";
+      const phone = mConfig.phone || "6287870988073";
+
+      if (!name || !phoneUser || !message) return;
+
+      const fullText = `Halo ${marketingName}, saya ingin bertanya perihal perumahan Pesona Kahuripan.\n\n` +
+        `👤 *Nama:* ${name}\n` +
+        `📱 *No. WhatsApp:* ${phoneUser}\n` +
+        `💬 *Pertanyaan:* ${message}\n\n` +
+        `🌐 *Referensi Website:* https://www.pesonakahuripan.biz.id\n\n` +
+        `Mohon informasi dan tindak lanjutnya. Terima kasih!`;
+
+      window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(fullText)}`, '_blank');
+
+      document.getElementById('wa-name').value = '';
+      document.getElementById('wa-phone-user').value = '';
+      document.getElementById('wa-message').value = '';
+      const box = document.getElementById('chat-box');
+      if (box) box.classList.remove('open');
+    }
+    //]]>
+    </script>
+
+    <!-- Fancybox Initialization (Kemudahan Penggunaan & Tombol Close Responsif) -->
+    <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js'></script>
+    <script type='text/javascript'>
+    //<![CDATA[
+      if (typeof Fancybox !== 'undefined') {
+        Fancybox.destroy(); // Hentikan auto-binding ganda bawaan library
+        Fancybox.bind('[data-fancybox="proyek-album"]', {
+          Hash: false, // Nonaktifkan Hash plugin agar Fancybox TIDAK memantau URL hash
+          groupAll: false,
+          closeButton: false, // Hilangkan tombol close ganda bawaan slide
+          dragToClose: false, // Nonaktifkan gesture drag agar tombol close 1x sentuh langsung tertutup
+          backdropClick: "close",
+          autoFocus: false,
+          placeFocusBack: false,
+          animated: true,
+          Toolbar: {
+            display: {
+              left: ["infobar"],
+              middle: [],
+              right: ["close"]
+            }
+          }
+        });
+
+        // 1x sentuh / klik pada tombol close atau backdrop langsung menutup galeri seketika
+        const instantCloseFancybox = function(e) {
+          const btn = e.target.closest('[data-fancybox-close]');
+          if (btn || e.target.classList.contains('fancybox__backdrop')) {
+            e.preventDefault();
+            e.stopPropagation();
+            Fancybox.close();
+          }
+        };
+        document.addEventListener('pointerup', instantCloseFancybox, { passive: false });
+        document.addEventListener('click', instantCloseFancybox);
+      }
+    //]]>
+    </script>
+
+    &lt;!--</body>--&gt;
+  &lt;/body&gt;
+</html>

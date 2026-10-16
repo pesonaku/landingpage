@@ -1,0 +1,7 @@
+# Backups & Temporary
+*.bak
+*.bak*
+*.tmp
+scratch/
+test_*.js
+real_script.js
