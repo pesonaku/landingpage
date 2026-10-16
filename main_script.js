@@ -195,48 +195,88 @@ function initLandingPage() {
       });
 
       // E. Native Modal Popup Engine (Trigger: [target^="pop-"])
-      document.querySelectorAll('[target^="pop-"]').forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          const popId = this.getAttribute('target');
-          const source = document.getElementById(popId);
-          if (!source) return;
+      document.addEventListener('click', function(e) {
+        const btn = e.target.closest('[target^="pop-"]');
+        if (!btn) return;
+        e.preventDefault();
 
-          const title = source.getAttribute('data-pop-title') || 'Detail Informasi';
-          const modal = document.createElement('div');
-          modal.className = 'pop open';
-          modal.innerHTML = `
-            <div class="pop-wrap">
-              <div class="pop-header">
-                <div class="pop-title"><h3>${title}</h3></div>
-                <button aria-label="Tutup Detail" class="pop-close">&times;</button>
-              </div>
-              <div class="pop-content">${source.innerHTML}</div>
-            </div>
-          `;
-
-          document.body.appendChild(modal);
-          document.body.style.overflow = 'hidden';
-
-          const closeModal = function() {
-            modal.classList.remove('open');
-            setTimeout(() => { modal.remove(); document.body.style.overflow = ''; }, 200);
-          };
-
-          const closeBtn = modal.querySelector('.pop-close');
-          if (closeBtn) {
-            closeBtn.addEventListener('click', function(evt) {
-              evt.preventDefault();
-              closeModal();
-            });
-            closeBtn.addEventListener('pointerup', function(evt) {
-              evt.preventDefault();
-              closeModal();
-            });
+        const popId = btn.getAttribute('target') || '';
+        let source = popId ? document.getElementById(popId) : null;
+        if (!source && popId) {
+          // Fallback 1: Strip instance suffix if present (e.g. pop-service-Image31_0 -> pop-service-Image31)
+          const cleanId = popId.replace(/[_-][0-9]+$/, '');
+          source = document.getElementById(cleanId);
+        }
+        if (!source) {
+          // Fallback 2: Check inside closest card or parent widget
+          const parentCard = btn.closest('.service-card') || btn.closest('.widget');
+          if (parentCard) {
+            source = parentCard.querySelector('.unit-detail-source') ||
+                     (parentCard.nextElementSibling && parentCard.nextElementSibling.classList.contains('unit-detail-source') ? parentCard.nextElementSibling : null);
           }
-          modal.addEventListener('click', function(evt) {
-            if (evt.target === modal) closeModal();
+        }
+        if (!source && popId) {
+          // Fallback 3: Match Image ID (e.g. Image31, Image32, etc.)
+          const match = popId.match(/Image\d+/);
+          if (match) {
+            source = document.querySelector(`.unit-detail-source[data-unit-id="${match[0]}"]`);
+          }
+        }
+        if (!source) return;
+
+        const title = source.getAttribute('data-pop-title') || 'Detail Informasi';
+        const modal = document.createElement('div');
+        modal.className = 'pop open';
+        modal.innerHTML = `
+          <div class="pop-wrap">
+            <div class="pop-header">
+              <div class="pop-title"><h3>${title}</h3></div>
+              <button aria-label="Tutup Detail" class="pop-close">&times;</button>
+            </div>
+            <div class="pop-content">${source.innerHTML}</div>
+          </div>
+        `;
+
+        // Sinkronisasi WhatsApp link pada modal yang baru dibuka
+        const ctaBtn = modal.querySelector('a.btn-cta') || modal.querySelector('.wa-dynamic-btn');
+        if (ctaBtn) {
+          const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
+          const mName = mConfig.name || "Mas Ro'uf";
+          const mPhone = mConfig.phone || "6287870988073";
+          const unitName = title.replace(/^Detail Unit:\s*/i, '');
+          const waText = `Halo ${mName}, saya tertarik konsultasi Unit ${unitName} Pesona Kahuripan.\n\nReferensi: https://www.pesonakahuripan.biz.id/#service`;
+          ctaBtn.href = `https://api.whatsapp.com/send?phone=${mPhone}&text=${encodeURIComponent(waText)}`;
+        }
+
+        document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden';
+
+        const closeModal = function() {
+          modal.classList.remove('open');
+          document.removeEventListener('keydown', onKeyDown);
+          setTimeout(() => { modal.remove(); document.body.style.overflow = ''; }, 200);
+        };
+
+        const onKeyDown = function(evt) {
+          if (evt.key === 'Escape' || evt.keyCode === 27) {
+            closeModal();
+          }
+        };
+        document.addEventListener('keydown', onKeyDown);
+
+        const closeBtn = modal.querySelector('.pop-close');
+        if (closeBtn) {
+          closeBtn.addEventListener('click', function(evt) {
+            evt.preventDefault();
+            closeModal();
           });
+          closeBtn.addEventListener('pointerup', function(evt) {
+            evt.preventDefault();
+            closeModal();
+          });
+        }
+        modal.addEventListener('click', function(evt) {
+          if (evt.target === modal) closeModal();
         });
       });
 
@@ -550,207 +590,232 @@ function initLandingPage() {
       // 1. PARSE & UPDATE KARTU DEPAN (TIPE RUMAH PILIHAN: 6 INFORMASI RESMI)
       document.querySelectorAll('.service-card').forEach(function(card) {
         const rawCaptionEl = card.querySelector('.unit-raw-caption');
-        if (!rawCaptionEl) return;
-        const rawText = (rawCaptionEl.innerText || rawCaptionEl.textContent || '').trim();
-        if (!rawText) return;
+        if (rawCaptionEl) {
+          const rawText = (rawCaptionEl.textContent || rawCaptionEl.innerText || '').trim();
+          if (rawText) {
+            let badge = '';
+            let price = '';
+            let installment = '';
+            let lb = '', lt = '', tamu = '', tidur = '', mandi = '', carport = '';
 
-        let badge = '';
-        let price = '';
-        let installment = '';
-        let lb = '', lt = '', tamu = '', tidur = '', mandi = '', carport = '';
+            const lines = rawText.split('\n');
+            lines.forEach(function(line) {
+              const trimmed = line.trim();
+              if (!trimmed) return;
+              const lower = trimmed.toLowerCase();
 
-        const lines = rawText.split('\n');
-        lines.forEach(function(line) {
-          const trimmed = line.trim();
-          if (!trimmed) return;
-          const lower = trimmed.toLowerCase();
+              if (lower.startsWith('badge:')) {
+                badge = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+              } else if (lower.startsWith('harga:')) {
+                price = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+              } else if (lower.startsWith('cicilan:') || lower.startsWith('angsuran:') || lower.startsWith('label:')) {
+                installment = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+              } else if (lower.startsWith('lb:') || lower.startsWith('bangunan:')) {
+                lb = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+              } else if (lower.startsWith('lt:') || lower.startsWith('tanah:')) {
+                lt = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+              } else if (lower.startsWith('ruang tamu:') || lower.startsWith('tamu:')) {
+                tamu = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+              } else if (lower.startsWith('kamar tidur:') || lower.startsWith('tidur:') || lower.startsWith('kamar:')) {
+                tidur = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+              } else if (lower.startsWith('kamar mandi:') || lower.startsWith('mandi:') || lower.startsWith('toilet:')) {
+                mandi = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+              } else if (lower.startsWith('carport:') || lower.startsWith('garasi:')) {
+                carport = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+              }
+            });
 
-          if (lower.startsWith('badge:')) {
-            badge = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-          } else if (lower.startsWith('harga:')) {
-            price = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-          } else if (lower.startsWith('cicilan:') || lower.startsWith('angsuran:') || lower.startsWith('label:')) {
-            installment = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-          } else if (lower.startsWith('lb:') || lower.startsWith('bangunan:')) {
-            lb = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-          } else if (lower.startsWith('lt:') || lower.startsWith('tanah:')) {
-            lt = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-          } else if (lower.startsWith('ruang tamu:') || lower.startsWith('tamu:')) {
-            tamu = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-          } else if (lower.startsWith('kamar tidur:') || lower.startsWith('tidur:') || lower.startsWith('kamar:')) {
-            tidur = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-          } else if (lower.startsWith('kamar mandi:') || lower.startsWith('mandi:') || lower.startsWith('toilet:')) {
-            mandi = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-          } else if (lower.startsWith('carport:') || lower.startsWith('garasi:')) {
-            carport = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+            // Update Elemen Kartu Depan
+            if (badge) {
+              const badgeEl = card.querySelector('.service-badge');
+              if (badgeEl) badgeEl.textContent = badge;
+            }
+            if (price) {
+              const priceValEl = card.querySelector('.price-amount') || card.querySelector('.service-price-tag strong');
+              if (priceValEl) priceValEl.textContent = price;
+            }
+            if (installment) {
+              const instEl = card.querySelector('.price-installment') || card.querySelector('.service-price-tag small');
+              if (instEl) instEl.textContent = installment;
+            }
+            if (lb) {
+              const lbEl = card.querySelector('.spec-lb strong');
+              if (lbEl) lbEl.textContent = lb;
+            }
+            if (lt) {
+              const ltEl = card.querySelector('.spec-lt strong');
+              if (ltEl) ltEl.textContent = lt;
+            }
+            if (tamu) {
+              const tamuEl = card.querySelector('.spec-tamu strong');
+              if (tamuEl) tamuEl.textContent = tamu;
+            }
+            if (tidur) {
+              const tidurEl = card.querySelector('.spec-tidur strong');
+              if (tidurEl) tidurEl.textContent = tidur;
+            }
+            if (mandi) {
+              const mandiEl = card.querySelector('.spec-mandi strong');
+              if (mandiEl) mandiEl.textContent = mandi;
+            }
+            if (carport) {
+              const carportEl = card.querySelector('.spec-carport strong');
+              if (carportEl) carportEl.textContent = carport;
+            }
           }
-        });
+        }
 
-        // Update Elemen Kartu Depan
-        if (badge) {
-          const badgeEl = card.querySelector('.service-badge');
-          if (badgeEl) badgeEl.textContent = badge;
-        }
-        if (price) {
-          const priceValEl = card.querySelector('.price-amount') || card.querySelector('.service-price-tag strong');
-          if (priceValEl) priceValEl.textContent = price;
-        }
-        if (installment) {
-          const instEl = card.querySelector('.price-installment') || card.querySelector('.service-price-tag small');
-          if (instEl) instEl.textContent = installment;
-        }
-        if (lb) {
-          const lbEl = card.querySelector('.spec-lb strong');
-          if (lbEl) lbEl.textContent = lb;
-        }
-        if (lt) {
-          const ltEl = card.querySelector('.spec-lt strong');
-          if (ltEl) ltEl.textContent = lt;
-        }
-        if (tamu) {
-          const tamuEl = card.querySelector('.spec-tamu strong');
-          if (tamuEl) tamuEl.textContent = tamu;
-        }
-        if (tidur) {
-          const tidurEl = card.querySelector('.spec-tidur strong');
-          if (tidurEl) tidurEl.textContent = tidur;
-        }
-        if (mandi) {
-          const mandiEl = card.querySelector('.spec-mandi strong');
-          if (mandiEl) mandiEl.textContent = mandi;
-        }
-        if (carport) {
-          const carportEl = card.querySelector('.spec-carport strong');
-          if (carportEl) carportEl.textContent = carport;
+        // Sinkronisasi WhatsApp Button pada Kartu Depan
+        const cardTitle = (card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : '') || 'Tipe Rumah';
+        const cardWaBtn = card.querySelector('.btn-service-wa');
+        if (cardWaBtn) {
+          const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
+          const mName = mConfig.name || "Mas Ro'uf";
+          const mPhone = mConfig.phone || "6287870988073";
+          const cardWaText = `Halo ${mName}, saya tertarik konsultasi Unit ${cardTitle} Pesona Kahuripan.\n\nReferensi: https://www.pesonakahuripan.biz.id/#service`;
+          cardWaBtn.href = `https://api.whatsapp.com/send?phone=${mPhone}&text=${encodeURIComponent(cardWaText)}`;
         }
       });
 
-      // 2. PARSE & SINKRONKAN WIDGET DETAIL TERPISAH (POPUP GALERI & SPESIFIKASI)
-      document.querySelectorAll('.unit-detail-source').forEach(function(detailSource) {
-        const rawDetailEl = detailSource.querySelector('.unit-raw-detail-content');
-        if (!rawDetailEl) return;
-        const rawContent = (rawDetailEl.innerText || rawDetailEl.textContent || '').trim();
-        if (!rawContent) return;
+      // Bersihkan widget warisan lama (Image35 & Image36) jika masih dirender Blogger
+      ['Image35', 'Image36'].forEach(function(legacyId) {
+        const legacyEl = document.getElementById(legacyId);
+        if (legacyEl) {
+          const hasCard = legacyEl.querySelector('.service-card');
+          if (!hasCard || legacyEl.children.length === 0 || (legacyEl.textContent || '').trim() === '') {
+            legacyEl.remove();
+          }
+        }
+      });
 
+      // 2. PARSE & SINKRONKAN WIDGET DETAIL (POPUP GALERI & SPESIFIKASI)
+      document.querySelectorAll('.unit-detail-source').forEach(function(detailSource) {
         const unitId = detailSource.getAttribute('data-unit-id') || '';
         // Cari kartu depan terkait
-        const matchingCard = unitId ? document.querySelector(`.service-card[data-id="${unitId}"]`) : null;
+        const matchingCard = unitId ? (document.querySelector(`.service-card[data-id="${unitId}"]`) || detailSource.closest('.widget')?.querySelector('.service-card')) : detailSource.closest('.widget')?.querySelector('.service-card');
         const unitTitle = matchingCard ? (matchingCard.querySelector('h3') ? matchingCard.querySelector('h3').textContent.trim() : '') : '';
 
-        let desc = '';
-        let photos = [];
-        let tableRows = [];
-        let currentMode = 'DESC'; // DESC, PHOTOS, SPECS
+        const rawDetailEl = detailSource.querySelector('.unit-raw-detail-content');
+        if (rawDetailEl) {
+          const rawContent = (rawDetailEl.textContent || rawDetailEl.innerText || '').trim();
+          if (rawContent) {
+            let desc = '';
+            let photos = [];
+            let tableRows = [];
+            let currentMode = 'DESC'; // DESC, PHOTOS, SPECS
 
-        const lines = rawContent.split('\n');
-        lines.forEach(function(line) {
-          const trimmed = line.trim();
-          if (!trimmed) return;
-          const lower = trimmed.toLowerCase();
+            const lines = rawContent.split('\n');
+            lines.forEach(function(line) {
+              const trimmed = line.trim();
+              if (!trimmed) return;
+              const lower = trimmed.toLowerCase();
 
-          // Deteksi Section Header
-          if (lower.includes('[galeri') || lower.includes('galeri tampak') || lower.includes('foto tampak')) {
-            currentMode = 'PHOTOS';
-            return;
-          } else if (lower.includes('[spesifikasi') || lower.includes('[detail') || lower.startsWith('tabel:')) {
-            currentMode = 'SPECS';
-            return;
-          } else if (lower.startsWith('deskripsi:') || lower.startsWith('keterangan:')) {
-            currentMode = 'DESC';
-            desc = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-            return;
-          }
-
-          if (currentMode === 'DESC') {
-            if (!desc && !trimmed.startsWith('[')) {
-              desc = trimmed;
-            } else if (desc && !trimmed.startsWith('[')) {
-              desc += ' ' + trimmed;
-            }
-          } else if (currentMode === 'PHOTOS') {
-            let pText = trimmed;
-            if (pText.includes(':') && !pText.toLowerCase().startsWith('http')) {
-              pText = pText.substring(pText.indexOf(':') + 1).trim();
-            }
-            if (pText.includes('=') && !pText.includes('|')) {
-              const eqParts = pText.split('=');
-              const pLabel = eqParts[0].trim();
-              const pUrl = eqParts.slice(1).join('=').trim();
-              if (pUrl.toLowerCase().startsWith('http')) {
-                photos.push({ url: pUrl, label: pLabel });
+              // Deteksi Section Header
+              if (lower.includes('[galeri') || lower.includes('galeri tampak') || lower.includes('foto tampak')) {
+                currentMode = 'PHOTOS';
+                return;
+              } else if (lower.includes('[spesifikasi') || lower.includes('[detail') || lower.startsWith('tabel:')) {
+                currentMode = 'SPECS';
+                return;
+              } else if (lower.startsWith('deskripsi:') || lower.startsWith('keterangan:')) {
+                currentMode = 'DESC';
+                desc = trimmed.substring(trimmed.indexOf(':') + 1).trim();
                 return;
               }
-            }
-            const parts = pText.split('|');
-            const url = parts[0].trim();
-            const label = parts.length > 1 ? parts.slice(1).join('|').trim() : ('Tampak ' + (photos.length + 1));
-            if (url.toLowerCase().startsWith('http')) {
-              photos.push({ url: url, label: label });
-            }
-          } else if (currentMode === 'SPECS') {
-            let sep = trimmed.includes('=') ? '=' : ':';
-            const parts = trimmed.split(sep);
-            if (parts.length >= 2) {
-              const k = parts[0].trim();
-              const v = parts.slice(1).join(sep).trim();
-              if (k && v) tableRows.push({ key: k, val: v });
-            }
-          }
-        });
 
-        // Sinkronisasi Judul Popup
-        if (unitTitle) {
-          detailSource.setAttribute('data-pop-title', 'Detail Unit: ' + unitTitle);
-          const modalH4 = detailSource.querySelector('h4');
-          if (modalH4) modalH4.textContent = unitTitle;
-        }
-
-        // Update Deskripsi Detail Popup
-        if (desc) {
-          const popDescEl = detailSource.querySelector('.pop-unit-desc') || detailSource.querySelector('p');
-          if (popDescEl) popDescEl.textContent = desc;
-        }
-
-        // Update Galeri Tampak (Thumbnail Buttons & Foto Utama)
-        if (photos.length > 0) {
-          const thumbsContainer = detailSource.querySelector('.pop-gallery-thumbs');
-          if (thumbsContainer) {
-            let thumbsHtml = '';
-            photos.forEach(function(p, idx) {
-              const activeClass = idx === 0 ? ' active' : '';
-              thumbsHtml += `
-                <div class="pop-thumb-item${activeClass}" onclick="switchPopImage(this, '${p.url}')">
-                  <img alt="${p.label}" src="${p.url}"/>
-                  <span>${p.label}</span>
-                </div>
-              `;
+              if (currentMode === 'DESC') {
+                if (!desc && !trimmed.startsWith('[')) {
+                  desc = trimmed;
+                } else if (desc && !trimmed.startsWith('[')) {
+                  desc += ' ' + trimmed;
+                }
+              } else if (currentMode === 'PHOTOS') {
+                let pText = trimmed;
+                if (pText.includes(':') && !pText.toLowerCase().startsWith('http')) {
+                  pText = pText.substring(pText.indexOf(':') + 1).trim();
+                }
+                if (pText.includes('=') && !pText.includes('|')) {
+                  const eqParts = pText.split('=');
+                  const pLabel = eqParts[0].trim();
+                  const pUrl = eqParts.slice(1).join('=').trim();
+                  if (pUrl.toLowerCase().startsWith('http')) {
+                    photos.push({ url: pUrl, label: pLabel });
+                    return;
+                  }
+                }
+                const parts = pText.split('|');
+                const url = parts[0].trim();
+                const label = parts.length > 1 ? parts.slice(1).join('|').trim() : ('Tampak ' + (photos.length + 1));
+                if (url.toLowerCase().startsWith('http')) {
+                  photos.push({ url: url, label: label });
+                }
+              } else if (currentMode === 'SPECS') {
+                let sep = trimmed.includes('=') ? '=' : ':';
+                const parts = trimmed.split(sep);
+                if (parts.length >= 2) {
+                  const k = parts[0].trim();
+                  const v = parts.slice(1).join(sep).trim();
+                  if (k && v) tableRows.push({ key: k, val: v });
+                }
+              }
             });
-            thumbsContainer.innerHTML = thumbsHtml;
 
-            const mainImg = detailSource.querySelector('.pop-main-img');
-            if (mainImg) mainImg.src = photos[0].url;
-          }
-        }
+            // Sinkronisasi Judul Popup
+            if (unitTitle) {
+              detailSource.setAttribute('data-pop-title', 'Detail Unit: ' + unitTitle);
+              const modalH4 = detailSource.querySelector('h4');
+              if (modalH4) modalH4.textContent = unitTitle;
+            }
 
-        // Update Tabel Spesifikasi Teknis
-        if (tableRows.length > 0) {
-          const tableEl = detailSource.querySelector('.popup-specs-table');
-          if (tableEl) {
-            let rowsHtml = '';
-            tableRows.forEach(function(row) {
-              rowsHtml += '<tr><th>' + row.key + '</th><td>' + row.val + '</td></tr>';
-            });
-            tableEl.innerHTML = rowsHtml;
+            // Update Deskripsi Detail Popup
+            if (desc) {
+              const popDescEl = detailSource.querySelector('.pop-unit-desc') || detailSource.querySelector('p');
+              if (popDescEl) popDescEl.textContent = desc;
+            }
+
+            // Update Galeri Tampak (Thumbnail Buttons & Foto Utama)
+            if (photos.length > 0) {
+              const thumbsContainer = detailSource.querySelector('.pop-gallery-thumbs');
+              if (thumbsContainer) {
+                let thumbsHtml = '';
+                photos.forEach(function(p, idx) {
+                  const activeClass = idx === 0 ? ' active' : '';
+                  thumbsHtml += `
+                    <div class="pop-thumb-item${activeClass}" onclick="switchPopImage(this, '${p.url}')">
+                      <img alt="${p.label}" src="${p.url}"/>
+                      <span>${p.label}</span>
+                    </div>
+                  `;
+                });
+                thumbsContainer.innerHTML = thumbsHtml;
+
+                const mainImg = detailSource.querySelector('.pop-main-img');
+                if (mainImg) mainImg.src = photos[0].url;
+              }
+            }
+
+            // Update Tabel Spesifikasi Teknis
+            if (tableRows.length > 0) {
+              const tableEl = detailSource.querySelector('.popup-specs-table');
+              if (tableEl) {
+                let rowsHtml = '';
+                tableRows.forEach(function(row) {
+                  rowsHtml += '<tr><th>' + row.key + '</th><td>' + row.val + '</td></tr>';
+                });
+                tableEl.innerHTML = rowsHtml;
+              }
+            }
           }
         }
 
         // Sinkronisasi Direct WhatsApp Button di Modal
-        const ctaBtn = detailSource.querySelector('a.btn-cta');
+        const ctaBtn = detailSource.querySelector('a.btn-cta') || detailSource.querySelector('.wa-dynamic-btn');
         if (ctaBtn) {
           const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
           const mName = mConfig.name || "Mas Ro'uf";
           const mPhone = mConfig.phone || "6287870988073";
-          const finalTitle = unitTitle || 'Tipe Rumah';
+          const modalH4 = detailSource.querySelector('h4');
+          const finalTitle = (modalH4 ? modalH4.textContent.trim() : '') || unitTitle || 'Tipe Rumah';
           const waText = `Halo ${mName}, saya tertarik konsultasi Unit ${finalTitle} Pesona Kahuripan.\n\nReferensi: https://www.pesonakahuripan.biz.id/#service`;
           ctaBtn.href = `https://api.whatsapp.com/send?phone=${mPhone}&text=${encodeURIComponent(waText)}`;
         }

@@ -763,12 +763,21 @@ Tombol: Klaim Promo Spesial via WhatsApp]]></b:widget-setting>
       <!-- ================= SERVICE / TIPE RUMAH ================= -->
       <section id='service'>
         <div class='wrapper'>
-          <div class='section-head reveal'>
-            <span class='section-badge'>PILIHAN HUNIAN TERBAIK</span>
-            <h2>Tipe Rumah Pilihan</h2>
-            <p>Pilihan unit rumah subsidi pemerintah dan komersial dengan desain modern siap huni.</p>
-          </div>
           <b:section class='service-section' id='service-section' name='[05. TIPE RUMAH] Pilihan Unit (Foto &amp; Harga Kartu)' showaddelement='false' version='3'>
+            <!-- JUDUL SECTION (WIDGET RESMI BLOGGER BISA DIEDIT VIA LAYOUT) -->
+            <b:widget id='Text31' locked='true' title='Tipe Rumah Pilihan' type='Text' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='content'>Pilihan unit rumah subsidi pemerintah dan komersial siap huni dengan desain modern dan lingkungan asri.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='section-head reveal'>
+                  <span class='section-badge'>PILIHAN HUNIAN TERBAIK</span>
+                  <h2><b:eval expr='data:title ?: &quot;Tipe Rumah Pilihan&quot;'/></h2>
+                  <p><b:eval expr='data:content ?: &quot;Pilihan unit rumah subsidi pemerintah dan komersial siap huni dengan desain modern dan lingkungan asri.&quot;'/></p>
+                </div>
+              </b:includable>
+            </b:widget>
+
             <!-- TIPE 1: TYPE 30/60 (RUMAH SUBSIDI) -->
             <b:widget id='Image31' locked='true' title='Type 30/60' type='Image' version='3' visible='true'>
               <b:widget-settings>
@@ -783,20 +792,20 @@ Harga: Rp 185 Jt-an
 Cicilan: Cicilan Flat Mulai Rp 1,1 Jt/bln
 LB: 30 m²
 LT: 60 m²
-Ruang Tamu: 1 Ruang Tamu
+Ruang Tamu: 1 Ruang
 Kamar Tidur: 2 Kamar
 Kamar Mandi: 1 Toilet
 Carport: 1 Mobil]]></b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
-                <div class='service-card reveal' expr:data-id='data:widget.instanceId'>
+                <div class='service-card reveal' data-id='Image31'>
                   <div class='unit-raw-caption' style='display:none;'><data:caption/></div>
                   <div class='service-card-img'>
                     <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
                     <span class='service-badge subsidi'>Subsidi Pemerintah</span>
                   </div>
                   <div class='service-card-content'>
-                    <h3 class='service-card-title'><data:title/></h3>
+                    <h3 class='service-card-title'><b:eval expr='data:title ?: &quot;Type 30/60&quot;'/></h3>
                     <div class='service-price-block'>
                       <span class='price-label'>Harga Mulai</span>
                       <strong class='price-amount'>Rp 185 Jt-an</strong>
@@ -835,7 +844,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                         <svg viewBox='0 0 24 24'><path d='M20 13V4.83C20 3.27 18.73 2 17.17 2c-.75 0-1.47.3-2 .83l-1.25 1.25c-.16-.05-.33-.08-.51-.08-.88 0-1.6.72-1.6 1.6 0 .42.17.81.44 1.1l-1.44 1.44C10.53 8.05 10.19 8 9.83 8H6c-2.21 0-4 1.79-4 4v1h18zm-2 2H4v3c0 2.21 1.79 4 4 4h8c2.21 0 4-1.79 4-4v-3z'/></svg>
                         <div class='spec-meta'>
                           <small>K. Mandi</small>
-                          <strong>1 Mandi</strong>
+                          <strong>1 Toilet</strong>
                         </div>
                       </div>
                       <div class='spec-item spec-carport' title='Carport'>
@@ -847,10 +856,64 @@ Carport: 1 Mobil]]></b:widget-setting>
                       </div>
                     </div>
                     <div class='service-card-footer'>
-                      <a class='btn-service' href='#detail' expr:target='&quot;pop-service-&quot; + data:widget.instanceId'>
+                      <a class='btn-service' href='#detail' target='pop-service-Image31'>
                         <span>Lihat Detail</span>
                         <svg viewBox='0 0 24 24'><path d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/></svg>
                       </a>
+                      <a aria-label='Konsultasi Unit Type 30/60 via WhatsApp' class='btn-service-wa wa-dynamic-btn' expr:href='data:link' target='_blank' title='Tanya Unit via WhatsApp'>
+                        <svg viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- POPUP DETAIL UNIT 1: TYPE 30/60 -->
+                <div class='unit-detail-source' data-pop-title='Detail Unit: Type 30/60 (Rumah Subsidi)' data-unit-id='Image31' id='pop-service-Image31' style='display:none;'>
+                  <div class='popup-unit-grid'>
+                    <div class='popup-unit-gallery'>
+                      <div class='pop-main-img-wrap'>
+                        <img alt='Type 30/60' class='pop-main-img' src='https://blogger.googleusercontent.com/img/a/AVvXsEjAiWMl-izhTXDQEvXwhDzb_7ucxmDCY2Ppnecuft9G9JTuBKoeiC5gwvQrS-vWVbdpnMXfK6g9WR296FvxmwHr9jwm4COLLz8FiGKdKyA3IOkilBW9IFGlJF7cJSTwiD6a394z97ur98oXrHBRuqRhtoPBYhSKFZHfHLVGXoIdJwl50_e4rF2SfzzwCGI=s1358'/>
+                      </div>
+                      <div class='pop-gallery-label'>Galeri Tampak Rumah &amp; Ruangan:</div>
+                      <div class='pop-gallery-thumbs'>
+                        <div class='pop-thumb-item active' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEjAiWMl-izhTXDQEvXwhDzb_7ucxmDCY2Ppnecuft9G9JTuBKoeiC5gwvQrS-vWVbdpnMXfK6g9WR296FvxmwHr9jwm4COLLz8FiGKdKyA3IOkilBW9IFGlJF7cJSTwiD6a394z97ur98oXrHBRuqRhtoPBYhSKFZHfHLVGXoIdJwl50_e4rF2SfzzwCGI=s1358&quot;)'>
+                          <img alt='Tampak Depan' src='https://blogger.googleusercontent.com/img/a/AVvXsEjAiWMl-izhTXDQEvXwhDzb_7ucxmDCY2Ppnecuft9G9JTuBKoeiC5gwvQrS-vWVbdpnMXfK6g9WR296FvxmwHr9jwm4COLLz8FiGKdKyA3IOkilBW9IFGlJF7cJSTwiD6a394z97ur98oXrHBRuqRhtoPBYhSKFZHfHLVGXoIdJwl50_e4rF2SfzzwCGI=s200'/>
+                          <span>Tampak Depan</span>
+                        </div>
+                        <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEg3qDQjNzRietsr9QSOQoSs2fv9GUukYFGA8nul5Yfdg5AxRhWXlR1-2KXu62rcv6pqDmvjmSNZQymRVEKkl1QPqzt7_zS-8Ld3Q5DjEN116lUFjkxda4ZcWmXxICrKkPjYb9BtVAYBT0funPcVXqPy5E9oFDqjU8NArkpz7YmQQYYywrf_X3tW0dKReSc=s1080&quot;)'>
+                          <img alt='Ruang Tamu' src='https://blogger.googleusercontent.com/img/a/AVvXsEg3qDQjNzRietsr9QSOQoSs2fv9GUukYFGA8nul5Yfdg5AxRhWXlR1-2KXu62rcv6pqDmvjmSNZQymRVEKkl1QPqzt7_zS-8Ld3Q5DjEN116lUFjkxda4ZcWmXxICrKkPjYb9BtVAYBT0funPcVXqPy5E9oFDqjU8NArkpz7YmQQYYywrf_X3tW0dKReSc=s200'/>
+                          <span>Ruang Tamu</span>
+                        </div>
+                        <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEiBJzxa8orMGHiuVakTmRSTAHG1d0k-zZPMojZyVFac5q-z3KMiuqwU7kuEuJ-sdvW40UqFrSuEuGCOJirO_bhD-xyHh3dpZEwrLT0xapr5-o0xwKJklveX4HOviRi9SyevTI9XoZHrKnyXePjRzI4pIN6o07sY3HXqOHwtlvWGBplleGz0Ry0fc31tzGA=s1080&quot;)'>
+                          <img alt='Kamar Tidur' src='https://blogger.googleusercontent.com/img/a/AVvXsEiBJzxa8orMGHiuVakTmRSTAHG1d0k-zZPMojZyVFac5q-z3KMiuqwU7kuEuJ-sdvW40UqFrSuEuGCOJirO_bhD-xyHh3dpZEwrLT0xapr5-o0xwKJklveX4HOviRi9SyevTI9XoZHrKnyXePjRzI4pIN6o07sY3HXqOHwtlvWGBplleGz0Ry0fc31tzGA=s200'/>
+                          <span>Kamar Tidur</span>
+                        </div>
+                        <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEiW6S9SgD3NI348DsDJvWhrYfjWrWQ3yBneuFB5v9Wite6aje3AKzRTyqNwH1aftgE7gRgPPnUsOdjB_cYIhWKrFOTlXNjtGP2tbMOq9RlsABzpIei9EZnWzVTOGofN-IUbXsoXv4TZkM1SGjqvKsy6In8tK9tOSGayCgkJzSW_Erybm2f-fz8bbBBWQvo=s1080&quot;)'>
+                          <img alt='Lingkungan' src='https://blogger.googleusercontent.com/img/a/AVvXsEiW6S9SgD3NI348DsDJvWhrYfjWrWQ3yBneuFB5v9Wite6aje3AKzRTyqNwH1aftgE7gRgPPnUsOdjB_cYIhWKrFOTlXNjtGP2tbMOq9RlsABzpIei9EZnWzVTOGofN-IUbXsoXv4TZkM1SGjqvKsy6In8tK9tOSGayCgkJzSW_Erybm2f-fz8bbBBWQvo=s200'/>
+                          <span>Lingkungan</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 style='font-size:1.25rem; font-weight:700; color:var(--dark); margin-bottom:8px;'>Type 30/60 - Rumah Subsidi Pemerintah</h4>
+                      <p class='pop-unit-desc' style='color:#64748b; font-size:0.9rem; line-height:1.5; margin-bottom:12px;'>Hunian subsidi berkualitas dengan konstruksi double dinding hebel, cicilan flat 1 jutaan/bulan sampai lunas, dan fasilitas kawasan siap huni.</p>
+                      <table class='popup-specs-table'>
+                        <tr><th>Kategori Unit</th><td>Rumah Subsidi Program Pemerintah</td></tr>
+                        <tr><th>Luas Bangunan / Tanah</th><td>30 m&#178; / 60 m&#178; (6 &#215; 10 m)</td></tr>
+                        <tr><th>Ruang Tamu</th><td>1 Ruang Tamu Keluarga</td></tr>
+                        <tr><th>Kamar Tidur / Mandi</th><td>2 Kamar Tidur / 1 Kamar Mandi</td></tr>
+                        <tr><th>Carport &amp; Halaman</th><td>Carport Rabat Beton 1 Mobil + Taman Depan</td></tr>
+                        <tr><th>Struktur &amp; Dinding</th><td>Pondasi Batu Kali, Double Dinding Hebel</td></tr>
+                        <tr><th>Rangka &amp; Atap</th><td>Baja Ringan, Genteng Beton Berwarna</td></tr>
+                        <tr><th>Listrik &amp; Air</th><td>PLN 1.300 Watt / Sumur Bor Pompa Air Jernih</td></tr>
+                        <tr><th>Skema Cicilan</th><td>KPR Subsidi BTN / BSI Flat Mulai Rp 1,1 Jt-an</td></tr>
+                      </table>
+                      <div style='margin-top:20px; display:flex; gap:10px;'>
+                        <a class='btn-cta wa-dynamic-btn' expr:href='data:link' style='display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 20px; background:#25D366; color:#fff; border-radius:10px; font-weight:700; font-size:0.95rem; text-decoration:none;' target='_blank'>
+                          <svg style='width:20px; height:20px; fill:currentColor;' viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
+                          <span>Konsultasi Unit via WhatsApp</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -871,20 +934,20 @@ Harga: Rp 435 Jt-an
 Cicilan: Cicilan Mulai Rp 2,2 Jt/bln
 LB: 36 m²
 LT: 60 m²
-Ruang Tamu: 1 Ruang Tamu
+Ruang Tamu: 1 Ruang
 Kamar Tidur: 2 Kamar
 Kamar Mandi: 1 Toilet
 Carport: 1 Mobil]]></b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
-                <div class='service-card reveal delay-1' expr:data-id='data:widget.instanceId'>
+                <div class='service-card reveal delay-1' data-id='Image32'>
                   <div class='unit-raw-caption' style='display:none;'><data:caption/></div>
                   <div class='service-card-img'>
                     <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
                     <span class='service-badge komersil'>Komersial Minimalis</span>
                   </div>
                   <div class='service-card-content'>
-                    <h3 class='service-card-title'><data:title/></h3>
+                    <h3 class='service-card-title'><b:eval expr='data:title ?: &quot;Type 36&quot;'/></h3>
                     <div class='service-price-block'>
                       <span class='price-label'>Harga Mulai</span>
                       <strong class='price-amount'>Rp 435 Jt-an</strong>
@@ -923,7 +986,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                         <svg viewBox='0 0 24 24'><path d='M20 13V4.83C20 3.27 18.73 2 17.17 2c-.75 0-1.47.3-2 .83l-1.25 1.25c-.16-.05-.33-.08-.51-.08-.88 0-1.6.72-1.6 1.6 0 .42.17.81.44 1.1l-1.44 1.44C10.53 8.05 10.19 8 9.83 8H6c-2.21 0-4 1.79-4 4v1h18zm-2 2H4v3c0 2.21 1.79 4 4 4h8c2.21 0 4-1.79 4-4v-3z'/></svg>
                         <div class='spec-meta'>
                           <small>K. Mandi</small>
-                          <strong>1 Mandi</strong>
+                          <strong>1 Toilet</strong>
                         </div>
                       </div>
                       <div class='spec-item spec-carport' title='Carport'>
@@ -935,106 +998,72 @@ Carport: 1 Mobil]]></b:widget-setting>
                       </div>
                     </div>
                     <div class='service-card-footer'>
-                      <a class='btn-service' href='#detail' expr:target='&quot;pop-service-&quot; + data:widget.instanceId'>
+                      <a class='btn-service' href='#detail' target='pop-service-Image32'>
                         <span>Lihat Detail</span>
                         <svg viewBox='0 0 24 24'><path d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/></svg>
                       </a>
+                      <a aria-label='Konsultasi Unit Type 36 via WhatsApp' class='btn-service-wa wa-dynamic-btn' expr:href='data:link' target='_blank' title='Tanya Unit via WhatsApp'>
+                        <svg viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- POPUP DETAIL UNIT 2: TYPE 36 -->
+                <div class='unit-detail-source' data-pop-title='Detail Unit: Type 36 (Komersial Minimalis)' data-unit-id='Image32' id='pop-service-Image32' style='display:none;'>
+                  <div class='popup-unit-grid'>
+                    <div class='popup-unit-gallery'>
+                      <div class='pop-main-img-wrap'>
+                        <img alt='Type 36' class='pop-main-img' src='https://blogger.googleusercontent.com/img/a/AVvXsEhkGpWfRwGxuX098WL8oo3B-Q2jr4DlHxAv58iC4nZUd41mnD_izfy-hBeKCoHWVLd26PPrtBbHaN5Br6PJ4rU5CyJmNFOh1Ud56Q36CuX7rBKgLYZ6aqUXTX90LcPCUiXFkBPRM5Oj2Eq5o6Ki6l6VFHTWMvWs-eGXGBURS-numHaK6yd8W3BgZZcpGhs=s812'/>
+                      </div>
+                      <div class='pop-gallery-label'>Galeri Tampak Rumah &amp; Ruangan:</div>
+                      <div class='pop-gallery-thumbs'>
+                        <div class='pop-thumb-item active' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEhkGpWfRwGxuX098WL8oo3B-Q2jr4DlHxAv58iC4nZUd41mnD_izfy-hBeKCoHWVLd26PPrtBbHaN5Br6PJ4rU5CyJmNFOh1Ud56Q36CuX7rBKgLYZ6aqUXTX90LcPCUiXFkBPRM5Oj2Eq5o6Ki6l6VFHTWMvWs-eGXGBURS-numHaK6yd8W3BgZZcpGhs=s812&quot;)'>
+                          <img alt='Tampak Depan' src='https://blogger.googleusercontent.com/img/a/AVvXsEhkGpWfRwGxuX098WL8oo3B-Q2jr4DlHxAv58iC4nZUd41mnD_izfy-hBeKCoHWVLd26PPrtBbHaN5Br6PJ4rU5CyJmNFOh1Ud56Q36CuX7rBKgLYZ6aqUXTX90LcPCUiXFkBPRM5Oj2Eq5o6Ki6l6VFHTWMvWs-eGXGBURS-numHaK6yd8W3BgZZcpGhs=s200'/>
+                          <span>Tampak Depan</span>
+                        </div>
+                        <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEg2oO0e-EqmyBZjkQQ9UMznU2a8qe4sAnnP8TU3mrUnWHXYovkbGRCQu6h29yx9WeoHx-2q3ERfEursFIGrd32atH-czTdXzDMiIm1h1HsZwLJwW3CdT51b4hoBFuTWGZXiyvnMI1FZaVWqglvzQTwJQomtyMGS5-FkGhhQrai_UYu8Z02P62UWjEeW39Q=s1600&quot;)'>
+                          <img alt='Ruang Tamu' src='https://blogger.googleusercontent.com/img/a/AVvXsEg2oO0e-EqmyBZjkQQ9UMznU2a8qe4sAnnP8TU3mrUnWHXYovkbGRCQu6h29yx9WeoHx-2q3ERfEursFIGrd32atH-czTdXzDMiIm1h1HsZwLJwW3CdT51b4hoBFuTWGZXiyvnMI1FZaVWqglvzQTwJQomtyMGS5-FkGhhQrai_UYu8Z02P62UWjEeW39Q=s200'/>
+                          <span>Ruang Tamu</span>
+                        </div>
+                        <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEiqlA-RN00ExcU9M5l-zfR9MvUYUCudhVDpZwX5v0gLuANjB_Slrl4i1ixzl8voTARJXh7TGOb2PidL0qYTqkuMU3ghYwMlsr4E1o9NQV9M32Nu9PixotpY3rEs1SPSKTZRE-dR2_ZRqSuuUUgbgGVFgkCuWqyYB35AmdFV3Ml_Qp2-0_GPCkDVYGGoCRc=s1600&quot;)'>
+                          <img alt='Kamar Tidur' src='https://blogger.googleusercontent.com/img/a/AVvXsEiqlA-RN00ExcU9M5l-zfR9MvUYUCudhVDpZwX5v0gLuANjB_Slrl4i1ixzl8voTARJXh7TGOb2PidL0qYTqkuMU3ghYwMlsr4E1o9NQV9M32Nu9PixotpY3rEs1SPSKTZRE-dR2_ZRqSuuUUgbgGVFgkCuWqyYB35AmdFV3Ml_Qp2-0_GPCkDVYGGoCRc=s200'/>
+                          <span>Kamar Tidur</span>
+                        </div>
+                        <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEimBIBT9A4vSu4f10elvZAasZwcVj4vP7xmQoO3WzEiBzZ65decFIw1WupXOrGEyLUmOisy3MX93KwqN3aZojjUoKnbjK3uKIWrESgbvloJ8HZz8K-fPioM-m_sRPITF22f2bBoneMKlR9MFUP_IWvk8G5agCjVKOc4BOM9LWDJQw3WEYaML9vP5fZz52s=s1600&quot;)'>
+                          <img alt='Carport' src='https://blogger.googleusercontent.com/img/a/AVvXsEimBIBT9A4vSu4f10elvZAasZwcVj4vP7xmQoO3WzEiBzZ65decFIw1WupXOrGEyLUmOisy3MX93KwqN3aZojjUoKnbjK3uKIWrESgbvloJ8HZz8K-fPioM-m_sRPITF22f2bBoneMKlR9MFUP_IWvk8G5agCjVKOc4BOM9LWDJQw3WEYaML9vP5fZz52s=s200'/>
+                          <span>Carport</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 style='font-size:1.25rem; font-weight:700; color:var(--dark); margin-bottom:8px;'>Type 36 - Rumah Komersial Minimalis Modern</h4>
+                      <p class='pop-unit-desc' style='color:#64748b; font-size:0.9rem; line-height:1.5; margin-bottom:12px;'>Desain fasad modern elegan dengan langit-langit tinggi, sirkulasi udara sejuk, tata ruang leluasa, dan carport beratap kokoh siap huni.</p>
+                      <table class='popup-specs-table'>
+                        <tr><th>Kategori Unit</th><td>Rumah Komersial Minimalis Modern</td></tr>
+                        <tr><th>Luas Bangunan / Tanah</th><td>36 m&#178; / 60 m&#178;</td></tr>
+                        <tr><th>Ruang Tamu</th><td>1 Ruang Tamu Lapang</td></tr>
+                        <tr><th>Kamar Tidur / Mandi</th><td>2 Kamar Tidur Luas / 1 Kamar Mandi</td></tr>
+                        <tr><th>Carport &amp; Halaman</th><td>Carport Beton 1 Mobil + Sisa Halaman</td></tr>
+                        <tr><th>Struktur &amp; Dinding</th><td>Double Dinding Bata Ringan (Hebel)</td></tr>
+                        <tr><th>Lantai &amp; Plafon</th><td>Granit / Keramik Premium, Plafon Gypsum Tinggi</td></tr>
+                        <tr><th>Listrik &amp; Air</th><td>PLN 2.200 Watt / Sumur Pantek &amp; Pompa Listrik</td></tr>
+                        <tr><th>Skema Cicilan</th><td>KPR Komersial Terjangkau Mulai Rp 2,2 Jt-an</td></tr>
+                      </table>
+                      <div style='margin-top:20px; display:flex; gap:10px;'>
+                        <a class='btn-cta wa-dynamic-btn' expr:href='data:link' style='display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 20px; background:#25D366; color:#fff; border-radius:10px; font-weight:700; font-size:0.95rem; text-decoration:none;' target='_blank'>
+                          <svg style='width:20px; height:20px; fill:currentColor;' viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
+                          <span>Konsultasi Unit via WhatsApp</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </b:includable>
             </b:widget>
 
-            <!-- TIPE 3: TYPE 45 (KOMERSIAL MODERN) -->
-            <b:widget id='Image33' locked='true' title='Type 45' type='Image' version='3' visible='true'>
-              <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEgbuWiPZvdpfCPLzzSOHpLx26jpHsCz6bbnmFf58SxHxdbWHfy0T1Ab-mx1F66Plkg2m9Lnma4kzvA6HK5RZGLr0JOVG48cF6hSc19NcRC8_WHKbPIaAXDgeHo83wVK01ec4inCdWjn1BCO0CMncizsFpGVqHSMv4Hj0-BPWl-XzyE7dbwQyVfyQKWUk8A=s1018</b:widget-setting>
-                <b:widget-setting name='displayHeight'>800</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
-                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1200</b:widget-setting>
-                <b:widget-setting name='link'>https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2045%20Komersial%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service</b:widget-setting>
-                <b:widget-setting name='caption'><![CDATA[Badge: Komersial Modern
-Harga: Rp 550 Jt-an
-Cicilan: Cicilan Mulai Rp 3,1 Jt/bln
-LB: 45 m²
-LT: 84 m²
-Ruang Tamu: 1 Ruang Tamu
-Kamar Tidur: 3 Kamar
-Kamar Mandi: 1 Toilet
-Carport: 1 Mobil]]></b:widget-setting>
-              </b:widget-settings>
-              <b:includable id='main'>
-                <div class='service-card reveal delay-2' expr:data-id='data:widget.instanceId'>
-                  <div class='unit-raw-caption' style='display:none;'><data:caption/></div>
-                  <div class='service-card-img'>
-                    <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
-                    <span class='service-badge komersil'>Komersial Modern</span>
-                  </div>
-                  <div class='service-card-content'>
-                    <h3 class='service-card-title'><data:title/></h3>
-                    <div class='service-price-block'>
-                      <span class='price-label'>Harga Mulai</span>
-                      <strong class='price-amount'>Rp 550 Jt-an</strong>
-                      <small class='price-installment'>Cicilan Mulai Rp 3,1 Jt/bln</small>
-                    </div>
-                    <div class='service-specs-grid'>
-                      <div class='spec-item spec-lb' title='Luas Bangunan'>
-                        <svg viewBox='0 0 24 24'><path d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 16H5v-6h7v6zm0-8H5V5h7v6zm7 8h-5v-6h5v6zm0-8h-5V5h5v6z'/></svg>
-                        <div class='spec-meta'>
-                          <small>LB</small>
-                          <strong>45 m²</strong>
-                        </div>
-                      </div>
-                      <div class='spec-item spec-lt' title='Luas Tanah'>
-                        <svg viewBox='0 0 24 24'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>
-                        <div class='spec-meta'>
-                          <small>LT</small>
-                          <strong>84 m²</strong>
-                        </div>
-                      </div>
-                      <div class='spec-item spec-tamu' title='Ruang Tamu'>
-                        <svg viewBox='0 0 24 24'><path d='M4 18v2h2v-2h12v2h2v-2c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2h-1V6c0-1.1-.9-2-2-2H7c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2zM7 6h10v2H7V6zm-3 6h16v4H4v-4z'/></svg>
-                        <div class='spec-meta'>
-                          <small>R. Tamu</small>
-                          <strong>1 Ruang</strong>
-                        </div>
-                      </div>
-                      <div class='spec-item spec-tidur' title='Kamar Tidur'>
-                        <svg viewBox='0 0 24 24'><path d='M19 7h-8v8H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4zm-9 6H5v-4h5v4zM7 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z'/></svg>
-                        <div class='spec-meta'>
-                          <small>K. Tidur</small>
-                          <strong>3 Kamar</strong>
-                        </div>
-                      </div>
-                      <div class='spec-item spec-mandi' title='Kamar Mandi'>
-                        <svg viewBox='0 0 24 24'><path d='M20 13V4.83C20 3.27 18.73 2 17.17 2c-.75 0-1.47.3-2 .83l-1.25 1.25c-.16-.05-.33-.08-.51-.08-.88 0-1.6.72-1.6 1.6 0 .42.17.81.44 1.1l-1.44 1.44C10.53 8.05 10.19 8 9.83 8H6c-2.21 0-4 1.79-4 4v1h18zm-2 2H4v3c0 2.21 1.79 4 4 4h8c2.21 0 4-1.79 4-4v-3z'/></svg>
-                        <div class='spec-meta'>
-                          <small>K. Mandi</small>
-                          <strong>1 Mandi</strong>
-                        </div>
-                      </div>
-                      <div class='spec-item spec-carport' title='Carport'>
-                        <svg viewBox='0 0 24 24'><path d='M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4.66l.12-.34h13.77l.11.34V17z'/></svg>
-                        <div class='spec-meta'>
-                          <small>Carport</small>
-                          <strong>1 Mobil</strong>
-                        </div>
-                      </div>
-                    </div>
-                    <div class='service-card-footer'>
-                      <a class='btn-service' href='#detail' expr:target='&quot;pop-service-&quot; + data:widget.instanceId'>
-                        <span>Lihat Detail</span>
-                        <svg viewBox='0 0 24 24'><path d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/></svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </b:includable>
-            </b:widget>
-
-            <!-- TIPE 4: TYPE 42 (KOMERSIAL ELEGAN) -->
-            <b:widget id='Image34' locked='true' title='Type 42' type='Image' version='3' visible='true'>
+            <!-- TIPE 3: TYPE 42 (KOMERSIAL ELEGAN) -->
+            <b:widget id='Image33' locked='true' title='Type 42' type='Image' version='3' visible='true'>
               <b:widget-settings>
                 <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEi_T2ySzMuz8Rx7BU66PN9MUYsd26XqJgXxxXc1SD0Qo6q5dcWMVfrXiS3XqoaHNg1PfhUo1Ncy7UrvsytHfys5B7DJmSX0OoFs1ezWSn4ubolXaMxhxozjgwpU2EuKtQm076Ef6WVsGxmWNK7KdIIoV6unUxOsi-wH8_v2S1JsvCwPgsT1csaacwz6aqI=s1200</b:widget-setting>
                 <b:widget-setting name='displayHeight'>800</b:widget-setting>
@@ -1047,20 +1076,20 @@ Harga: Rp 495 Jt-an
 Cicilan: Cicilan Mulai Rp 2,6 Jt/bln
 LB: 42 m²
 LT: 60 m²
-Ruang Tamu: 1 Ruang Tamu
+Ruang Tamu: 1 Ruang
 Kamar Tidur: 2 Kamar
 Kamar Mandi: 1 Toilet
 Carport: 1 Mobil]]></b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
-                <div class='service-card reveal delay-3' expr:data-id='data:widget.instanceId'>
+                <div class='service-card reveal delay-2' data-id='Image33'>
                   <div class='unit-raw-caption' style='display:none;'><data:caption/></div>
                   <div class='service-card-img'>
                     <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
                     <span class='service-badge komersil'>Komersial Elegan</span>
                   </div>
                   <div class='service-card-content'>
-                    <h3 class='service-card-title'><data:title/></h3>
+                    <h3 class='service-card-title'><b:eval expr='data:title ?: &quot;Type 42&quot;'/></h3>
                     <div class='service-price-block'>
                       <span class='price-label'>Harga Mulai</span>
                       <strong class='price-amount'>Rp 495 Jt-an</strong>
@@ -1099,7 +1128,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                         <svg viewBox='0 0 24 24'><path d='M20 13V4.83C20 3.27 18.73 2 17.17 2c-.75 0-1.47.3-2 .83l-1.25 1.25c-.16-.05-.33-.08-.51-.08-.88 0-1.6.72-1.6 1.6 0 .42.17.81.44 1.1l-1.44 1.44C10.53 8.05 10.19 8 9.83 8H6c-2.21 0-4 1.79-4 4v1h18zm-2 2H4v3c0 2.21 1.79 4 4 4h8c2.21 0 4-1.79 4-4v-3z'/></svg>
                         <div class='spec-meta'>
                           <small>K. Mandi</small>
-                          <strong>1 Mandi</strong>
+                          <strong>1 Toilet</strong>
                         </div>
                       </div>
                       <div class='spec-item spec-carport' title='Carport'>
@@ -1111,332 +1140,224 @@ Carport: 1 Mobil]]></b:widget-setting>
                       </div>
                     </div>
                     <div class='service-card-footer'>
-                      <a class='btn-service' href='#detail' expr:target='&quot;pop-service-&quot; + data:widget.instanceId'>
+                      <a class='btn-service' href='#detail' target='pop-service-Image33'>
                         <span>Lihat Detail</span>
                         <svg viewBox='0 0 24 24'><path d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/></svg>
                       </a>
+                      <a aria-label='Konsultasi Unit Type 42 via WhatsApp' class='btn-service-wa wa-dynamic-btn' expr:href='data:link' target='_blank' title='Tanya Unit via WhatsApp'>
+                        <svg viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- POPUP DETAIL UNIT 3: TYPE 42 -->
+                <div class='unit-detail-source' data-pop-title='Detail Unit: Type 42 (Komersial Elegan)' data-unit-id='Image33' id='pop-service-Image33' style='display:none;'>
+                  <div class='popup-unit-grid'>
+                    <div class='popup-unit-gallery'>
+                      <div class='pop-main-img-wrap'>
+                        <img alt='Type 42' class='pop-main-img' src='https://blogger.googleusercontent.com/img/a/AVvXsEi_T2ySzMuz8Rx7BU66PN9MUYsd26XqJgXxxXc1SD0Qo6q5dcWMVfrXiS3XqoaHNg1PfhUo1Ncy7UrvsytHfys5B7DJmSX0OoFs1ezWSn4ubolXaMxhxozjgwpU2EuKtQm076Ef6WVsGxmWNK7KdIIoV6unUxOsi-wH8_v2S1JsvCwPgsT1csaacwz6aqI=s1200'/>
+                      </div>
+                      <div class='pop-gallery-label'>Galeri Tampak Rumah &amp; Ruangan:</div>
+                      <div class='pop-gallery-thumbs'>
+                        <div class='pop-thumb-item active' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEi_T2ySzMuz8Rx7BU66PN9MUYsd26XqJgXxxXc1SD0Qo6q5dcWMVfrXiS3XqoaHNg1PfhUo1Ncy7UrvsytHfys5B7DJmSX0OoFs1ezWSn4ubolXaMxhxozjgwpU2EuKtQm076Ef6WVsGxmWNK7KdIIoV6unUxOsi-wH8_v2S1JsvCwPgsT1csaacwz6aqI=s1200&quot;)'>
+                          <img alt='Tampak Depan' src='https://blogger.googleusercontent.com/img/a/AVvXsEi_T2ySzMuz8Rx7BU66PN9MUYsd26XqJgXxxXc1SD0Qo6q5dcWMVfrXiS3XqoaHNg1PfhUo1Ncy7UrvsytHfys5B7DJmSX0OoFs1ezWSn4ubolXaMxhxozjgwpU2EuKtQm076Ef6WVsGxmWNK7KdIIoV6unUxOsi-wH8_v2S1JsvCwPgsT1csaacwz6aqI=s200'/>
+                          <span>Tampak Depan</span>
+                        </div>
+                        <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEg2oO0e-EqmyBZjkQQ9UMznU2a8qe4sAnnP8TU3mrUnWHXYovkbGRCQu6h29yx9WeoHx-2q3ERfEursFIGrd32atH-czTdXzDMiIm1h1HsZwLJwW3CdT51b4hoBFuTWGZXiyvnMI1FZaVWqglvzQTwJQomtyMGS5-FkGhhQrai_UYu8Z02P62UWjEeW39Q=s1600&quot;)'>
+                          <img alt='Ruang Tamu' src='https://blogger.googleusercontent.com/img/a/AVvXsEg2oO0e-EqmyBZjkQQ9UMznU2a8qe4sAnnP8TU3mrUnWHXYovkbGRCQu6h29yx9WeoHx-2q3ERfEursFIGrd32atH-czTdXzDMiIm1h1HsZwLJwW3CdT51b4hoBFuTWGZXiyvnMI1FZaVWqglvzQTwJQomtyMGS5-FkGhhQrai_UYu8Z02P62UWjEeW39Q=s200'/>
+                          <span>Ruang Tamu</span>
+                        </div>
+                        <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEiqlA-RN00ExcU9M5l-zfR9MvUYUCudhVDpZwX5v0gLuANjB_Slrl4i1ixzl8voTARJXh7TGOb2PidL0qYTqkuMU3ghYwMlsr4E1o9NQV9M32Nu9PixotpY3rEs1SPSKTZRE-dR2_ZRqSuuUUgbgGVFgkCuWqyYB35AmdFV3Ml_Qp2-0_GPCkDVYGGoCRc=s1600&quot;)'>
+                          <img alt='Kamar Tidur' src='https://blogger.googleusercontent.com/img/a/AVvXsEiqlA-RN00ExcU9M5l-zfR9MvUYUCudhVDpZwX5v0gLuANjB_Slrl4i1ixzl8voTARJXh7TGOb2PidL0qYTqkuMU3ghYwMlsr4E1o9NQV9M32Nu9PixotpY3rEs1SPSKTZRE-dR2_ZRqSuuUUgbgGVFgkCuWqyYB35AmdFV3Ml_Qp2-0_GPCkDVYGGoCRc=s200'/>
+                          <span>Kamar Tidur</span>
+                        </div>
+                        <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEimBIBT9A4vSu4f10elvZAasZwcVj4vP7xmQoO3WzEiBzZ65decFIw1WupXOrGEyLUmOisy3MX93KwqN3aZojjUoKnbjK3uKIWrESgbvloJ8HZz8K-fPioM-m_sRPITF22f2bBoneMKlR9MFUP_IWvk8G5agCjVKOc4BOM9LWDJQw3WEYaML9vP5fZz52s=s1600&quot;)'>
+                          <img alt='Carport' src='https://blogger.googleusercontent.com/img/a/AVvXsEimBIBT9A4vSu4f10elvZAasZwcVj4vP7xmQoO3WzEiBzZ65decFIw1WupXOrGEyLUmOisy3MX93KwqN3aZojjUoKnbjK3uKIWrESgbvloJ8HZz8K-fPioM-m_sRPITF22f2bBoneMKlR9MFUP_IWvk8G5agCjVKOc4BOM9LWDJQw3WEYaML9vP5fZz52s=s200'/>
+                          <span>Carport</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 style='font-size:1.25rem; font-weight:700; color:var(--dark); margin-bottom:8px;'>Type 42 - Rumah Komersial Elegan</h4>
+                      <p class='pop-unit-desc' style='color:#64748b; font-size:0.9rem; line-height:1.5; margin-bottom:12px;'>Desain minimalis elegan dengan penataan ruang fungsional, pencahayaan alami melimpah, dan konstruksi kokoh double dinding hebel.</p>
+                      <table class='popup-specs-table'>
+                        <tr><th>Kategori Unit</th><td>Rumah Komersial Elegan</td></tr>
+                        <tr><th>Luas Bangunan / Tanah</th><td>42 m&#178; / 60 m&#178;</td></tr>
+                        <tr><th>Ruang Tamu</th><td>1 Ruang Tamu Nyaman</td></tr>
+                        <tr><th>Kamar Tidur / Mandi</th><td>2 Kamar Tidur / 1 Kamar Mandi</td></tr>
+                        <tr><th>Carport &amp; Halaman</th><td>Carport Beton 1 Mobil + Sisa Lahan</td></tr>
+                        <tr><th>Struktur &amp; Dinding</th><td>Double Dinding Hebel Kokoh</td></tr>
+                        <tr><th>Lantai &amp; Plafon</th><td>Keramik Premium, Plafon Gypsum Modern</td></tr>
+                        <tr><th>Listrik &amp; Air</th><td>PLN 2.200 Watt / Sumur Bor Pompa Listrik</td></tr>
+                        <tr><th>Status Legalitas</th><td>Sertifikat Hak Milik (SHM)</td></tr>
+                        <tr><th>Skema Cicilan</th><td>KPR Komersial Terjangkau Mulai Rp 2,6 Jt-an</td></tr>
+                      </table>
+                      <div style='margin-top:20px; display:flex; gap:10px;'>
+                        <a class='btn-cta wa-dynamic-btn' expr:href='data:link' style='display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 20px; background:#25D366; color:#fff; border-radius:10px; font-weight:700; font-size:0.95rem; text-decoration:none;' target='_blank'>
+                          <svg style='width:20px; height:20px; fill:currentColor;' viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
+                          <span>Konsultasi Unit via WhatsApp</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </b:includable>
             </b:widget>
+
+            <!-- TIPE 4: TYPE 45 (KOMERSIAL MODERN) -->
+            <b:widget id='Image34' locked='true' title='Type 45' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEgbuWiPZvdpfCPLzzSOHpLx26jpHsCz6bbnmFf58SxHxdbWHfy0T1Ab-mx1F66Plkg2m9Lnma4kzvA6HK5RZGLr0JOVG48cF6hSc19NcRC8_WHKbPIaAXDgeHo83wVK01ec4inCdWjn1BCO0CMncizsFpGVqHSMv4Hj0-BPWl-XzyE7dbwQyVfyQKWUk8A=s1018</b:widget-setting>
+                <b:widget-setting name='displayHeight'>800</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1200</b:widget-setting>
+                <b:widget-setting name='link'>https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2045%20Komersial%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service</b:widget-setting>
+                <b:widget-setting name='caption'><![CDATA[Badge: Komersial Modern
+Harga: Rp 550 Jt-an
+Cicilan: Cicilan Mulai Rp 3,1 Jt/bln
+LB: 45 m²
+LT: 84 m²
+Ruang Tamu: 1 Ruang
+Kamar Tidur: 3 Kamar
+Kamar Mandi: 1 Toilet
+Carport: 1 Mobil]]></b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='service-card reveal delay-3' data-id='Image34'>
+                  <div class='unit-raw-caption' style='display:none;'><data:caption/></div>
+                  <div class='service-card-img'>
+                    <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                    <span class='service-badge komersil'>Komersial Modern</span>
+                  </div>
+                  <div class='service-card-content'>
+                    <h3 class='service-card-title'><b:eval expr='data:title ?: &quot;Type 45&quot;'/></h3>
+                    <div class='service-price-block'>
+                      <span class='price-label'>Harga Mulai</span>
+                      <strong class='price-amount'>Rp 550 Jt-an</strong>
+                      <small class='price-installment'>Cicilan Mulai Rp 3,1 Jt/bln</small>
+                    </div>
+                    <div class='service-specs-grid'>
+                      <div class='spec-item spec-lb' title='Luas Bangunan'>
+                        <svg viewBox='0 0 24 24'><path d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 16H5v-6h7v6zm0-8H5V5h7v6zm7 8h-5v-6h5v6zm0-8h-5V5h5v6z'/></svg>
+                        <div class='spec-meta'>
+                          <small>LB</small>
+                          <strong>45 m²</strong>
+                        </div>
+                      </div>
+                      <div class='spec-item spec-lt' title='Luas Tanah'>
+                        <svg viewBox='0 0 24 24'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>
+                        <div class='spec-meta'>
+                          <small>LT</small>
+                          <strong>84 m²</strong>
+                        </div>
+                      </div>
+                      <div class='spec-item spec-tamu' title='Ruang Tamu'>
+                        <svg viewBox='0 0 24 24'><path d='M4 18v2h2v-2h12v2h2v-2c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2h-1V6c0-1.1-.9-2-2-2H7c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2zM7 6h10v2H7V6zm-3 6h16v4H4v-4z'/></svg>
+                        <div class='spec-meta'>
+                          <small>R. Tamu</small>
+                          <strong>1 Ruang</strong>
+                        </div>
+                      </div>
+                      <div class='spec-item spec-tidur' title='Kamar Tidur'>
+                        <svg viewBox='0 0 24 24'><path d='M19 7h-8v8H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4zm-9 6H5v-4h5v4zM7 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z'/></svg>
+                        <div class='spec-meta'>
+                          <small>K. Tidur</small>
+                          <strong>3 Kamar</strong>
+                        </div>
+                      </div>
+                      <div class='spec-item spec-mandi' title='Kamar Mandi'>
+                        <svg viewBox='0 0 24 24'><path d='M20 13V4.83C20 3.27 18.73 2 17.17 2c-.75 0-1.47.3-2 .83l-1.25 1.25c-.16-.05-.33-.08-.51-.08-.88 0-1.6.72-1.6 1.6 0 .42.17.81.44 1.1l-1.44 1.44C10.53 8.05 10.19 8 9.83 8H6c-2.21 0-4 1.79-4 4v1h18zm-2 2H4v3c0 2.21 1.79 4 4 4h8c2.21 0 4-1.79 4-4v-3z'/></svg>
+                        <div class='spec-meta'>
+                          <small>K. Mandi</small>
+                          <strong>1 Toilet</strong>
+                        </div>
+                      </div>
+                      <div class='spec-item spec-carport' title='Carport'>
+                        <svg viewBox='0 0 24 24'><path d='M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4.66l.12-.34h13.77l.11.34V17z'/></svg>
+                        <div class='spec-meta'>
+                          <small>Carport</small>
+                          <strong>1 Mobil</strong>
+                        </div>
+                      </div>
+                    </div>
+                    <div class='service-card-footer'>
+                      <a class='btn-service' href='#detail' target='pop-service-Image34'>
+                        <span>Lihat Detail</span>
+                        <svg viewBox='0 0 24 24'><path d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/></svg>
+                      </a>
+                      <a aria-label='Konsultasi Unit Type 45 via WhatsApp' class='btn-service-wa wa-dynamic-btn' expr:href='data:link' target='_blank' title='Tanya Unit via WhatsApp'>
+                        <svg viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- POPUP DETAIL UNIT 4: TYPE 45 -->
+                <div class='unit-detail-source' data-pop-title='Detail Unit: Type 45 (Komersial Modern)' data-unit-id='Image34' id='pop-service-Image34' style='display:none;'>
+                  <div class='popup-unit-grid'>
+                    <div class='popup-unit-gallery'>
+                      <div class='pop-main-img-wrap'>
+                        <img alt='Type 45' class='pop-main-img' src='https://blogger.googleusercontent.com/img/a/AVvXsEgbuWiPZvdpfCPLzzSOHpLx26jpHsCz6bbnmFf58SxHxdbWHfy0T1Ab-mx1F66Plkg2m9Lnma4kzvA6HK5RZGLr0JOVG48cF6hSc19NcRC8_WHKbPIaAXDgeHo83wVK01ec4inCdWjn1BCO0CMncizsFpGVqHSMv4Hj0-BPWl-XzyE7dbwQyVfyQKWUk8A=s1018'/>
+                      </div>
+                      <div class='pop-gallery-label'>Galeri Tampak Rumah &amp; Ruangan:</div>
+                      <div class='pop-gallery-thumbs'>
+                        <div class='pop-thumb-item active' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEgbuWiPZvdpfCPLzzSOHpLx26jpHsCz6bbnmFf58SxHxdbWHfy0T1Ab-mx1F66Plkg2m9Lnma4kzvA6HK5RZGLr0JOVG48cF6hSc19NcRC8_WHKbPIaAXDgeHo83wVK01ec4inCdWjn1BCO0CMncizsFpGVqHSMv4Hj0-BPWl-XzyE7dbwQyVfyQKWUk8A=s1018&quot;)'>
+                          <img alt='Tampak Depan' src='https://blogger.googleusercontent.com/img/a/AVvXsEgbuWiPZvdpfCPLzzSOHpLx26jpHsCz6bbnmFf58SxHxdbWHfy0T1Ab-mx1F66Plkg2m9Lnma4kzvA6HK5RZGLr0JOVG48cF6hSc19NcRC8_WHKbPIaAXDgeHo83wVK01ec4inCdWjn1BCO0CMncizsFpGVqHSMv4Hj0-BPWl-XzyE7dbwQyVfyQKWUk8A=s200'/>
+                          <span>Tampak Depan</span>
+                        </div>
+                        <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEhZyEj8rBNZDwSwvKztR4NcCRUdW_Qr7CtrOf-YGrIerT1v_ZNk2ConOczo-aDu8Bua7C5cuFU5c8wgeGNC7LY1PTZ2Sz_SW-P2iA_0_xNeiT6a1idrKbp5spP8kkZGrQMUVxcznBT7FEKvAWHH-duek28BRa5JWGu37xmTrvKoRnLGLBOOcz5iVr5m2HY=s1080&quot;)'>
+                          <img alt='Ruang Tamu' src='https://blogger.googleusercontent.com/img/a/AVvXsEhZyEj8rBNZDwSwvKztR4NcCRUdW_Qr7CtrOf-YGrIerT1v_ZNk2ConOczo-aDu8Bua7C5cuFU5c8wgeGNC7LY1PTZ2Sz_SW-P2iA_0_xNeiT6a1idrKbp5spP8kkZGrQMUVxcznBT7FEKvAWHH-duek28BRa5JWGu37xmTrvKoRnLGLBOOcz5iVr5m2HY=s200'/>
+                          <span>Ruang Tamu</span>
+                        </div>
+                        <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEixRPiyuYkiZ7eR4Nu2wyZKE0rdbpdtsdR74O1_BUKG-xTG6m353qVOtnKdEKvNVw7GmwiaMbKk39p72kbMGBiF0DcqKEW1aNR7euFZ-92n8LSioabV5UdU_fVjDFaKOSLgZMqDWafHGWVw4SsK1g-V5BCyMxCbRa9k8MRudgLwJ1tIKP1OCCsi_fuLAYo=s1600&quot;)'>
+                          <img alt='Kamar Tidur' src='https://blogger.googleusercontent.com/img/a/AVvXsEixRPiyuYkiZ7eR4Nu2wyZKE0rdbpdtsdR74O1_BUKG-xTG6m353qVOtnKdEKvNVw7GmwiaMbKk39p72kbMGBiF0DcqKEW1aNR7euFZ-92n8LSioabV5UdU_fVjDFaKOSLgZMqDWafHGWVw4SsK1g-V5BCyMxCbRa9k8MRudgLwJ1tIKP1OCCsi_fuLAYo=s200'/>
+                          <span>Kamar Tidur</span>
+                        </div>
+                        <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEji8kvslGOMo4uERbqUfjLP2dZNzBTZW7qkA8BR9y_Z_UOfwnzGGNJWS4RIzns-5V12HBuV4Ht3d4Mp8SnwIKPiRSwSvyU9_LqXBlHilFwsRgHXBq6gI6QZElxesxmCd8qTJZhToNhjCw3xkNsQR2qzcO38HRXvEhdkRbi4NDeE-Q8J6yqFZNgWEMFRnb4=s1600&quot;)'>
+                          <img alt='Halaman' src='https://blogger.googleusercontent.com/img/a/AVvXsEji8kvslGOMo4uERbqUfjLP2dZNzBTZW7qkA8BR9y_Z_UOfwnzGGNJWS4RIzns-5V12HBuV4Ht3d4Mp8SnwIKPiRSwSvyU9_LqXBlHilFwsRgHXBq6gI6QZElxesxmCd8qTJZhToNhjCw3xkNsQR2qzcO38HRXvEhdkRbi4NDeE-Q8J6yqFZNgWEMFRnb4=s200'/>
+                          <span>Halaman</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 style='font-size:1.25rem; font-weight:700; color:var(--dark); margin-bottom:8px;'>Type 45 - Rumah Komersial Modern</h4>
+                      <p class='pop-unit-desc' style='color:#64748b; font-size:0.9rem; line-height:1.5; margin-bottom:12px;'>Hunian modern keluarga dengan tanah lapang, 3 kamar tidur, tata ruang lega, dan lingkungan asri bernilai investasi tinggi.</p>
+                      <table class='popup-specs-table'>
+                        <tr><th>Kategori Unit</th><td>Rumah Komersial Modern Keluarga</td></tr>
+                        <tr><th>Luas Bangunan / Tanah</th><td>45 m&#178; / 84 m&#178;</td></tr>
+                        <tr><th>Ruang Tamu</th><td>1 Ruang Tamu &amp; Keluarga</td></tr>
+                        <tr><th>Kamar Tidur / Mandi</th><td>3 Kamar Tidur / 1 Kamar Mandi</td></tr>
+                        <tr><th>Carport &amp; Halaman</th><td>Carport Beton 1 Mobil + Taman Depan Lapang</td></tr>
+                        <tr><th>Struktur &amp; Dinding</th><td>Beton Bertulang, Double Dinding Hebel</td></tr>
+                        <tr><th>Lantai &amp; Plafon</th><td>Granit 60&#215;60, Plafon Tinggi Sirkulasi Sejuk</td></tr>
+                        <tr><th>Listrik &amp; Air</th><td>PLN 2.200 Watt / Sumur Bor Otomatis</td></tr>
+                        <tr><th>Status Legalitas</th><td>Sertifikat Hak Milik (SHM)</td></tr>
+                        <tr><th>Skema Cicilan</th><td>KPR Bank Mandiri / BTN / BSI Mulai Rp 3,1 Jt-an</td></tr>
+                      </table>
+                      <div style='margin-top:20px; display:flex; gap:10px;'>
+                        <a class='btn-cta wa-dynamic-btn' expr:href='data:link' style='display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 20px; background:#25D366; color:#fff; border-radius:10px; font-weight:700; font-size:0.95rem; text-decoration:none;' target='_blank'>
+                          <svg style='width:20px; height:20px; fill:currentColor;' viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
+                          <span>Konsultasi Unit via WhatsApp</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- HANDLER WIDGET SISA DARI DATABASE BLOGGER AGAR TIDAK MUNCUL DI TAMPILAN -->
+            <b:widget id='Image35' locked='true' title='Type 42/90 (Legacy)' type='Image' version='3' visible='false'>
+              <b:includable id='main'/>
+            </b:widget>
+            <b:widget id='Image36' locked='true' title='Type 50/78 (Legacy)' type='Image' version='3' visible='false'>
+              <b:includable id='main'/>
+            </b:widget>
           </b:section>
         </div>
       </section>
-
-      <!-- ================= SECTION 05B: DETAIL TIPE RUMAH (POPUP GALERI & SPESIFIKASI) ================= -->
-      <b:section class='unit-detail-section' id='unit-detail-section' name='[05B. DETAIL TIPE RUMAH] Galeri Tampak &amp; Spesifikasi (Popup)' showaddelement='false' version='3'>
-        <!-- DETAIL UNIT 1: TYPE 30/60 -->
-        <b:widget id='Text31' locked='true' title='Detail Type 30/60 (Rumah Subsidi)' type='Text' version='3' visible='true'>
-          <b:widget-settings>
-            <b:widget-setting name='content'><![CDATA[Deskripsi: Hunian subsidi berkualitas dengan konstruksi double dinding hebel, cicilan flat 1 jutaan/bulan sampai lunas, dan fasilitas kawasan siap huni.
-
-[GALERI TAMPAK]
-Foto 1: https://blogger.googleusercontent.com/img/a/AVvXsEjAiWMl-izhTXDQEvXwhDzb_7ucxmDCY2Ppnecuft9G9JTuBKoeiC5gwvQrS-vWVbdpnMXfK6g9WR296FvxmwHr9jwm4COLLz8FiGKdKyA3IOkilBW9IFGlJF7cJSTwiD6a394z97ur98oXrHBRuqRhtoPBYhSKFZHfHLVGXoIdJwl50_e4rF2SfzzwCGI=s1358 | Tampak Depan
-Foto 2: https://blogger.googleusercontent.com/img/a/AVvXsEg3qDQjNzRietsr9QSOQoSs2fv9GUukYFGA8nul5Yfdg5AxRhWXlR1-2KXu62rcv6pqDmvjmSNZQymRVEKkl1QPqzt7_zS-8Ld3Q5DjEN116lUFjkxda4ZcWmXxICrKkPjYb9BtVAYBT0funPcVXqPy5E9oFDqjU8NArkpz7YmQQYYywrf_X3tW0dKReSc=s1080 | Ruang Tamu
-Foto 3: https://blogger.googleusercontent.com/img/a/AVvXsEiBJzxa8orMGHiuVakTmRSTAHG1d0k-zZPMojZyVFac5q-z3KMiuqwU7kuEuJ-sdvW40UqFrSuEuGCOJirO_bhD-xyHh3dpZEwrLT0xapr5-o0xwKJklveX4HOviRi9SyevTI9XoZHrKnyXePjRzI4pIN6o07sY3HXqOHwtlvWGBplleGz0Ry0fc31tzGA=s1080 | Kamar Tidur
-Foto 4: https://blogger.googleusercontent.com/img/a/AVvXsEiW6S9SgD3NI348DsDJvWhrYfjWrWQ3yBneuFB5v9Wite6aje3AKzRTyqNwH1aftgE7gRgPPnUsOdjB_cYIhWKrFOTlXNjtGP2tbMOq9RlsABzpIei9EZnWzVTOGofN-IUbXsoXv4TZkM1SGjqvKsy6In8tK9tOSGayCgkJzSW_Erybm2f-fz8bbBBWQvo=s1080 | Lingkungan
-
-[SPESIFIKASI TEKNIS]
-Kategori Unit = Rumah Subsidi Program Pemerintah
-Luas Bangunan / Tanah = 30 m² / 60 m² (6 × 10 m)
-Ruang Tamu = 1 Ruang Tamu Keluarga
-Kamar Tidur / Mandi = 2 Kamar Tidur / 1 Kamar Mandi
-Carport & Halaman = Carport Rabat Beton 1 Mobil + Taman Depan
-Struktur & Dinding = Pondasi Batu Kali, Double Dinding Hebel
-Rangka & Atap = Baja Ringan, Genteng Beton Berwarna
-Listrik & Air = PLN 1.300 Watt / Sumur Bor Pompa Air Jernih
-Skema Cicilan = KPR Subsidi BTN / BSI Flat Mulai Rp 1,1 Jt-an]]></b:widget-setting>
-          </b:widget-settings>
-          <b:includable id='main'>
-            <div class='unit-detail-source' data-unit-id='Image31' expr:data-pop-title='&quot;Detail Unit: &quot; + data:title' id='pop-service-Image31' style='display:none;'>
-              <div class='unit-raw-detail-content' style='display:none;'><data:content/></div>
-              <div class='popup-unit-grid'>
-                <div class='popup-unit-gallery'>
-                  <div class='pop-main-img-wrap'>
-                    <img class='pop-main-img' alt='Type 30/60' src='https://blogger.googleusercontent.com/img/a/AVvXsEjAiWMl-izhTXDQEvXwhDzb_7ucxmDCY2Ppnecuft9G9JTuBKoeiC5gwvQrS-vWVbdpnMXfK6g9WR296FvxmwHr9jwm4COLLz8FiGKdKyA3IOkilBW9IFGlJF7cJSTwiD6a394z97ur98oXrHBRuqRhtoPBYhSKFZHfHLVGXoIdJwl50_e4rF2SfzzwCGI=s1358'/>
-                  </div>
-                  <div class='pop-gallery-label'>Galeri Tampak Rumah &amp; Ruangan:</div>
-                  <div class='pop-gallery-thumbs'>
-                    <div class='pop-thumb-item active' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEjAiWMl-izhTXDQEvXwhDzb_7ucxmDCY2Ppnecuft9G9JTuBKoeiC5gwvQrS-vWVbdpnMXfK6g9WR296FvxmwHr9jwm4COLLz8FiGKdKyA3IOkilBW9IFGlJF7cJSTwiD6a394z97ur98oXrHBRuqRhtoPBYhSKFZHfHLVGXoIdJwl50_e4rF2SfzzwCGI=s1358&quot;)'>
-                      <img alt='Tampak Depan' src='https://blogger.googleusercontent.com/img/a/AVvXsEjAiWMl-izhTXDQEvXwhDzb_7ucxmDCY2Ppnecuft9G9JTuBKoeiC5gwvQrS-vWVbdpnMXfK6g9WR296FvxmwHr9jwm4COLLz8FiGKdKyA3IOkilBW9IFGlJF7cJSTwiD6a394z97ur98oXrHBRuqRhtoPBYhSKFZHfHLVGXoIdJwl50_e4rF2SfzzwCGI=s200'/>
-                      <span>Tampak Depan</span>
-                    </div>
-                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEg3qDQjNzRietsr9QSOQoSs2fv9GUukYFGA8nul5Yfdg5AxRhWXlR1-2KXu62rcv6pqDmvjmSNZQymRVEKkl1QPqzt7_zS-8Ld3Q5DjEN116lUFjkxda4ZcWmXxICrKkPjYb9BtVAYBT0funPcVXqPy5E9oFDqjU8NArkpz7YmQQYYywrf_X3tW0dKReSc=s1080&quot;)'>
-                      <img alt='Ruang Tamu' src='https://blogger.googleusercontent.com/img/a/AVvXsEg3qDQjNzRietsr9QSOQoSs2fv9GUukYFGA8nul5Yfdg5AxRhWXlR1-2KXu62rcv6pqDmvjmSNZQymRVEKkl1QPqzt7_zS-8Ld3Q5DjEN116lUFjkxda4ZcWmXxICrKkPjYb9BtVAYBT0funPcVXqPy5E9oFDqjU8NArkpz7YmQQYYywrf_X3tW0dKReSc=s200'/>
-                      <span>Ruang Tamu</span>
-                    </div>
-                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEiBJzxa8orMGHiuVakTmRSTAHG1d0k-zZPMojZyVFac5q-z3KMiuqwU7kuEuJ-sdvW40UqFrSuEuGCOJirO_bhD-xyHh3dpZEwrLT0xapr5-o0xwKJklveX4HOviRi9SyevTI9XoZHrKnyXePjRzI4pIN6o07sY3HXqOHwtlvWGBplleGz0Ry0fc31tzGA=s1080&quot;)'>
-                      <img alt='Kamar Tidur' src='https://blogger.googleusercontent.com/img/a/AVvXsEiBJzxa8orMGHiuVakTmRSTAHG1d0k-zZPMojZyVFac5q-z3KMiuqwU7kuEuJ-sdvW40UqFrSuEuGCOJirO_bhD-xyHh3dpZEwrLT0xapr5-o0xwKJklveX4HOviRi9SyevTI9XoZHrKnyXePjRzI4pIN6o07sY3HXqOHwtlvWGBplleGz0Ry0fc31tzGA=s200'/>
-                      <span>Kamar Tidur</span>
-                    </div>
-                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEiW6S9SgD3NI348DsDJvWhrYfjWrWQ3yBneuFB5v9Wite6aje3AKzRTyqNwH1aftgE7gRgPPnUsOdjB_cYIhWKrFOTlXNjtGP2tbMOq9RlsABzpIei9EZnWzVTOGofN-IUbXsoXv4TZkM1SGjqvKsy6In8tK9tOSGayCgkJzSW_Erybm2f-fz8bbBBWQvo=s1080&quot;)'>
-                      <img alt='Lingkungan' src='https://blogger.googleusercontent.com/img/a/AVvXsEiW6S9SgD3NI348DsDJvWhrYfjWrWQ3yBneuFB5v9Wite6aje3AKzRTyqNwH1aftgE7gRgPPnUsOdjB_cYIhWKrFOTlXNjtGP2tbMOq9RlsABzpIei9EZnWzVTOGofN-IUbXsoXv4TZkM1SGjqvKsy6In8tK9tOSGayCgkJzSW_Erybm2f-fz8bbBBWQvo=s200'/>
-                      <span>Lingkungan</span>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <h4 style='font-size:1.25rem; font-weight:700; color:var(--dark); margin-bottom:8px;'>Type 30/60 - Rumah Subsidi Pemerintah</h4>
-                  <p class='pop-unit-desc' style='color:#64748b; font-size:0.9rem; line-height:1.5; margin-bottom:12px;'>Hunian subsidi berkualitas dengan konstruksi double dinding hebel, cicilan flat 1 jutaan/bulan sampai lunas, dan fasilitas kawasan siap huni.</p>
-                  <table class='popup-specs-table'>
-                    <tr><th>Kategori Unit</th><td>Rumah Subsidi Program Pemerintah</td></tr>
-                    <tr><th>Luas Bangunan / Tanah</th><td>30 m&#178; / 60 m&#178; (6 &#215; 10 m)</td></tr>
-                    <tr><th>Ruang Tamu</th><td>1 Ruang Tamu Keluarga</td></tr>
-                    <tr><th>Kamar Tidur / Mandi</th><td>2 Kamar Tidur / 1 Kamar Mandi</td></tr>
-                    <tr><th>Carport &amp; Halaman</th><td>Carport Rabat Beton 1 Mobil + Taman Depan</td></tr>
-                    <tr><th>Struktur &amp; Dinding</th><td>Pondasi Batu Kali, Double Dinding Hebel</td></tr>
-                    <tr><th>Rangka &amp; Atap</th><td>Baja Ringan, Genteng Beton Berwarna</td></tr>
-                    <tr><th>Listrik &amp; Air</th><td>PLN 1.300 Watt / Sumur Bor Pompa Air Jernih</td></tr>
-                    <tr><th>Skema Cicilan</th><td>KPR Subsidi BTN / BSI Flat Mulai Rp 1,1 Jt-an</td></tr>
-                  </table>
-                  <div style='margin-top:20px; display:flex; gap:10px;'>
-                    <a class='btn-cta' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2030%2F60%20Rumah%20Subsidi%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service' style='display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 20px; background:#25D366; color:#fff; border-radius:10px; font-weight:700; font-size:0.95rem; text-decoration:none;' target='_blank'>
-                      <svg style='width:20px; height:20px; fill:currentColor;' viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
-                      <span>Konsultasi Unit via WhatsApp</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </b:includable>
-        </b:widget>
-
-        <!-- DETAIL UNIT 2: TYPE 36 -->
-        <b:widget id='Text32' locked='true' title='Detail Type 36 (Komersial Minimalis)' type='Text' version='3' visible='true'>
-          <b:widget-settings>
-            <b:widget-setting name='content'><![CDATA[Deskripsi: Desain fasad modern elegan dengan langit-langit tinggi, sirkulasi udara sejuk, tata ruang leluasa, dan carport beratap kokoh siap huni.
-
-[GALERI TAMPAK]
-Foto 1: https://blogger.googleusercontent.com/img/a/AVvXsEhkGpWfRwGxuX098WL8oo3B-Q2jr4DlHxAv58iC4nZUd41mnD_izfy-hBeKCoHWVLd26PPrtBbHaN5Br6PJ4rU5CyJmNFOh1Ud56Q36CuX7rBKgLYZ6aqUXTX90LcPCUiXFkBPRM5Oj2Eq5o6Ki6l6VFHTWMvWs-eGXGBURS-numHaK6yd8W3BgZZcpGhs=s812 | Tampak Depan
-Foto 2: https://blogger.googleusercontent.com/img/a/AVvXsEg2oO0e-EqmyBZjkQQ9UMznU2a8qe4sAnnP8TU3mrUnWHXYovkbGRCQu6h29yx9WeoHx-2q3ERfEursFIGrd32atH-czTdXzDMiIm1h1HsZwLJwW3CdT51b4hoBFuTWGZXiyvnMI1FZaVWqglvzQTwJQomtyMGS5-FkGhhQrai_UYu8Z02P62UWjEeW39Q=s1600 | Ruang Tamu
-Foto 3: https://blogger.googleusercontent.com/img/a/AVvXsEiqlA-RN00ExcU9M5l-zfR9MvUYUCudhVDpZwX5v0gLuANjB_Slrl4i1ixzl8voTARJXh7TGOb2PidL0qYTqkuMU3ghYwMlsr4E1o9NQV9M32Nu9PixotpY3rEs1SPSKTZRE-dR2_ZRqSuuUUgbgGVFgkCuWqyYB35AmdFV3Ml_Qp2-0_GPCkDVYGGoCRc=s1600 | Kamar Tidur
-Foto 4: https://blogger.googleusercontent.com/img/a/AVvXsEimBIBT9A4vSu4f10elvZAasZwcVj4vP7xmQoO3WzEiBzZ65decFIw1WupXOrGEyLUmOisy3MX93KwqN3aZojjUoKnbjK3uKIWrESgbvloJ8HZz8K-fPioM-m_sRPITF22f2bBoneMKlR9MFUP_IWvk8G5agCjVKOc4BOM9LWDJQw3WEYaML9vP5fZz52s=s1600 | Carport
-
-[SPESIFIKASI TEKNIS]
-Kategori Unit = Rumah Komersial Minimalis Modern
-Luas Bangunan / Tanah = 36 m² / 60 m²
-Ruang Tamu = 1 Ruang Tamu Lapang
-Kamar Tidur / Mandi = 2 Kamar Tidur / 1 Kamar Mandi
-Carport & Halaman = Carport Beton 1 Mobil + Sisa Halaman
-Struktur & Dinding = Double Dinding Bata Ringan (Hebel)
-Lantai & Plafon = Granit / Keramik Premium, Plafon Gypsum Tinggi
-Listrik & Air = PLN 2.200 Watt / Sumur Pantek & Pompa Listrik
-Skema Cicilan = KPR Komersial Terjangkau Mulai Rp 2,2 Jt-an]]></b:widget-setting>
-          </b:widget-settings>
-          <b:includable id='main'>
-            <div class='unit-detail-source' data-unit-id='Image32' expr:data-pop-title='&quot;Detail Unit: &quot; + data:title' id='pop-service-Image32' style='display:none;'>
-              <div class='unit-raw-detail-content' style='display:none;'><data:content/></div>
-              <div class='popup-unit-grid'>
-                <div class='popup-unit-gallery'>
-                  <div class='pop-main-img-wrap'>
-                    <img class='pop-main-img' alt='Type 36' src='https://blogger.googleusercontent.com/img/a/AVvXsEhkGpWfRwGxuX098WL8oo3B-Q2jr4DlHxAv58iC4nZUd41mnD_izfy-hBeKCoHWVLd26PPrtBbHaN5Br6PJ4rU5CyJmNFOh1Ud56Q36CuX7rBKgLYZ6aqUXTX90LcPCUiXFkBPRM5Oj2Eq5o6Ki6l6VFHTWMvWs-eGXGBURS-numHaK6yd8W3BgZZcpGhs=s812'/>
-                  </div>
-                  <div class='pop-gallery-label'>Galeri Tampak Rumah &amp; Ruangan:</div>
-                  <div class='pop-gallery-thumbs'>
-                    <div class='pop-thumb-item active' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEhkGpWfRwGxuX098WL8oo3B-Q2jr4DlHxAv58iC4nZUd41mnD_izfy-hBeKCoHWVLd26PPrtBbHaN5Br6PJ4rU5CyJmNFOh1Ud56Q36CuX7rBKgLYZ6aqUXTX90LcPCUiXFkBPRM5Oj2Eq5o6Ki6l6VFHTWMvWs-eGXGBURS-numHaK6yd8W3BgZZcpGhs=s812&quot;)'>
-                      <img alt='Tampak Depan' src='https://blogger.googleusercontent.com/img/a/AVvXsEhkGpWfRwGxuX098WL8oo3B-Q2jr4DlHxAv58iC4nZUd41mnD_izfy-hBeKCoHWVLd26PPrtBbHaN5Br6PJ4rU5CyJmNFOh1Ud56Q36CuX7rBKgLYZ6aqUXTX90LcPCUiXFkBPRM5Oj2Eq5o6Ki6l6VFHTWMvWs-eGXGBURS-numHaK6yd8W3BgZZcpGhs=s200'/>
-                      <span>Tampak Depan</span>
-                    </div>
-                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEg2oO0e-EqmyBZjkQQ9UMznU2a8qe4sAnnP8TU3mrUnWHXYovkbGRCQu6h29yx9WeoHx-2q3ERfEursFIGrd32atH-czTdXzDMiIm1h1HsZwLJwW3CdT51b4hoBFuTWGZXiyvnMI1FZaVWqglvzQTwJQomtyMGS5-FkGhhQrai_UYu8Z02P62UWjEeW39Q=s1600&quot;)'>
-                      <img alt='Ruang Tamu' src='https://blogger.googleusercontent.com/img/a/AVvXsEg2oO0e-EqmyBZjkQQ9UMznU2a8qe4sAnnP8TU3mrUnWHXYovkbGRCQu6h29yx9WeoHx-2q3ERfEursFIGrd32atH-czTdXzDMiIm1h1HsZwLJwW3CdT51b4hoBFuTWGZXiyvnMI1FZaVWqglvzQTwJQomtyMGS5-FkGhhQrai_UYu8Z02P62UWjEeW39Q=s200'/>
-                      <span>Ruang Tamu</span>
-                    </div>
-                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEiqlA-RN00ExcU9M5l-zfR9MvUYUCudhVDpZwX5v0gLuANjB_Slrl4i1ixzl8voTARJXh7TGOb2PidL0qYTqkuMU3ghYwMlsr4E1o9NQV9M32Nu9PixotpY3rEs1SPSKTZRE-dR2_ZRqSuuUUgbgGVFgkCuWqyYB35AmdFV3Ml_Qp2-0_GPCkDVYGGoCRc=s1600&quot;)'>
-                      <img alt='Kamar Tidur' src='https://blogger.googleusercontent.com/img/a/AVvXsEiqlA-RN00ExcU9M5l-zfR9MvUYUCudhVDpZwX5v0gLuANjB_Slrl4i1ixzl8voTARJXh7TGOb2PidL0qYTqkuMU3ghYwMlsr4E1o9NQV9M32Nu9PixotpY3rEs1SPSKTZRE-dR2_ZRqSuuUUgbgGVFgkCuWqyYB35AmdFV3Ml_Qp2-0_GPCkDVYGGoCRc=s200'/>
-                      <span>Kamar Tidur</span>
-                    </div>
-                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEimBIBT9A4vSu4f10elvZAasZwcVj4vP7xmQoO3WzEiBzZ65decFIw1WupXOrGEyLUmOisy3MX93KwqN3aZojjUoKnbjK3uKIWrESgbvloJ8HZz8K-fPioM-m_sRPITF22f2bBoneMKlR9MFUP_IWvk8G5agCjVKOc4BOM9LWDJQw3WEYaML9vP5fZz52s=s1600&quot;)'>
-                      <img alt='Carport' src='https://blogger.googleusercontent.com/img/a/AVvXsEimBIBT9A4vSu4f10elvZAasZwcVj4vP7xmQoO3WzEiBzZ65decFIw1WupXOrGEyLUmOisy3MX93KwqN3aZojjUoKnbjK3uKIWrESgbvloJ8HZz8K-fPioM-m_sRPITF22f2bBoneMKlR9MFUP_IWvk8G5agCjVKOc4BOM9LWDJQw3WEYaML9vP5fZz52s=s200'/>
-                      <span>Carport</span>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <h4 style='font-size:1.25rem; font-weight:700; color:var(--dark); margin-bottom:8px;'>Type 36 - Rumah Komersial Minimalis Modern</h4>
-                  <p class='pop-unit-desc' style='color:#64748b; font-size:0.9rem; line-height:1.5; margin-bottom:12px;'>Desain fasad modern elegan dengan langit-langit tinggi, sirkulasi udara sejuk, tata ruang leluasa, dan carport beratap kokoh siap huni.</p>
-                  <table class='popup-specs-table'>
-                    <tr><th>Kategori Unit</th><td>Rumah Komersial Minimalis Modern</td></tr>
-                    <tr><th>Luas Bangunan / Tanah</th><td>36 m&#178; / 60 m&#178;</td></tr>
-                    <tr><th>Ruang Tamu</th><td>1 Ruang Tamu Lapang</td></tr>
-                    <tr><th>Kamar Tidur / Mandi</th><td>2 Kamar Tidur Luas / 1 Kamar Mandi</td></tr>
-                    <tr><th>Carport &amp; Halaman</th><td>Carport Beton 1 Mobil + Sisa Halaman</td></tr>
-                    <tr><th>Struktur &amp; Dinding</th><td>Double Dinding Bata Ringan (Hebel)</td></tr>
-                    <tr><th>Lantai &amp; Plafon</th><td>Granit / Keramik Premium, Plafon Gypsum Tinggi</td></tr>
-                    <tr><th>Listrik &amp; Air</th><td>PLN 2.200 Watt / Sumur Pantek &amp; Pompa Listrik</td></tr>
-                    <tr><th>Skema Cicilan</th><td>KPR Komersial Terjangkau Mulai Rp 2,2 Jt-an</td></tr>
-                  </table>
-                  <div style='margin-top:20px; display:flex; gap:10px;'>
-                    <a class='btn-cta' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2036%20Komersial%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service' style='display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 20px; background:#25D366; color:#fff; border-radius:10px; font-weight:700; font-size:0.95rem; text-decoration:none;' target='_blank'>
-                      <svg style='width:20px; height:20px; fill:currentColor;' viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
-                      <span>Konsultasi Unit via WhatsApp</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </b:includable>
-        </b:widget>
-
-        <!-- DETAIL UNIT 3: TYPE 45 -->
-        <b:widget id='Text33' locked='true' title='Detail Type 45 (Komersial Modern)' type='Text' version='3' visible='true'>
-          <b:widget-settings>
-            <b:widget-setting name='content'><![CDATA[Deskripsi: Hunian modern keluarga dengan tanah lapang, 3 kamar tidur, tata ruang lega, dan lingkungan asri bernilai investasi tinggi.
-
-[GALERI TAMPAK]
-Foto 1: https://blogger.googleusercontent.com/img/a/AVvXsEgbuWiPZvdpfCPLzzSOHpLx26jpHsCz6bbnmFf58SxHxdbWHfy0T1Ab-mx1F66Plkg2m9Lnma4kzvA6HK5RZGLr0JOVG48cF6hSc19NcRC8_WHKbPIaAXDgeHo83wVK01ec4inCdWjn1BCO0CMncizsFpGVqHSMv4Hj0-BPWl-XzyE7dbwQyVfyQKWUk8A=s1018 | Tampak Depan
-Foto 2: https://blogger.googleusercontent.com/img/a/AVvXsEhZyEj8rBNZDwSwvKztR4NcCRUdW_Qr7CtrOf-YGrIerT1v_ZNk2ConOczo-aDu8Bua7C5cuFU5c8wgeGNC7LY1PTZ2Sz_SW-P2iA_0_xNeiT6a1idrKbp5spP8kkZGrQMUVxcznBT7FEKvAWHH-duek28BRa5JWGu37xmTrvKoRnLGLBOOcz5iVr5m2HY=s1080 | Ruang Tamu
-Foto 3: https://blogger.googleusercontent.com/img/a/AVvXsEixRPiyuYkiZ7eR4Nu2wyZKE0rdbpdtsdR74O1_BUKG-xTG6m353qVOtnKdEKvNVw7GmwiaMbKk39p72kbMGBiF0DcqKEW1aNR7euFZ-92n8LSioabV5UdU_fVjDFaKOSLgZMqDWafHGWVw4SsK1g-V5BCyMxCbRa9k8MRudgLwJ1tIKP1OCCsi_fuLAYo=s1600 | Kamar Tidur
-Foto 4: https://blogger.googleusercontent.com/img/a/AVvXsEji8kvslGOMo4uERbqUfjLP2dZNzBTZW7qkA8BR9y_Z_UOfwnzGGNJWS4RIzns-5V12HBuV4Ht3d4Mp8SnwIKPiRSwSvyU9_LqXBlHilFwsRgHXBq6gI6QZElxesxmCd8qTJZhToNhjCw3xkNsQR2qzcO38HRXvEhdkRbi4NDeE-Q8J6yqFZNgWEMFRnb4=s1600 | Halaman & Carport
-
-[SPESIFIKASI TEKNIS]
-Kategori Unit = Rumah Komersial Modern Keluarga
-Luas Bangunan / Tanah = 45 m² / 84 m²
-Ruang Tamu = 1 Ruang Tamu & Keluarga
-Kamar Tidur / Mandi = 3 Kamar Tidur / 1 Kamar Mandi
-Carport & Halaman = Carport Beton 1 Mobil + Taman Depan Lapang
-Struktur & Dinding = Beton Bertulang, Double Dinding Hebel
-Lantai & Plafon = Granit 60×60, Plafon Tinggi Sirkulasi Sejuk
-Listrik & Air = PLN 2.200 Watt / Sumur Bor Otomatis
-Status Legalitas = Sertifikat Hak Milik (SHM)
-Skema Cicilan = KPR Komersial Bank Mandiri / BTN / BSI Mulai Rp 3,1 Jt-an]]></b:widget-setting>
-          </b:widget-settings>
-          <b:includable id='main'>
-            <div class='unit-detail-source' data-unit-id='Image33' expr:data-pop-title='&quot;Detail Unit: &quot; + data:title' id='pop-service-Image33' style='display:none;'>
-              <div class='unit-raw-detail-content' style='display:none;'><data:content/></div>
-              <div class='popup-unit-grid'>
-                <div class='popup-unit-gallery'>
-                  <div class='pop-main-img-wrap'>
-                    <img class='pop-main-img' alt='Type 45' src='https://blogger.googleusercontent.com/img/a/AVvXsEgbuWiPZvdpfCPLzzSOHpLx26jpHsCz6bbnmFf58SxHxdbWHfy0T1Ab-mx1F66Plkg2m9Lnma4kzvA6HK5RZGLr0JOVG48cF6hSc19NcRC8_WHKbPIaAXDgeHo83wVK01ec4inCdWjn1BCO0CMncizsFpGVqHSMv4Hj0-BPWl-XzyE7dbwQyVfyQKWUk8A=s1018'/>
-                  </div>
-                  <div class='pop-gallery-label'>Galeri Tampak Rumah &amp; Ruangan:</div>
-                  <div class='pop-gallery-thumbs'>
-                    <div class='pop-thumb-item active' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEgbuWiPZvdpfCPLzzSOHpLx26jpHsCz6bbnmFf58SxHxdbWHfy0T1Ab-mx1F66Plkg2m9Lnma4kzvA6HK5RZGLr0JOVG48cF6hSc19NcRC8_WHKbPIaAXDgeHo83wVK01ec4inCdWjn1BCO0CMncizsFpGVqHSMv4Hj0-BPWl-XzyE7dbwQyVfyQKWUk8A=s1018&quot;)'>
-                      <img alt='Tampak Depan' src='https://blogger.googleusercontent.com/img/a/AVvXsEgbuWiPZvdpfCPLzzSOHpLx26jpHsCz6bbnmFf58SxHxdbWHfy0T1Ab-mx1F66Plkg2m9Lnma4kzvA6HK5RZGLr0JOVG48cF6hSc19NcRC8_WHKbPIaAXDgeHo83wVK01ec4inCdWjn1BCO0CMncizsFpGVqHSMv4Hj0-BPWl-XzyE7dbwQyVfyQKWUk8A=s200'/>
-                      <span>Tampak Depan</span>
-                    </div>
-                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEhZyEj8rBNZDwSwvKztR4NcCRUdW_Qr7CtrOf-YGrIerT1v_ZNk2ConOczo-aDu8Bua7C5cuFU5c8wgeGNC7LY1PTZ2Sz_SW-P2iA_0_xNeiT6a1idrKbp5spP8kkZGrQMUVxcznBT7FEKvAWHH-duek28BRa5JWGu37xmTrvKoRnLGLBOOcz5iVr5m2HY=s1080&quot;)'>
-                      <img alt='Ruang Tamu' src='https://blogger.googleusercontent.com/img/a/AVvXsEhZyEj8rBNZDwSwvKztR4NcCRUdW_Qr7CtrOf-YGrIerT1v_ZNk2ConOczo-aDu8Bua7C5cuFU5c8wgeGNC7LY1PTZ2Sz_SW-P2iA_0_xNeiT6a1idrKbp5spP8kkZGrQMUVxcznBT7FEKvAWHH-duek28BRa5JWGu37xmTrvKoRnLGLBOOcz5iVr5m2HY=s200'/>
-                      <span>Ruang Tamu</span>
-                    </div>
-                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEixRPiyuYkiZ7eR4Nu2wyZKE0rdbpdtsdR74O1_BUKG-xTG6m353qVOtnKdEKvNVw7GmwiaMbKk39p72kbMGBiF0DcqKEW1aNR7euFZ-92n8LSioabV5UdU_fVjDFaKOSLgZMqDWafHGWVw4SsK1g-V5BCyMxCbRa9k8MRudgLwJ1tIKP1OCCsi_fuLAYo=s1600&quot;)'>
-                      <img alt='Kamar Tidur' src='https://blogger.googleusercontent.com/img/a/AVvXsEixRPiyuYkiZ7eR4Nu2wyZKE0rdbpdtsdR74O1_BUKG-xTG6m353qVOtnKdEKvNVw7GmwiaMbKk39p72kbMGBiF0DcqKEW1aNR7euFZ-92n8LSioabV5UdU_fVjDFaKOSLgZMqDWafHGWVw4SsK1g-V5BCyMxCbRa9k8MRudgLwJ1tIKP1OCCsi_fuLAYo=s200'/>
-                      <span>Kamar Tidur</span>
-                    </div>
-                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEji8kvslGOMo4uERbqUfjLP2dZNzBTZW7qkA8BR9y_Z_UOfwnzGGNJWS4RIzns-5V12HBuV4Ht3d4Mp8SnwIKPiRSwSvyU9_LqXBlHilFwsRgHXBq6gI6QZElxesxmCd8qTJZhToNhjCw3xkNsQR2qzcO38HRXvEhdkRbi4NDeE-Q8J6yqFZNgWEMFRnb4=s1600&quot;)'>
-                      <img alt='Halaman' src='https://blogger.googleusercontent.com/img/a/AVvXsEji8kvslGOMo4uERbqUfjLP2dZNzBTZW7qkA8BR9y_Z_UOfwnzGGNJWS4RIzns-5V12HBuV4Ht3d4Mp8SnwIKPiRSwSvyU9_LqXBlHilFwsRgHXBq6gI6QZElxesxmCd8qTJZhToNhjCw3xkNsQR2qzcO38HRXvEhdkRbi4NDeE-Q8J6yqFZNgWEMFRnb4=s200'/>
-                      <span>Halaman</span>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <h4 style='font-size:1.25rem; font-weight:700; color:var(--dark); margin-bottom:8px;'>Type 45 - Rumah Komersial Modern</h4>
-                  <p class='pop-unit-desc' style='color:#64748b; font-size:0.9rem; line-height:1.5; margin-bottom:12px;'>Hunian modern keluarga dengan tanah lapang, 3 kamar tidur, tata ruang lega, dan lingkungan asri bernilai investasi tinggi.</p>
-                  <table class='popup-specs-table'>
-                    <tr><th>Kategori Unit</th><td>Rumah Komersial Modern Keluarga</td></tr>
-                    <tr><th>Luas Bangunan / Tanah</th><td>45 m&#178; / 84 m&#178;</td></tr>
-                    <tr><th>Ruang Tamu</th><td>1 Ruang Tamu &amp; Keluarga</td></tr>
-                    <tr><th>Kamar Tidur / Mandi</th><td>3 Kamar Tidur / 1 Kamar Mandi</td></tr>
-                    <tr><th>Carport &amp; Halaman</th><td>Carport Beton 1 Mobil + Taman Depan Lapang</td></tr>
-                    <tr><th>Struktur &amp; Dinding</th><td>Beton Bertulang, Double Dinding Hebel</td></tr>
-                    <tr><th>Lantai &amp; Plafon</th><td>Granit 60&#215;60, Plafon Tinggi Sirkulasi Sejuk</td></tr>
-                    <tr><th>Listrik &amp; Air</th><td>PLN 2.200 Watt / Sumur Bor Otomatis</td></tr>
-                    <tr><th>Status Legalitas</th><td>Sertifikat Hak Milik (SHM)</td></tr>
-                    <tr><th>Skema Cicilan</th><td>KPR Bank Mandiri / BTN / BSI Mulai Rp 3,1 Jt-an</td></tr>
-                  </table>
-                  <div style='margin-top:20px; display:flex; gap:10px;'>
-                    <a class='btn-cta' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2045%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service' style='display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 20px; background:#25D366; color:#fff; border-radius:10px; font-weight:700; font-size:0.95rem; text-decoration:none;' target='_blank'>
-                      <svg style='width:20px; height:20px; fill:currentColor;' viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
-                      <span>Konsultasi Unit via WhatsApp</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </b:includable>
-        </b:widget>
-
-        <!-- DETAIL UNIT 4: TYPE 42 -->
-        <b:widget id='Text34' locked='true' title='Detail Type 42 (Komersial Elegan)' type='Text' version='3' visible='true'>
-          <b:widget-settings>
-            <b:widget-setting name='content'><![CDATA[Deskripsi: Desain minimalis elegan dengan penataan ruang fungsional, pencahayaan alami melimpah, dan konstruksi kokoh double dinding hebel.
-
-[GALERI TAMPAK]
-Foto 1: https://blogger.googleusercontent.com/img/a/AVvXsEi_T2ySzMuz8Rx7BU66PN9MUYsd26XqJgXxxXc1SD0Qo6q5dcWMVfrXiS3XqoaHNg1PfhUo1Ncy7UrvsytHfys5B7DJmSX0OoFs1ezWSn4ubolXaMxhxozjgwpU2EuKtQm076Ef6WVsGxmWNK7KdIIoV6unUxOsi-wH8_v2S1JsvCwPgsT1csaacwz6aqI=s1200 | Tampak Depan
-Foto 2: https://blogger.googleusercontent.com/img/a/AVvXsEg2oO0e-EqmyBZjkQQ9UMznU2a8qe4sAnnP8TU3mrUnWHXYovkbGRCQu6h29yx9WeoHx-2q3ERfEursFIGrd32atH-czTdXzDMiIm1h1HsZwLJwW3CdT51b4hoBFuTWGZXiyvnMI1FZaVWqglvzQTwJQomtyMGS5-FkGhhQrai_UYu8Z02P62UWjEeW39Q=s1600 | Ruang Tamu
-Foto 3: https://blogger.googleusercontent.com/img/a/AVvXsEiqlA-RN00ExcU9M5l-zfR9MvUYUCudhVDpZwX5v0gLuANjB_Slrl4i1ixzl8voTARJXh7TGOb2PidL0qYTqkuMU3ghYwMlsr4E1o9NQV9M32Nu9PixotpY3rEs1SPSKTZRE-dR2_ZRqSuuUUgbgGVFgkCuWqyYB35AmdFV3Ml_Qp2-0_GPCkDVYGGoCRc=s1600 | Kamar Tidur
-Foto 4: https://blogger.googleusercontent.com/img/a/AVvXsEimBIBT9A4vSu4f10elvZAasZwcVj4vP7xmQoO3WzEiBzZ65decFIw1WupXOrGEyLUmOisy3MX93KwqN3aZojjUoKnbjK3uKIWrESgbvloJ8HZz8K-fPioM-m_sRPITF22f2bBoneMKlR9MFUP_IWvk8G5agCjVKOc4BOM9LWDJQw3WEYaML9vP5fZz52s=s1600 | Carport
-
-[SPESIFIKASI TEKNIS]
-Kategori Unit = Rumah Komersial Elegan
-Luas Bangunan / Tanah = 42 m² / 60 m²
-Ruang Tamu = 1 Ruang Tamu Nyaman
-Kamar Tidur / Mandi = 2 Kamar Tidur / 1 Kamar Mandi
-Carport & Halaman = Carport Beton 1 Mobil + Sisa Lahan
-Struktur & Dinding = Double Dinding Hebel Kokoh
-Lantai & Plafon = Keramik Premium, Plafon Gypsum Modern
-Listrik & Air = PLN 2.200 Watt / Sumur Bor Pompa Listrik
-Status Legalitas = Sertifikat Hak Milik (SHM)
-Skema Cicilan = KPR Komersial Terjangkau Mulai Rp 2,6 Jt-an]]></b:widget-setting>
-          </b:widget-settings>
-          <b:includable id='main'>
-            <div class='unit-detail-source' data-unit-id='Image34' expr:data-pop-title='&quot;Detail Unit: &quot; + data:title' id='pop-service-Image34' style='display:none;'>
-              <div class='unit-raw-detail-content' style='display:none;'><data:content/></div>
-              <div class='popup-unit-grid'>
-                <div class='popup-unit-gallery'>
-                  <div class='pop-main-img-wrap'>
-                    <img class='pop-main-img' alt='Type 42' src='https://blogger.googleusercontent.com/img/a/AVvXsEi_T2ySzMuz8Rx7BU66PN9MUYsd26XqJgXxxXc1SD0Qo6q5dcWMVfrXiS3XqoaHNg1PfhUo1Ncy7UrvsytHfys5B7DJmSX0OoFs1ezWSn4ubolXaMxhxozjgwpU2EuKtQm076Ef6WVsGxmWNK7KdIIoV6unUxOsi-wH8_v2S1JsvCwPgsT1csaacwz6aqI=s1200'/>
-                  </div>
-                  <div class='pop-gallery-label'>Galeri Tampak Rumah &amp; Ruangan:</div>
-                  <div class='pop-gallery-thumbs'>
-                    <div class='pop-thumb-item active' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEi_T2ySzMuz8Rx7BU66PN9MUYsd26XqJgXxxXc1SD0Qo6q5dcWMVfrXiS3XqoaHNg1PfhUo1Ncy7UrvsytHfys5B7DJmSX0OoFs1ezWSn4ubolXaMxhxozjgwpU2EuKtQm076Ef6WVsGxmWNK7KdIIoV6unUxOsi-wH8_v2S1JsvCwPgsT1csaacwz6aqI=s1200&quot;)'>
-                      <img alt='Tampak Depan' src='https://blogger.googleusercontent.com/img/a/AVvXsEi_T2ySzMuz8Rx7BU66PN9MUYsd26XqJgXxxXc1SD0Qo6q5dcWMVfrXiS3XqoaHNg1PfhUo1Ncy7UrvsytHfys5B7DJmSX0OoFs1ezWSn4ubolXaMxhxozjgwpU2EuKtQm076Ef6WVsGxmWNK7KdIIoV6unUxOsi-wH8_v2S1JsvCwPgsT1csaacwz6aqI=s200'/>
-                      <span>Tampak Depan</span>
-                    </div>
-                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEg2oO0e-EqmyBZjkQQ9UMznU2a8qe4sAnnP8TU3mrUnWHXYovkbGRCQu6h29yx9WeoHx-2q3ERfEursFIGrd32atH-czTdXzDMiIm1h1HsZwLJwW3CdT51b4hoBFuTWGZXiyvnMI1FZaVWqglvzQTwJQomtyMGS5-FkGhhQrai_UYu8Z02P62UWjEeW39Q=s1600&quot;)'>
-                      <img alt='Ruang Tamu' src='https://blogger.googleusercontent.com/img/a/AVvXsEg2oO0e-EqmyBZjkQQ9UMznU2a8qe4sAnnP8TU3mrUnWHXYovkbGRCQu6h29yx9WeoHx-2q3ERfEursFIGrd32atH-czTdXzDMiIm1h1HsZwLJwW3CdT51b4hoBFuTWGZXiyvnMI1FZaVWqglvzQTwJQomtyMGS5-FkGhhQrai_UYu8Z02P62UWjEeW39Q=s200'/>
-                      <span>Ruang Tamu</span>
-                    </div>
-                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEiqlA-RN00ExcU9M5l-zfR9MvUYUCudhVDpZwX5v0gLuANjB_Slrl4i1ixzl8voTARJXh7TGOb2PidL0qYTqkuMU3ghYwMlsr4E1o9NQV9M32Nu9PixotpY3rEs1SPSKTZRE-dR2_ZRqSuuUUgbgGVFgkCuWqyYB35AmdFV3Ml_Qp2-0_GPCkDVYGGoCRc=s1600&quot;)'>
-                      <img alt='Kamar Tidur' src='https://blogger.googleusercontent.com/img/a/AVvXsEiqlA-RN00ExcU9M5l-zfR9MvUYUCudhVDpZwX5v0gLuANjB_Slrl4i1ixzl8voTARJXh7TGOb2PidL0qYTqkuMU3ghYwMlsr4E1o9NQV9M32Nu9PixotpY3rEs1SPSKTZRE-dR2_ZRqSuuUUgbgGVFgkCuWqyYB35AmdFV3Ml_Qp2-0_GPCkDVYGGoCRc=s200'/>
-                      <span>Kamar Tidur</span>
-                    </div>
-                    <div class='pop-thumb-item' onclick='switchPopImage(this, &quot;https://blogger.googleusercontent.com/img/a/AVvXsEimBIBT9A4vSu4f10elvZAasZwcVj4vP7xmQoO3WzEiBzZ65decFIw1WupXOrGEyLUmOisy3MX93KwqN3aZojjUoKnbjK3uKIWrESgbvloJ8HZz8K-fPioM-m_sRPITF22f2bBoneMKlR9MFUP_IWvk8G5agCjVKOc4BOM9LWDJQw3WEYaML9vP5fZz52s=s1600&quot;)'>
-                      <img alt='Carport' src='https://blogger.googleusercontent.com/img/a/AVvXsEimBIBT9A4vSu4f10elvZAasZwcVj4vP7xmQoO3WzEiBzZ65decFIw1WupXOrGEyLUmOisy3MX93KwqN3aZojjUoKnbjK3uKIWrESgbvloJ8HZz8K-fPioM-m_sRPITF22f2bBoneMKlR9MFUP_IWvk8G5agCjVKOc4BOM9LWDJQw3WEYaML9vP5fZz52s=s200'/>
-                      <span>Carport</span>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <h4 style='font-size:1.25rem; font-weight:700; color:var(--dark); margin-bottom:8px;'>Type 42 - Rumah Komersial Elegan</h4>
-                  <p class='pop-unit-desc' style='color:#64748b; font-size:0.9rem; line-height:1.5; margin-bottom:12px;'>Desain minimalis elegan dengan penataan ruang fungsional, pencahayaan alami melimpah, dan konstruksi kokoh double dinding hebel.</p>
-                  <table class='popup-specs-table'>
-                    <tr><th>Kategori Unit</th><td>Rumah Komersial Elegan</td></tr>
-                    <tr><th>Luas Bangunan / Tanah</th><td>42 m&#178; / 60 m&#178;</td></tr>
-                    <tr><th>Ruang Tamu</th><td>1 Ruang Tamu Nyaman</td></tr>
-                    <tr><th>Kamar Tidur / Mandi</th><td>2 Kamar Tidur / 1 Kamar Mandi</td></tr>
-                    <tr><th>Carport &amp; Halaman</th><td>Carport Beton 1 Mobil + Sisa Lahan</td></tr>
-                    <tr><th>Struktur &amp; Dinding</th><td>Double Dinding Hebel Kokoh</td></tr>
-                    <tr><th>Lantai &amp; Plafon</th><td>Keramik Premium, Plafon Gypsum Modern</td></tr>
-                    <tr><th>Listrik &amp; Air</th><td>PLN 2.200 Watt / Sumur Bor Pompa Listrik</td></tr>
-                    <tr><th>Status Legalitas</th><td>Sertifikat Hak Milik (SHM)</td></tr>
-                    <tr><th>Skema Cicilan</th><td>KPR Komersial Terjangkau Mulai Rp 2,6 Jt-an</td></tr>
-                  </table>
-                  <div style='margin-top:20px; display:flex; gap:10px;'>
-                    <a class='btn-cta' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2042%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service' style='display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 20px; background:#25D366; color:#fff; border-radius:10px; font-weight:700; font-size:0.95rem; text-decoration:none;' target='_blank'>
-                      <svg style='width:20px; height:20px; fill:currentColor;' viewBox='0 0 24 24'><path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z'/></svg>
-                      <span>Konsultasi Unit via WhatsApp</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </b:includable>
-        </b:widget>
-      </b:section>
-
-
-
 
       <!-- ================= GALERI FOTO PROYEK ================= -->
       <section id='gallery'>
