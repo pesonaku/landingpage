@@ -709,9 +709,15 @@ body:not(#layout) #header.onScroll {
 .service-card-title {
   font-size: 1.25rem;
   font-weight: 800;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   color: var(--black, #0f172a);
   line-height: 1.25;
+}
+.service-card-desc {
+  font-size: 0.84rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0 0 14px;
 }
 
 /* PRICE BLOCK */
@@ -812,13 +818,51 @@ body:not(#layout) #header.onScroll {
   text-overflow: ellipsis;
 }
 
-/* FOOTER BUTTONS: DETAIL + WHATSAPP */
+/* FOOTER BUTTONS: KONSULTASI UNIT WHATSAPP */
 .service-card-footer {
   margin-top: auto;
   padding-top: 10px;
   display: flex;
   gap: 8px;
   align-items: center;
+}
+.btn-service-consult {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff !important;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-sizing: border-box;
+}
+.btn-service-consult:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+  color: #ffffff !important;
+}
+.btn-service-consult svg,
+.btn-service-consult .hgi-stroke {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  color: currentColor;
+  transition: transform 0.2s ease;
+}
+.btn-service-consult:hover svg,
+.btn-service-consult:hover .hgi-stroke {
+  transform: scale(1.1);
 }
 .btn-service {
   flex: 1;
@@ -1206,6 +1250,57 @@ body:not(#layout) #header.onScroll {
 .gallery-section .widget > h3.title {
   display: none !important;
 }
+
+/* GALERI SHOW MORE (DEFAULT: TAMPILKAN 6 FOTO) */
+.gallery-section.is-collapsed > .widget:nth-child(n+7) {
+  display: none !important;
+}
+.gallery-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 36px;
+}
+.btn-gallery-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white, #ffffff);
+  color: var(--key, #0f9d58);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 13px 30px;
+  border-radius: 50px;
+  border: 2px solid var(--key, #0f9d58);
+  box-shadow: 0 4px 14px rgba(15, 157, 88, 0.15);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.btn-gallery-more:hover {
+  background: var(--key, #0f9d58);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(15, 157, 88, 0.28);
+}
+.btn-gallery-more .hgi-stroke {
+  font-size: 19px;
+  transition: transform 0.25s ease;
+}
+.btn-gallery-more.expanded {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #475569;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.btn-gallery-more.expanded:hover {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+}
+body#layout .gallery-section.is-collapsed > .widget:nth-child(n+7) {
+  display: block !important;
+}
+
 .gallery-item {
   position: relative;
   height: 250px;

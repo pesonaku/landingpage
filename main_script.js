@@ -283,6 +283,49 @@ function initLandingPage() {
         });
       });
 
+      // F. Galeri Show More / Collapsible Engine (Default: 6 Foto)
+      const gallerySection = document.getElementById('gallery-section') || document.querySelector('.gallery-section');
+      const btnGalleryToggle = document.getElementById('btnGalleryToggle');
+
+      if (gallerySection && btnGalleryToggle) {
+        const galleryWidgets = gallerySection.querySelectorAll('.widget');
+        if (galleryWidgets.length <= 6) {
+          btnGalleryToggle.style.display = 'none';
+        } else {
+          gallerySection.classList.add('is-collapsed');
+          btnGalleryToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            const isCollapsed = gallerySection.classList.contains('is-collapsed');
+            if (isCollapsed) {
+              gallerySection.classList.remove('is-collapsed');
+              btnGalleryToggle.classList.add('expanded');
+              const textSpan = btnGalleryToggle.querySelector('.btn-text');
+              if (textSpan) textSpan.textContent = 'Tampilkan Lebih Sedikit';
+              const icon = btnGalleryToggle.querySelector('.toggle-arrow');
+              if (icon) {
+                icon.className = 'toggle-arrow hgi-stroke hgi-arrow-up-01';
+              }
+              gallerySection.querySelectorAll('.widget:nth-child(n+7) .reveal').forEach(function(el) {
+                el.classList.add('active');
+              });
+            } else {
+              gallerySection.classList.add('is-collapsed');
+              btnGalleryToggle.classList.remove('expanded');
+              const textSpan = btnGalleryToggle.querySelector('.btn-text');
+              if (textSpan) textSpan.textContent = 'Lihat Lebih Banyak Dokumentasi (12 Foto)';
+              const icon = btnGalleryToggle.querySelector('.toggle-arrow');
+              if (icon) {
+                icon.className = 'toggle-arrow hgi-stroke hgi-arrow-down-01';
+              }
+              const galAnchor = document.getElementById('gallery');
+              if (galAnchor) {
+                galAnchor.scrollIntoView({ behavior: 'smooth' });
+              }
+            }
+          });
+        }
+      }
+
       // G. Testimoni Carousel Auto-Slide & Touch Swiping
       const reviewTrack = document.querySelector('.review-section');
       const reviewContainer = document.getElementById('reviewCarousel');
@@ -604,6 +647,7 @@ function initLandingPage() {
             let installment = '';
             let lb = '', lt = '', tamu = '', tidur = '', mandi = '', carport = '';
 
+            let desc = '';
             const lines = rawText.split('\n');
             lines.forEach(function(line) {
               const trimmed = line.trim();
@@ -616,6 +660,8 @@ function initLandingPage() {
                 price = trimmed.substring(trimmed.indexOf(':') + 1).trim();
               } else if (lower.startsWith('cicilan:') || lower.startsWith('angsuran:') || lower.startsWith('label:')) {
                 installment = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+              } else if (lower.startsWith('deskripsi:') || lower.startsWith('desc:')) {
+                desc = trimmed.substring(trimmed.indexOf(':') + 1).trim();
               } else if (lower.startsWith('lb:') || lower.startsWith('bangunan:')) {
                 lb = trimmed.substring(trimmed.indexOf(':') + 1).trim();
               } else if (lower.startsWith('lt:') || lower.startsWith('tanah:')) {
@@ -635,6 +681,10 @@ function initLandingPage() {
             if (badge) {
               const badgeEl = card.querySelector('.service-badge');
               if (badgeEl) badgeEl.textContent = badge;
+            }
+            if (desc) {
+              const descEl = card.querySelector('.service-card-desc');
+              if (descEl) descEl.textContent = desc;
             }
             if (price) {
               const priceValEl = card.querySelector('.price-amount') || card.querySelector('.service-price-tag strong');
@@ -673,7 +723,7 @@ function initLandingPage() {
 
         // Sinkronisasi WhatsApp Button pada Kartu Depan
         const cardTitle = (card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : '') || 'Tipe Rumah';
-        const cardWaBtn = card.querySelector('.btn-service-wa');
+        const cardWaBtn = card.querySelector('.btn-service-consult') || card.querySelector('.btn-service-wa');
         if (cardWaBtn) {
           const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
           const mName = mConfig.name || "Mas Ro'uf";

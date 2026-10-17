@@ -786,9 +786,15 @@ body:not(#layout) #header.onScroll {
 .service-card-title {
   font-size: 1.25rem;
   font-weight: 800;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   color: var(--black, #0f172a);
   line-height: 1.25;
+}
+.service-card-desc {
+  font-size: 0.84rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0 0 14px;
 }
 
 /* PRICE BLOCK */
@@ -889,13 +895,51 @@ body:not(#layout) #header.onScroll {
   text-overflow: ellipsis;
 }
 
-/* FOOTER BUTTONS: DETAIL + WHATSAPP */
+/* FOOTER BUTTONS: KONSULTASI UNIT WHATSAPP */
 .service-card-footer {
   margin-top: auto;
   padding-top: 10px;
   display: flex;
   gap: 8px;
   align-items: center;
+}
+.btn-service-consult {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff !important;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-sizing: border-box;
+}
+.btn-service-consult:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+  color: #ffffff !important;
+}
+.btn-service-consult svg,
+.btn-service-consult .hgi-stroke {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  color: currentColor;
+  transition: transform 0.2s ease;
+}
+.btn-service-consult:hover svg,
+.btn-service-consult:hover .hgi-stroke {
+  transform: scale(1.1);
 }
 .btn-service {
   flex: 1;
@@ -1283,6 +1327,57 @@ body:not(#layout) #header.onScroll {
 .gallery-section .widget > h3.title {
   display: none !important;
 }
+
+/* GALERI SHOW MORE (DEFAULT: TAMPILKAN 6 FOTO) */
+.gallery-section.is-collapsed > .widget:nth-child(n+7) {
+  display: none !important;
+}
+.gallery-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 36px;
+}
+.btn-gallery-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white, #ffffff);
+  color: var(--key, #0f9d58);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 13px 30px;
+  border-radius: 50px;
+  border: 2px solid var(--key, #0f9d58);
+  box-shadow: 0 4px 14px rgba(15, 157, 88, 0.15);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.btn-gallery-more:hover {
+  background: var(--key, #0f9d58);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(15, 157, 88, 0.28);
+}
+.btn-gallery-more .hgi-stroke {
+  font-size: 19px;
+  transition: transform 0.25s ease;
+}
+.btn-gallery-more.expanded {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #475569;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.btn-gallery-more.expanded:hover {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+}
+body#layout .gallery-section.is-collapsed > .widget:nth-child(n+7) {
+  display: block !important;
+}
+
 .gallery-item {
   position: relative;
   height: 250px;
@@ -3781,6 +3876,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                   </div>
                   <div class='service-card-content'>
                     <h3 class='service-card-title'><b:eval expr='data:title ?: &quot;Type 30/60&quot;'/></h3>
+                    <p class='service-card-desc'>Hunian subsidi kualitas komersil berkonsep modern minimalis dengan double dinding, 2 kamar tidur, dan halaman asri siap huni.</p>
                     <div class='service-price-block'>
                       <span class='price-label'>Harga Mulai</span>
                       <strong class='price-amount'>Rp 185 Jt-an</strong>
@@ -3831,12 +3927,9 @@ Carport: 1 Mobil]]></b:widget-setting>
                       </div>
                     </div>
                     <div class='service-card-footer'>
-                      <a class='btn-service' href='#detail' target='pop-service-Image31'>
-                        <span>Lihat Detail</span>
-                        <i class='hgi-stroke hgi-arrow-right-01'></i>
-                      </a>
-                      <a aria-label='Konsultasi Unit Type 30/60 via WhatsApp' class='btn-service-wa wa-dynamic-btn' expr:href='data:link' target='_blank' title='Tanya Unit via WhatsApp'>
+                      <a aria-label='Konsultasi Unit Type 30/60 via WhatsApp' class='btn-service-consult wa-dynamic-btn' expr:href='data:link' target='_blank'>
                         <i class='hgi-stroke hgi-whatsapp'></i>
+                        <span>Konsultasi Unit</span>
                       </a>
                     </div>
                   </div>
@@ -3923,6 +4016,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                   </div>
                   <div class='service-card-content'>
                     <h3 class='service-card-title'><b:eval expr='data:title ?: &quot;Type 36&quot;'/></h3>
+                    <p class='service-card-desc'>Rumah komersil berdesain elegan plafon tinggi, tata ruang fungsional lapang, rangka atap baja ringan, dan carport cor beton.</p>
                     <div class='service-price-block'>
                       <span class='price-label'>Harga Mulai</span>
                       <strong class='price-amount'>Rp 435 Jt-an</strong>
@@ -3973,12 +4067,9 @@ Carport: 1 Mobil]]></b:widget-setting>
                       </div>
                     </div>
                     <div class='service-card-footer'>
-                      <a class='btn-service' href='#detail' target='pop-service-Image32'>
-                        <span>Lihat Detail</span>
-                        <i class='hgi-stroke hgi-arrow-right-01'></i>
-                      </a>
-                      <a aria-label='Konsultasi Unit Type 36 via WhatsApp' class='btn-service-wa wa-dynamic-btn' expr:href='data:link' target='_blank' title='Tanya Unit via WhatsApp'>
+                      <a aria-label='Konsultasi Unit Type 36 via WhatsApp' class='btn-service-consult wa-dynamic-btn' expr:href='data:link' target='_blank'>
                         <i class='hgi-stroke hgi-whatsapp'></i>
+                        <span>Konsultasi Unit</span>
                       </a>
                     </div>
                   </div>
@@ -4065,6 +4156,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                   </div>
                   <div class='service-card-content'>
                     <h3 class='service-card-title'><b:eval expr='data:title ?: &quot;Type 42&quot;'/></h3>
+                    <p class='service-card-desc'>Hunian idaman keluarga dengan luas bangunan lega, pencahayaan alami optimal, material premium, serta taman depan dan belakang.</p>
                     <div class='service-price-block'>
                       <span class='price-label'>Harga Mulai</span>
                       <strong class='price-amount'>Rp 495 Jt-an</strong>
@@ -4115,12 +4207,9 @@ Carport: 1 Mobil]]></b:widget-setting>
                       </div>
                     </div>
                     <div class='service-card-footer'>
-                      <a class='btn-service' href='#detail' target='pop-service-Image33'>
-                        <span>Lihat Detail</span>
-                        <i class='hgi-stroke hgi-arrow-right-01'></i>
-                      </a>
-                      <a aria-label='Konsultasi Unit Type 42 via WhatsApp' class='btn-service-wa wa-dynamic-btn' expr:href='data:link' target='_blank' title='Tanya Unit via WhatsApp'>
+                      <a aria-label='Konsultasi Unit Type 42 via WhatsApp' class='btn-service-consult wa-dynamic-btn' expr:href='data:link' target='_blank'>
                         <i class='hgi-stroke hgi-whatsapp'></i>
+                        <span>Konsultasi Unit</span>
                       </a>
                     </div>
                   </div>
@@ -4208,6 +4297,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                   </div>
                   <div class='service-card-content'>
                     <h3 class='service-card-title'><b:eval expr='data:title ?: &quot;Type 45&quot;'/></h3>
+                    <p class='service-card-desc'>Tipe komersil prestisius dengan 3 kamar tidur, tata ruang modern mewah, sirkulasi udara maksimal, dan ruang keluarga lapang.</p>
                     <div class='service-price-block'>
                       <span class='price-label'>Harga Mulai</span>
                       <strong class='price-amount'>Rp 550 Jt-an</strong>
@@ -4258,12 +4348,9 @@ Carport: 1 Mobil]]></b:widget-setting>
                       </div>
                     </div>
                     <div class='service-card-footer'>
-                      <a class='btn-service' href='#detail' target='pop-service-Image34'>
-                        <span>Lihat Detail</span>
-                        <i class='hgi-stroke hgi-arrow-right-01'></i>
-                      </a>
-                      <a aria-label='Konsultasi Unit Type 45 via WhatsApp' class='btn-service-wa wa-dynamic-btn' expr:href='data:link' target='_blank' title='Tanya Unit via WhatsApp'>
+                      <a aria-label='Konsultasi Unit Type 45 via WhatsApp' class='btn-service-consult wa-dynamic-btn' expr:href='data:link' target='_blank'>
                         <i class='hgi-stroke hgi-whatsapp'></i>
+                        <span>Konsultasi Unit</span>
                       </a>
                     </div>
                   </div>
@@ -4342,7 +4429,7 @@ Carport: 1 Mobil]]></b:widget-setting>
             <h2>Galeri &amp; Dokumentasi Proyek</h2>
             <p>Momen akad massal bersama ribuan debitur, pejabat kementerian, dan progres pembangunan kawasan.</p>
           </div>
-          <b:section class='gallery-section' id='gallery-section' name='[06. GALERI] Dokumentasi Acara &amp; Akad Massal' showaddelement='true' version='3'>
+          <b:section class='gallery-section is-collapsed' id='gallery-section' name='[06. GALERI] Dokumentasi Acara &amp; Akad Massal' showaddelement='true' version='3'>
             <!-- FOTO GALERI 1 -->
             <b:widget id='Image61' locked='false' title='Akad KPR Massal 324 Unit' type='Image' version='3' visible='true'>
               <b:widget-settings>
@@ -4643,6 +4730,15 @@ Carport: 1 Mobil]]></b:widget-setting>
               </b:includable>
             </b:widget>
           </b:section>
+
+          <!-- TOMBOL SHOW MORE / LIHAT LEBIH BANYAK GALERI (DEFAULT TAMPILKAN 6 FOTO) -->
+          <div class='gallery-actions reveal'>
+            <button class='btn-gallery-more' id='btnGalleryToggle' type='button'>
+              <i class='hgi-stroke hgi-view'></i>
+              <span class='btn-text'>Lihat Lebih Banyak Dokumentasi (12 Foto)</span>
+              <i class='toggle-arrow hgi-stroke hgi-arrow-down-01'></i>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -5742,6 +5838,49 @@ function initLandingPage() {
         });
       });
 
+      // F. Galeri Show More / Collapsible Engine (Default: 6 Foto)
+      const gallerySection = document.getElementById('gallery-section') || document.querySelector('.gallery-section');
+      const btnGalleryToggle = document.getElementById('btnGalleryToggle');
+
+      if (gallerySection && btnGalleryToggle) {
+        const galleryWidgets = gallerySection.querySelectorAll('.widget');
+        if (galleryWidgets.length <= 6) {
+          btnGalleryToggle.style.display = 'none';
+        } else {
+          gallerySection.classList.add('is-collapsed');
+          btnGalleryToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            const isCollapsed = gallerySection.classList.contains('is-collapsed');
+            if (isCollapsed) {
+              gallerySection.classList.remove('is-collapsed');
+              btnGalleryToggle.classList.add('expanded');
+              const textSpan = btnGalleryToggle.querySelector('.btn-text');
+              if (textSpan) textSpan.textContent = 'Tampilkan Lebih Sedikit';
+              const icon = btnGalleryToggle.querySelector('.toggle-arrow');
+              if (icon) {
+                icon.className = 'toggle-arrow hgi-stroke hgi-arrow-up-01';
+              }
+              gallerySection.querySelectorAll('.widget:nth-child(n+7) .reveal').forEach(function(el) {
+                el.classList.add('active');
+              });
+            } else {
+              gallerySection.classList.add('is-collapsed');
+              btnGalleryToggle.classList.remove('expanded');
+              const textSpan = btnGalleryToggle.querySelector('.btn-text');
+              if (textSpan) textSpan.textContent = 'Lihat Lebih Banyak Dokumentasi (12 Foto)';
+              const icon = btnGalleryToggle.querySelector('.toggle-arrow');
+              if (icon) {
+                icon.className = 'toggle-arrow hgi-stroke hgi-arrow-down-01';
+              }
+              const galAnchor = document.getElementById('gallery');
+              if (galAnchor) {
+                galAnchor.scrollIntoView({ behavior: 'smooth' });
+              }
+            }
+          });
+        }
+      }
+
       // G. Testimoni Carousel Auto-Slide & Touch Swiping
       const reviewTrack = document.querySelector('.review-section');
       const reviewContainer = document.getElementById('reviewCarousel');
@@ -6063,6 +6202,7 @@ function initLandingPage() {
             let installment = '';
             let lb = '', lt = '', tamu = '', tidur = '', mandi = '', carport = '';
 
+            let desc = '';
             const lines = rawText.split('\n');
             lines.forEach(function(line) {
               const trimmed = line.trim();
@@ -6075,6 +6215,8 @@ function initLandingPage() {
                 price = trimmed.substring(trimmed.indexOf(':') + 1).trim();
               } else if (lower.startsWith('cicilan:') || lower.startsWith('angsuran:') || lower.startsWith('label:')) {
                 installment = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+              } else if (lower.startsWith('deskripsi:') || lower.startsWith('desc:')) {
+                desc = trimmed.substring(trimmed.indexOf(':') + 1).trim();
               } else if (lower.startsWith('lb:') || lower.startsWith('bangunan:')) {
                 lb = trimmed.substring(trimmed.indexOf(':') + 1).trim();
               } else if (lower.startsWith('lt:') || lower.startsWith('tanah:')) {
@@ -6094,6 +6236,10 @@ function initLandingPage() {
             if (badge) {
               const badgeEl = card.querySelector('.service-badge');
               if (badgeEl) badgeEl.textContent = badge;
+            }
+            if (desc) {
+              const descEl = card.querySelector('.service-card-desc');
+              if (descEl) descEl.textContent = desc;
             }
             if (price) {
               const priceValEl = card.querySelector('.price-amount') || card.querySelector('.service-price-tag strong');
@@ -6132,7 +6278,7 @@ function initLandingPage() {
 
         // Sinkronisasi WhatsApp Button pada Kartu Depan
         const cardTitle = (card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : '') || 'Tipe Rumah';
-        const cardWaBtn = card.querySelector('.btn-service-wa');
+        const cardWaBtn = card.querySelector('.btn-service-consult') || card.querySelector('.btn-service-wa');
         if (cardWaBtn) {
           const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
           const mName = mConfig.name || "Mas Ro'uf";
@@ -6760,6 +6906,7 @@ function initLandingPage() {
 
 // Make sendWhatsAppMessage accessible globally for inline onsubmit handler
 window.sendWhatsAppMessage = sendWhatsAppMessage;
+
 
     //]]>
     </script>
