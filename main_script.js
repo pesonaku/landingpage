@@ -1025,7 +1025,7 @@ function initLandingPage() {
       const phone = mConfig.phone || "6287870988073";
 
       // Hanya render template kalkulator jika belum tersedia di DOM
-      if (!renderEl.querySelector('#commUnitSelect')) {
+      if (!renderEl.querySelector('#commPriceInput')) {
         renderEl.innerHTML = `
         <div class="kpr-panel-header">
           <div class="kpr-panel-badge-row">
@@ -1033,21 +1033,11 @@ function initLandingPage() {
             <span class="kpr-popular-badge badge-comm-sub">DESAIN MODERN MINIMALIS</span>
           </div>
           <h3>Kalkulator Simulasi KPR Komersial</h3>
-          <p class="kpr-panel-sub">Sesuaikan tipe rumah, uang muka (DP), tenor pinjaman, dan suku bunga bank rekanan untuk menghitung estimasi angsuran bulanan Anda.</p>
+          <p class="kpr-panel-sub">Sesuaikan harga properti, uang muka (DP), tenor pinjaman, dan suku bunga bank rekanan untuk menghitung estimasi angsuran bulanan Anda.</p>
         </div>
 
         <div class="kpr-calc-layout">
           <div class="kpr-calc-inputs">
-            <!-- Pilihan Tipe Rumah -->
-            <div class="calc-field">
-              <label for="commUnitSelect"><strong>Pilih Tipe Rumah Komersil:</strong></label>
-              <select class="calc-select" id="commUnitSelect">
-                <option value="435000000" selected="selected">Pesona Kahuripan Type 36/60 — Rp 435.000.000</option>
-                <option value="495000000">Pesona Kahuripan Type 40/72 — Rp 495.000.000</option>
-                <option value="custom">Input Harga Kustom Sendiri</option>
-              </select>
-            </div>
-
             <!-- Harga Properti -->
             <div class="calc-field">
               <label for="commPriceInput"><strong>Harga Properti (Rp):</strong></label>
@@ -1143,7 +1133,6 @@ function initLandingPage() {
       `;
       }
 
-      const unitSelect = renderEl.querySelector('#commUnitSelect');
       const priceInput = renderEl.querySelector('#commPriceInput');
       const dpNominalInput = renderEl.querySelector('#commDpNominal');
       const dpPercentLabel = renderEl.querySelector('#dpPercentLabel');
@@ -1187,7 +1176,7 @@ function initLandingPage() {
         if (resultDp) resultDp.textContent = fmtRupiah(currentDpNominal);
         if (resultMinIncome) resultMinIncome.textContent = fmtRupiah(minIncome) + ' / bln';
 
-        const unitText = unitSelect && unitSelect.value !== 'custom' ? unitSelect.options[unitSelect.selectedIndex].text.split('—')[0].trim() : 'Unit Komersial';
+        const unitText = 'Unit Komersial Pesona Kahuripan';
         const bankText = bankSelect ? bankSelect.options[bankSelect.selectedIndex].text : 'Bank Rekanan';
 
         const waMsg = `Halo ${marketingName}, saya ingin konsultasi simulasi KPR Komersial Pesona Kahuripan:\n\n` +
@@ -1205,19 +1194,6 @@ function initLandingPage() {
         if (ctaCommWa) {
           ctaCommWa.href = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(waMsg)}`;
         }
-      }
-
-      if (unitSelect) {
-        unitSelect.addEventListener('change', function() {
-          if (this.value !== 'custom') {
-            const val = parseInt(this.value, 10);
-            priceInput.value = fmtDots(val);
-            currentPrice = val;
-            currentDpNominal = Math.round(currentPrice * (currentDpPercent / 100));
-            dpNominalInput.value = fmtDots(currentDpNominal);
-          }
-          updateCalculation();
-        });
       }
 
       if (priceInput) {
