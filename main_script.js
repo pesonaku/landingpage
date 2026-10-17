@@ -4,8 +4,11 @@
  */
 
 function initLandingPage() {
+  if (window._pesonaLandingPageInitialized) return;
+  window._pesonaLandingPageInitialized = true;
+  document.documentElement.classList.add('js-ready');
 
-      // ================= MASTER MARKETING SYNC ENGINE =================
+  // ================= MASTER MARKETING SYNC ENGINE =================
       const masterData = document.getElementById('marketingMasterData');
       if (masterData) {
         const rawName = (masterData.getAttribute('data-name') || "Mas Ro'uf").trim();
@@ -387,7 +390,7 @@ function initLandingPage() {
         startAutoSlide();
       }
 
-      // F. Smooth Scroll Reveal Effect via IntersectionObserver (Responsif & Anti-Macet)
+      // F. Smooth Scroll Reveal Effect via IntersectionObserver (Responsif & Alami)
       if ('IntersectionObserver' in window) {
         const revealObserver = new IntersectionObserver(function(entries, observer) {
           entries.forEach(function(entry) {
@@ -397,8 +400,8 @@ function initLandingPage() {
             }
           });
         }, {
-          threshold: 0.05,
-          rootMargin: '0px 0px 60px 0px'
+          threshold: 0.08,
+          rootMargin: '0px 0px -20px 0px'
         });
 
         document.querySelectorAll('.reveal').forEach(function(el) {
@@ -410,12 +413,15 @@ function initLandingPage() {
         });
       }
 
-      // Safety Fallback: Pastikan seluruh section yang memiliki .reveal tetap terlihat jika observer terhambat
-      setTimeout(function() {
+      // Safety Fallback cadangan khusus elemen di dalam viewport saat load
+      window.addEventListener('load', function() {
         document.querySelectorAll('.reveal:not(.revealed)').forEach(function(el) {
-          el.classList.add('revealed');
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight) {
+            el.classList.add('revealed');
+          }
         });
-      }, 1000);
+      });
 
     }
 
@@ -443,21 +449,21 @@ function initLandingPage() {
       thumbEl.classList.add('active');
     };
 
-    // KAMUS SVG ICON DINAMIS & MUDAH DIEDIT UNTUK TIPE RUMAH PILIHAN
+    // KAMUS ICON HUGEICONS STROKE-ROUNDED RESMI UNTUK TIPE RUMAH PILIHAN
     const SPEC_ICON_REGISTRY = {
-      lb: '<svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 16H5v-6h7v6zm0-8H5V5h7v6zm7 8h-5v-6h5v6zm0-8h-5V5h5v6z"/></svg>',
-      lt: '<svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>',
-      tamu: '<svg viewBox="0 0 24 24"><path d="M4 18v2h2v-2h12v2h2v-2c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2h-1V6c0-1.1-.9-2-2-2H7c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2zM7 6h10v2H7V6zm-3 6h16v4H4v-4z"/></svg>',
-      kamar: '<svg viewBox="0 0 24 24"><path d="M19 7h-8v8H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4zm-9 6H5v-4h5v4zM7 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>',
-      mandi: '<svg viewBox="0 0 24 24"><path d="M20 13V4.83C20 3.27 18.73 2 17.17 2c-.75 0-1.47.3-2 .83l-1.25 1.25c-.16-.05-.33-.08-.51-.08-.88 0-1.6.72-1.6 1.6 0 .42.17.81.44 1.1l-1.44 1.44C10.53 8.05 10.19 8 9.83 8H6c-2.21 0-4 1.79-4 4v1h18zm-2 2H4v3c0 2.21 1.79 4 4 4h8c2.21 0 4-1.79 4-4v-3z"/></svg>',
-      carport: '<svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4.66l.12-.34h13.77l.11.34V17z"/></svg>',
-      hebel: '<svg viewBox="0 0 24 24"><path d="M19 4H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-9 2h4v3h-4V6zM5 6h3v3H5V6zm0 5h5v3H5v-3zm7 0h7v3h-7v-3zm7 5v2h-3v-2h3zm-5 2h-4v-2h4v2zm-6 0H5v-2h3v2zm11-7v-2h-3v-3h3v5z"/></svg>',
-      dinding: '<svg viewBox="0 0 24 24"><path d="M19 4H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-9 2h4v3h-4V6zM5 6h3v3H5V6zm0 5h5v3H5v-3zm7 0h7v3h-7v-3zm7 5v2h-3v-2h3zm-5 2h-4v-2h4v2zm-6 0H5v-2h3v2zm11-7v-2h-3v-3h3v5z"/></svg>',
-      taman: '<svg viewBox="0 0 24 24"><path d="M17 12c0-2.76-2.24-5-5-5s-5 2.24-5 5c0 2.05 1.23 3.81 3 4.58V20h4v-3.42c1.77-.77 3-2.53 3-4.58zm-5-3c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3z"/></svg>',
-      hook: '<svg viewBox="0 0 24 24"><path d="M17 12c0-2.76-2.24-5-5-5s-5 2.24-5 5c0 2.05 1.23 3.81 3 4.58V20h4v-3.42c1.77-.77 3-2.53 3-4.58zm-5-3c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3z"/></svg>',
-      listrik: '<svg viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>',
-      air: '<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
-      shm: '<svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>'
+      lb: '<i class="hgi-stroke hgi-ruler-dimension-line"></i>',
+      lt: '<i class="hgi-stroke hgi-home-01"></i>',
+      tamu: '<i class="hgi-stroke hgi-sofa-01"></i>',
+      kamar: '<i class="hgi-stroke hgi-bed-double"></i>',
+      mandi: '<i class="hgi-stroke hgi-bathtub-01"></i>',
+      carport: '<i class="hgi-stroke hgi-car-01"></i>',
+      hebel: '<i class="hgi-stroke hgi-brick-wall"></i>',
+      dinding: '<i class="hgi-stroke hgi-brick-wall"></i>',
+      taman: '<i class="hgi-stroke hgi-leaf-01"></i>',
+      hook: '<i class="hgi-stroke hgi-leaf-01"></i>',
+      listrik: '<i class="hgi-stroke hgi-bolt"></i>',
+      air: '<i class="hgi-stroke hgi-tap-01"></i>',
+      shm: '<i class="hgi-stroke hgi-certificate-01"></i>'
     };
 
     // Helper: Inisialisasi Icon Spesifikasi Dinamis (Auto-Detect Kata Kunci / Atribut data-icon)
@@ -482,9 +488,9 @@ function initLandingPage() {
         }
 
         if (iconKey && SPEC_ICON_REGISTRY[iconKey]) {
-          const existingSvg = item.querySelector('svg');
-          if (existingSvg) {
-            existingSvg.outerHTML = SPEC_ICON_REGISTRY[iconKey];
+          const existingIcon = item.querySelector('svg, i.hgi-stroke, .icon');
+          if (existingIcon) {
+            existingIcon.outerHTML = SPEC_ICON_REGISTRY[iconKey];
           } else {
             item.insertAdjacentHTML('afterbegin', SPEC_ICON_REGISTRY[iconKey]);
           }
@@ -559,7 +565,7 @@ function initLandingPage() {
             bHtml += `
               <div class='benefit-item'>
                 <div class='benefit-icon'>
-                  <svg viewBox='0 0 24 24'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/></svg>
+                  <i class='hgi-stroke hgi-checkmark-circle-01'></i>
                 </div>
                 <div>
                   <strong>${b.title}</strong>
@@ -884,7 +890,7 @@ function initLandingPage() {
             fbLink.className = 'socmed-fb';
             fbLink.target = '_blank';
             fbLink.rel = 'noopener';
-            fbLink.innerHTML = `<svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg><span>Facebook</span>`;
+            fbLink.innerHTML = `<i class="hgi-stroke hgi-facebook-01"></i><span>Facebook</span>`;
             container.appendChild(fbLink);
           }
         }
@@ -1128,7 +1134,7 @@ function initLandingPage() {
               </div>
 
               <a class="btn-kpr-action btn-comm-cta wa-dynamic-btn" id="ctaCommWa" href="#" target="_blank">
-                <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+                <i class="hgi-stroke hgi-whatsapp"></i>
                 <span>Konsultasikan Simulasi Ini via WhatsApp</span>
               </a>
             </div>
@@ -1171,7 +1177,12 @@ function initLandingPage() {
         const installment = calcInstallment(plafon, currentRate, currentTenor);
         const minIncome = installment > 0 ? Math.round(installment / 0.35) : 0;
 
-        if (resultInstallment) resultInstallment.textContent = fmtRupiah(installment);
+        if (resultInstallment) {
+          resultInstallment.textContent = fmtRupiah(installment);
+          resultInstallment.classList.remove('calc-pulse');
+          void resultInstallment.offsetWidth;
+          resultInstallment.classList.add('calc-pulse');
+        }
         if (resultPlafon) resultPlafon.textContent = fmtRupiah(plafon);
         if (resultDp) resultDp.textContent = fmtRupiah(currentDpNominal);
         if (resultMinIncome) resultMinIncome.textContent = fmtRupiah(minIncome) + ' / bln';
