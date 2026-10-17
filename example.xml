@@ -73,7 +73,7 @@
     <!-- Progressive Enhancement State -->
     <script>document.documentElement.classList.add('js-ready');</script>
 
-    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_style.css?v=2.4' rel='stylesheet'/>
+    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_style.css?v=2.5' rel='stylesheet'/>
     <b:skin><![CDATA[
 /*
 <!-- THEME VARIABLES -->
@@ -113,6 +113,8 @@
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0; padding: 0;
+}
+html, body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -160,6 +162,16 @@ ul, ol { list-style: none; }
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+}
+
+.hgi-stroke::before,
+[class*="hgi-"]::before {
+  font-family: "hugeicons-stroke-rounded" !important;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Official Hugeicons Stroke-Rounded Glyphs */
@@ -5641,7 +5653,7 @@ function initLandingPage() {
     };
 
     // KAMUS ICON HUGEICONS STROKE-ROUNDED RESMI UNTUK TIPE RUMAH PILIHAN
-    const SPEC_ICON_REGISTRY = {
+    var SPEC_ICON_REGISTRY = {
       lb: '<i class="hgi-stroke hgi-ruler-dimension-line"></i>',
       lt: '<i class="hgi-stroke hgi-home-01"></i>',
       tamu: '<i class="hgi-stroke hgi-sofa-01"></i>',
@@ -6518,7 +6530,7 @@ function initLandingPage() {
 window.sendWhatsAppMessage = sendWhatsAppMessage;
     //]]>
     </script>
-    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_script.js?v=2.3'></script>
+    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_script.js?v=2.5'></script>
 
     <!-- Fancybox Initialization (Kemudahan Penggunaan & Tombol Close Responsif) -->
     <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js'></script>

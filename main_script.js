@@ -450,7 +450,7 @@ function initLandingPage() {
     };
 
     // KAMUS ICON HUGEICONS STROKE-ROUNDED RESMI UNTUK TIPE RUMAH PILIHAN
-    const SPEC_ICON_REGISTRY = {
+    var SPEC_ICON_REGISTRY = {
       lb: '<i class="hgi-stroke hgi-ruler-dimension-line"></i>',
       lt: '<i class="hgi-stroke hgi-home-01"></i>',
       tamu: '<i class="hgi-stroke hgi-sofa-01"></i>',
