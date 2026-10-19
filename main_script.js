@@ -6,7 +6,7 @@
 function initLandingPage() {
   if (window._pesonaLandingPageInitialized) return;
   window._pesonaLandingPageInitialized = true;
-  document.documentElement.classList.add('js-ready');
+  // document.documentElement.classList.add('js-ready');
 
   // ================= MASTER MARKETING SYNC ENGINE =================
       const masterData = document.getElementById('marketingMasterData');

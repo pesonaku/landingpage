@@ -22,14 +22,14 @@
     <link href='//blogger.googleusercontent.com' rel='dns-prefetch'/>
     <link href='//cdn.jsdelivr.net' rel='dns-prefetch'/>
 
-    <!-- Meta Title & Canonical -->
+    <!-- Meta Title &amp; Canonical -->
     <title><data:view.title.escaped/></title>
     <meta expr:content='data:view.description.escaped' name='description'/>
     <link expr:href='data:view.url.canonical' rel='canonical'/>
     <link expr:href='data:blog.blogspotFaviconUrl' rel='icon' type='image/x-icon'/>
     <meta content='#0f9d58' name='theme-color'/>
 
-    <!-- Open Graph & Social Sharing -->
+    <!-- Open Graph &amp; Social Sharing -->
     <meta expr:content='data:blog.localeUnderscoreDelimited' property='og:locale'/>
     <b:if cond='data:view.isHomepage'>
       <meta content='website' property='og:type'/>
@@ -65,19 +65,21 @@
     <link href='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css' rel='stylesheet'/>
 
     <!-- ======================================================================
-         CSS SKIN & DESIGN SYSTEM
+         CSS SKIN &amp; DESIGN SYSTEM
     ====================================================================== -->
         <!-- Hugeicons Stroke-Rounded (Official Webfont) -->
     <link href='https://use.hugeicons.com/font/icons.css' rel='stylesheet'/>
 
     <!-- Progressive Enhancement State -->
-    <script>document.documentElement.classList.add('js-ready');</script>
+    
 
-    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_style.css?v=2.6' rel='stylesheet'/>
+    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_style.css?v=3.0' rel='stylesheet'/>
     <b:skin><![CDATA[
+@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_style.css?v=3.0");
+
 /*!
  * Pesona Kahuripan - Clean Modern Blogger Landing Page Template
- * Stylesheet is separated into: main_style.css?v=2.6
+ * Stylesheet is separated into: main_style.css?v=3.0
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -135,7 +137,7 @@ body#layout .section {
     <b:template-skin><![CDATA[
 /* ======================================================================
    PENGATUR TATA LETAK DASBOR BLOGGER (BODY#LAYOUT)
-   Menjamin Semua Seksi [01] s/d [11] Tampil Rapi, Berurutan & Mudah Diedit
+   Menjamin Semua Seksi [01] s/d [11] Tampil Rapi, Berurutan &amp; Mudah Diedit
 ====================================================================== */
 body#layout {
   position: relative !important;
@@ -299,7 +301,7 @@ body#layout .widget a.editlink:hover {
   color: #ffffff !important;
 }
 
-/* TATA LETAK KHUSUS PROMO, GALERI & CAROUSEL REVIEW */
+/* TATA LETAK KHUSUS PROMO, GALERI &amp; CAROUSEL REVIEW */
 body#layout #promo, body#layout .promo-section {
   position: static !important;
   width: 100% !important;
@@ -340,7 +342,7 @@ body#layout .contact-section {
 }
 
 body#layout:after {
-  content: 'Pesona Kahuripan — Seluruh Widget Terstruktur Rapi & Aman Digunakan';
+  content: 'Pesona Kahuripan — Seluruh Widget Terstruktur Rapi &amp; Aman Digunakan';
   display: block !important;
   font-size: 12px !important;
   color: #94a3b8 !important;
@@ -353,7 +355,7 @@ body#layout:after {
   <body id='top' itemscope='' itemtype='https://schema.org/WebPage'>
 
     <!-- ======================================================================
-         1. HEADER & NAVIGASI RESMI
+         1. HEADER &amp; NAVIGASI RESMI
     ====================================================================== -->
     <header id='header'>
       <div class='wrapper'>
@@ -473,7 +475,7 @@ body#layout:after {
         </b:section>
       </section>
 
-      <!-- ================= PROMO & INFORMASI TERBARU ================= -->
+      <!-- ================= PROMO &amp; INFORMASI TERBARU ================= -->
       <section id='promo'>
         <div class='wrapper'>
           <b:section class='promo-section' id='promo-section' name='[03. PROMO] Informasi Terbaru &amp; Penawaran Spesial' showaddelement='false' version='3'>
@@ -487,9 +489,9 @@ body#layout:after {
                 <b:widget-setting name='link'>https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20ingin%20klaim%20Promo%20Spesial%20Booking%201%20Juta%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23promo</b:widget-setting>
                 <b:widget-setting name='caption'><![CDATA[Badge: PENAWARAN TERBATAS BULAN INI
 Tag: SUBSIDI DP 1% RESMI
-Deskripsi: Spesial bulan ini: Bebas Biaya BPHTB & Notaris, Subsidi DP 1%, Cicilan flat 1 jutaan/bulan dan bonus pompa air terpasang siap huni.
-Benefit 1: Cukup Booking Fee 1 Juta | Langsung pilih unit idaman & kunci blok
-Benefit 2: Gratis Biaya Notaris & Surat-Surat | Sertifikat SHM, AJB & BPHTB ditanggung developer
+Deskripsi: Spesial bulan ini: Bebas Biaya BPHTB &amp; Notaris, Subsidi DP 1%, Cicilan flat 1 jutaan/bulan dan bonus pompa air terpasang siap huni.
+Benefit 1: Cukup Booking Fee 1 Juta | Langsung pilih unit idaman &amp; kunci blok
+Benefit 2: Gratis Biaya Notaris &amp; Surat-Surat | Sertifikat SHM, AJB &amp; BPHTB ditanggung developer
 Benefit 3: Bonus Pompa Air Terpasang | Air sumur jernih langsung siap dinikmati keluarga
 Tombol: Klaim Promo Spesial via WhatsApp]]></b:widget-setting>
               </b:widget-settings>
@@ -1309,10 +1311,73 @@ Carport: 1 Mobil]]></b:widget-setting>
               </b:includable>
             </b:widget>
 
-            <!-- BAR SPECS & FILTER TABS -->
+            <!-- BAR SPECS &amp; FILTER TABS -->
             <b:widget id='HTML51' locked='true' title='Filter Sudut Ruangan' type='HTML' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='content'><![CDATA[
+                <b:widget-setting name='content'><![CDATA[<div class='tampak-highlights-bar reveal'>
+                    <div class='tampak-highlight-item'>
+                      <i class='hgi-stroke hgi-home-01'></i>
+                      <span>Type 30/60 m²</span>
+                    </div>
+                    <div class='tampak-highlight-item'>
+                      <i class='hgi-stroke hgi-brick-wall'></i>
+                      <span>Double Dinding Hebel</span>
+                    </div>
+                    <div class='tampak-highlight-item'>
+                      <i class='hgi-stroke hgi-bed-double'></i>
+                      <span>2 Kamar Tidur</span>
+                    </div>
+                    <div class='tampak-highlight-item'>
+                      <i class='hgi-stroke hgi-bathtub-01'></i>
+                      <span>1 Kamar Mandi</span>
+                    </div>
+                    <div class='tampak-highlight-item'>
+                      <i class='hgi-stroke hgi-car-01'></i>
+                      <span>Carport 1 Mobil</span>
+                    </div>
+                    <div class='tampak-highlight-item'>
+                      <i class='hgi-stroke hgi-leaf-01'></i>
+                      <span>Sisa Tanah Belakang 6×2.5m</span>
+                    </div>
+                    <div class='tampak-highlight-item'>
+                      <i class='hgi-stroke hgi-checkmark-circle-01'></i>
+                      <span>Cicilan Flat 1,1 Jt/bln</span>
+                    </div>
+                  </div>
+
+                  <div class='tampak-filter-wrapper reveal'>
+                    <div class='tampak-filter-tabs' id='tampakFilterTabs'>
+                      <button class='tampak-tab-btn active' data-filter='all' type='button'>
+                        <i class='hgi-stroke hgi-home-01'></i>
+                        <span>Semua Sudut (7 Foto)</span>
+                      </button>
+                      <button class='tampak-tab-btn' data-filter='depan' type='button'>
+                        <i class='hgi-stroke hgi-car-01'></i>
+                        <span>Tampak Depan</span>
+                      </button>
+                      <button class='tampak-tab-btn' data-filter='ruang' type='button'>
+                        <i class='hgi-stroke hgi-sofa-01'></i>
+                        <span>Ruang Utama</span>
+                      </button>
+                      <button class='tampak-tab-btn' data-filter='kamar' type='button'>
+                        <i class='hgi-stroke hgi-bed-double'></i>
+                        <span>Kamar Tidur</span>
+                      </button>
+                      <button class='tampak-tab-btn' data-filter='toilet' type='button'>
+                        <i class='hgi-stroke hgi-bathtub-01'></i>
+                        <span>Kamar Mandi</span>
+                      </button>
+                      <button class='tampak-tab-btn' data-filter='belakang' type='button'>
+                        <i class='hgi-stroke hgi-leaf-01'></i>
+                        <span>Halaman Belakang &amp; Dapur</span>
+                      </button>
+                    </div>
+                  </div>]]></b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <b:if cond='data:content'>
+                  <data:content/>
+                <b:else/>
                   <div class='tampak-highlights-bar reveal'>
                     <div class='tampak-highlight-item'>
                       <i class='hgi-stroke hgi-home-01'></i>
@@ -1372,10 +1437,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                       </button>
                     </div>
                   </div>
-                ]]></b:widget-setting>
-              </b:widget-settings>
-              <b:includable id='main'>
-                <data:content/>
+                </b:if>
               </b:includable>
             </b:widget>
 
@@ -1572,7 +1634,7 @@ Carport: 1 Mobil]]></b:widget-setting>
               </b:includable>
             </b:widget>
 
-            <!-- 7. TAMPAK BELAKANG 2 (DAPUR & CUCI JEMUR) -->
+            <!-- 7. TAMPAK BELAKANG 2 (DAPUR &amp; CUCI JEMUR) -->
             <b:widget id='Image57' locked='true' title='Tampak Dapur &amp; Ruang Cuci Jemur' type='Image' version='3' visible='true'>
               <b:widget-settings>
                 <b:widget-setting name='displayUrl'>https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/tampak%20belakang%202.jpeg</b:widget-setting>
@@ -1604,10 +1666,32 @@ Carport: 1 Mobil]]></b:widget-setting>
               </b:includable>
             </b:widget>
 
-            <!-- BANNER KONSULTASI & SURVEY LOKASI -->
-            <b:widget id='HTML52' locked='true' title='Banner Survey Unit' type='HTML' version='3' visible='true'>
+            <!-- BANNER KONSULTASI &amp; SURVEY LOKASI -->
+            <b:widget id='HTML52' locked='true' title='Survey Lokasi Banner' type='HTML' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='content'><![CDATA[
+                <b:widget-setting name='content'><![CDATA[<div class='tampak-cta-banner reveal'>
+                    <div class='tampak-cta-decor'></div>
+                    <div class='tampak-cta-content'>
+                      <div class='tampak-cta-icon'>
+                        <i class='hgi-stroke hgi-home-01'></i>
+                      </div>
+                      <div class='tampak-cta-text'>
+                        <h3>Ingin Melihat Langsung Rumah Contoh Subsidi Pesona Kahuripan?</h3>
+                        <p>Jadwalkan kunjungan survey lokasi gratis &amp; konsultasikan simulasi cicilan flat 1 jutaan/bulan bersama Mas Ro'uf — Dampingan berkas KPR sampai terima kunci!</p>
+                      </div>
+                    </div>
+                    <div class='tampak-cta-action'>
+                      <a aria-label='Jadwalkan Survey Rumah Subsidi via WhatsApp' class='btn-tampak-survey wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20survey%20langsung%20Unit%20Rumah%20Subsidi%20Pemerintah%20Pesona%20Kahuripan.%20Bisa%20info%20jadwal%20survey%20lokasi%3F' target='_blank'>
+                        <i class='hgi-stroke hgi-whatsapp'></i>
+                        <span>Jadwalkan Survey Lokasi via WA</span>
+                      </a>
+                    </div>
+                  </div>]]></b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <b:if cond='data:content'>
+                  <data:content/>
+                <b:else/>
                   <div class='tampak-cta-banner reveal'>
                     <div class='tampak-cta-decor'></div>
                     <div class='tampak-cta-content'>
@@ -1626,10 +1710,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                       </a>
                     </div>
                   </div>
-                ]]></b:widget-setting>
-              </b:widget-settings>
-              <b:includable id='main'>
-                <data:content/>
+                </b:if>
               </b:includable>
             </b:widget>
 
@@ -1655,16 +1736,15 @@ Carport: 1 Mobil]]></b:widget-setting>
               </b:includable>
             </b:widget>
 
-            <!-- DAFTAR LOKASI PROYEK 1 - 17 DENGAN FILTER & SEARCH -->
+            <!-- DAFTAR LOKASI PROYEK 1 - 17 DENGAN FILTER &amp; SEARCH -->
             <b:widget id='HTML55' locked='true' title='Daftar 17 Lokasi Proyek Pesona Kahuripan' type='HTML' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='content'><![CDATA[
-            <div class='lokasi-controls-wrap reveal'>
+                <b:widget-setting name='content'><![CDATA[<div class='lokasi-controls-wrap reveal'>
               <div class='lokasi-search-row'>
                 <div class='lokasi-search-box'>
                   <i class='hgi-stroke hgi-search-01'></i>
                   <input type='text' id='lokasiSearchInput' class='lokasi-search-input' placeholder='Cari nomor proyek atau wilayah (misal: 9, Cileungsi, Bojong, Serang)...' autocomplete='off'/>
-                  <button type='button' id='lokasiSearchClear' class='lokasi-search-clear' aria-label='Hapus pencarian'>&times;</button>
+                  <button type='button' id='lokasiSearchClear' class='lokasi-search-clear' aria-label='Hapus pencarian'>&#215;</button>
                 </div>
               </div>
               <div class='lokasi-filter-tabs' id='lokasiFilterTabs'>
@@ -1698,11 +1778,11 @@ Carport: 1 Mobil]]></b:widget-setting>
 
             <div class='lokasi-grid' id='lokasiProjectsGrid'>
 
-              <div class='lokasi-card reveal' data-no='1' data-search='pesona kahuripan 1 klapanunggal klapanunggal, kab. bogor jl. raya klapanunggal, desa cikahuripan, kec. klapanunggal, kab. bogor, jawa barat 16710 subsidi 30/60 & ruko komersial' data-wilayah='klapanunggal'>
+              <div class='lokasi-card reveal' data-no='1' data-search='pesona kahuripan 1 klapanunggal klapanunggal, kab. bogor jl. raya klapanunggal, desa cikahuripan, kec. klapanunggal, kab. bogor, jawa barat 16710 subsidi 30/60 &amp; ruko komersial' data-wilayah='klapanunggal'>
                 <div class='lokasi-card-top'>
                   <div class='lokasi-card-badges'>
                     <span class='lokasi-proyek-num'>Proyek #01</span>
-                    <span class='lokasi-status-badge primary'>Kantor Pusat & Terlengkap</span>
+                    <span class='lokasi-status-badge primary'>Kantor Pusat &amp; Terlengkap</span>
                   </div>
                   <div class='lokasi-card-region'>
                     <i class='hgi-stroke hgi-location-01'></i>
@@ -1713,14 +1793,14 @@ Carport: 1 Mobil]]></b:widget-setting>
                   <h3 class='lokasi-card-title'>Pesona Kahuripan 1</h3>
                   <div class='lokasi-tipe-badge'>
                     <i class='hgi-stroke hgi-home-01'></i>
-                    <span>Subsidi 30/60 & Ruko Komersial</span>
+                    <span>Subsidi 30/60 &amp; Ruko Komersial</span>
                   </div>
                   <p class='lokasi-card-address'>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
                     <span>Jl. Raya Klapanunggal, Desa Cikahuripan, Kec. Klapanunggal, Kab. Bogor, Jawa Barat 16710</span>
                   </p>
                   <div class='lokasi-card-chips'>
-                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Kantor Pemasaran Utama</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat Polsek & Pasar</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Bebas Banjir</span>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Kantor Pemasaran Utama</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat Polsek &amp; Pasar</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Bebas Banjir</span>
                   </div>
                 </div>
                 <div class='lokasi-card-footer'>
@@ -1728,13 +1808,13 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
                     <span>Kunjungi Lokasi</span>
                   </a>
-                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro'uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%201%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 1 via WA'>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%201%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 1 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
                 </div>
               </div>
-              <div class='lokasi-card reveal' data-no='2' data-search='pesona kahuripan 2 klapanunggal klapanunggal, kab. bogor jl. pesona palad, desa cikahuripan, kec. klapanunggal, kab. bogor, jawa barat 16710 subsidi 30/60 & komersial' data-wilayah='klapanunggal'>
+              <div class='lokasi-card reveal' data-no='2' data-search='pesona kahuripan 2 klapanunggal klapanunggal, kab. bogor jl. pesona palad, desa cikahuripan, kec. klapanunggal, kab. bogor, jawa barat 16710 subsidi 30/60 &amp; komersial' data-wilayah='klapanunggal'>
                 <div class='lokasi-card-top'>
                   <div class='lokasi-card-badges'>
                     <span class='lokasi-proyek-num'>Proyek #02</span>
@@ -1749,7 +1829,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                   <h3 class='lokasi-card-title'>Pesona Kahuripan 2</h3>
                   <div class='lokasi-tipe-badge'>
                     <i class='hgi-stroke hgi-home-01'></i>
-                    <span>Subsidi 30/60 & Komersial</span>
+                    <span>Subsidi 30/60 &amp; Komersial</span>
                   </div>
                   <p class='lokasi-card-address'>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
@@ -1764,7 +1844,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
                     <span>Kunjungi Lokasi</span>
                   </a>
-                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro'uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%202%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 2 via WA'>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%202%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 2 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
@@ -1774,7 +1854,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                 <div class='lokasi-card-top'>
                   <div class='lokasi-card-badges'>
                     <span class='lokasi-proyek-num'>Proyek #03</span>
-                    <span class='lokasi-status-badge info'>Asri & Bebas Banjir</span>
+                    <span class='lokasi-status-badge info'>Asri &amp; Bebas Banjir</span>
                   </div>
                   <div class='lokasi-card-region'>
                     <i class='hgi-stroke hgi-location-01'></i>
@@ -1800,7 +1880,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
                     <span>Kunjungi Lokasi</span>
                   </a>
-                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro'uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%203%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 3 via WA'>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%203%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 3 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
@@ -1836,13 +1916,13 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
                     <span>Kunjungi Lokasi</span>
                   </a>
-                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro'uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%204%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 4 via WA'>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%204%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 4 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
                 </div>
               </div>
-              <div class='lokasi-card reveal' data-no='5' data-search='pesona kahuripan 5 klapanunggal klapanunggal, kab. bogor jl. raya klapanunggal, desa cikahuripan, kec. klapanunggal, kab. bogor, jawa barat 16710 subsidi & komersial' data-wilayah='klapanunggal'>
+              <div class='lokasi-card reveal' data-no='5' data-search='pesona kahuripan 5 klapanunggal klapanunggal, kab. bogor jl. raya klapanunggal, desa cikahuripan, kec. klapanunggal, kab. bogor, jawa barat 16710 subsidi &amp; komersial' data-wilayah='klapanunggal'>
                 <div class='lokasi-card-top'>
                   <div class='lokasi-card-badges'>
                     <span class='lokasi-proyek-num'>Proyek #05</span>
@@ -1857,7 +1937,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                   <h3 class='lokasi-card-title'>Pesona Kahuripan 5</h3>
                   <div class='lokasi-tipe-badge'>
                     <i class='hgi-stroke hgi-home-01'></i>
-                    <span>Subsidi & Komersial</span>
+                    <span>Subsidi &amp; Komersial</span>
                   </div>
                   <p class='lokasi-card-address'>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
@@ -1872,13 +1952,13 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
                     <span>Kunjungi Lokasi</span>
                   </a>
-                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro'uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%205%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 5 via WA'>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%205%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 5 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
                 </div>
               </div>
-              <div class='lokasi-card reveal' data-no='6' data-search='pesona kahuripan 6 cileungsi cileungsi, kab. bogor jl. raya narogong (pasar meong), desa dayeuh, kec. cileungsi, kab. bogor, jawa barat 16820 subsidi 30/60 & komersial' data-wilayah='cileungsi'>
+              <div class='lokasi-card reveal' data-no='6' data-search='pesona kahuripan 6 cileungsi cileungsi, kab. bogor jl. raya narogong (pasar meong), desa dayeuh, kec. cileungsi, kab. bogor, jawa barat 16820 subsidi 30/60 &amp; komersial' data-wilayah='cileungsi'>
                 <div class='lokasi-card-top'>
                   <div class='lokasi-card-badges'>
                     <span class='lokasi-proyek-num'>Proyek #06</span>
@@ -1893,7 +1973,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                   <h3 class='lokasi-card-title'>Pesona Kahuripan 6</h3>
                   <div class='lokasi-tipe-badge'>
                     <i class='hgi-stroke hgi-home-01'></i>
-                    <span>Subsidi 30/60 & Komersial</span>
+                    <span>Subsidi 30/60 &amp; Komersial</span>
                   </div>
                   <p class='lokasi-card-address'>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
@@ -1908,13 +1988,13 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
                     <span>Kunjungi Lokasi</span>
                   </a>
-                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro'uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%206%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 6 via WA'>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%206%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 6 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
                 </div>
               </div>
-              <div class='lokasi-card reveal' data-no='7' data-search='pesona kahuripan 7 cileungsi cileungsi, kab. bogor kawasan rawa ilat, desa dayeuh, kec. cileungsi, kab. bogor, jawa barat 16820 rumah subsidi & komersial' data-wilayah='cileungsi'>
+              <div class='lokasi-card reveal' data-no='7' data-search='pesona kahuripan 7 cileungsi cileungsi, kab. bogor kawasan rawa ilat, desa dayeuh, kec. cileungsi, kab. bogor, jawa barat 16820 rumah subsidi &amp; komersial' data-wilayah='cileungsi'>
                 <div class='lokasi-card-top'>
                   <div class='lokasi-card-badges'>
                     <span class='lokasi-proyek-num'>Proyek #07</span>
@@ -1929,7 +2009,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                   <h3 class='lokasi-card-title'>Pesona Kahuripan 7</h3>
                   <div class='lokasi-tipe-badge'>
                     <i class='hgi-stroke hgi-home-01'></i>
-                    <span>Rumah Subsidi & Komersial</span>
+                    <span>Rumah Subsidi &amp; Komersial</span>
                   </div>
                   <p class='lokasi-card-address'>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
@@ -1944,7 +2024,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
                     <span>Kunjungi Lokasi</span>
                   </a>
-                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro'uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%207%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 7 via WA'>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%207%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 7 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
@@ -1980,17 +2060,17 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
                     <span>Kunjungi Lokasi</span>
                   </a>
-                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro'uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%208%20(Setu%2C%20Kab.%20Bekasi).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 8 via WA'>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%208%20(Setu%2C%20Kab.%20Bekasi).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 8 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
                 </div>
               </div>
-              <div class='lokasi-card reveal' data-no='9' data-search='pesona kahuripan 9 cileungsi cileungsi, kab. bogor jl. alternatif cileungsi - setu, desa jatisari, kec. cileungsi, kab. bogor, jawa barat 16820 subsidi 30/60 & komersial' data-wilayah='cileungsi'>
+              <div class='lokasi-card reveal' data-no='9' data-search='pesona kahuripan 9 cileungsi cileungsi, kab. bogor jl. alternatif cileungsi - setu, desa jatisari, kec. cileungsi, kab. bogor, jawa barat 16820 subsidi 30/60 &amp; komersial' data-wilayah='cileungsi'>
                 <div class='lokasi-card-top'>
                   <div class='lokasi-card-badges'>
                     <span class='lokasi-proyek-num'>Proyek #09</span>
-                    <span class='lokasi-status-badge primary'>Unit Terlaris & Favorit</span>
+                    <span class='lokasi-status-badge primary'>Unit Terlaris &amp; Favorit</span>
                   </div>
                   <div class='lokasi-card-region'>
                     <i class='hgi-stroke hgi-location-01'></i>
@@ -2001,7 +2081,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                   <h3 class='lokasi-card-title'>Pesona Kahuripan 9</h3>
                   <div class='lokasi-tipe-badge'>
                     <i class='hgi-stroke hgi-home-01'></i>
-                    <span>Subsidi 30/60 & Komersial</span>
+                    <span>Subsidi 30/60 &amp; Komersial</span>
                   </div>
                   <p class='lokasi-card-address'>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
@@ -2016,13 +2096,13 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
                     <span>Kunjungi Lokasi</span>
                   </a>
-                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro'uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%209%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 9 via WA'>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%209%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 9 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
                 </div>
               </div>
-              <div class='lokasi-card reveal' data-no='10' data-search='pesona kahuripan 10 cileungsi cileungsi, kab. bogor jl. raya cileungsi - jonggol, desa gandoang, kec. cileungsi, kab. bogor, jawa barat 16820 rumah subsidi & komersial' data-wilayah='cileungsi'>
+              <div class='lokasi-card reveal' data-no='10' data-search='pesona kahuripan 10 cileungsi cileungsi, kab. bogor jl. raya cileungsi - jonggol, desa gandoang, kec. cileungsi, kab. bogor, jawa barat 16820 rumah subsidi &amp; komersial' data-wilayah='cileungsi'>
                 <div class='lokasi-card-top'>
                   <div class='lokasi-card-badges'>
                     <span class='lokasi-proyek-num'>Proyek #10</span>
@@ -2037,7 +2117,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                   <h3 class='lokasi-card-title'>Pesona Kahuripan 10</h3>
                   <div class='lokasi-tipe-badge'>
                     <i class='hgi-stroke hgi-home-01'></i>
-                    <span>Rumah Subsidi & Komersial</span>
+                    <span>Rumah Subsidi &amp; Komersial</span>
                   </div>
                   <p class='lokasi-card-address'>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
@@ -2052,13 +2132,13 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
                     <span>Kunjungi Lokasi</span>
                   </a>
-                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro'uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2010%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 10 via WA'>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2010%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 10 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
                 </div>
               </div>
-              <div class='lokasi-card reveal' data-no='11' data-search='pesona kahuripan 11 cileungsi cileungsi, kab. bogor desa gandoang / cileungsi kidul, kec. cileungsi, kab. bogor, jawa barat 16820 subsidi 30/60 & komersial' data-wilayah='cileungsi'>
+              <div class='lokasi-card reveal' data-no='11' data-search='pesona kahuripan 11 cileungsi cileungsi, kab. bogor desa gandoang / cileungsi kidul, kec. cileungsi, kab. bogor, jawa barat 16820 subsidi 30/60 &amp; komersial' data-wilayah='cileungsi'>
                 <div class='lokasi-card-top'>
                   <div class='lokasi-card-badges'>
                     <span class='lokasi-proyek-num'>Proyek #11</span>
@@ -2073,7 +2153,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                   <h3 class='lokasi-card-title'>Pesona Kahuripan 11</h3>
                   <div class='lokasi-tipe-badge'>
                     <i class='hgi-stroke hgi-home-01'></i>
-                    <span>Subsidi 30/60 & Komersial</span>
+                    <span>Subsidi 30/60 &amp; Komersial</span>
                   </div>
                   <p class='lokasi-card-address'>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
@@ -2088,7 +2168,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
                     <span>Kunjungi Lokasi</span>
                   </a>
-                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro'uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2011%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 11 via WA'>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2011%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 11 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
@@ -2124,13 +2204,13 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
                     <span>Kunjungi Lokasi</span>
                   </a>
-                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro'uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2012%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 12 via WA'>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2012%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 12 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
                 </div>
               </div>
-              <div class='lokasi-card reveal' data-no='13' data-search='pesona kahuripan 13 klapanunggal klapanunggal, kab. bogor kawasan koridor cikahuripan, kec. klapanunggal, kab. bogor, jawa barat 16710 subsidi & komersial modern' data-wilayah='klapanunggal'>
+              <div class='lokasi-card reveal' data-no='13' data-search='pesona kahuripan 13 klapanunggal klapanunggal, kab. bogor kawasan koridor cikahuripan, kec. klapanunggal, kab. bogor, jawa barat 16710 subsidi &amp; komersial modern' data-wilayah='klapanunggal'>
                 <div class='lokasi-card-top'>
                   <div class='lokasi-card-badges'>
                     <span class='lokasi-proyek-num'>Proyek #13</span>
@@ -2145,7 +2225,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                   <h3 class='lokasi-card-title'>Pesona Kahuripan 13</h3>
                   <div class='lokasi-tipe-badge'>
                     <i class='hgi-stroke hgi-home-01'></i>
-                    <span>Subsidi & Komersial Modern</span>
+                    <span>Subsidi &amp; Komersial Modern</span>
                   </div>
                   <p class='lokasi-card-address'>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
@@ -2160,13 +2240,13 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
                     <span>Kunjungi Lokasi</span>
                   </a>
-                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro'uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2013%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 13 via WA'>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2013%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 13 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
                 </div>
               </div>
-              <div class='lokasi-card reveal' data-no='14' data-search='pesona kahuripan 14 cileungsi cileungsi, kab. bogor jl. raya cileungsi - jonggol, desa situsari, kec. cileungsi, kab. bogor, jawa barat 16820 rumah subsidi & komersial' data-wilayah='cileungsi'>
+              <div class='lokasi-card reveal' data-no='14' data-search='pesona kahuripan 14 cileungsi cileungsi, kab. bogor jl. raya cileungsi - jonggol, desa situsari, kec. cileungsi, kab. bogor, jawa barat 16820 rumah subsidi &amp; komersial' data-wilayah='cileungsi'>
                 <div class='lokasi-card-top'>
                   <div class='lokasi-card-badges'>
                     <span class='lokasi-proyek-num'>Proyek #14</span>
@@ -2181,7 +2261,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                   <h3 class='lokasi-card-title'>Pesona Kahuripan 14</h3>
                   <div class='lokasi-tipe-badge'>
                     <i class='hgi-stroke hgi-home-01'></i>
-                    <span>Rumah Subsidi & Komersial</span>
+                    <span>Rumah Subsidi &amp; Komersial</span>
                   </div>
                   <p class='lokasi-card-address'>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
@@ -2196,13 +2276,13 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
                     <span>Kunjungi Lokasi</span>
                   </a>
-                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro'uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2014%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 14 via WA'>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2014%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 14 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
                 </div>
               </div>
-              <div class='lokasi-card reveal' data-no='15' data-search='pesona kahuripan 15 cileungsi cileungsi, kab. bogor jl. raya narogong - cipeucang, desa cipeucang, kec. cileungsi, kab. bogor, jawa barat 16820 subsidi 30/60 & komersial' data-wilayah='cileungsi'>
+              <div class='lokasi-card reveal' data-no='15' data-search='pesona kahuripan 15 cileungsi cileungsi, kab. bogor jl. raya narogong - cipeucang, desa cipeucang, kec. cileungsi, kab. bogor, jawa barat 16820 subsidi 30/60 &amp; komersial' data-wilayah='cileungsi'>
                 <div class='lokasi-card-top'>
                   <div class='lokasi-card-badges'>
                     <span class='lokasi-proyek-num'>Proyek #15</span>
@@ -2217,7 +2297,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                   <h3 class='lokasi-card-title'>Pesona Kahuripan 15</h3>
                   <div class='lokasi-tipe-badge'>
                     <i class='hgi-stroke hgi-home-01'></i>
-                    <span>Subsidi 30/60 & Komersial</span>
+                    <span>Subsidi 30/60 &amp; Komersial</span>
                   </div>
                   <p class='lokasi-card-address'>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
@@ -2232,7 +2312,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
                     <span>Kunjungi Lokasi</span>
                   </a>
-                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro'uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2015%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 15 via WA'>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2015%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 15 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
@@ -2268,13 +2348,13 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
                     <span>Kunjungi Lokasi</span>
                   </a>
-                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro'uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2016%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 16 via WA'>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2016%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 16 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
                 </div>
               </div>
-              <div class='lokasi-card reveal' data-no='17' data-search='pesona kahuripan 17 serang kasemen, kota serang jl. raya kasemen - banten lama, kel. kasemen / angsana, kec. kasemen, kota serang, banten 42191 subsidi 30/60 & komersial' data-wilayah='serang'>
+              <div class='lokasi-card reveal' data-no='17' data-search='pesona kahuripan 17 serang kasemen, kota serang jl. raya kasemen - banten lama, kel. kasemen / angsana, kec. kasemen, kota serang, banten 42191 subsidi 30/60 &amp; komersial' data-wilayah='serang'>
                 <div class='lokasi-card-top'>
                   <div class='lokasi-card-badges'>
                     <span class='lokasi-proyek-num'>Proyek #17</span>
@@ -2289,7 +2369,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                   <h3 class='lokasi-card-title'>Pesona Kahuripan 17</h3>
                   <div class='lokasi-tipe-badge'>
                     <i class='hgi-stroke hgi-home-01'></i>
-                    <span>Subsidi 30/60 & Komersial</span>
+                    <span>Subsidi 30/60 &amp; Komersial</span>
                   </div>
                   <p class='lokasi-card-address'>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
@@ -2304,7 +2384,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <i class='hgi-stroke hgi-maps-location-01'></i>
                     <span>Kunjungi Lokasi</span>
                   </a>
-                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro'uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2017%20(Kasemen%2C%20Kota%20Serang).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 17 via WA'>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2017%20(Kasemen%2C%20Kota%20Serang).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 17 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
@@ -2329,7 +2409,678 @@ Carport: 1 Mobil]]></b:widget-setting>
             </div>]]></b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
-                <data:content/>
+                <b:if cond='data:content'>
+                  <data:content/>
+                <b:else/>
+                  <div class='lokasi-controls-wrap reveal'>
+              <div class='lokasi-search-row'>
+                <div class='lokasi-search-box'>
+                  <i class='hgi-stroke hgi-search-01'></i>
+                  <input type='text' id='lokasiSearchInput' class='lokasi-search-input' placeholder='Cari nomor proyek atau wilayah (misal: 9, Cileungsi, Bojong, Serang)...' autocomplete='off'/>
+                  <button type='button' id='lokasiSearchClear' class='lokasi-search-clear' aria-label='Hapus pencarian'>&#215;</button>
+                </div>
+              </div>
+              <div class='lokasi-filter-tabs' id='lokasiFilterTabs'>
+                <button type='button' class='lokasi-tab-btn active' data-filter='all'>
+                  <i class='hgi-stroke hgi-grid-view'></i>
+                  <span>Semua Proyek</span>
+                  <span class='lokasi-tab-count' id='lokasiTotalCount'>17</span>
+                </button>
+                <button type='button' class='lokasi-tab-btn' data-filter='klapanunggal'>
+                  <i class='hgi-stroke hgi-location-01'></i>
+                  <span>Klapanunggal Bogor</span>
+                  <span class='lokasi-tab-count'>7</span>
+                </button>
+                <button type='button' class='lokasi-tab-btn' data-filter='cileungsi'>
+                  <i class='hgi-stroke hgi-location-01'></i>
+                  <span>Cileungsi Bogor</span>
+                  <span class='lokasi-tab-count'>8</span>
+                </button>
+                <button type='button' class='lokasi-tab-btn' data-filter='setu'>
+                  <i class='hgi-stroke hgi-location-01'></i>
+                  <span>Setu Bekasi</span>
+                  <span class='lokasi-tab-count'>1</span>
+                </button>
+                <button type='button' class='lokasi-tab-btn' data-filter='serang'>
+                  <i class='hgi-stroke hgi-location-01'></i>
+                  <span>Kota Serang</span>
+                  <span class='lokasi-tab-count'>1</span>
+                </button>
+              </div>
+            </div>
+
+            <div class='lokasi-grid' id='lokasiProjectsGrid'>
+
+              <div class='lokasi-card reveal' data-no='1' data-search='pesona kahuripan 1 klapanunggal klapanunggal, kab. bogor jl. raya klapanunggal, desa cikahuripan, kec. klapanunggal, kab. bogor, jawa barat 16710 subsidi 30/60 &amp; ruko komersial' data-wilayah='klapanunggal'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #01</span>
+                    <span class='lokasi-status-badge primary'>Kantor Pusat &amp; Terlengkap</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Klapanunggal, Kab. Bogor</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 1</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Subsidi 30/60 &amp; Ruko Komersial</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Jl. Raya Klapanunggal, Desa Cikahuripan, Kec. Klapanunggal, Kab. Bogor, Jawa Barat 16710</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Kantor Pemasaran Utama</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat Polsek &amp; Pasar</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Bebas Banjir</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+1+Klapanunggal+Bogor' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 1'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%201%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 1 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+              <div class='lokasi-card reveal' data-no='2' data-search='pesona kahuripan 2 klapanunggal klapanunggal, kab. bogor jl. pesona palad, desa cikahuripan, kec. klapanunggal, kab. bogor, jawa barat 16710 subsidi 30/60 &amp; komersial' data-wilayah='klapanunggal'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #02</span>
+                    <span class='lokasi-status-badge success'>Kawasan Mandiri Matang</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Klapanunggal, Kab. Bogor</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 2</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Subsidi 30/60 &amp; Komersial</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Jl. Pesona Palad, Desa Cikahuripan, Kec. Klapanunggal, Kab. Bogor, Jawa Barat 16710</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Akses Jalan Palad</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat Sarana Ibadah</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Row Jalan Lebar</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+2+Cikahuripan+Bogor' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 2'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%202%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 2 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+              <div class='lokasi-card reveal' data-no='3' data-search='pesona kahuripan 3 klapanunggal klapanunggal, kab. bogor jl. semen kujang, kp. rawa raga, desa bojong, kec. klapanunggal, kab. bogor, jawa barat 16710 rumah subsidi pemerintah' data-wilayah='klapanunggal'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #03</span>
+                    <span class='lokasi-status-badge info'>Asri &amp; Bebas Banjir</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Klapanunggal, Kab. Bogor</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 3</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Rumah Subsidi Pemerintah</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Jl. Semen Kujang, Kp. Rawa Raga, Desa Bojong, Kec. Klapanunggal, Kab. Bogor, Jawa Barat 16710</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Lingkungan Sejuk</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Angkutan Umum 24 Jam</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat Sekolah</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+3+Bojong+Bogor' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 3'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%203%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 3 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+              <div class='lokasi-card reveal' data-no='4' data-search='pesona kahuripan 4 klapanunggal klapanunggal, kab. bogor jl. bojong rawa raga, desa bojong, kec. klapanunggal, kab. bogor, jawa barat 16710 rumah subsidi pemerintah' data-wilayah='klapanunggal'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #04</span>
+                    <span class='lokasi-status-badge info'>Lingkungan Nyaman</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Klapanunggal, Kab. Bogor</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 4</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Rumah Subsidi Pemerintah</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Jl. Bojong Rawa Raga, Desa Bojong, Kec. Klapanunggal, Kab. Bogor, Jawa Barat 16710</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat Kawasan Kerja</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Suasana Tenang</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Air Bersih Melimpah</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+4+Bojong+Bogor' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 4'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%204%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 4 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+              <div class='lokasi-card reveal' data-no='5' data-search='pesona kahuripan 5 klapanunggal klapanunggal, kab. bogor jl. raya klapanunggal, desa cikahuripan, kec. klapanunggal, kab. bogor, jawa barat 16710 subsidi &amp; komersial' data-wilayah='klapanunggal'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #05</span>
+                    <span class='lokasi-status-badge success'>Sentra Fasilitas Warga</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Klapanunggal, Kab. Bogor</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 5</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Subsidi &amp; Komersial</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Jl. Raya Klapanunggal, Desa Cikahuripan, Kec. Klapanunggal, Kab. Bogor, Jawa Barat 16710</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat Puskesmas</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Akses Koridor Utama</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Fasilitas Olahraga</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+5+Klapanunggal+Bogor' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 5'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%205%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 5 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+              <div class='lokasi-card reveal' data-no='6' data-search='pesona kahuripan 6 cileungsi cileungsi, kab. bogor jl. raya narogong (pasar meong), desa dayeuh, kec. cileungsi, kab. bogor, jawa barat 16820 subsidi 30/60 &amp; komersial' data-wilayah='cileungsi'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #06</span>
+                    <span class='lokasi-status-badge primary'>Koridor Narogong Cileungsi</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Cileungsi, Kab. Bogor</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 6</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Subsidi 30/60 &amp; Komersial</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Jl. Raya Narogong (Pasar Meong), Desa Dayeuh, Kec. Cileungsi, Kab. Bogor, Jawa Barat 16820</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>15 Mnt Tol Japek 2</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat Sentra Niaga</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Bebas Banjir</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+6+Dayeuh+Cileungsi' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 6'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%206%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 6 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+              <div class='lokasi-card reveal' data-no='7' data-search='pesona kahuripan 7 cileungsi cileungsi, kab. bogor kawasan rawa ilat, desa dayeuh, kec. cileungsi, kab. bogor, jawa barat 16820 rumah subsidi &amp; komersial' data-wilayah='cileungsi'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #07</span>
+                    <span class='lokasi-status-badge info'>Kawasan Cepat Berkembang</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Cileungsi, Kab. Bogor</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 7</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Rumah Subsidi &amp; Komersial</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kawasan Rawa Ilat, Desa Dayeuh, Kec. Cileungsi, Kab. Bogor, Jawa Barat 16820</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat RSUD Cileungsi</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Akses Ramai Lancar</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Double Dinding Hebel</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+7+Dayeuh+Cileungsi' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 7'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%207%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 7 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+              <div class='lokasi-card reveal' data-no='8' data-search='pesona kahuripan 8 setu setu, kab. bekasi jl. siliwangi / gaok, desa muktijaya, kec. setu, kab. bekasi (perbatasan cileungsi) subsidi 30/60 berkualitas' data-wilayah='setu'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #08</span>
+                    <span class='lokasi-status-badge warning'>Dekat Kawasan Industri</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Setu, Kab. Bekasi</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 8</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Subsidi 30/60 Berkualitas</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Jl. Siliwangi / Gaok, Desa Muktijaya, Kec. Setu, Kab. Bekasi (Perbatasan Cileungsi)</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat Tol Setu MM2100</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Akses Bekasi-Bogor</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Kawasan Strategis</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+8+Muktijaya+Setu' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 8'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%208%20(Setu%2C%20Kab.%20Bekasi).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 8 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+              <div class='lokasi-card reveal' data-no='9' data-search='pesona kahuripan 9 cileungsi cileungsi, kab. bogor jl. alternatif cileungsi - setu, desa jatisari, kec. cileungsi, kab. bogor, jawa barat 16820 subsidi 30/60 &amp; komersial' data-wilayah='cileungsi'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #09</span>
+                    <span class='lokasi-status-badge primary'>Unit Terlaris &amp; Favorit</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Cileungsi, Kab. Bogor</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 9</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Subsidi 30/60 &amp; Komersial</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Jl. Alternatif Cileungsi - Setu, Desa Jatisari, Kec. Cileungsi, Kab. Bogor, Jawa Barat 16820</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Kawasan Super Ramai</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Akses Tol Nagrak Cibubur</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Fasum Terlengkap</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+9+Jatisari+Cileungsi' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 9'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%209%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 9 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+              <div class='lokasi-card reveal' data-no='10' data-search='pesona kahuripan 10 cileungsi cileungsi, kab. bogor jl. raya cileungsi - jonggol, desa gandoang, kec. cileungsi, kab. bogor, jawa barat 16820 rumah subsidi &amp; komersial' data-wilayah='cileungsi'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #10</span>
+                    <span class='lokasi-status-badge success'>Jalur Utama Cileungsi-Jonggol</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Cileungsi, Kab. Bogor</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 10</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Rumah Subsidi &amp; Komersial</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Jl. Raya Cileungsi - Jonggol, Desa Gandoang, Kec. Cileungsi, Kab. Bogor, Jawa Barat 16820</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>10 Mnt Taman Mekarsari</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Akses Jalan Provinsi</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat Rumah Sakit</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+10+Gandoang+Cileungsi' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 10'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2010%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 10 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+              <div class='lokasi-card reveal' data-no='11' data-search='pesona kahuripan 11 cileungsi cileungsi, kab. bogor desa gandoang / cileungsi kidul, kec. cileungsi, kab. bogor, jawa barat 16820 subsidi 30/60 &amp; komersial' data-wilayah='cileungsi'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #11</span>
+                    <span class='lokasi-status-badge info'>Dekat Pusat Perbelanjaan</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Cileungsi, Kab. Bogor</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 11</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Subsidi 30/60 &amp; Komersial</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Desa Gandoang / Cileungsi Kidul, Kec. Cileungsi, Kab. Bogor, Jawa Barat 16820</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat Metland Mall</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat Terminal Cileungsi</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Akses Transportasi Mudah</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+11+Gandoang+Cileungsi' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 11'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2011%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 11 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+              <div class='lokasi-card reveal' data-no='12' data-search='pesona kahuripan 12 cileungsi cileungsi, kab. bogor area kubang, desa jatisari, kec. cileungsi, kab. bogor, jawa barat 16820 rumah subsidi pemerintah' data-wilayah='cileungsi'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #12</span>
+                    <span class='lokasi-status-badge info'>Kawasan Asri Sejuk</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Cileungsi, Kab. Bogor</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 12</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Rumah Subsidi Pemerintah</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Area Kubang, Desa Jatisari, Kec. Cileungsi, Kab. Bogor, Jawa Barat 16820</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Udara Bersih Segar</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Row Jalan Cor Beton</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Double Dinding Hebel</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+12+Jatisari+Cileungsi' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 12'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2012%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 12 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+              <div class='lokasi-card reveal' data-no='13' data-search='pesona kahuripan 13 klapanunggal klapanunggal, kab. bogor kawasan koridor cikahuripan, kec. klapanunggal, kab. bogor, jawa barat 16710 subsidi &amp; komersial modern' data-wilayah='klapanunggal'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #13</span>
+                    <span class='lokasi-status-badge success'>Akses Dekat Stasiun Nambo</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Klapanunggal, Kab. Bogor</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 13</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Subsidi &amp; Komersial Modern</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kawasan Koridor Cikahuripan, Kec. Klapanunggal, Kab. Bogor, Jawa Barat 16710</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat KRL Commuter Line</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Akses Tol Gunung Putri</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Potensi Investasi Tinggi</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+13+Klapanunggal+Bogor' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 13'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2013%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 13 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+              <div class='lokasi-card reveal' data-no='14' data-search='pesona kahuripan 14 cileungsi cileungsi, kab. bogor jl. raya cileungsi - jonggol, desa situsari, kec. cileungsi, kab. bogor, jawa barat 16820 rumah subsidi &amp; komersial' data-wilayah='cileungsi'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #14</span>
+                    <span class='lokasi-status-badge primary'>Koridor Emas Jonggol-Cileungsi</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Cileungsi, Kab. Bogor</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 14</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Rumah Subsidi &amp; Komersial</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Jl. Raya Cileungsi - Jonggol, Desa Situsari, Kec. Cileungsi, Kab. Bogor, Jawa Barat 16820</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat RS Hermina Cileungsi</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat Water Kingdom</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Akses Jalur Cepat</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+14+Situsari+Cileungsi' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 14'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2014%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 14 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+              <div class='lokasi-card reveal' data-no='15' data-search='pesona kahuripan 15 cileungsi cileungsi, kab. bogor jl. raya narogong - cipeucang, desa cipeucang, kec. cileungsi, kab. bogor, jawa barat 16820 subsidi 30/60 &amp; komersial' data-wilayah='cileungsi'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #15</span>
+                    <span class='lokasi-status-badge info'>Nilai Investasi Tinggi</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Cileungsi, Kab. Bogor</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 15</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Subsidi 30/60 &amp; Komersial</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Jl. Raya Narogong - Cipeucang, Desa Cipeucang, Kec. Cileungsi, Kab. Bogor, Jawa Barat 16820</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Akses Tol Baru Cimanggis</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat Kawasan Niaga</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Tanah Padat Bebas Banjir</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+15+Cipeucang+Cileungsi' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 15'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2015%20(Cileungsi%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 15 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+              <div class='lokasi-card reveal' data-no='16' data-search='pesona kahuripan 16 klapanunggal klapanunggal, kab. bogor desa bojong, kec. klapanunggal, kab. bogor, jawa barat 16710 rumah subsidi pemerintah' data-wilayah='klapanunggal'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #16</span>
+                    <span class='lokasi-status-badge info'>Harmoni Hunian Keluarga</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Klapanunggal, Kab. Bogor</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 16</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Rumah Subsidi Pemerintah</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Desa Bojong, Kec. Klapanunggal, Kab. Bogor, Jawa Barat 16710</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat Sekolah Favorit</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Pasar Tradisional 5 Menit</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Keamanan 24 Jam</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+16+Bojong+Klapanunggal' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 16'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2016%20(Klapanunggal%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 16 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+              <div class='lokasi-card reveal' data-no='17' data-search='pesona kahuripan 17 serang kasemen, kota serang jl. raya kasemen - banten lama, kel. kasemen / angsana, kec. kasemen, kota serang, banten 42191 subsidi 30/60 &amp; komersial' data-wilayah='serang'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #17</span>
+                    <span class='lokasi-status-badge warning'>Perdana di Kota Serang</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Kasemen, Kota Serang</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 17</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Subsidi 30/60 &amp; Komersial</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Jl. Raya Kasemen - Banten Lama, Kel. Kasemen / Angsana, Kec. Kasemen, Kota Serang, Banten 42191</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>10 Mnt Tol Serang Timur</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Dekat Banten Lama</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Pusat Kota Serang</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+17+Kasemen+Serang' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 17'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2017%20(Kasemen%2C%20Kota%20Serang).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 17 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+              <div class='lokasi-empty-state' id='lokasiEmptyState'>
+                <i class='hgi-stroke hgi-search-not-found'></i>
+                <h4>Proyek Tidak Ditemukan</h4>
+                <p>Tidak ada proyek yang sesuai dengan kata kunci pencarian Anda. Silakan coba kata kunci lain atau pilih tab Semua Proyek.</p>
+              </div>
+            </div>
+
+            <div class='lokasi-bottom-callout reveal'>
+              <div class='lokasi-callout-text'>
+                <h4>Bingung Menentukan Lokasi yang Paling Cocok?</h4>
+                <p>Konsultasikan kebutuhan hunian, rute kerja harian, dan ketersediaan unit bersama Mas Ro'uf — Dapatkan rekomendasi proyek Pesona Kahuripan terbaik dengan angsuran flat terjangkau!</p>
+              </div>
+              <a class='btn-callout-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20ingin%20konsultasi%20rekomendasi%20lokasi%20proyek%20Pesona%20Kahuripan%20yang%20paling%20sesuai%20rute%20kerja%20saya.' target='_blank' rel='noopener'>
+                <i class='hgi-stroke hgi-whatsapp'></i>
+                <span>Konsultasi Rekomendasi Lokasi</span>
+              </a>
+            </div>
+                </b:if>
               </b:includable>
             </b:widget>
           </b:section>
@@ -2657,7 +3408,7 @@ Carport: 1 Mobil]]></b:widget-setting>
         </div>
       </section>
 
-      <!-- ================= OFFER & SIMULASI ANGSURAN ================= -->
+      <!-- ================= OFFER &amp; SIMULASI ANGSURAN ================= -->
       <section id='offer'>
         <div class='wrapper'>
           <div class='section-head reveal'>
@@ -2934,8 +3685,7 @@ Tipe: komersial]]></b:widget-setting>
             <!-- SLIDE BAR LOGO MITRA (ANIMATED MARQUEE) -->
             <b:widget id='HTML56' locked='true' title='Slide Bar Logo Mitra Resmi' type='HTML' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='content'><![CDATA[
-            <div class='mitra-marquee-wrapper'>
+                <b:widget-setting name='content'><![CDATA[<div class='mitra-marquee-wrapper'>
               <div class='mitra-marquee-track' id='mitraMarqueeTrack'>
 
               <div class='mitra-card' data-mitra-id='btn'>
@@ -2945,7 +3695,7 @@ Tipe: komersial]]></b:widget-setting>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Mitra KPR Utama</span>
                   <h4 class='mitra-name'>Bank BTN</h4>
-                  <p class='mitra-desc'>Bank Penyalur KPR Subsidi & Komersial Terbesar di Indonesia</p>
+                  <p class='mitra-desc'>Bank Penyalur KPR Subsidi &amp; Komersial Terbesar di Indonesia</p>
                 </div>
               </div>
               <div class='mitra-card' data-mitra-id='bsi'>
@@ -2965,7 +3715,7 @@ Tipe: komersial]]></b:widget-setting>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Bank Swasta Nasional</span>
                   <h4 class='mitra-name'>Nobu Bank</h4>
-                  <p class='mitra-desc'>Mitra Perbankan Komersial Solutif & Cepat untuk Pembiayaan Hunian</p>
+                  <p class='mitra-desc'>Mitra Perbankan Komersial Solutif &amp; Cepat untuk Pembiayaan Hunian</p>
                 </div>
               </div>
               <div class='mitra-card' data-mitra-id='tapera'>
@@ -3005,7 +3755,7 @@ Tipe: komersial]]></b:widget-setting>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Mitra KPR Utama</span>
                   <h4 class='mitra-name'>Bank BTN</h4>
-                  <p class='mitra-desc'>Bank Penyalur KPR Subsidi & Komersial Terbesar di Indonesia</p>
+                  <p class='mitra-desc'>Bank Penyalur KPR Subsidi &amp; Komersial Terbesar di Indonesia</p>
                 </div>
               </div>
               <div class='mitra-card' data-mitra-id='bsi'>
@@ -3025,7 +3775,7 @@ Tipe: komersial]]></b:widget-setting>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Bank Swasta Nasional</span>
                   <h4 class='mitra-name'>Nobu Bank</h4>
-                  <p class='mitra-desc'>Mitra Perbankan Komersial Solutif & Cepat untuk Pembiayaan Hunian</p>
+                  <p class='mitra-desc'>Mitra Perbankan Komersial Solutif &amp; Cepat untuk Pembiayaan Hunian</p>
                 </div>
               </div>
               <div class='mitra-card' data-mitra-id='tapera'>
@@ -3065,7 +3815,7 @@ Tipe: komersial]]></b:widget-setting>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Mitra KPR Utama</span>
                   <h4 class='mitra-name'>Bank BTN</h4>
-                  <p class='mitra-desc'>Bank Penyalur KPR Subsidi & Komersial Terbesar di Indonesia</p>
+                  <p class='mitra-desc'>Bank Penyalur KPR Subsidi &amp; Komersial Terbesar di Indonesia</p>
                 </div>
               </div>
               <div class='mitra-card' data-mitra-id='bsi'>
@@ -3085,7 +3835,7 @@ Tipe: komersial]]></b:widget-setting>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Bank Swasta Nasional</span>
                   <h4 class='mitra-name'>Nobu Bank</h4>
-                  <p class='mitra-desc'>Mitra Perbankan Komersial Solutif & Cepat untuk Pembiayaan Hunian</p>
+                  <p class='mitra-desc'>Mitra Perbankan Komersial Solutif &amp; Cepat untuk Pembiayaan Hunian</p>
                 </div>
               </div>
               <div class='mitra-card' data-mitra-id='tapera'>
@@ -3168,7 +3918,241 @@ Tipe: komersial]]></b:widget-setting>
             </div>]]></b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
-                <data:content/>
+                <b:if cond='data:content'>
+                  <data:content/>
+                <b:else/>
+                  <div class='mitra-marquee-wrapper'>
+              <div class='mitra-marquee-track' id='mitraMarqueeTrack'>
+
+              <div class='mitra-card' data-mitra-id='btn'>
+                <div class='mitra-card-logo-wrap'>
+                  <img alt='Bank BTN' class='mitra-logo-img' data-local-src='foto mitra/Mitra Bank/bank-tabungan-negara.png' src='foto mitra/Mitra Bank/bank-tabungan-negara.png' loading='lazy'/>
+                </div>
+                <div class='mitra-card-meta'>
+                  <span class='mitra-cat-pill'>Mitra KPR Utama</span>
+                  <h4 class='mitra-name'>Bank BTN</h4>
+                  <p class='mitra-desc'>Bank Penyalur KPR Subsidi &amp; Komersial Terbesar di Indonesia</p>
+                </div>
+              </div>
+              <div class='mitra-card' data-mitra-id='bsi'>
+                <div class='mitra-card-logo-wrap'>
+                  <img alt='Bank Syariah Indonesia' class='mitra-logo-img' data-local-src='foto mitra/Mitra Bank/bank-syariah-nasional.png' src='foto mitra/Mitra Bank/bank-syariah-nasional.png' loading='lazy'/>
+                </div>
+                <div class='mitra-card-meta'>
+                  <span class='mitra-cat-pill'>Pelopor KPR Syariah</span>
+                  <h4 class='mitra-name'>Bank Syariah Indonesia</h4>
+                  <p class='mitra-desc'>Layanan Pembiayaan Pemilikan Rumah Berprinsip Syariah Terpercaya</p>
+                </div>
+              </div>
+              <div class='mitra-card' data-mitra-id='nobu'>
+                <div class='mitra-card-logo-wrap'>
+                  <img alt='Nobu Bank' class='mitra-logo-img' data-local-src='foto mitra/Mitra Bank/nobu-bank-2026-seeklogo.png' src='foto mitra/Mitra Bank/nobu-bank-2026-seeklogo.png' loading='lazy'/>
+                </div>
+                <div class='mitra-card-meta'>
+                  <span class='mitra-cat-pill'>Bank Swasta Nasional</span>
+                  <h4 class='mitra-name'>Nobu Bank</h4>
+                  <p class='mitra-desc'>Mitra Perbankan Komersial Solutif &amp; Cepat untuk Pembiayaan Hunian</p>
+                </div>
+              </div>
+              <div class='mitra-card' data-mitra-id='tapera'>
+                <div class='mitra-card-logo-wrap'>
+                  <img alt='BP Tapera' class='mitra-logo-img' data-local-src='foto mitra/Mitra Perumahan/bp-tapera.png' src='foto mitra/Mitra Perumahan/bp-tapera.png' loading='lazy'/>
+                </div>
+                <div class='mitra-card-meta'>
+                  <span class='mitra-cat-pill'>Pengelola Dana FLPP</span>
+                  <h4 class='mitra-name'>BP Tapera</h4>
+                  <p class='mitra-desc'>Badan Pengelola Tabungan Perumahan Rakyat Republik Indonesia</p>
+                </div>
+              </div>
+              <div class='mitra-card' data-mitra-id='kemenpkp'>
+                <div class='mitra-card-logo-wrap'>
+                  <img alt='Kementerian PKP RI' class='mitra-logo-img' data-local-src='foto mitra/Mitra Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' src='foto mitra/Mitra Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' loading='lazy'/>
+                </div>
+                <div class='mitra-card-meta'>
+                  <span class='mitra-cat-pill'>Regulator Perumahan</span>
+                  <h4 class='mitra-name'>Kementerian PKP RI</h4>
+                  <p class='mitra-desc'>Kementerian Perumahan dan Kawasan Permukiman Republik Indonesia</p>
+                </div>
+              </div>
+              <div class='mitra-card' data-mitra-id='apersi'>
+                <div class='mitra-card-logo-wrap'>
+                  <img alt='APERSI' class='mitra-logo-img' data-local-src='foto mitra/Mitra Perumahan/Logo Apersi.png' src='foto mitra/Mitra Perumahan/Logo Apersi.png' loading='lazy'/>
+                </div>
+                <div class='mitra-card-meta'>
+                  <span class='mitra-cat-pill'>Asosiasi Pengembang</span>
+                  <h4 class='mitra-name'>APERSI</h4>
+                  <p class='mitra-desc'>Asosiasi Pengembang Perumahan dan Permukiman Seluruh Indonesia</p>
+                </div>
+              </div>
+              <div class='mitra-card' data-mitra-id='btn'>
+                <div class='mitra-card-logo-wrap'>
+                  <img alt='Bank BTN' class='mitra-logo-img' data-local-src='foto mitra/Mitra Bank/bank-tabungan-negara.png' src='foto mitra/Mitra Bank/bank-tabungan-negara.png' loading='lazy'/>
+                </div>
+                <div class='mitra-card-meta'>
+                  <span class='mitra-cat-pill'>Mitra KPR Utama</span>
+                  <h4 class='mitra-name'>Bank BTN</h4>
+                  <p class='mitra-desc'>Bank Penyalur KPR Subsidi &amp; Komersial Terbesar di Indonesia</p>
+                </div>
+              </div>
+              <div class='mitra-card' data-mitra-id='bsi'>
+                <div class='mitra-card-logo-wrap'>
+                  <img alt='Bank Syariah Indonesia' class='mitra-logo-img' data-local-src='foto mitra/Mitra Bank/bank-syariah-nasional.png' src='foto mitra/Mitra Bank/bank-syariah-nasional.png' loading='lazy'/>
+                </div>
+                <div class='mitra-card-meta'>
+                  <span class='mitra-cat-pill'>Pelopor KPR Syariah</span>
+                  <h4 class='mitra-name'>Bank Syariah Indonesia</h4>
+                  <p class='mitra-desc'>Layanan Pembiayaan Pemilikan Rumah Berprinsip Syariah Terpercaya</p>
+                </div>
+              </div>
+              <div class='mitra-card' data-mitra-id='nobu'>
+                <div class='mitra-card-logo-wrap'>
+                  <img alt='Nobu Bank' class='mitra-logo-img' data-local-src='foto mitra/Mitra Bank/nobu-bank-2026-seeklogo.png' src='foto mitra/Mitra Bank/nobu-bank-2026-seeklogo.png' loading='lazy'/>
+                </div>
+                <div class='mitra-card-meta'>
+                  <span class='mitra-cat-pill'>Bank Swasta Nasional</span>
+                  <h4 class='mitra-name'>Nobu Bank</h4>
+                  <p class='mitra-desc'>Mitra Perbankan Komersial Solutif &amp; Cepat untuk Pembiayaan Hunian</p>
+                </div>
+              </div>
+              <div class='mitra-card' data-mitra-id='tapera'>
+                <div class='mitra-card-logo-wrap'>
+                  <img alt='BP Tapera' class='mitra-logo-img' data-local-src='foto mitra/Mitra Perumahan/bp-tapera.png' src='foto mitra/Mitra Perumahan/bp-tapera.png' loading='lazy'/>
+                </div>
+                <div class='mitra-card-meta'>
+                  <span class='mitra-cat-pill'>Pengelola Dana FLPP</span>
+                  <h4 class='mitra-name'>BP Tapera</h4>
+                  <p class='mitra-desc'>Badan Pengelola Tabungan Perumahan Rakyat Republik Indonesia</p>
+                </div>
+              </div>
+              <div class='mitra-card' data-mitra-id='kemenpkp'>
+                <div class='mitra-card-logo-wrap'>
+                  <img alt='Kementerian PKP RI' class='mitra-logo-img' data-local-src='foto mitra/Mitra Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' src='foto mitra/Mitra Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' loading='lazy'/>
+                </div>
+                <div class='mitra-card-meta'>
+                  <span class='mitra-cat-pill'>Regulator Perumahan</span>
+                  <h4 class='mitra-name'>Kementerian PKP RI</h4>
+                  <p class='mitra-desc'>Kementerian Perumahan dan Kawasan Permukiman Republik Indonesia</p>
+                </div>
+              </div>
+              <div class='mitra-card' data-mitra-id='apersi'>
+                <div class='mitra-card-logo-wrap'>
+                  <img alt='APERSI' class='mitra-logo-img' data-local-src='foto mitra/Mitra Perumahan/Logo Apersi.png' src='foto mitra/Mitra Perumahan/Logo Apersi.png' loading='lazy'/>
+                </div>
+                <div class='mitra-card-meta'>
+                  <span class='mitra-cat-pill'>Asosiasi Pengembang</span>
+                  <h4 class='mitra-name'>APERSI</h4>
+                  <p class='mitra-desc'>Asosiasi Pengembang Perumahan dan Permukiman Seluruh Indonesia</p>
+                </div>
+              </div>
+              <div class='mitra-card' data-mitra-id='btn'>
+                <div class='mitra-card-logo-wrap'>
+                  <img alt='Bank BTN' class='mitra-logo-img' data-local-src='foto mitra/Mitra Bank/bank-tabungan-negara.png' src='foto mitra/Mitra Bank/bank-tabungan-negara.png' loading='lazy'/>
+                </div>
+                <div class='mitra-card-meta'>
+                  <span class='mitra-cat-pill'>Mitra KPR Utama</span>
+                  <h4 class='mitra-name'>Bank BTN</h4>
+                  <p class='mitra-desc'>Bank Penyalur KPR Subsidi &amp; Komersial Terbesar di Indonesia</p>
+                </div>
+              </div>
+              <div class='mitra-card' data-mitra-id='bsi'>
+                <div class='mitra-card-logo-wrap'>
+                  <img alt='Bank Syariah Indonesia' class='mitra-logo-img' data-local-src='foto mitra/Mitra Bank/bank-syariah-nasional.png' src='foto mitra/Mitra Bank/bank-syariah-nasional.png' loading='lazy'/>
+                </div>
+                <div class='mitra-card-meta'>
+                  <span class='mitra-cat-pill'>Pelopor KPR Syariah</span>
+                  <h4 class='mitra-name'>Bank Syariah Indonesia</h4>
+                  <p class='mitra-desc'>Layanan Pembiayaan Pemilikan Rumah Berprinsip Syariah Terpercaya</p>
+                </div>
+              </div>
+              <div class='mitra-card' data-mitra-id='nobu'>
+                <div class='mitra-card-logo-wrap'>
+                  <img alt='Nobu Bank' class='mitra-logo-img' data-local-src='foto mitra/Mitra Bank/nobu-bank-2026-seeklogo.png' src='foto mitra/Mitra Bank/nobu-bank-2026-seeklogo.png' loading='lazy'/>
+                </div>
+                <div class='mitra-card-meta'>
+                  <span class='mitra-cat-pill'>Bank Swasta Nasional</span>
+                  <h4 class='mitra-name'>Nobu Bank</h4>
+                  <p class='mitra-desc'>Mitra Perbankan Komersial Solutif &amp; Cepat untuk Pembiayaan Hunian</p>
+                </div>
+              </div>
+              <div class='mitra-card' data-mitra-id='tapera'>
+                <div class='mitra-card-logo-wrap'>
+                  <img alt='BP Tapera' class='mitra-logo-img' data-local-src='foto mitra/Mitra Perumahan/bp-tapera.png' src='foto mitra/Mitra Perumahan/bp-tapera.png' loading='lazy'/>
+                </div>
+                <div class='mitra-card-meta'>
+                  <span class='mitra-cat-pill'>Pengelola Dana FLPP</span>
+                  <h4 class='mitra-name'>BP Tapera</h4>
+                  <p class='mitra-desc'>Badan Pengelola Tabungan Perumahan Rakyat Republik Indonesia</p>
+                </div>
+              </div>
+              <div class='mitra-card' data-mitra-id='kemenpkp'>
+                <div class='mitra-card-logo-wrap'>
+                  <img alt='Kementerian PKP RI' class='mitra-logo-img' data-local-src='foto mitra/Mitra Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' src='foto mitra/Mitra Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' loading='lazy'/>
+                </div>
+                <div class='mitra-card-meta'>
+                  <span class='mitra-cat-pill'>Regulator Perumahan</span>
+                  <h4 class='mitra-name'>Kementerian PKP RI</h4>
+                  <p class='mitra-desc'>Kementerian Perumahan dan Kawasan Permukiman Republik Indonesia</p>
+                </div>
+              </div>
+              <div class='mitra-card' data-mitra-id='apersi'>
+                <div class='mitra-card-logo-wrap'>
+                  <img alt='APERSI' class='mitra-logo-img' data-local-src='foto mitra/Mitra Perumahan/Logo Apersi.png' src='foto mitra/Mitra Perumahan/Logo Apersi.png' loading='lazy'/>
+                </div>
+                <div class='mitra-card-meta'>
+                  <span class='mitra-cat-pill'>Asosiasi Pengembang</span>
+                  <h4 class='mitra-name'>APERSI</h4>
+                  <p class='mitra-desc'>Asosiasi Pengembang Perumahan dan Permukiman Seluruh Indonesia</p>
+                </div>
+              </div>
+              </div>
+            </div>
+
+            <div class='mitra-controls-row reveal'>
+              <button type='button' class='btn-mitra-pause' id='btnMitraPause' aria-label='Jeda Animasi Slider'>
+                <i class='hgi-stroke hgi-pause'></i>
+                <span>Jeda Animasi</span>
+              </button>
+            </div>
+
+            <div class='mitra-pillars-bar reveal'>
+              <div class='mitra-pillar-item'>
+                <div class='mitra-pillar-icon'>
+                  <i class='hgi-stroke hgi-bank'></i>
+                </div>
+                <div class='mitra-pillar-text'>
+                  <strong>Perbankan KPR Terdepan</strong>
+                  <small>Dukungan Bank BTN, BSI, dan Nobu Bank</small>
+                </div>
+              </div>
+              <div class='mitra-pillar-item'>
+                <div class='mitra-pillar-icon'>
+                  <i class='hgi-stroke hgi-percentage-square'></i>
+                </div>
+                <div class='mitra-pillar-text'>
+                  <strong>Bunga Flat 5% FLPP</strong>
+                  <small>Program Resmi Pemerintah s/d Lunas</small>
+                </div>
+              </div>
+              <div class='mitra-pillar-item'>
+                <div class='mitra-pillar-icon'>
+                  <i class='hgi-stroke hgi-building-06'></i>
+                </div>
+                <div class='mitra-pillar-text'>
+                  <strong>BP Tapera &amp; Kementerian PKP</strong>
+                  <small>Jaminan Hunian Layak &amp; Bersubsidi</small>
+                </div>
+              </div>
+              <div class='mitra-pillar-item'>
+                <div class='mitra-pillar-icon'>
+                  <i class='hgi-stroke hgi-shield-security'></i>
+                </div>
+                <div class='mitra-pillar-text'>
+                  <strong>Terdaftar Resmi APERSI</strong>
+                  <small>Legalitas Aman &amp; Sertifikat Terjamin</small>
+                </div>
+              </div>
+            </div>
+                </b:if>
               </b:includable>
             </b:widget>
           </b:section>
@@ -3473,7 +4457,7 @@ Tipe: komersial]]></b:widget-setting>
                         <span><data:link/></span>
                       </div>
 
-                      <!-- INFORMASI LEGALITAS & KANTOR PT PENGEMBANG -->
+                      <!-- INFORMASI LEGALITAS &amp; KANTOR PT PENGEMBANG -->
                       <div class='contact-pt-group'>
                         <div class='contact-pt-heading'>
                           <i class='hgi-stroke hgi-building-05'></i>
@@ -3501,7 +4485,7 @@ Tipe: komersial]]></b:widget-setting>
               </b:includable>
             </b:widget>
 
-            <!-- WIDGET 2: [FITUR MARKETING DINAMIS] PROFIL & PUSAT WHATSAPP -->
+            <!-- WIDGET 2: [FITUR MARKETING DINAMIS] PROFIL &amp; PUSAT WHATSAPP -->
             <b:widget id='Image81' locked='true' title='Mas Ro&#39;uf' type='Image' version='3' visible='true'>
               <b:widget-settings>
                 <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s200</b:widget-setting>
@@ -3573,7 +4557,7 @@ Tipe: komersial]]></b:widget-setting>
         </div>
       </section>
 
-      <!-- ================= BLOG / ARTIKEL HALAMAN DALAM & 404 ================= -->
+      <!-- ================= BLOG / ARTIKEL HALAMAN DALAM &amp; 404 ================= -->
       <section id='blog-single'>
         <!-- View 404 Error -->
         <b:if cond='data:view.isError'>
@@ -3623,7 +4607,7 @@ Tipe: komersial]]></b:widget-setting>
         <b:section class='footer-section' id='footer-section' name='[12. FOOTER] Hak Cipta &amp; Sosial Media Resmi' showaddelement='false' version='3'>
           <b:widget id='Text91' locked='true' title='Hak Cipta &amp; Sosial Media' type='Text' version='3' visible='true'>
             <b:widget-settings>
-              <b:widget-setting name='content'><![CDATA[Copyright: &copy; 2025 Pesona Kahuripan Group. Seluruh Hak Cipta Dilindungi.
+              <b:widget-setting name='content'><![CDATA[Copyright: &#169; 2025 Pesona Kahuripan Group. Seluruh Hak Cipta Dilindungi.
 Instagram: https://www.instagram.com/pesonakahuripan.tigor
 TikTok: https://www.tiktok.com/@tigorpesonakahuripan
 YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
@@ -3661,8 +4645,64 @@ YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
     <b:section class='floating-section' id='floating-section' name='[13. FLOATING WHATSAPP] Tombol Chat &amp; Formulir Kontak' showaddelement='false' version='3'>
       <b:widget id='HTML95' locked='true' title='Floating Chat WhatsApp (Mas Ro&#39;uf)' type='HTML' version='3' visible='true'>
         <b:widget-settings>
-          <b:widget-setting name='content'><![CDATA[
-      <div id='floating-chat'>
+          <b:widget-setting name='content'><![CDATA[<div id='floating-chat'>
+        <div class='chat-box' id='chat-box'>
+          <div class='chat-header'>
+            <div class='chat-header-user'>
+              <img alt='Mas Ro&#39;uf' class='marketing-avatar-target' src='https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s100'/>
+              <div class='chat-header-info'>
+                <h4 class='marketing-name-target'>Mas Ro&#39;uf</h4>
+                <div class='chat-status-badge'>
+                  <span class='chat-status-dot'></span>
+                  <span class='chat-status-text'>Online - Marketing Resmi</span>
+                </div>
+              </div>
+            </div>
+            <button aria-label='Tutup Chat' class='chat-close' id='chat-close' type='button'><i class='hgi-stroke hgi-cancel-01'></i></button>
+          </div>
+          <div class='chat-body'>
+            <div class='chat-bubble'>
+              <p>Halo! Butuh informasi brosur perumahan, cek ketersediaan unit, atau jadwal survei lokasi Pesona Kahuripan?</p>
+            </div>
+            <div class='chat-chips'>
+              <button class='chat-chip' data-msg='Halo Mas Ro&#39;uf, saya ingin jadwal survei lokasi perumahan Pesona Kahuripan.' type='button'>📍 Jadwal Survei</button>
+              <button class='chat-chip' data-msg='Halo Mas Ro&#39;uf, boleh minta pricelist &amp; syarat berkas KPR perumahan Pesona Kahuripan?' type='button'>📑 Syarat &amp; Brosur</button>
+              <button class='chat-chip' data-msg='Halo Mas Ro&#39;uf, saya ingin cek ketersediaan unit rumah di Pesona Kahuripan.' type='button'>🏠 Cek Stok Unit</button>
+            </div>
+            <form class='chat-form' onsubmit='sendWhatsAppMessage(event)'>
+              <div class='form-group'>
+                <label for='wa-name'>Nama Lengkap</label>
+                <input id='wa-name' placeholder='Contoh: Budi Santoso' required='' type='text'/>
+              </div>
+              <div class='form-group'>
+                <label for='wa-phone-user'>Nomor WhatsApp</label>
+                <input id='wa-phone-user' placeholder='Contoh: 08123456789' required='' type='tel'/>
+              </div>
+              <div class='form-group'>
+                <label for='wa-message'>Pertanyaan / Minat Unit</label>
+                <textarea id='wa-message' placeholder='Contoh: Ingin tanya brosur Type 30/60 dan jadwal survei lokasi' required='' rows='2'></textarea>
+              </div>
+              <button class='btn-wa-submit' type='submit'>
+                <i class='hgi-stroke hgi-whatsapp'></i>
+                <span>Kirim via WhatsApp</span>
+              </button>
+              <small class='chat-privacy'>🔒 Data Anda aman &amp; langsung terhubung ke marketing resmi.</small>
+            </form>
+          </div>
+        </div>
+        <div class='chat-btn-wrap'>
+          <div class='chat-pill'>
+            <span>Tanya Marketing</span>
+          </div>
+          <button class='chat-btn' id='chat-toggle' aria-label='Chat WhatsApp Marketing' type='button'><i class='hgi-stroke hgi-whatsapp'></i></button>
+        </div>
+      </div>]]></b:widget-setting>
+        </b:widget-settings>
+        <b:includable id='main'>
+          <b:if cond='data:content'>
+            <data:content/>
+          <b:else/>
+            <div id='floating-chat'>
         <div class='chat-box' id='chat-box'>
           <div class='chat-header'>
             <div class='chat-header-user'>
@@ -3714,10 +4754,7 @@ YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
           <button class='chat-btn' id='chat-toggle' aria-label='Chat WhatsApp Marketing' type='button'><i class='hgi-stroke hgi-whatsapp'></i></button>
         </div>
       </div>
-          ]]></b:widget-setting>
-        </b:widget-settings>
-        <b:includable id='main'>
-          <data:content/>
+          </b:if>
         </b:includable>
       </b:widget>
     </b:section>
@@ -3726,13 +4763,13 @@ YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
          5. NATIVE JAVASCRIPT MANDIRI (LOADED VIA GITHUB CDN)
     ====================================================================== -->
         <!-- ======================================================================
-         5. NATIVE JAVASCRIPT MANDIRI & ANIMATION ENGINE (EMBEDDED PRODUCTION)
+         5. NATIVE JAVASCRIPT MANDIRI &amp; ANIMATION ENGINE (EMBEDDED PRODUCTION)
     ====================================================================== -->
     <!-- Fancybox v5 UI (Lightbox) -->
     <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js'></script>
 
     <!-- Main Interactive Script (Separated) -->
-    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_script.js?v=2.6'></script>
+    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_script.js?v=3.0'></script>
 
     
 
