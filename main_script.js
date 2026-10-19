@@ -1414,8 +1414,190 @@ function initTampakRumahSubsidi() {
   }
 }
 
+
+// ================= LOKASI PROJECT 1 - 17 (FILTER & SEARCH) =================
+function initLokasiProjects() {
+  const searchInput = document.getElementById('lokasiSearchInput');
+  const clearBtn = document.getElementById('lokasiSearchClear');
+  const tabBtns = document.querySelectorAll('.lokasi-tab-btn');
+  const cards = document.querySelectorAll('.lokasi-card');
+  const emptyState = document.getElementById('lokasiEmptyState');
+  const totalCountEl = document.getElementById('lokasiTotalCount');
+
+  if (!cards.length) return;
+
+  let currentFilter = 'all';
+  let currentSearch = '';
+
+  function applyFilter() {
+    let visibleCount = 0;
+    const query = currentSearch.trim().toLowerCase();
+
+    cards.forEach(function(card) {
+      const wilayah = card.getAttribute('data-wilayah');
+      const searchData = (card.getAttribute('data-search') || '').toLowerCase();
+
+      const matchFilter = (currentFilter === 'all') || (wilayah === currentFilter);
+      const matchSearch = !query || searchData.includes(query);
+
+      if (matchFilter && matchSearch) {
+        card.classList.remove('is-hidden');
+        visibleCount++;
+      } else {
+        card.classList.add('is-hidden');
+      }
+    });
+
+    if (emptyState) {
+      if (visibleCount === 0) {
+        emptyState.classList.add('is-visible');
+      } else {
+        emptyState.classList.remove('is-visible');
+      }
+    }
+
+    if (totalCountEl && currentFilter === 'all' && !query) {
+      totalCountEl.textContent = cards.length;
+    }
+  }
+
+  tabBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      tabBtns.forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      currentFilter = this.getAttribute('data-filter') || 'all';
+      applyFilter();
+    });
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      currentSearch = this.value;
+      if (clearBtn) {
+        clearBtn.style.display = this.value ? 'inline-flex' : 'none';
+      }
+      applyFilter();
+    });
+  }
+
+  if (clearBtn && searchInput) {
+    clearBtn.addEventListener('click', function() {
+      searchInput.value = '';
+      currentSearch = '';
+      clearBtn.style.display = 'none';
+      searchInput.focus();
+      applyFilter();
+    });
+  }
+
+  // Dynamic WhatsApp sync on survey buttons
+  const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
+  const mPhone = mConfig.phone || "6287870988073";
+  const mName = mConfig.name || "Mas Ro'uf";
+
+  document.querySelectorAll('#lokasi-project .wa-dynamic-btn').forEach(function(btn) {
+    const card = btn.closest('.lokasi-card');
+    if (card) {
+      const pName = card.querySelector('.lokasi-card-title') ? card.querySelector('.lokasi-card-title').textContent.trim() : 'Pesona Kahuripan';
+      const rName = card.querySelector('.lokasi-card-region span') ? card.querySelector('.lokasi-card-region span').textContent.trim() : '';
+      const waText = encodeURIComponent("Halo " + mName + ", saya tertarik informasi unit & jadwal survey lokasi di " + pName + " (" + rName + "). Bisa dibantu jadwal surveinya?");
+      btn.href = "https://api.whatsapp.com/send?phone=" + mPhone + "&text=" + waText;
+    }
+  });
+}
+
+// ================= MITRA KAMI (ANIMATED MARQUEE & CDN RESOLVER) =================
+function initMitraMarquee() {
+  const track = document.getElementById('mitraMarqueeTrack');
+  const pauseBtn = document.getElementById('btnMitraPause');
+  const imgs = document.querySelectorAll('.mitra-logo-img');
+
+  if (pauseBtn && track) {
+    let isPaused = false;
+    pauseBtn.addEventListener('click', function() {
+      isPaused = !isPaused;
+      if (isPaused) {
+        track.classList.add('is-paused');
+        this.innerHTML = "<i class='hgi-stroke hgi-play'></i><span>Lanjutkan Animasi</span>";
+      } else {
+        track.classList.remove('is-paused');
+        this.innerHTML = "<i class='hgi-stroke hgi-pause'></i><span>Jeda Animasi</span>";
+      }
+    });
+  }
+
+  const isLocal = window.location.protocol === 'file:' || 
+                  window.location.hostname === 'localhost' || 
+                  window.location.hostname === '127.0.0.1';
+
+  imgs.forEach(function(img) {
+    const localSrc = img.getAttribute('data-local-src') || img.getAttribute('src');
+    if (!localSrc) return;
+
+    if (!isLocal) {
+      const cdnUrl = 'https://raw.githubusercontent.com/pesonaku/landingpage/main/' + encodeURI(localSrc);
+      img.src = cdnUrl;
+    }
+
+    img.addEventListener('error', function() {
+      const fallbackUrl = 'https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/' + encodeURI(localSrc);
+      if (this.src !== fallbackUrl) {
+        this.src = fallbackUrl;
+      }
+    });
+  });
+}
+
+
+// ================= FANCYBOX LIGHTBOX INITIALIZATION =================
+function initFancyboxUI() {
+  if (typeof Fancybox !== 'undefined') {
+    try {
+      Fancybox.destroy();
+    } catch(e) {}
+
+    Fancybox.bind('[data-fancybox="proyek-album"], [data-fancybox="tampak-subsidi"]', {
+      Hash: false,
+      groupAll: false,
+      closeButton: false,
+      dragToClose: false,
+      backdropClick: "close",
+      autoFocus: false,
+      placeFocusBack: false,
+      animated: true,
+      Toolbar: {
+        display: {
+          left: ["infobar"],
+          middle: [],
+          right: ["close"]
+        }
+      }
+    });
+
+    const instantCloseFancybox = function(e) {
+      const btn = e.target.closest('[data-fancybox-close]');
+      if (btn || (e.target && e.target.classList && e.target.classList.contains('fancybox__backdrop'))) {
+        e.preventDefault();
+        e.stopPropagation();
+        Fancybox.close();
+      }
+    };
+    document.addEventListener('pointerup', instantCloseFancybox, { passive: false });
+    document.addEventListener('click', instantCloseFancybox);
+  }
+}
+
+
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initTampakRumahSubsidi);
+  document.addEventListener('DOMContentLoaded', function() {
+    initTampakRumahSubsidi();
+    initLokasiProjects();
+    initMitraMarquee();
+    initFancyboxUI();
+  });
 } else {
   initTampakRumahSubsidi();
+  initLokasiProjects();
+  initMitraMarquee();
+  initFancyboxUI();
 }

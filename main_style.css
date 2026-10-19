@@ -3759,3 +3759,800 @@ html.js-ready .reveal.revealed {
     font-size: 0.88rem !important;
   }
 }
+
+
+/* ==========================================================================
+   05C. LOKASI PROJECT PESONA KAHURIPAN 1 - 17
+   ========================================================================== */
+#lokasi-project {
+  position: relative;
+  padding: 85px 0 90px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 40%, #f1f5f9 100%);
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  overflow: hidden;
+}
+
+#lokasi-project::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 240px;
+  background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.lokasi-section {
+  display: block;
+  width: 100%;
+}
+
+.lokasi-section > .widget {
+  margin: 0;
+  padding: 0;
+}
+
+.lokasi-section > .widget > h2.title,
+.lokasi-section > .widget > h3.title {
+  display: none !important;
+}
+
+/* Filter Bar & Search */
+.lokasi-controls-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 32px 0 36px;
+}
+
+.lokasi-search-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.lokasi-search-box {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+}
+
+.lokasi-search-box i {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+  color: #94a3b8;
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+
+.lokasi-search-input {
+  width: 100%;
+  padding: 14px 44px 14px 50px;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  color: #1e293b;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.lokasi-search-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.lokasi-search-input:focus + i {
+  color: #2563eb;
+}
+
+.lokasi-search-clear {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #e2e8f0;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lokasi-search-clear:hover {
+  background: #cbd5e1;
+  color: #0f172a;
+}
+
+.lokasi-filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.lokasi-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+}
+
+.lokasi-tab-btn:hover {
+  border-color: #cbd5e1;
+  color: #1e293b;
+  transform: translateY(-1px);
+}
+
+.lokasi-tab-btn.active {
+  background: #059669;
+  border-color: #059669;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.25);
+}
+
+.lokasi-tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: rgba(15, 23, 42, 0.06);
+  border-radius: 999px;
+}
+
+.lokasi-tab-btn.active .lokasi-tab-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+/* Grid Proyek */
+.lokasi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+/* Card Proyek */
+.lokasi-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.lokasi-card:hover {
+  transform: translateY(-6px);
+  border-color: #93c5fd;
+  box-shadow: 0 16px 36px rgba(37, 99, 235, 0.1);
+}
+
+.lokasi-card.is-hidden {
+  display: none !important;
+}
+
+/* Top Banner of Card */
+.lokasi-card-top {
+  padding: 16px 20px 14px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.lokasi-card:hover .lokasi-card-top {
+  background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
+}
+
+.lokasi-card-badges {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.lokasi-proyek-num {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #0f172a;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15);
+}
+
+.lokasi-status-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.lokasi-status-badge.primary {
+  background: rgba(37, 99, 235, 0.1);
+  color: #1d4ed8;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.lokasi-status-badge.success {
+  background: rgba(5, 150, 105, 0.1);
+  color: #047857;
+  border: 1px solid rgba(5, 150, 105, 0.2);
+}
+
+.lokasi-status-badge.info {
+  background: rgba(2, 132, 199, 0.1);
+  color: #0369a1;
+  border: 1px solid rgba(2, 132, 199, 0.2);
+}
+
+.lokasi-status-badge.warning {
+  background: rgba(217, 119, 6, 0.1);
+  color: #b45309;
+  border: 1px solid rgba(217, 119, 6, 0.2);
+}
+
+.lokasi-card-region {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.lokasi-card-region i {
+  color: #059669;
+  font-size: 1rem;
+}
+
+/* Body of Card */
+.lokasi-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.lokasi-card-title {
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+
+.lokasi-tipe-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.06);
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  width: fit-content;
+}
+
+.lokasi-card-address {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #64748b;
+  margin: 0 0 16px;
+  flex: 1;
+}
+
+.lokasi-card-address i {
+  color: #ef4444;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.lokasi-card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.lokasi-tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #334155;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.lokasi-tag-chip i {
+  color: #059669;
+  font-size: 0.82rem;
+}
+
+/* Footer & Action Buttons */
+.lokasi-card-footer {
+  padding: 14px 20px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-cta-lokasi-map {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #059669;
+  color: #ffffff !important;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  box-shadow: 0 3px 8px rgba(5, 150, 105, 0.2);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-cta-lokasi-map:hover {
+  background: #047857;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(5, 150, 105, 0.3);
+}
+
+.btn-cta-lokasi-map i {
+  font-size: 1.1rem;
+}
+
+.btn-cta-lokasi-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: #ffffff;
+  color: #15803d !important;
+  border: 1.5px solid #22c55e;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: all 0.25s ease;
+}
+
+.btn-cta-lokasi-wa:hover {
+  background: #22c55e;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+.btn-cta-lokasi-wa i {
+  font-size: 1.1rem;
+}
+
+/* Empty State if No Proyek Matches */
+.lokasi-empty-state {
+  display: none;
+  text-align: center;
+  padding: 48px 24px;
+  background: #ffffff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 16px;
+  grid-column: 1 / -1;
+}
+
+.lokasi-empty-state.is-visible {
+  display: block;
+}
+
+.lokasi-empty-state i {
+  font-size: 2.8rem;
+  color: #94a3b8;
+  margin-bottom: 12px;
+}
+
+.lokasi-empty-state h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 6px;
+}
+
+.lokasi-empty-state p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Bottom Callout Banner */
+.lokasi-bottom-callout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 24px 30px;
+  background: linear-gradient(135deg, #064e3b 0%, #047857 50%, #059669 100%);
+  border-radius: 18px;
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(5, 150, 105, 0.25);
+}
+
+.lokasi-callout-text h4 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin: 0 0 6px;
+  color: #ffffff;
+}
+
+.lokasi-callout-text p {
+  font-size: 0.9rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 650px;
+  line-height: 1.5;
+}
+
+.btn-callout-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  background: #ffffff;
+  color: #064e3b !important;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-decoration: none !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn-callout-wa:hover {
+  background: #f0fdf4;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   07B. MITRA KAMI (ANIMATED LOGO SLIDE BAR)
+   ========================================================================== */
+#mitra {
+  position: relative;
+  padding: 80px 0 85px;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f8fafc 100%);
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  overflow: hidden;
+}
+
+.mitra-section {
+  display: block;
+  width: 100%;
+}
+
+.mitra-section > .widget {
+  margin: 0;
+  padding: 0;
+}
+
+.mitra-section > .widget > h2.title,
+.mitra-section > .widget > h3.title {
+  display: none !important;
+}
+
+/* Slide Bar Marquee Container */
+.mitra-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 36px 0 32px;
+  padding: 14px 0 20px;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+}
+
+.mitra-marquee-track {
+  display: flex;
+  gap: 22px;
+  width: max-content;
+  animation: mitraMarqueeScroll 30s linear infinite;
+  will-change: transform;
+}
+
+.mitra-marquee-track:hover,
+.mitra-marquee-track.is-paused {
+  animation-play-state: paused !important;
+}
+
+@keyframes mitraMarqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mitra Card */
+.mitra-card {
+  flex: 0 0 260px;
+  width: 260px;
+  height: 165px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+.mitra-card:hover {
+  transform: translateY(-6px);
+  border-color: #93c5fd;
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.12);
+}
+
+.mitra-card-logo-wrap {
+  height: 65px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.mitra-logo-img {
+  max-height: 52px;
+  max-width: 180px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.mitra-card:hover .mitra-logo-img {
+  transform: scale(1.08);
+}
+
+.mitra-card-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.mitra-cat-pill {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.08);
+  color: #2563eb;
+  margin-bottom: 4px;
+}
+
+.mitra-name {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.mitra-desc {
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: #64748b;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Control Row for Marquee */
+.mitra-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.btn-mitra-pause {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-mitra-pause:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.btn-mitra-pause i {
+  font-size: 0.9rem;
+  color: #059669;
+}
+
+/* Trust Pillars Bar */
+.mitra-pillars-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding-top: 10px;
+}
+
+.mitra-pillar-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+  transition: all 0.25s ease;
+}
+
+.mitra-pillar-item:hover {
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+}
+
+.mitra-pillar-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(5, 150, 105, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #059669;
+  font-size: 1.3rem;
+}
+
+.mitra-pillar-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.mitra-pillar-text strong {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.mitra-pillar-text small {
+  font-size: 0.74rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   RESPONSIVE QUERIES FOR LOKASI & MITRA
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .lokasi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .mitra-pillars-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  #lokasi-project {
+    padding: 60px 0 70px;
+  }
+  #mitra {
+    padding: 60px 0 65px;
+  }
+  .lokasi-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .lokasi-filter-tabs {
+    gap: 6px;
+  }
+  .lokasi-tab-btn {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+  }
+  .mitra-card {
+    flex: 0 0 220px;
+    width: 220px;
+    height: 155px;
+    padding: 14px 16px;
+  }
+  .mitra-card-logo-wrap {
+    height: 55px;
+  }
+  .mitra-logo-img {
+    max-height: 44px;
+    max-width: 150px;
+  }
+  .mitra-pillars-bar {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .lokasi-bottom-callout {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  .btn-callout-wa {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
