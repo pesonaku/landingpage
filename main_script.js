@@ -1415,7 +1415,7 @@ function initTampakRumahSubsidi() {
 }
 
 
-// ================= LOKASI PROJECT 1 - 17 (FILTER & SEARCH) =================
+// ================= LOKASI PROJECT 1 - 18 (FILTER & SEARCH) =================
 function initLokasiProjects() {
   const searchInput = document.getElementById('lokasiSearchInput');
   const clearBtn = document.getElementById('lokasiSearchClear');

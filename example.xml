@@ -1721,29 +1721,29 @@ Carport: 1 Mobil]]></b:widget-setting>
             <!-- ================= LOKASI PROJECT KAMI ================= -->
       <section id='lokasi-project'>
         <div class='wrapper'>
-          <b:section class='lokasi-section' id='lokasi-section' name='[05C. LOKASI PROYEK] Lokasi Project Pesona Kahuripan 1 - 17' showaddelement='false' version='3'>
+          <b:section class='lokasi-section' id='lokasi-section' name='[05C. LOKASI PROYEK] Lokasi Project Pesona Kahuripan 1 - 18' showaddelement='false' version='3'>
             <!-- JUDUL SECTION -->
             <b:widget id='Text55' locked='true' title='Lokasi Project Kami' type='Text' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='content'>Pilihan hunian subsidi dan komersial strategis yang tersebar di 17 titik kawasan berkembang di Bogor, Bekasi, dan Serang — dekat akses tol, stasiun KRL, fasilitas pendidikan, dan pusat perbelanjaan.</b:widget-setting>
+                <b:widget-setting name='content'>Pilihan hunian subsidi dan komersial strategis yang tersebar di 18 titik kawasan berkembang di Bogor, Bekasi, dan Serang — dekat akses tol, stasiun KRL, fasilitas pendidikan, dan pusat perbelanjaan.</b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='section-head reveal'>
                   <span class='section-badge'>JARINGAN KAWASAN STRATEGIS</span>
                   <h2><b:eval expr='data:title ?: &quot;Lokasi Project Kami&quot;'/></h2>
-                  <p><b:eval expr='data:content ?: &quot;Pilihan hunian subsidi dan komersial strategis yang tersebar di 17 titik kawasan berkembang di Bogor, Bekasi, dan Serang — dekat akses tol, stasiun KRL, fasilitas pendidikan, dan pusat perbelanjaan.&quot;'/></p>
+                  <p><b:eval expr='data:content ?: &quot;Pilihan hunian subsidi dan komersial strategis yang tersebar di 18 titik kawasan berkembang di Bogor, Bekasi, dan Serang — dekat akses tol, stasiun KRL, fasilitas pendidikan, dan pusat perbelanjaan.&quot;'/></p>
                 </div>
               </b:includable>
             </b:widget>
 
-            <!-- DAFTAR LOKASI PROYEK 1 - 17 DENGAN FILTER &amp; SEARCH -->
-            <b:widget id='HTML55' locked='true' title='Daftar 17 Lokasi Proyek Pesona Kahuripan' type='HTML' version='3' visible='true'>
+            <!-- DAFTAR LOKASI PROYEK 1 - 18 DENGAN FILTER &amp; SEARCH -->
+            <b:widget id='HTML55' locked='true' title='Daftar 18 Lokasi Proyek Pesona Kahuripan' type='HTML' version='3' visible='true'>
               <b:widget-settings>
                 <b:widget-setting name='content'><![CDATA[<div class='lokasi-controls-wrap reveal'>
               <div class='lokasi-search-row'>
                 <div class='lokasi-search-box'>
                   <i class='hgi-stroke hgi-search-01'></i>
-                  <input type='text' id='lokasiSearchInput' class='lokasi-search-input' placeholder='Cari nomor proyek atau wilayah (misal: 9, Cileungsi, Bojong, Serang)...' autocomplete='off'/>
+                  <input type='text' id='lokasiSearchInput' class='lokasi-search-input' placeholder='Cari nomor proyek atau wilayah (misal: 18, Parung Panjang, Cileungsi, Serang)...' autocomplete='off'/>
                   <button type='button' id='lokasiSearchClear' class='lokasi-search-clear' aria-label='Hapus pencarian'>&#215;</button>
                 </div>
               </div>
@@ -1751,7 +1751,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                 <button type='button' class='lokasi-tab-btn active' data-filter='all'>
                   <i class='hgi-stroke hgi-grid-view'></i>
                   <span>Semua Proyek</span>
-                  <span class='lokasi-tab-count' id='lokasiTotalCount'>17</span>
+                  <span class='lokasi-tab-count' id='lokasiTotalCount'>18</span>
                 </button>
                 <button type='button' class='lokasi-tab-btn' data-filter='klapanunggal'>
                   <i class='hgi-stroke hgi-location-01'></i>
@@ -1762,6 +1762,11 @@ Carport: 1 Mobil]]></b:widget-setting>
                   <i class='hgi-stroke hgi-location-01'></i>
                   <span>Cileungsi Bogor</span>
                   <span class='lokasi-tab-count'>8</span>
+                </button>
+                                <button type='button' class='lokasi-tab-btn' data-filter='parungpanjang'>
+                  <i class='hgi-stroke hgi-location-01'></i>
+                  <span>Parung Panjang Bogor</span>
+                  <span class='lokasi-tab-count'>1</span>
                 </button>
                 <button type='button' class='lokasi-tab-btn' data-filter='setu'>
                   <i class='hgi-stroke hgi-location-01'></i>
@@ -2385,6 +2390,42 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <span>Kunjungi Lokasi</span>
                   </a>
                   <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2017%20(Kasemen%2C%20Kota%20Serang).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 17 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+                            <div class='lokasi-card reveal' data-no='18' data-search='pesona kahuripan 18 parung panjang parungpanjang kab. bogor jl. raya sudamanik desa jagabaya kec. parung panjang bsd serpong stasiun krl subsidi 30/60 &amp; komersial' data-wilayah='parungpanjang'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #18</span>
+                    <span class='lokasi-status-badge primary'>Akses Tol &amp; KRL Cepat</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Parung Panjang, Kab. Bogor</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 18</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Subsidi 30/60 &amp; Komersial</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Jl. Raya Sudamanik, Desa Jagabaya, Kec. Parung Panjang, Kab. Bogor, Jawa Barat 16360</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>10 Mnt Stasiun KRL Parung Panjang</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>20 Mnt Pintu Tol Legok / Serpong</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Jalan Raya Sudamanik</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+18+Parung+Panjang+Bogor' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 18'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2018%20(Parung%20Panjang%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 18 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
@@ -2416,7 +2457,7 @@ Carport: 1 Mobil]]></b:widget-setting>
               <div class='lokasi-search-row'>
                 <div class='lokasi-search-box'>
                   <i class='hgi-stroke hgi-search-01'></i>
-                  <input type='text' id='lokasiSearchInput' class='lokasi-search-input' placeholder='Cari nomor proyek atau wilayah (misal: 9, Cileungsi, Bojong, Serang)...' autocomplete='off'/>
+                  <input type='text' id='lokasiSearchInput' class='lokasi-search-input' placeholder='Cari nomor proyek atau wilayah (misal: 18, Parung Panjang, Cileungsi, Serang)...' autocomplete='off'/>
                   <button type='button' id='lokasiSearchClear' class='lokasi-search-clear' aria-label='Hapus pencarian'>&#215;</button>
                 </div>
               </div>
@@ -2424,7 +2465,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                 <button type='button' class='lokasi-tab-btn active' data-filter='all'>
                   <i class='hgi-stroke hgi-grid-view'></i>
                   <span>Semua Proyek</span>
-                  <span class='lokasi-tab-count' id='lokasiTotalCount'>17</span>
+                  <span class='lokasi-tab-count' id='lokasiTotalCount'>18</span>
                 </button>
                 <button type='button' class='lokasi-tab-btn' data-filter='klapanunggal'>
                   <i class='hgi-stroke hgi-location-01'></i>
@@ -2435,6 +2476,11 @@ Carport: 1 Mobil]]></b:widget-setting>
                   <i class='hgi-stroke hgi-location-01'></i>
                   <span>Cileungsi Bogor</span>
                   <span class='lokasi-tab-count'>8</span>
+                </button>
+                                <button type='button' class='lokasi-tab-btn' data-filter='parungpanjang'>
+                  <i class='hgi-stroke hgi-location-01'></i>
+                  <span>Parung Panjang Bogor</span>
+                  <span class='lokasi-tab-count'>1</span>
                 </button>
                 <button type='button' class='lokasi-tab-btn' data-filter='setu'>
                   <i class='hgi-stroke hgi-location-01'></i>
@@ -3058,6 +3104,42 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <span>Kunjungi Lokasi</span>
                   </a>
                   <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2017%20(Kasemen%2C%20Kota%20Serang).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 17 via WA'>
+                    <i class='hgi-stroke hgi-whatsapp'></i>
+                    <span>Survey</span>
+                  </a>
+                </div>
+              </div>
+                            <div class='lokasi-card reveal' data-no='18' data-search='pesona kahuripan 18 parung panjang parungpanjang kab. bogor jl. raya sudamanik desa jagabaya kec. parung panjang bsd serpong stasiun krl subsidi 30/60 &amp; komersial' data-wilayah='parungpanjang'>
+                <div class='lokasi-card-top'>
+                  <div class='lokasi-card-badges'>
+                    <span class='lokasi-proyek-num'>Proyek #18</span>
+                    <span class='lokasi-status-badge primary'>Akses Tol &amp; KRL Cepat</span>
+                  </div>
+                  <div class='lokasi-card-region'>
+                    <i class='hgi-stroke hgi-location-01'></i>
+                    <span>Parung Panjang, Kab. Bogor</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-body'>
+                  <h3 class='lokasi-card-title'>Pesona Kahuripan 18</h3>
+                  <div class='lokasi-tipe-badge'>
+                    <i class='hgi-stroke hgi-home-01'></i>
+                    <span>Subsidi 30/60 &amp; Komersial</span>
+                  </div>
+                  <p class='lokasi-card-address'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Jl. Raya Sudamanik, Desa Jagabaya, Kec. Parung Panjang, Kab. Bogor, Jawa Barat 16360</span>
+                  </p>
+                  <div class='lokasi-card-chips'>
+                    <span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>10 Mnt Stasiun KRL Parung Panjang</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>20 Mnt Pintu Tol Legok / Serpong</span><span class='lokasi-tag-chip'><i class='hgi-stroke hgi-tick-02'></i>Jalan Raya Sudamanik</span>
+                  </div>
+                </div>
+                <div class='lokasi-card-footer'>
+                  <a class='btn-cta-lokasi-map' href='https://www.google.com/maps/search/?api=1&amp;query=Perumahan+Pesona+Kahuripan+18+Parung+Panjang+Bogor' target='_blank' rel='noopener' title='Buka Google Maps Pesona Kahuripan 18'>
+                    <i class='hgi-stroke hgi-maps-location-01'></i>
+                    <span>Kunjungi Lokasi</span>
+                  </a>
+                  <a class='btn-cta-lokasi-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20informasi%20unit%20%26%20jadwal%20survey%20lokasi%20di%20Pesona%20Kahuripan%2018%20(Parung%20Panjang%2C%20Kab.%20Bogor).%20Bisa%20dibantu%20info%20jadwal%20surveinya%3F' target='_blank' rel='noopener' title='Jadwal Survey Pesona Kahuripan 18 via WA'>
                     <i class='hgi-stroke hgi-whatsapp'></i>
                     <span>Survey</span>
                   </a>
