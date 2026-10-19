@@ -1,5 +1,6 @@
 /*!
  * Pesona Kahuripan - Official Landing Page Interactive Script
+ * Version: 3.3 (Separated Production Bundle)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
