@@ -1351,3 +1351,71 @@ function initLandingPage() {
 
 // Make sendWhatsAppMessage accessible globally for inline onsubmit handler
 window.sendWhatsAppMessage = sendWhatsAppMessage;
+
+// ================= TAMPAK RUMAH SUBSIDI FILTER & SYNC =================
+function initTampakRumahSubsidi() {
+  const filterTabs = document.querySelectorAll('.tampak-tab-btn');
+  const tampakWidgets = document.querySelectorAll('#tampak-section > .widget.Image, .tampak-section > .widget[id*="Image5"]');
+
+  if (filterTabs.length) {
+    filterTabs.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter') || 'all';
+
+        filterTabs.forEach(function(b) { b.classList.remove('active'); });
+        this.classList.add('active');
+
+        tampakWidgets.forEach(function(widget) {
+          const card = widget.querySelector('.tampak-card');
+          const cat = card ? card.getAttribute('data-category') : '';
+
+          if (filter === 'all' || cat === filter) {
+            widget.style.display = '';
+            if (card) {
+              card.style.opacity = '0';
+              card.style.transform = 'translateY(10px) scale(0.98)';
+              requestAnimationFrame(function() {
+                card.style.transition = 'opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0) scale(1)';
+              });
+            }
+          } else {
+            widget.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // Image path adapter: online CDN vs local file preview
+  const isOnlineHost = !['localhost', '127.0.0.1', ''].includes(window.location.hostname) && window.location.protocol !== 'file:';
+  if (isOnlineHost) {
+    document.querySelectorAll('.tampak-card img[data-cdn], .tampak-lightbox-link[data-cdn]').forEach(function(el) {
+      const cdnUrl = el.getAttribute('data-cdn');
+      if (cdnUrl) {
+        if (el.tagName.toLowerCase() === 'img') {
+          el.src = cdnUrl;
+        } else if (el.tagName.toLowerCase() === 'a') {
+          el.href = cdnUrl;
+        }
+      }
+    });
+  }
+
+  // Sync WhatsApp marketing on CTA survey button
+  const tampakSurveyBtn = document.querySelector('.btn-tampak-survey');
+  if (tampakSurveyBtn) {
+    const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
+    const mPhone = mConfig.phone || "6287870988073";
+    const mName = mConfig.name || "Mas Ro'uf";
+    const waText = encodeURIComponent(`Halo ${mName}, saya tertarik survey langsung Unit Rumah Subsidi Pemerintah Pesona Kahuripan.\n\nBisa info jadwal survey lokasi terdekat?\n\nReferensi: https://www.pesonakahuripan.biz.id/#tampak-rumah`);
+    tampakSurveyBtn.href = `https://api.whatsapp.com/send?phone=${mPhone}&text=${waText}`;
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initTampakRumahSubsidi);
+} else {
+  initTampakRumahSubsidi();
+}

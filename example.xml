@@ -1010,6 +1010,581 @@ body:not(#layout) #header.onScroll {
   display: none !important;
 }
 
+/* ================= 05B. TAMPAK RUMAH SUBSIDI PEMERINTAH ================= */
+#tampak-rumah {
+  padding: 70px 0 80px;
+  background: radial-gradient(circle at 10% 20%, rgba(15, 157, 88, 0.035) 0%, transparent 45%),
+              radial-gradient(circle at 90% 80%, rgba(15, 157, 88, 0.025) 0%, transparent 50%),
+              #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.tampak-section {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 22px;
+  align-items: stretch;
+}
+
+#tampak-section > .widget,
+.tampak-section > .widget {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#tampak-section > .widget > h2.title,
+#tampak-section > .widget > h3.title,
+.tampak-section > .widget > h2.title,
+.tampak-section > .widget > h3.title {
+  display: none !important;
+}
+
+#tampak-section > #Text50,
+#tampak-section > #HTML51,
+#tampak-section > #HTML52,
+.tampak-section > .widget.Text,
+.tampak-section > .widget.HTML {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+#tampak-section > .widget.Image,
+.tampak-section > .widget.Image {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Feature Highlights Strip */
+.tampak-highlights-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px 14px;
+  margin: -10px auto 30px;
+  max-width: 980px;
+}
+
+.tampak-highlight-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 50px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #334155;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.tampak-highlight-item:hover {
+  background: #e8f5e9;
+  border-color: rgba(15, 157, 88, 0.35);
+  color: #0b7e46;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(15, 157, 88, 0.12);
+}
+
+.tampak-highlight-item i {
+  font-size: 16px;
+  color: #0f9d58;
+}
+
+/* Filter Navigation Tabs */
+.tampak-filter-wrapper {
+  margin: 0 auto 34px;
+  text-align: center;
+  width: 100%;
+}
+
+.tampak-filter-tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  background: #f1f5f9;
+  border-radius: 50px;
+  border: 1px solid #e2e8f0;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.tampak-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border-radius: 50px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.tampak-tab-btn i {
+  font-size: 16px;
+  transition: transform 0.25s ease;
+}
+
+.tampak-tab-btn:hover {
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.tampak-tab-btn:hover i {
+  transform: scale(1.1);
+}
+
+.tampak-tab-btn.active {
+  background: #0f9d58;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(15, 157, 88, 0.35);
+}
+
+.tampak-tab-btn.active i {
+  color: #ffffff;
+}
+
+/* Bento Grid Spans */
+#Image51,
+.tampak-section > .widget[id*="Image51"] {
+  grid-column: span 7;
+  min-height: 440px;
+}
+
+#Image52,
+.tampak-section > .widget[id*="Image52"] {
+  grid-column: span 5;
+  min-height: 440px;
+}
+
+#Image53,
+.tampak-section > .widget[id*="Image53"] {
+  grid-column: span 4;
+  min-height: 350px;
+}
+
+#Image54,
+.tampak-section > .widget[id*="Image54"] {
+  grid-column: span 4;
+  min-height: 350px;
+}
+
+#Image55,
+.tampak-section > .widget[id*="Image55"] {
+  grid-column: span 4;
+  min-height: 350px;
+}
+
+#Image56,
+.tampak-section > .widget[id*="Image56"] {
+  grid-column: span 6;
+  min-height: 380px;
+}
+
+#Image57,
+.tampak-section > .widget[id*="Image57"] {
+  grid-column: span 6;
+  min-height: 380px;
+}
+
+/* Card Styling */
+.tampak-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0f172a;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.tampak-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px -5px rgba(15, 23, 42, 0.16);
+  border-color: rgba(15, 157, 88, 0.4);
+}
+
+.tampak-lightbox-link {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+}
+
+.tampak-media {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #1e293b;
+}
+
+.tampak-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tampak-card:hover .tampak-img {
+  transform: scale(1.06);
+}
+
+.tampak-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  background: rgba(15, 23, 42, 0.76);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.tampak-badge i {
+  font-size: 14px;
+  color: #4ade80;
+}
+
+.tampak-zoom-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 3;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  transform: scale(0.85);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, background-color 0.2s ease;
+}
+
+.tampak-zoom-btn i {
+  font-size: 18px;
+  color: #0b7e46;
+  transition: transform 0.25s ease, color 0.2s ease;
+}
+
+.tampak-card:hover .tampak-zoom-btn {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.tampak-zoom-btn:hover {
+  background: #0f9d58;
+}
+
+.tampak-zoom-btn:hover i {
+  color: #ffffff;
+  transform: scale(1.15);
+}
+
+.tampak-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 40px 24px 22px;
+  background: linear-gradient(to top, rgba(10, 15, 29, 0.96) 0%, rgba(10, 15, 29, 0.78) 50%, rgba(10, 15, 29, 0.2) 85%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.tampak-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.tampak-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: #f8fafc;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.tampak-tag i {
+  font-size: 12px;
+  color: #86efac;
+}
+
+.tampak-card-title {
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.3;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero-card .tampak-card-title {
+  font-size: 1.35rem;
+}
+
+.tampak-card-desc {
+  color: #cbd5e1;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* CTA Survey Banner */
+.tampak-cta-banner {
+  position: relative;
+  overflow: hidden;
+  margin-top: 15px;
+  padding: 34px 40px;
+  background: linear-gradient(135deg, #0b7e46 0%, #0f9d58 55%, #10b981 100%);
+  border-radius: 20px;
+  box-shadow: 0 16px 36px -8px rgba(15, 157, 88, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  color: #ffffff;
+}
+
+.tampak-cta-decor {
+  position: absolute;
+  right: -50px;
+  bottom: -50px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.16) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.tampak-cta-content {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  position: relative;
+  z-index: 2;
+}
+
+.tampak-cta-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.tampak-cta-icon i {
+  font-size: 28px;
+  color: #ffffff;
+}
+
+.tampak-cta-text h3 {
+  font-size: 1.28rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.tampak-cta-text p {
+  font-size: 0.92rem;
+  color: #ecfdf5;
+  line-height: 1.45;
+  max-width: 680px;
+  opacity: 0.95;
+}
+
+.btn-tampak-survey {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 26px;
+  background: #ffffff;
+  color: #0b7e46 !important;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 0.96rem;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.2s ease, color 0.2s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-tampak-survey i {
+  font-size: 20px;
+  color: #25d366;
+}
+
+.btn-tampak-survey:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+  background: #f0fdf4;
+  color: #047857 !important;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 992px) {
+  #Image51,
+  .tampak-section > .widget[id*="Image51"] {
+    grid-column: span 12;
+    min-height: 380px;
+  }
+  #Image52,
+  .tampak-section > .widget[id*="Image52"] {
+    grid-column: span 12;
+    min-height: 380px;
+  }
+  #Image53,
+  .tampak-section > .widget[id*="Image53"],
+  #Image54,
+  .tampak-section > .widget[id*="Image54"] {
+    grid-column: span 6;
+    min-height: 320px;
+  }
+  #Image55,
+  .tampak-section > .widget[id*="Image55"] {
+    grid-column: span 12;
+    min-height: 320px;
+  }
+  #Image56,
+  .tampak-section > .widget[id*="Image56"],
+  #Image57,
+  .tampak-section > .widget[id*="Image57"] {
+    grid-column: span 6;
+    min-height: 340px;
+  }
+  .tampak-cta-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 28px 24px;
+  }
+  .tampak-cta-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .btn-tampak-survey {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  #tampak-rumah {
+    padding: 50px 0 60px;
+  }
+  .tampak-section {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .tampak-card {
+    min-height: 300px;
+    height: 320px;
+  }
+  .tampak-filter-wrapper {
+    margin-bottom: 24px;
+  }
+  .tampak-filter-tabs {
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+  }
+  .tampak-filter-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .tampak-tab-btn {
+    flex-shrink: 0;
+    padding: 8px 15px;
+    font-size: 0.82rem;
+  }
+  .tampak-highlights-bar {
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+  .tampak-highlight-item {
+    font-size: 0.78rem;
+    padding: 6px 12px;
+  }
+  .tampak-zoom-btn {
+    opacity: 1;
+    transform: scale(0.9);
+  }
+  .tampak-overlay {
+    padding: 24px 16px 16px;
+  }
+  .tampak-card-title {
+    font-size: 1.05rem;
+  }
+  .hero-card .tampak-card-title {
+    font-size: 1.15rem;
+  }
+}
+
 
 /* SECTION PROMO & INFORMASI TERBARU (DI BAWAH HERO BANNER) */
 #promo {
@@ -3304,6 +3879,7 @@ body#layout section,
 body#layout #cover,
 body#layout #about,
 body#layout #service,
+body#layout #tampak-rumah,
 body#layout #gallery,
 body#layout #offer,
 body#layout #faq,
@@ -3519,12 +4095,14 @@ body#layout:after {
               <b:widget-setting name='link-1'>#promo</b:widget-setting>
               <b:widget-setting name='text-2'>Tipe Rumah</b:widget-setting>
               <b:widget-setting name='link-2'>#service</b:widget-setting>
-              <b:widget-setting name='text-3'>Galeri</b:widget-setting>
-              <b:widget-setting name='link-3'>#gallery</b:widget-setting>
-              <b:widget-setting name='text-4'>Simulasi KPR</b:widget-setting>
-              <b:widget-setting name='link-4'>#offer</b:widget-setting>
-              <b:widget-setting name='text-5'>FAQ</b:widget-setting>
-              <b:widget-setting name='link-5'>#faq</b:widget-setting>
+              <b:widget-setting name='text-3'>Tampak Rumah</b:widget-setting>
+              <b:widget-setting name='link-3'>#tampak-rumah</b:widget-setting>
+              <b:widget-setting name='text-4'>Galeri</b:widget-setting>
+              <b:widget-setting name='link-4'>#gallery</b:widget-setting>
+              <b:widget-setting name='text-5'>Simulasi KPR</b:widget-setting>
+              <b:widget-setting name='link-5'>#offer</b:widget-setting>
+              <b:widget-setting name='text-6'>FAQ</b:widget-setting>
+              <b:widget-setting name='link-6'>#faq</b:widget-setting>
             </b:widget-settings>
             <b:includable id='main'>
               <button class='menu-toggle' id='menu-toggle' aria-label='Buka Menu'><i class='hgi-stroke hgi-menu-01'></i></button>
@@ -4417,6 +4995,352 @@ Carport: 1 Mobil]]></b:widget-setting>
             <b:widget id='Image36' locked='true' title='Type 50/78 (Legacy)' type='Image' version='3' visible='false'>
               <b:includable id='main'/>
             </b:widget>
+          </b:section>
+        </div>
+      </section>
+
+      <!-- ================= TAMPAK RUMAH SUBSIDI PEMERINTAH ================= -->
+      <section id='tampak-rumah'>
+        <div class='wrapper'>
+          <b:section class='tampak-section' id='tampak-section' name='[05B. TAMPAK RUMAH] Foto Tampak Rumah Subsidi Pemerintah' showaddelement='false' version='3'>
+            <!-- JUDUL SECTION -->
+            <b:widget id='Text50' locked='true' title='Tampak Rumah Subsidi Pemerintah' type='Text' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='content'>Bukti nyata hunian subsidi berkualitas komersil — arsitektur modern minimalis, double dinding hebel, interior lapang, sanitari rapi, dan sisa tanah belakang luas siap kembang.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='section-head reveal'>
+                  <span class='section-badge'>PERUMAHAN PESONA KAHURIPAN</span>
+                  <h2><b:eval expr='data:title ?: &quot;Tampak Rumah Subsidi Pemerintah&quot;'/></h2>
+                  <p><b:eval expr='data:content ?: &quot;Bukti nyata hunian subsidi berkualitas komersil — arsitektur modern minimalis, double dinding hebel, interior lapang, sanitari rapi, dan sisa tanah belakang luas siap kembang.&quot;'/></p>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- BAR SPECS & FILTER TABS -->
+            <b:widget id='HTML51' locked='true' title='Filter Sudut Ruangan' type='HTML' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='content'><![CDATA[
+                  <div class='tampak-highlights-bar reveal'>
+                    <div class='tampak-highlight-item'>
+                      <i class='hgi-stroke hgi-home-01'></i>
+                      <span>Type 30/60 m²</span>
+                    </div>
+                    <div class='tampak-highlight-item'>
+                      <i class='hgi-stroke hgi-brick-wall'></i>
+                      <span>Double Dinding Hebel</span>
+                    </div>
+                    <div class='tampak-highlight-item'>
+                      <i class='hgi-stroke hgi-bed-double'></i>
+                      <span>2 Kamar Tidur</span>
+                    </div>
+                    <div class='tampak-highlight-item'>
+                      <i class='hgi-stroke hgi-bathtub-01'></i>
+                      <span>1 Kamar Mandi</span>
+                    </div>
+                    <div class='tampak-highlight-item'>
+                      <i class='hgi-stroke hgi-car-01'></i>
+                      <span>Carport 1 Mobil</span>
+                    </div>
+                    <div class='tampak-highlight-item'>
+                      <i class='hgi-stroke hgi-leaf-01'></i>
+                      <span>Sisa Tanah Belakang 6×2.5m</span>
+                    </div>
+                    <div class='tampak-highlight-item'>
+                      <i class='hgi-stroke hgi-checkmark-circle-01'></i>
+                      <span>Cicilan Flat 1,1 Jt/bln</span>
+                    </div>
+                  </div>
+
+                  <div class='tampak-filter-wrapper reveal'>
+                    <div class='tampak-filter-tabs' id='tampakFilterTabs'>
+                      <button class='tampak-tab-btn active' data-filter='all' type='button'>
+                        <i class='hgi-stroke hgi-home-01'></i>
+                        <span>Semua Sudut (7 Foto)</span>
+                      </button>
+                      <button class='tampak-tab-btn' data-filter='depan' type='button'>
+                        <i class='hgi-stroke hgi-car-01'></i>
+                        <span>Tampak Depan</span>
+                      </button>
+                      <button class='tampak-tab-btn' data-filter='ruang' type='button'>
+                        <i class='hgi-stroke hgi-sofa-01'></i>
+                        <span>Ruang Utama</span>
+                      </button>
+                      <button class='tampak-tab-btn' data-filter='kamar' type='button'>
+                        <i class='hgi-stroke hgi-bed-double'></i>
+                        <span>Kamar Tidur</span>
+                      </button>
+                      <button class='tampak-tab-btn' data-filter='toilet' type='button'>
+                        <i class='hgi-stroke hgi-bathtub-01'></i>
+                        <span>Kamar Mandi</span>
+                      </button>
+                      <button class='tampak-tab-btn' data-filter='belakang' type='button'>
+                        <i class='hgi-stroke hgi-leaf-01'></i>
+                        <span>Halaman Belakang &amp; Dapur</span>
+                      </button>
+                    </div>
+                  </div>
+                ]]></b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <data:content/>
+              </b:includable>
+            </b:widget>
+
+            <!-- 1. TAMPAK DEPAN RUMAH (HERO CARD) -->
+            <b:widget id='Image51' locked='true' title='Tampak Depan Rumah Subsidi' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/Tampak%20Depan%20Rumah.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>800</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1200</b:widget-setting>
+                <b:widget-setting name='link'>foto tampak/Tampak Depan Rumah.jpeg</b:widget-setting>
+                <b:widget-setting name='caption'>Fasade modern minimalis dengan atap pelana kokoh, carport rabat beton 1 mobil, dan taman hijau depan yang ramah anak.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='tampak-card hero-card reveal' data-category='depan'>
+                  <a class='tampak-lightbox-link' data-caption='Tampak Depan Rumah Subsidi - Fasade modern minimalis dengan atap pelana kokoh, carport rabat beton 1 mobil, dan taman hijau depan yang ramah anak.' data-cdn='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/Tampak%20Depan%20Rumah.jpeg' data-fancybox='tampak-subsidi' href='foto tampak/Tampak Depan Rumah.jpeg'>
+                    <div class='tampak-media'>
+                      <img alt='Tampak Depan Rumah Subsidi Pemerintah Pesona Kahuripan' class='tampak-img' data-cdn='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/Tampak%20Depan%20Rumah.jpeg' loading='lazy' onerror="if(!this.dataset.triedCdn &amp;&amp; this.src.indexOf('jsdelivr')===-1){this.dataset.triedCdn='1';this.src=this.getAttribute('data-cdn');}" src='foto tampak/Tampak Depan Rumah.jpeg'/>
+                      <span class='tampak-badge'><i class='hgi-stroke hgi-home-01'></i> FASADE UTAMA • TYPE 30/60</span>
+                      <div class='tampak-zoom-btn' title='Perbesar Foto'><i class='hgi-stroke hgi-search-01'></i></div>
+                    </div>
+                    <div class='tampak-overlay'>
+                      <div class='tampak-tags-row'>
+                        <span class='tampak-tag'><i class='hgi-stroke hgi-car-01'></i> Carport 1 Mobil</span>
+                        <span class='tampak-tag'><i class='hgi-stroke hgi-leaf-01'></i> Taman Depan Asri</span>
+                        <span class='tampak-tag'><i class='hgi-stroke hgi-brick-wall'></i> Double Dinding</span>
+                      </div>
+                      <h3 class='tampak-card-title'><b:eval expr='data:title ?: &quot;Tampak Depan Rumah Subsidi&quot;'/></h3>
+                      <p class='tampak-card-desc'><b:eval expr='data:caption ?: &quot;Fasade modern minimalis dengan atap pelana kokoh, carport rabat beton 1 mobil, dan taman hijau depan yang ramah anak.&quot;'/></p>
+                    </div>
+                  </a>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- 2. TAMPAK RUANG UTAMA -->
+            <b:widget id='Image52' locked='true' title='Tampak Ruang Tamu &amp; Keluarga' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/Tampak%20Ruang%20Utama.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>800</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1200</b:widget-setting>
+                <b:widget-setting name='link'>foto tampak/Tampak Ruang Utama.jpeg</b:widget-setting>
+                <b:widget-setting name='caption'>Interior lapang bernuansa modern minimalis &amp; Japandi, plafon tinggi sirkulasi sejuk, serta pencahayaan alami melimpah.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='tampak-card medium-card reveal delay-1' data-category='ruang'>
+                  <a class='tampak-lightbox-link' data-caption='Tampak Ruang Tamu &amp; Keluarga - Interior lapang bernuansa modern minimalis &amp; Japandi, plafon tinggi sirkulasi sejuk, serta pencahayaan alami melimpah.' data-cdn='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/Tampak%20Ruang%20Utama.jpeg' data-fancybox='tampak-subsidi' href='foto tampak/Tampak Ruang Utama.jpeg'>
+                    <div class='tampak-media'>
+                      <img alt='Tampak Ruang Tamu &amp; Keluarga Rumah Subsidi Pesona Kahuripan' class='tampak-img' data-cdn='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/Tampak%20Ruang%20Utama.jpeg' loading='lazy' onerror="if(!this.dataset.triedCdn &amp;&amp; this.src.indexOf('jsdelivr')===-1){this.dataset.triedCdn='1';this.src=this.getAttribute('data-cdn');}" src='foto tampak/Tampak Ruang Utama.jpeg'/>
+                      <span class='tampak-badge'><i class='hgi-stroke hgi-sofa-01'></i> RUANG TAMU &amp; KELUARGA</span>
+                      <div class='tampak-zoom-btn' title='Perbesar Foto'><i class='hgi-stroke hgi-search-01'></i></div>
+                    </div>
+                    <div class='tampak-overlay'>
+                      <div class='tampak-tags-row'>
+                        <span class='tampak-tag'>Plafon Tinggi</span>
+                        <span class='tampak-tag'>Konsep Japandi</span>
+                      </div>
+                      <h3 class='tampak-card-title'><b:eval expr='data:title ?: &quot;Tampak Ruang Tamu &amp; Keluarga&quot;'/></h3>
+                      <p class='tampak-card-desc'><b:eval expr='data:caption ?: &quot;Interior lapang bernuansa modern minimalis &amp; Japandi, plafon tinggi sirkulasi sejuk, serta pencahayaan alami melimpah.&quot;'/></p>
+                    </div>
+                  </a>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- 3. TAMPAK KAMAR UTAMA -->
+            <b:widget id='Image53' locked='true' title='Tampak Kamar Tidur Utama' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/Tampak%20Kamar%20Utama.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>800</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1200</b:widget-setting>
+                <b:widget-setting name='link'>foto tampak/Tampak Kamar Utama.jpeg</b:widget-setting>
+                <b:widget-setting name='caption'>Kamar utama lega dan nyaman untuk ranjang queen size, lemari pakaian, dan jendela ventilasi udara segar.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='tampak-card standard-card reveal delay-1' data-category='kamar'>
+                  <a class='tampak-lightbox-link' data-caption='Tampak Kamar Tidur Utama - Kamar utama lega dan nyaman untuk ranjang queen size, lemari pakaian, dan jendela ventilasi udara segar.' data-cdn='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/Tampak%20Kamar%20Utama.jpeg' data-fancybox='tampak-subsidi' href='foto tampak/Tampak Kamar Utama.jpeg'>
+                    <div class='tampak-media'>
+                      <img alt='Tampak Kamar Tidur Utama Rumah Subsidi Pesona Kahuripan' class='tampak-img' data-cdn='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/Tampak%20Kamar%20Utama.jpeg' loading='lazy' onerror="if(!this.dataset.triedCdn &amp;&amp; this.src.indexOf('jsdelivr')===-1){this.dataset.triedCdn='1';this.src=this.getAttribute('data-cdn');}" src='foto tampak/Tampak Kamar Utama.jpeg'/>
+                      <span class='tampak-badge'><i class='hgi-stroke hgi-bed-double'></i> MASTER BEDROOM</span>
+                      <div class='tampak-zoom-btn' title='Perbesar Foto'><i class='hgi-stroke hgi-search-01'></i></div>
+                    </div>
+                    <div class='tampak-overlay'>
+                      <div class='tampak-tags-row'>
+                        <span class='tampak-tag'>Ranjang Queen</span>
+                        <span class='tampak-tag'>Jendela Alami</span>
+                      </div>
+                      <h3 class='tampak-card-title'><b:eval expr='data:title ?: &quot;Tampak Kamar Tidur Utama&quot;'/></h3>
+                      <p class='tampak-card-desc'><b:eval expr='data:caption ?: &quot;Kamar utama lega dan nyaman untuk ranjang queen size, lemari pakaian, dan jendela ventilasi udara segar.&quot;'/></p>
+                    </div>
+                  </a>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- 4. TAMPAK KAMAR KE-2 -->
+            <b:widget id='Image54' locked='true' title='Tampak Kamar Tidur Ke-2 (Anak/Kerja)' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/Tampak%20Kamar%20Ke%202.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>800</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1200</b:widget-setting>
+                <b:widget-setting name='link'>foto tampak/Tampak Kamar Ke 2.jpeg</b:widget-setting>
+                <b:widget-setting name='caption'>Kamar kedua fleksibel untuk kamar tidur anak, tempat belajar, atau ruang kerja privat yang tenang.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='tampak-card standard-card reveal delay-2' data-category='kamar'>
+                  <a class='tampak-lightbox-link' data-caption='Tampak Kamar Tidur Ke-2 - Kamar kedua fleksibel untuk kamar tidur anak, tempat belajar, atau ruang kerja privat yang tenang.' data-cdn='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/Tampak%20Kamar%20Ke%202.jpeg' data-fancybox='tampak-subsidi' href='foto tampak/Tampak Kamar Ke 2.jpeg'>
+                    <div class='tampak-media'>
+                      <img alt='Tampak Kamar Tidur Ke-2 Rumah Subsidi Pesona Kahuripan' class='tampak-img' data-cdn='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/Tampak%20Kamar%20Ke%202.jpeg' loading='lazy' onerror="if(!this.dataset.triedCdn &amp;&amp; this.src.indexOf('jsdelivr')===-1){this.dataset.triedCdn='1';this.src=this.getAttribute('data-cdn');}" src='foto tampak/Tampak Kamar Ke 2.jpeg'/>
+                      <span class='tampak-badge'><i class='hgi-stroke hgi-bed-double'></i> KAMAR ANAK / KERJA</span>
+                      <div class='tampak-zoom-btn' title='Perbesar Foto'><i class='hgi-stroke hgi-search-01'></i></div>
+                    </div>
+                    <div class='tampak-overlay'>
+                      <div class='tampak-tags-row'>
+                        <span class='tampak-tag'>Kamar Anak</span>
+                        <span class='tampak-tag'>Meja Belajar</span>
+                      </div>
+                      <h3 class='tampak-card-title'><b:eval expr='data:title ?: &quot;Tampak Kamar Tidur Ke-2&quot;'/></h3>
+                      <p class='tampak-card-desc'><b:eval expr='data:caption ?: &quot;Kamar kedua fleksibel untuk kamar tidur anak, tempat belajar, atau ruang kerja privat yang tenang.&quot;'/></p>
+                    </div>
+                  </a>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- 5. TAMPAK KAMAR MANDI -->
+            <b:widget id='Image55' locked='true' title='Tampak Kamar Mandi &amp; Sanitari' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/Tampak%20Kamar%20Mandi.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>800</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1200</b:widget-setting>
+                <b:widget-setting name='link'>foto tampak/Tampak Kamar Mandi.jpeg</b:widget-setting>
+                <b:widget-setting name='caption'>Kamar mandi bersih dengan kloset jongkok standar SNI, dinding keramik rapi anti rembes, dan instalasi air jernih sumur bor.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='tampak-card standard-card reveal delay-3' data-category='toilet'>
+                  <a class='tampak-lightbox-link' data-caption='Tampak Kamar Mandi &amp; Sanitari - Kamar mandi bersih dengan kloset jongkok standar SNI, dinding keramik rapi anti rembes, dan instalasi air jernih sumur bor.' data-cdn='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/Tampak%20Kamar%20Mandi.jpeg' data-fancybox='tampak-subsidi' href='foto tampak/Tampak Kamar Mandi.jpeg'>
+                    <div class='tampak-media'>
+                      <img alt='Tampak Kamar Mandi Rumah Subsidi Pesona Kahuripan' class='tampak-img' data-cdn='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/Tampak%20Kamar%20Mandi.jpeg' loading='lazy' onerror="if(!this.dataset.triedCdn &amp;&amp; this.src.indexOf('jsdelivr')===-1){this.dataset.triedCdn='1';this.src=this.getAttribute('data-cdn');}" src='foto tampak/Tampak Kamar Mandi.jpeg'/>
+                      <span class='tampak-badge'><i class='hgi-stroke hgi-bathtub-01'></i> KAMAR MANDI &amp; SANITARI</span>
+                      <div class='tampak-zoom-btn' title='Perbesar Foto'><i class='hgi-stroke hgi-search-01'></i></div>
+                    </div>
+                    <div class='tampak-overlay'>
+                      <div class='tampak-tags-row'>
+                        <span class='tampak-tag'>Kloset SNI</span>
+                        <span class='tampak-tag'>Keramik Rapi</span>
+                      </div>
+                      <h3 class='tampak-card-title'><b:eval expr='data:title ?: &quot;Tampak Kamar Mandi &amp; Sanitari&quot;'/></h3>
+                      <p class='tampak-card-desc'><b:eval expr='data:caption ?: &quot;Kamar mandi bersih dengan kloset jongkok standar SNI, dinding keramik rapi anti rembes, dan instalasi air jernih sumur bor.&quot;'/></p>
+                    </div>
+                  </a>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- 6. TAMPAK BELAKANG 1 (GREEN GARDEN) -->
+            <b:widget id='Image56' locked='true' title='Tampak Halaman Belakang (Green Garden)' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/tampak%20belakang%201.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>800</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1200</b:widget-setting>
+                <b:widget-setting name='link'>foto tampak/tampak belakang 1.jpeg</b:widget-setting>
+                <b:widget-setting name='caption'>Sisa lahan belakang yang luas dan asri (ukuran 6x2.5 m), siap dikembangkan jadi taman santai atau ruang berkumpul privat keluarga.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='tampak-card wide-card reveal delay-1' data-category='belakang'>
+                  <a class='tampak-lightbox-link' data-caption='Tampak Halaman Belakang (Green Garden) - Sisa lahan belakang yang luas dan asri (ukuran 6x2.5 m), siap dikembangkan jadi taman santai atau ruang berkumpul privat keluarga.' data-cdn='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/tampak%20belakang%201.jpeg' data-fancybox='tampak-subsidi' href='foto tampak/tampak belakang 1.jpeg'>
+                    <div class='tampak-media'>
+                      <img alt='Tampak Halaman Belakang Rumah Subsidi Pesona Kahuripan' class='tampak-img' data-cdn='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/tampak%20belakang%201.jpeg' loading='lazy' onerror="if(!this.dataset.triedCdn &amp;&amp; this.src.indexOf('jsdelivr')===-1){this.dataset.triedCdn='1';this.src=this.getAttribute('data-cdn');}" src='foto tampak/tampak belakang 1.jpeg'/>
+                      <span class='tampak-badge'><i class='hgi-stroke hgi-leaf-01'></i> TAMAN BELAKANG ASRI</span>
+                      <div class='tampak-zoom-btn' title='Perbesar Foto'><i class='hgi-stroke hgi-search-01'></i></div>
+                    </div>
+                    <div class='tampak-overlay'>
+                      <div class='tampak-tags-row'>
+                        <span class='tampak-tag'>Sisa Lahan 6×2.5m</span>
+                        <span class='tampak-tag'>Tembok Privasi</span>
+                      </div>
+                      <h3 class='tampak-card-title'><b:eval expr='data:title ?: &quot;Tampak Halaman Belakang (Green Garden)&quot;'/></h3>
+                      <p class='tampak-card-desc'><b:eval expr='data:caption ?: &quot;Sisa lahan belakang yang luas dan asri (ukuran 6x2.5 m), siap dikembangkan jadi taman santai atau ruang berkumpul privat keluarga.&quot;'/></p>
+                    </div>
+                  </a>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- 7. TAMPAK BELAKANG 2 (DAPUR & CUCI JEMUR) -->
+            <b:widget id='Image57' locked='true' title='Tampak Dapur &amp; Ruang Cuci Jemur' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/tampak%20belakang%202.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>800</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1200</b:widget-setting>
+                <b:widget-setting name='link'>foto tampak/tampak belakang 2.jpeg</b:widget-setting>
+                <b:widget-setting name='caption'>Area dapur terbuka dengan wastafel cuci piring siap pakai dan area cuci jemur yang lapang, siap didekorasi sesuai kebutuhan Anda.</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='tampak-card wide-card reveal delay-2' data-category='belakang'>
+                  <a class='tampak-lightbox-link' data-caption='Tampak Dapur &amp; Ruang Cuci Jemur - Area dapur terbuka dengan wastafel cuci piring siap pakai dan area cuci jemur yang lapang, siap didekorasi sesuai kebutuhan Anda.' data-cdn='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/tampak%20belakang%202.jpeg' data-fancybox='tampak-subsidi' href='foto tampak/tampak belakang 2.jpeg'>
+                    <div class='tampak-media'>
+                      <img alt='Tampak Dapur &amp; Ruang Cuci Jemur Rumah Subsidi Pesona Kahuripan' class='tampak-img' data-cdn='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20tampak/tampak%20belakang%202.jpeg' loading='lazy' onerror="if(!this.dataset.triedCdn &amp;&amp; this.src.indexOf('jsdelivr')===-1){this.dataset.triedCdn='1';this.src=this.getAttribute('data-cdn');}" src='foto tampak/tampak belakang 2.jpeg'/>
+                      <span class='tampak-badge'><i class='hgi-stroke hgi-leaf-01'></i> DAPUR &amp; RUANG CUCI JEMUR</span>
+                      <div class='tampak-zoom-btn' title='Perbesar Foto'><i class='hgi-stroke hgi-search-01'></i></div>
+                    </div>
+                    <div class='tampak-overlay'>
+                      <div class='tampak-tags-row'>
+                        <span class='tampak-tag'>Wastafel Siap Pakai</span>
+                        <span class='tampak-tag'>Ruang Cuci Jemur</span>
+                      </div>
+                      <h3 class='tampak-card-title'><b:eval expr='data:title ?: &quot;Tampak Dapur &amp; Ruang Cuci Jemur&quot;'/></h3>
+                      <p class='tampak-card-desc'><b:eval expr='data:caption ?: &quot;Area dapur terbuka dengan wastafel cuci piring siap pakai dan area cuci jemur yang lapang, siap didekorasi sesuai kebutuhan Anda.&quot;'/></p>
+                    </div>
+                  </a>
+                </div>
+              </b:includable>
+            </b:widget>
+
+            <!-- BANNER KONSULTASI & SURVEY LOKASI -->
+            <b:widget id='HTML52' locked='true' title='Banner Survey Unit' type='HTML' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='content'><![CDATA[
+                  <div class='tampak-cta-banner reveal'>
+                    <div class='tampak-cta-decor'></div>
+                    <div class='tampak-cta-content'>
+                      <div class='tampak-cta-icon'>
+                        <i class='hgi-stroke hgi-home-01'></i>
+                      </div>
+                      <div class='tampak-cta-text'>
+                        <h3>Ingin Melihat Langsung Rumah Contoh Subsidi Pesona Kahuripan?</h3>
+                        <p>Jadwalkan kunjungan survey lokasi gratis &amp; konsultasikan simulasi cicilan flat 1 jutaan/bulan bersama Mas Ro'uf — Dampingan berkas KPR sampai terima kunci!</p>
+                      </div>
+                    </div>
+                    <div class='tampak-cta-action'>
+                      <a aria-label='Jadwalkan Survey Rumah Subsidi via WhatsApp' class='btn-tampak-survey wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20survey%20langsung%20Unit%20Rumah%20Subsidi%20Pemerintah%20Pesona%20Kahuripan.%20Bisa%20info%20jadwal%20survey%20lokasi%3F' target='_blank'>
+                        <i class='hgi-stroke hgi-whatsapp'></i>
+                        <span>Jadwalkan Survey Lokasi via WA</span>
+                      </a>
+                    </div>
+                  </div>
+                ]]></b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <data:content/>
+              </b:includable>
+            </b:widget>
+
           </b:section>
         </div>
       </section>
@@ -6907,6 +7831,74 @@ function initLandingPage() {
 // Make sendWhatsAppMessage accessible globally for inline onsubmit handler
 window.sendWhatsAppMessage = sendWhatsAppMessage;
 
+// ================= TAMPAK RUMAH SUBSIDI FILTER & SYNC =================
+function initTampakRumahSubsidi() {
+  const filterTabs = document.querySelectorAll('.tampak-tab-btn');
+  const tampakWidgets = document.querySelectorAll('#tampak-section > .widget.Image, .tampak-section > .widget[id*="Image5"]');
+
+  if (filterTabs.length) {
+    filterTabs.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter') || 'all';
+
+        filterTabs.forEach(function(b) { b.classList.remove('active'); });
+        this.classList.add('active');
+
+        tampakWidgets.forEach(function(widget) {
+          const card = widget.querySelector('.tampak-card');
+          const cat = card ? card.getAttribute('data-category') : '';
+
+          if (filter === 'all' || cat === filter) {
+            widget.style.display = '';
+            if (card) {
+              card.style.opacity = '0';
+              card.style.transform = 'translateY(10px) scale(0.98)';
+              requestAnimationFrame(function() {
+                card.style.transition = 'opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0) scale(1)';
+              });
+            }
+          } else {
+            widget.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // Image path adapter: online CDN vs local file preview
+  const isOnlineHost = !['localhost', '127.0.0.1', ''].includes(window.location.hostname) && window.location.protocol !== 'file:';
+  if (isOnlineHost) {
+    document.querySelectorAll('.tampak-card img[data-cdn], .tampak-lightbox-link[data-cdn]').forEach(function(el) {
+      const cdnUrl = el.getAttribute('data-cdn');
+      if (cdnUrl) {
+        if (el.tagName.toLowerCase() === 'img') {
+          el.src = cdnUrl;
+        } else if (el.tagName.toLowerCase() === 'a') {
+          el.href = cdnUrl;
+        }
+      }
+    });
+  }
+
+  // Sync WhatsApp marketing on CTA survey button
+  const tampakSurveyBtn = document.querySelector('.btn-tampak-survey');
+  if (tampakSurveyBtn) {
+    const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
+    const mPhone = mConfig.phone || "6287870988073";
+    const mName = mConfig.name || "Mas Ro'uf";
+    const waText = encodeURIComponent(`Halo ${mName}, saya tertarik survey langsung Unit Rumah Subsidi Pemerintah Pesona Kahuripan.\n\nBisa info jadwal survey lokasi terdekat?\n\nReferensi: https://www.pesonakahuripan.biz.id/#tampak-rumah`);
+    tampakSurveyBtn.href = `https://api.whatsapp.com/send?phone=${mPhone}&text=${waText}`;
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initTampakRumahSubsidi);
+} else {
+  initTampakRumahSubsidi();
+}
+
 
     //]]>
     </script>
@@ -6918,7 +7910,7 @@ window.sendWhatsAppMessage = sendWhatsAppMessage;
     //<![CDATA[
       if (typeof Fancybox !== 'undefined') {
         Fancybox.destroy(); // Hentikan auto-binding ganda bawaan library
-        Fancybox.bind('[data-fancybox="proyek-album"]', {
+        Fancybox.bind('[data-fancybox="proyek-album"], [data-fancybox="tampak-subsidi"]', {
           Hash: false, // Nonaktifkan Hash plugin agar Fancybox TIDAK memantau URL hash
           groupAll: false,
           closeButton: false, // Hilangkan tombol close ganda bawaan slide

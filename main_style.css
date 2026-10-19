@@ -933,6 +933,580 @@ body:not(#layout) #header.onScroll {
   display: none !important;
 }
 
+/* ================= 05B. TAMPAK RUMAH SUBSIDI PEMERINTAH ================= */
+#tampak-rumah {
+  padding: 70px 0 80px;
+  background: radial-gradient(circle at 10% 20%, rgba(15, 157, 88, 0.035) 0%, transparent 45%),
+              radial-gradient(circle at 90% 80%, rgba(15, 157, 88, 0.025) 0%, transparent 50%),
+              #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.tampak-section {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 22px;
+  align-items: stretch;
+}
+
+#tampak-section > .widget,
+.tampak-section > .widget {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#tampak-section > .widget > h2.title,
+#tampak-section > .widget > h3.title,
+.tampak-section > .widget > h2.title,
+.tampak-section > .widget > h3.title {
+  display: none !important;
+}
+
+#tampak-section > #Text50,
+#tampak-section > #HTML51,
+#tampak-section > #HTML52,
+.tampak-section > .widget.Text,
+.tampak-section > .widget.HTML {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+#tampak-section > .widget.Image,
+.tampak-section > .widget.Image {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Feature Highlights Strip */
+.tampak-highlights-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px 14px;
+  margin: -10px auto 30px;
+  max-width: 980px;
+}
+
+.tampak-highlight-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 50px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #334155;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.tampak-highlight-item:hover {
+  background: #e8f5e9;
+  border-color: rgba(15, 157, 88, 0.35);
+  color: #0b7e46;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(15, 157, 88, 0.12);
+}
+
+.tampak-highlight-item i {
+  font-size: 16px;
+  color: #0f9d58;
+}
+
+/* Filter Navigation Tabs */
+.tampak-filter-wrapper {
+  margin: 0 auto 34px;
+  text-align: center;
+  width: 100%;
+}
+
+.tampak-filter-tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  background: #f1f5f9;
+  border-radius: 50px;
+  border: 1px solid #e2e8f0;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.tampak-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border-radius: 50px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.tampak-tab-btn i {
+  font-size: 16px;
+  transition: transform 0.25s ease;
+}
+
+.tampak-tab-btn:hover {
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.tampak-tab-btn:hover i {
+  transform: scale(1.1);
+}
+
+.tampak-tab-btn.active {
+  background: #0f9d58;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(15, 157, 88, 0.35);
+}
+
+.tampak-tab-btn.active i {
+  color: #ffffff;
+}
+
+/* Bento Grid Spans */
+#Image51,
+.tampak-section > .widget[id*="Image51"] {
+  grid-column: span 7;
+  min-height: 440px;
+}
+
+#Image52,
+.tampak-section > .widget[id*="Image52"] {
+  grid-column: span 5;
+  min-height: 440px;
+}
+
+#Image53,
+.tampak-section > .widget[id*="Image53"] {
+  grid-column: span 4;
+  min-height: 350px;
+}
+
+#Image54,
+.tampak-section > .widget[id*="Image54"] {
+  grid-column: span 4;
+  min-height: 350px;
+}
+
+#Image55,
+.tampak-section > .widget[id*="Image55"] {
+  grid-column: span 4;
+  min-height: 350px;
+}
+
+#Image56,
+.tampak-section > .widget[id*="Image56"] {
+  grid-column: span 6;
+  min-height: 380px;
+}
+
+#Image57,
+.tampak-section > .widget[id*="Image57"] {
+  grid-column: span 6;
+  min-height: 380px;
+}
+
+/* Card Styling */
+.tampak-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0f172a;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.tampak-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px -5px rgba(15, 23, 42, 0.16);
+  border-color: rgba(15, 157, 88, 0.4);
+}
+
+.tampak-lightbox-link {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+}
+
+.tampak-media {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #1e293b;
+}
+
+.tampak-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tampak-card:hover .tampak-img {
+  transform: scale(1.06);
+}
+
+.tampak-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  background: rgba(15, 23, 42, 0.76);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.tampak-badge i {
+  font-size: 14px;
+  color: #4ade80;
+}
+
+.tampak-zoom-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 3;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  transform: scale(0.85);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, background-color 0.2s ease;
+}
+
+.tampak-zoom-btn i {
+  font-size: 18px;
+  color: #0b7e46;
+  transition: transform 0.25s ease, color 0.2s ease;
+}
+
+.tampak-card:hover .tampak-zoom-btn {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.tampak-zoom-btn:hover {
+  background: #0f9d58;
+}
+
+.tampak-zoom-btn:hover i {
+  color: #ffffff;
+  transform: scale(1.15);
+}
+
+.tampak-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 40px 24px 22px;
+  background: linear-gradient(to top, rgba(10, 15, 29, 0.96) 0%, rgba(10, 15, 29, 0.78) 50%, rgba(10, 15, 29, 0.2) 85%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.tampak-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.tampak-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: #f8fafc;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.tampak-tag i {
+  font-size: 12px;
+  color: #86efac;
+}
+
+.tampak-card-title {
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.3;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero-card .tampak-card-title {
+  font-size: 1.35rem;
+}
+
+.tampak-card-desc {
+  color: #cbd5e1;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* CTA Survey Banner */
+.tampak-cta-banner {
+  position: relative;
+  overflow: hidden;
+  margin-top: 15px;
+  padding: 34px 40px;
+  background: linear-gradient(135deg, #0b7e46 0%, #0f9d58 55%, #10b981 100%);
+  border-radius: 20px;
+  box-shadow: 0 16px 36px -8px rgba(15, 157, 88, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  color: #ffffff;
+}
+
+.tampak-cta-decor {
+  position: absolute;
+  right: -50px;
+  bottom: -50px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.16) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.tampak-cta-content {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  position: relative;
+  z-index: 2;
+}
+
+.tampak-cta-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.tampak-cta-icon i {
+  font-size: 28px;
+  color: #ffffff;
+}
+
+.tampak-cta-text h3 {
+  font-size: 1.28rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.tampak-cta-text p {
+  font-size: 0.92rem;
+  color: #ecfdf5;
+  line-height: 1.45;
+  max-width: 680px;
+  opacity: 0.95;
+}
+
+.btn-tampak-survey {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 26px;
+  background: #ffffff;
+  color: #0b7e46 !important;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 0.96rem;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.2s ease, color 0.2s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-tampak-survey i {
+  font-size: 20px;
+  color: #25d366;
+}
+
+.btn-tampak-survey:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+  background: #f0fdf4;
+  color: #047857 !important;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 992px) {
+  #Image51,
+  .tampak-section > .widget[id*="Image51"] {
+    grid-column: span 12;
+    min-height: 380px;
+  }
+  #Image52,
+  .tampak-section > .widget[id*="Image52"] {
+    grid-column: span 12;
+    min-height: 380px;
+  }
+  #Image53,
+  .tampak-section > .widget[id*="Image53"],
+  #Image54,
+  .tampak-section > .widget[id*="Image54"] {
+    grid-column: span 6;
+    min-height: 320px;
+  }
+  #Image55,
+  .tampak-section > .widget[id*="Image55"] {
+    grid-column: span 12;
+    min-height: 320px;
+  }
+  #Image56,
+  .tampak-section > .widget[id*="Image56"],
+  #Image57,
+  .tampak-section > .widget[id*="Image57"] {
+    grid-column: span 6;
+    min-height: 340px;
+  }
+  .tampak-cta-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 28px 24px;
+  }
+  .tampak-cta-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .btn-tampak-survey {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  #tampak-rumah {
+    padding: 50px 0 60px;
+  }
+  .tampak-section {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .tampak-card {
+    min-height: 300px;
+    height: 320px;
+  }
+  .tampak-filter-wrapper {
+    margin-bottom: 24px;
+  }
+  .tampak-filter-tabs {
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+  }
+  .tampak-filter-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .tampak-tab-btn {
+    flex-shrink: 0;
+    padding: 8px 15px;
+    font-size: 0.82rem;
+  }
+  .tampak-highlights-bar {
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+  .tampak-highlight-item {
+    font-size: 0.78rem;
+    padding: 6px 12px;
+  }
+  .tampak-zoom-btn {
+    opacity: 1;
+    transform: scale(0.9);
+  }
+  .tampak-overlay {
+    padding: 24px 16px 16px;
+  }
+  .tampak-card-title {
+    font-size: 1.05rem;
+  }
+  .hero-card .tampak-card-title {
+    font-size: 1.15rem;
+  }
+}
 
 /* SECTION PROMO & INFORMASI TERBARU (DI BAWAH HERO BANNER) */
 #promo {
