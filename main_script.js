@@ -1591,12 +1591,14 @@ function initFancyboxUI() {
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function() {
+    initLandingPage();
     initTampakRumahSubsidi();
     initLokasiProjects();
     initMitraMarquee();
     initFancyboxUI();
   });
 } else {
+  initLandingPage();
   initTampakRumahSubsidi();
   initLokasiProjects();
   initMitraMarquee();
