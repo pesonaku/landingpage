@@ -71,13 +71,13 @@
     <link href='https://use.hugeicons.com/font/icons.css' rel='stylesheet'/>
 
     <!-- Stylesheet Utama (Separated Production Bundle) -->
-    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.2/main_style.css' rel='stylesheet' type='text/css'/>
+    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.3/main_style.css' rel='stylesheet' type='text/css'/>
 
     <!-- Progressive Enhancement State -->
     
 
     <b:skin><![CDATA[
-@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.2/main_style.css");
+@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.3/main_style.css");
 
 /*!
  * Pesona Kahuripan - Clean Modern Blogger Landing Page Template
@@ -1620,13 +1620,13 @@ Carport: 1 Mobil]]></b:widget-setting>
                       </div>
                       <div class='tampak-cta-text'>
                         <h3>Ingin Melihat Langsung Rumah Contoh Subsidi Pesona Kahuripan?</h3>
-                        <p>Jadwalkan kunjungan survey lokasi gratis &amp; konsultasikan simulasi cicilan flat 1 jutaan/bulan bersama Mas Ro'uf — Dampingan berkas KPR sampai terima kunci!</p>
+                        <p>Jadwalkan kunjungan survey lokasi gratis &amp; konsultasikan simulasi cicilan flat 1 jutaan/bulan bersama <strong class='marketing-name-target'>Mas Ro&#39;uf</strong> &#8212; Dampingan berkas KPR sampai terima kunci!</p>
                       </div>
                     </div>
                     <div class='tampak-cta-action'>
                       <a aria-label='Jadwalkan Survey Rumah Subsidi via WhatsApp' class='btn-tampak-survey wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20survey%20langsung%20Unit%20Rumah%20Subsidi%20Pemerintah%20Pesona%20Kahuripan.%20Bisa%20info%20jadwal%20survey%20lokasi%3F' target='_blank'>
                         <i class='hgi-stroke hgi-whatsapp'></i>
-                        <span>Jadwalkan Survey Lokasi via WA</span>
+                        <span>Jadwalkan Survey Bersama <span class='marketing-name-target'>Mas Ro&#39;uf</span></span>
                       </a>
                     </div>
                   </div>]]></b:widget-setting>
@@ -1643,13 +1643,13 @@ Carport: 1 Mobil]]></b:widget-setting>
                       </div>
                       <div class='tampak-cta-text'>
                         <h3>Ingin Melihat Langsung Rumah Contoh Subsidi Pesona Kahuripan?</h3>
-                        <p>Jadwalkan kunjungan survey lokasi gratis &amp; konsultasikan simulasi cicilan flat 1 jutaan/bulan bersama Mas Ro'uf — Dampingan berkas KPR sampai terima kunci!</p>
+                        <p>Jadwalkan kunjungan survey lokasi gratis &amp; konsultasikan simulasi cicilan flat 1 jutaan/bulan bersama <strong class='marketing-name-target'>Mas Ro&#39;uf</strong> &#8212; Dampingan berkas KPR sampai terima kunci!</p>
                       </div>
                     </div>
                     <div class='tampak-cta-action'>
                       <a aria-label='Jadwalkan Survey Rumah Subsidi via WhatsApp' class='btn-tampak-survey wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20survey%20langsung%20Unit%20Rumah%20Subsidi%20Pemerintah%20Pesona%20Kahuripan.%20Bisa%20info%20jadwal%20survey%20lokasi%3F' target='_blank'>
                         <i class='hgi-stroke hgi-whatsapp'></i>
-                        <span>Jadwalkan Survey Lokasi via WA</span>
+                        <span>Jadwalkan Survey Bersama <span class='marketing-name-target'>Mas Ro&#39;uf</span></span>
                       </a>
                     </div>
                   </div>
@@ -2393,11 +2393,11 @@ Carport: 1 Mobil]]></b:widget-setting>
             <div class='lokasi-bottom-callout reveal'>
               <div class='lokasi-callout-text'>
                 <h4>Bingung Menentukan Lokasi yang Paling Cocok?</h4>
-                <p>Konsultasikan kebutuhan hunian, rute kerja harian, dan ketersediaan unit bersama Mas Ro'uf — Dapatkan rekomendasi proyek Pesona Kahuripan terbaik dengan angsuran flat terjangkau!</p>
+                <p>Konsultasikan kebutuhan hunian, rute kerja harian, dan ketersediaan unit bersama <strong class='marketing-name-target'>Mas Ro&#39;uf</strong> &#8212; Dapatkan rekomendasi proyek Pesona Kahuripan terbaik dengan angsuran flat terjangkau!</p>
               </div>
               <a class='btn-callout-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20ingin%20konsultasi%20rekomendasi%20lokasi%20proyek%20Pesona%20Kahuripan%20yang%20paling%20sesuai%20rute%20kerja%20saya.' target='_blank' rel='noopener'>
                 <i class='hgi-stroke hgi-whatsapp'></i>
-                <span>Konsultasi Rekomendasi Lokasi</span>
+                <span>Konsultasi dengan <span class='marketing-name-target'>Mas Ro&#39;uf</span></span>
               </a>
             </div>]]></b:widget-setting>
               </b:widget-settings>
@@ -3116,11 +3116,11 @@ Carport: 1 Mobil]]></b:widget-setting>
             <div class='lokasi-bottom-callout reveal'>
               <div class='lokasi-callout-text'>
                 <h4>Bingung Menentukan Lokasi yang Paling Cocok?</h4>
-                <p>Konsultasikan kebutuhan hunian, rute kerja harian, dan ketersediaan unit bersama Mas Ro'uf — Dapatkan rekomendasi proyek Pesona Kahuripan terbaik dengan angsuran flat terjangkau!</p>
+                <p>Konsultasikan kebutuhan hunian, rute kerja harian, dan ketersediaan unit bersama <strong class='marketing-name-target'>Mas Ro&#39;uf</strong> &#8212; Dapatkan rekomendasi proyek Pesona Kahuripan terbaik dengan angsuran flat terjangkau!</p>
               </div>
               <a class='btn-callout-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20ingin%20konsultasi%20rekomendasi%20lokasi%20proyek%20Pesona%20Kahuripan%20yang%20paling%20sesuai%20rute%20kerja%20saya.' target='_blank' rel='noopener'>
                 <i class='hgi-stroke hgi-whatsapp'></i>
-                <span>Konsultasi Rekomendasi Lokasi</span>
+                <span>Konsultasi dengan <span class='marketing-name-target'>Mas Ro&#39;uf</span></span>
               </a>
             </div>
                 </b:if>
@@ -3573,7 +3573,7 @@ Tipe: subsidi]]></b:widget-setting>
 
                     <a class='btn-kpr-action btn-subsidi-cta wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20KPR%20Subsidi%20Type%2030%2F60%20Pesona%20Kahuripan%20dengan%20Tenor%2020%20Tahun%20(Rp%201.192.574%2Fbln).%20Mohon%20info%20ketersediaan%20unit%20dan%20syarat%20lengkapnya.%20Terima%20kasih!' target='_blank'>
                                   <i class='hgi-stroke hgi-whatsapp'></i>
-                      <span>Konsultasi &amp; Cek Kuota KPR Subsidi via WhatsApp</span>
+                      <span>Konsultasi KPR Subsidi dengan <span class='marketing-name-target'>Mas Ro&#39;uf</span></span>
                     </a>
                   </div>
                 </div>
@@ -4497,7 +4497,7 @@ Tipe: komersial]]></b:widget-setting>
                       </div>
                       <div class='contact-meta-item'>
                         <i class='hgi-stroke hgi-call-02'></i>
-                        <span><data:link/></span>
+                        <span><span class='marketing-phone-target'>+62 878-7098-8073</span> / info@pesonakahuripan.biz.id</span>
                       </div>
 
                       <!-- INFORMASI LEGALITAS &amp; KANTOR PT PENGEMBANG -->
@@ -4521,7 +4521,7 @@ Tipe: komersial]]></b:widget-setting>
                       </div>
                     </div>
                     <div style='margin-top:20px;'>
-                      <a class='btn-cta wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20ingin%20jadwalkan%20kunjungan%20survei%20ke%20kantor%20pemasaran%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23contact' style='width:100%; box-sizing:border-box; text-align:center;' target='_blank'><span>Jadwalkan Kunjungan Survei</span><i class='hgi-stroke hgi-whatsapp'></i></a>
+                      <a class='btn-cta wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20ingin%20jadwalkan%20kunjungan%20survei%20ke%20kantor%20pemasaran%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23contact' style='width:100%; box-sizing:border-box; text-align:center;' target='_blank'><span>Jadwalkan Survei bersama <span class='marketing-name-target'>Mas Ro&#39;uf</span></span><i class='hgi-stroke hgi-whatsapp'></i></a>
                     </div>
                   </div>
                 </div>
@@ -4567,7 +4567,7 @@ Tipe: komersial]]></b:widget-setting>
                       </div>
 
                       <p class='marketing-desc'>
-                        Konsultan properti resmi berpengalaman mendampingi ratusan debitur hingga serah terima kunci. Siap memandu pengecekan BI Checking / SLIK OJK, kelengkapan berkas KPR, serta pemilihan posisi unit rumah terbaik.
+                        <span class='marketing-role-target'><data:caption/></span> berpengalaman mendampingi ratusan debitur hingga serah terima kunci. Siap memandu pengecekan BI Checking / SLIK OJK, kelengkapan berkas KPR, serta pemilihan posisi unit rumah terbaik.
                       </p>
 
                       <ul class='marketing-perks'>
@@ -4642,13 +4642,17 @@ Tipe: komersial]]></b:widget-setting>
 
                         <!-- Kotak Konsultasi Marketing di Akhir Artikel -->
                         <div class='article-consult-box'>
+                          <div class='article-consult-avatar'>
+                            <img alt='Mas Ro&#39;uf' class='marketing-avatar marketing-avatar-target' src='https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s100'/>
+                            <span class='marketing-status-pulse'/>
+                          </div>
                           <div class='article-consult-info'>
                             <h4>Punya Pertanyaan Seputar KPR &amp; Survei Lokasi?</h4>
-                            <p>Konsultasikan syarat berkas KPR Subsidi/Komersial atau jadwalkan kunjungan survei gratis bersama marketing resmi Pesona Kahuripan.</p>
+                            <p>Konsultasikan syarat berkas KPR Subsidi/Komersial atau jadwalkan survei gratis langsung bersama <strong class='marketing-name-target'>Mas Ro&#39;uf</strong> (<span class='marketing-role-target'>Konsultan KPR Resmi Pesona Kahuripan</span>).</p>
                           </div>
-                          <a class='btn-article-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20membaca%20artikel%20di%20website%20Pesona%20Kahuripan%20dan%20ingin%20konsultasi%20KPR.' target='_blank' rel='noopener'>
+                          <a class='btn-article-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20membaca%20artikel%20di%20website%20Pesona%20Kahuripan%20dan%20ingin%20konsultasi%20KPR.' rel='noopener' target='_blank'>
                             <i class='hgi-stroke hgi-whatsapp'></i>
-                            <span>Konsultasi via WhatsApp</span>
+                            <span>Konsultasi dengan <span class='marketing-name-target'>Mas Ro&#39;uf</span></span>
                           </a>
                         </div>
 
@@ -4722,7 +4726,7 @@ YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
          4. FLOATING WHATSAPP CHAT RESMI (SECTION 13)
     ====================================================================== -->
     <b:section class='floating-section' id='floating-section' name='[13. FLOATING WHATSAPP] Tombol Chat &amp; Formulir Kontak' showaddelement='false' version='3'>
-      <b:widget id='HTML95' locked='true' title='Floating Chat WhatsApp (Mas Ro&#39;uf)' type='HTML' version='3' visible='true'>
+      <b:widget id='HTML95' locked='true' title='Floating Chat WhatsApp Resmi' type='HTML' version='3' visible='true'>
         <b:widget-settings>
           <b:widget-setting name='content'><![CDATA[<div id='floating-chat'>
         <div class='chat-box' id='chat-box'>
@@ -4741,7 +4745,7 @@ YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
           </div>
           <div class='chat-body'>
             <div class='chat-bubble'>
-              <p>Halo! Butuh informasi brosur perumahan, cek ketersediaan unit, atau jadwal survei lokasi Pesona Kahuripan?</p>
+              <p>Halo! Saya <strong class='marketing-name-target'>Mas Ro&#39;uf</strong> (<span class='marketing-role-target'>Marketing Resmi</span>). Butuh informasi brosur perumahan, cek ketersediaan unit, atau jadwal survei lokasi Pesona Kahuripan?</p>
             </div>
             <div class='chat-chips'>
               <button class='chat-chip' data-msg='Halo Mas Ro&#39;uf, saya ingin jadwal survei lokasi perumahan Pesona Kahuripan.' type='button'>📍 Jadwal Survei</button>
@@ -4765,13 +4769,13 @@ YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
                 <i class='hgi-stroke hgi-whatsapp'></i>
                 <span>Kirim via WhatsApp</span>
               </button>
-              <small class='chat-privacy'>🔒 Data Anda aman &amp; langsung terhubung ke marketing resmi.</small>
+              <small class='chat-privacy'>🔒 Data Anda aman &amp; langsung terhubung ke <span class='marketing-name-target'>marketing resmi</span>.</small>
             </form>
           </div>
         </div>
         <div class='chat-btn-wrap'>
           <div class='chat-pill'>
-            <span>Tanya Marketing</span>
+            <span>Tanya <span class='marketing-name-target'>Marketing</span></span>
           </div>
           <button class='chat-btn' id='chat-toggle' aria-label='Chat WhatsApp Marketing' type='button'><i class='hgi-stroke hgi-whatsapp'></i></button>
         </div>
@@ -4798,7 +4802,7 @@ YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
           </div>
           <div class='chat-body'>
             <div class='chat-bubble'>
-              <p>Halo! Butuh informasi brosur perumahan, cek ketersediaan unit, atau jadwal survei lokasi Pesona Kahuripan?</p>
+              <p>Halo! Saya <strong class='marketing-name-target'>Mas Ro&#39;uf</strong> (<span class='marketing-role-target'>Marketing Resmi</span>). Butuh informasi brosur perumahan, cek ketersediaan unit, atau jadwal survei lokasi Pesona Kahuripan?</p>
             </div>
             <div class='chat-chips'>
               <button class='chat-chip' data-msg='Halo Mas Ro&#39;uf, saya ingin jadwal survei lokasi perumahan Pesona Kahuripan.' type='button'>📍 Jadwal Survei</button>
@@ -4822,13 +4826,13 @@ YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
                 <i class='hgi-stroke hgi-whatsapp'></i>
                 <span>Kirim via WhatsApp</span>
               </button>
-              <small class='chat-privacy'>🔒 Data Anda aman &amp; langsung terhubung ke marketing resmi.</small>
+              <small class='chat-privacy'>🔒 Data Anda aman &amp; langsung terhubung ke <span class='marketing-name-target'>marketing resmi</span>.</small>
             </form>
           </div>
         </div>
         <div class='chat-btn-wrap'>
           <div class='chat-pill'>
-            <span>Tanya Marketing</span>
+            <span>Tanya <span class='marketing-name-target'>Marketing</span></span>
           </div>
           <button class='chat-btn' id='chat-toggle' aria-label='Chat WhatsApp Marketing' type='button'><i class='hgi-stroke hgi-whatsapp'></i></button>
         </div>
@@ -4848,7 +4852,7 @@ YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
     <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js'></script>
 
     <!-- Main Interactive Script (Separated) -->
-    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.2/main_script.js'></script>
+    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.3/main_script.js'></script>
 
     
 

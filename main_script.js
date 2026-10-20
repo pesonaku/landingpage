@@ -1,6 +1,6 @@
 /*!
  * Pesona Kahuripan - Official Landing Page Interactive Script
- * Version: 3.5.2 (Production Interactive Bundle)
+ * Version: 3.5.3 (Production Interactive Bundle - Unified Marketing Sync)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -27,75 +27,129 @@ function initLandingPage() {
   // document.documentElement.classList.add('js-ready');
 
   // ================= MASTER MARKETING SYNC ENGINE =================
-      const masterData = document.getElementById('marketingMasterData');
-      if (masterData) {
-        const rawName = (masterData.getAttribute('data-name') || "Mas Ro'uf").trim();
-        const rawPhone = (masterData.getAttribute('data-phone') || '6287870988073').trim();
-        const rawPhoto = (masterData.getAttribute('data-photo') || '').trim();
-        const rawRole = (masterData.getAttribute('data-role') || 'Konsultan KPR Resmi Pesona Kahuripan').trim();
+  function getMarketingConfig() {
+    const masterData = document.getElementById('marketingMasterData');
+    let rawName = "Mas Ro'uf";
+    let rawPhone = "6287870988073";
+    let rawPhoto = "https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s200";
+    let rawRole = "Konsultan KPR Resmi Pesona Kahuripan";
 
-        // Normalisasi nomor telepon: hapus spasi/simbol, ubah 08xx jadi 628xx
-        let cleanPhone = rawPhone.replace(/[^0-9]/g, '');
-        if (cleanPhone.startsWith('0')) {
-          cleanPhone = '62' + cleanPhone.slice(1);
-        }
-        if (!cleanPhone) cleanPhone = '6287870988073';
+    if (masterData) {
+      if (masterData.getAttribute('data-name')) rawName = masterData.getAttribute('data-name').trim();
+      if (masterData.getAttribute('data-phone')) rawPhone = masterData.getAttribute('data-phone').trim();
+      if (masterData.getAttribute('data-photo')) rawPhoto = masterData.getAttribute('data-photo').trim();
+      if (masterData.getAttribute('data-role')) rawRole = masterData.getAttribute('data-role').trim();
+    } else if (window.MARKETING_CONFIG) {
+      rawName = window.MARKETING_CONFIG.name || rawName;
+      rawPhone = window.MARKETING_CONFIG.phone || rawPhone;
+      rawPhoto = window.MARKETING_CONFIG.photo || rawPhoto;
+      rawRole = window.MARKETING_CONFIG.role || rawRole;
+    }
 
-        // 1. Sinkronkan Foto Profil Marketing di Seluruh Halaman (Termasuk Floating WA Header)
-        if (rawPhoto) {
-          document.querySelectorAll('.marketing-avatar-target').forEach(function(img) {
-            img.src = rawPhoto;
-            img.alt = rawName;
-          });
-        }
+    let cleanPhone = rawPhone.replace(/[^0-9]/g, '');
+    if (cleanPhone.startsWith('0')) {
+      cleanPhone = '62' + cleanPhone.slice(1);
+    }
+    if (!cleanPhone) cleanPhone = '6287870988073';
 
-        // 2. Sinkronkan Nama Marketing di Seluruh Halaman
-        document.querySelectorAll('.marketing-name-target').forEach(function(el) {
-          el.innerText = rawName;
-        });
+    let displayPhone = cleanPhone;
+    if (cleanPhone.startsWith('62')) {
+      displayPhone = '+62 ' + cleanPhone.slice(2, 5) + '-' + cleanPhone.slice(5, 9) + '-' + cleanPhone.slice(9);
+    }
 
-        // 3. Sinkronkan Role / Jabatan Marketing
-        document.querySelectorAll('.marketing-role-target').forEach(function(el) {
-          el.innerText = rawRole;
-        });
+    return {
+      name: rawName,
+      phone: cleanPhone,
+      displayPhone: displayPhone,
+      photo: rawPhoto,
+      role: rawRole
+    };
+  }
 
-        // 4. Sinkronkan Quick Chips Floating WhatsApp
-        document.querySelectorAll('.chat-chip').forEach(function(chip) {
-          let msg = chip.getAttribute('data-msg') || '';
-          msg = msg.replace(/Halo\s+[^,]+,/gi, 'Halo ' + rawName + ',');
-          chip.setAttribute('data-msg', msg);
-        });
+  function syncAllMarketingMentions(cfg) {
+    if (!cfg) cfg = getMarketingConfig();
 
-        // 5. Sinkronkan SEMUA Tombol Direct WhatsApp di Seluruh Halaman
-        document.querySelectorAll('a[href*="whatsapp.com"]').forEach(function(link) {
-          let href = link.getAttribute('href');
-          if (href) {
-            // Update nomor telepon tujuan
-            href = href.replace(/phone=[0-9]+/g, 'phone=' + cleanPhone);
+    // 1. Sinkronkan Foto Profil Marketing di Seluruh Halaman
+    if (cfg.photo) {
+      document.querySelectorAll('.marketing-avatar-target').forEach(function(img) {
+        img.src = cfg.photo;
+        img.alt = cfg.name;
+      });
+    }
 
-            // Update sapaan nama di teks WhatsApp URL
-            try {
-              let urlObj = new URL(href);
-              let textParam = urlObj.searchParams.get('text');
-              if (textParam) {
-                textParam = textParam.replace(/Halo\s+[^,]+,/gi, 'Halo ' + rawName + ',');
-                urlObj.searchParams.set('text', textParam);
-                href = urlObj.toString();
-              }
-            } catch (err) {
-              href = href.replace(/Halo%20[^%]+%2C/gi, 'Halo%20' + encodeURIComponent(rawName) + '%2C');
-            }
-            link.setAttribute('href', href);
-          }
-        });
+    // 2. Sinkronkan Nama Marketing di Seluruh Elemen Target
+    document.querySelectorAll('.marketing-name-target').forEach(function(el) {
+      el.textContent = cfg.name;
+    });
 
-        // Simpan ke konfigurasi global untuk fungsi sendWhatsAppMessage
-        window.MARKETING_CONFIG = {
-          name: rawName,
-          phone: cleanPhone,
-          photo: rawPhoto
-        };
+    // 3. Sinkronkan Role / Jabatan Marketing
+    document.querySelectorAll('.marketing-role-target').forEach(function(el) {
+      el.textContent = cfg.role;
+    });
+
+    // 4. Sinkronkan Nomor Telepon Format Display
+    document.querySelectorAll('.marketing-phone-target').forEach(function(el) {
+      el.textContent = cfg.displayPhone;
+    });
+
+    // 5. Sinkronkan Quick Chips Floating WhatsApp
+    document.querySelectorAll('.chat-chip').forEach(function(chip) {
+      let msg = chip.getAttribute('data-msg') || '';
+      msg = msg.replace(/Halo\s+[^,]+,/gi, 'Halo ' + cfg.name + ',');
+      chip.setAttribute('data-msg', msg);
+    });
+
+    // 6. Sinkronkan Nama Marketing di Ulasan Testimoni Konsumen
+    document.querySelectorAll('.review-text').forEach(function(p) {
+      if (!p.dataset.origHtml) {
+        p.dataset.origHtml = p.innerHTML;
       }
+      p.innerHTML = p.dataset.origHtml.replace(/Mas\s+Ro['&#39;]*uf/gi, cfg.name);
+    });
+
+    // 7. Sinkronkan SEMUA Tombol Direct WhatsApp di Seluruh Halaman
+    document.querySelectorAll('a[href*="whatsapp.com"], a[href*="wa.me"], a.wa-dynamic-btn').forEach(function(link) {
+      let href = link.getAttribute('href');
+      if (href) {
+        // Normalisasi & Update nomor telepon tujuan
+        href = href.replace(/phone=[0-9]+/g, 'phone=' + cfg.phone);
+        href = href.replace(/wa\.me\/[0-9]+/g, 'wa.me/' + cfg.phone);
+
+        // Update sapaan nama di teks WhatsApp URL
+        try {
+          let urlObj = new URL(href);
+          let textParam = urlObj.searchParams.get('text');
+          if (textParam) {
+            textParam = textParam.replace(/Halo\s+(Mas\s+)?(Ro['&#39;]*uf|[^,]+),/gi, 'Halo ' + cfg.name + ',');
+            urlObj.searchParams.set('text', textParam);
+            href = urlObj.toString();
+          }
+        } catch (err) {
+          href = href.replace(/Halo(%20|\s+)(Mas(%20|\s+))?(Ro['&#39;%27]*uf|[^,%]+)(%2C|,)/gi, 'Halo%20' + encodeURIComponent(cfg.name) + '%2C');
+        }
+        link.setAttribute('href', href);
+      }
+    });
+
+    // Simpan ke konfigurasi global
+    window.MARKETING_CONFIG = cfg;
+  }
+
+  // Jalankan sinkronisasi marketing awal
+  const initialMarketingCfg = getMarketingConfig();
+  syncAllMarketingMentions(initialMarketingCfg);
+
+  // Observasi perubahan dinamis pada marketingMasterData
+  const masterDataEl = document.getElementById('marketingMasterData');
+  if (masterDataEl && window.MutationObserver) {
+    const observer = new MutationObserver(function() {
+      syncAllMarketingMentions(getMarketingConfig());
+    });
+    observer.observe(masterDataEl, { attributes: true });
+  }
+
+  window.getMarketingConfig = getMarketingConfig;
+  window.syncAllMarketingMentions = syncAllMarketingMentions;
 
       // Inisialisasi parser Promo & Sinkronisasi WhatsApp
       try {
@@ -261,12 +315,14 @@ function initLandingPage() {
         // Sinkronisasi WhatsApp link pada modal yang baru dibuka
         const ctaBtn = modal.querySelector('a.btn-cta') || modal.querySelector('.wa-dynamic-btn');
         if (ctaBtn) {
-          const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
-          const mName = mConfig.name || "Mas Ro'uf";
-          const mPhone = mConfig.phone || "6287870988073";
+          const cfg = (typeof getMarketingConfig === 'function') ? getMarketingConfig() : (window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" });
           const unitName = title.replace(/^Detail Unit:\s*/i, '');
-          const waText = `Halo ${mName}, saya tertarik konsultasi Unit ${unitName} Pesona Kahuripan.\n\nReferensi: https://www.pesonakahuripan.biz.id/#service`;
-          ctaBtn.href = `https://api.whatsapp.com/send?phone=${mPhone}&text=${encodeURIComponent(waText)}`;
+          const waText = `Halo ${cfg.name}, saya tertarik konsultasi Unit ${unitName} Pesona Kahuripan.\n\nReferensi: https://www.pesonakahuripan.biz.id/#service`;
+          ctaBtn.href = `https://api.whatsapp.com/send?phone=${cfg.phone}&text=${encodeURIComponent(waText)}`;
+          const spanEl = ctaBtn.querySelector('span');
+          if (spanEl) {
+            spanEl.innerHTML = `Konsultasi dengan <span class="marketing-name-target">${cfg.name}</span>`;
+          }
         }
 
         document.body.appendChild(modal);
@@ -632,11 +688,9 @@ function initLandingPage() {
       if (promoBtn) {
         const promoH2 = promoCard.querySelector('h2');
         const promoTitle = promoH2 ? promoH2.textContent.trim() : 'Promo Spesial';
-        const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
-        const mName = mConfig.name || "Mas Ro'uf";
-        const mPhone = mConfig.phone || "6287870988073";
-        const waText = `Halo ${mName}, saya ingin klaim ${promoTitle} Pesona Kahuripan.\n\nReferensi: https://www.pesonakahuripan.biz.id/#promo`;
-        promoBtn.href = `https://api.whatsapp.com/send?phone=${mPhone}&text=${encodeURIComponent(waText)}`;
+        const cfg = (typeof getMarketingConfig === 'function') ? getMarketingConfig() : (window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" });
+        const waText = `Halo ${cfg.name}, saya ingin klaim ${promoTitle} Pesona Kahuripan.\n\nReferensi: https://www.pesonakahuripan.biz.id/#promo`;
+        promoBtn.href = `https://api.whatsapp.com/send?phone=${cfg.phone}&text=${encodeURIComponent(waText)}`;
       }
     }
 
@@ -731,11 +785,9 @@ function initLandingPage() {
         const cardTitle = (card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : '') || 'Tipe Rumah';
         const cardWaBtn = card.querySelector('.btn-service-consult') || card.querySelector('.btn-service-wa');
         if (cardWaBtn) {
-          const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
-          const mName = mConfig.name || "Mas Ro'uf";
-          const mPhone = mConfig.phone || "6287870988073";
-          const cardWaText = `Halo ${mName}, saya tertarik konsultasi Unit ${cardTitle} Pesona Kahuripan.\n\nReferensi: https://www.pesonakahuripan.biz.id/#service`;
-          cardWaBtn.href = `https://api.whatsapp.com/send?phone=${mPhone}&text=${encodeURIComponent(cardWaText)}`;
+          const cfg = (typeof getMarketingConfig === 'function') ? getMarketingConfig() : (window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" });
+          const cardWaText = `Halo ${cfg.name}, saya tertarik konsultasi Unit ${cardTitle} Pesona Kahuripan.\n\nReferensi: https://www.pesonakahuripan.biz.id/#service`;
+          cardWaBtn.href = `https://api.whatsapp.com/send?phone=${cfg.phone}&text=${encodeURIComponent(cardWaText)}`;
         }
       });
 
@@ -873,13 +925,15 @@ function initLandingPage() {
         // Sinkronisasi Direct WhatsApp Button di Modal
         const ctaBtn = detailSource.querySelector('a.btn-cta') || detailSource.querySelector('.wa-dynamic-btn');
         if (ctaBtn) {
-          const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
-          const mName = mConfig.name || "Mas Ro'uf";
-          const mPhone = mConfig.phone || "6287870988073";
+          const cfg = (typeof getMarketingConfig === 'function') ? getMarketingConfig() : (window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" });
           const modalH4 = detailSource.querySelector('h4');
           const finalTitle = (modalH4 ? modalH4.textContent.trim() : '') || unitTitle || 'Tipe Rumah';
-          const waText = `Halo ${mName}, saya tertarik konsultasi Unit ${finalTitle} Pesona Kahuripan.\n\nReferensi: https://www.pesonakahuripan.biz.id/#service`;
-          ctaBtn.href = `https://api.whatsapp.com/send?phone=${mPhone}&text=${encodeURIComponent(waText)}`;
+          const waText = `Halo ${cfg.name}, saya tertarik konsultasi Unit ${finalTitle} Pesona Kahuripan.\n\nReferensi: https://www.pesonakahuripan.biz.id/#service`;
+          ctaBtn.href = `https://api.whatsapp.com/send?phone=${cfg.phone}&text=${encodeURIComponent(waText)}`;
+          const spanEl = ctaBtn.querySelector('span');
+          if (spanEl) {
+            spanEl.innerHTML = `Konsultasi dengan <span class="marketing-name-target">${cfg.name}</span>`;
+          }
         }
       });
     }
@@ -1047,10 +1101,15 @@ function initLandingPage() {
       const phone = mConfig.phone || "6287870988073";
 
       function updateCta(tenorYrs, installmentStr) {
-        const fullMsg = `Halo ${marketingName}, saya tertarik KPR Subsidi Type 30/60 Pesona Kahuripan dengan Tenor ${tenorYrs} Tahun (${installmentStr}/bln).\n\n` +
+        const cfg = (typeof getMarketingConfig === 'function') ? getMarketingConfig() : (window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" });
+        const fullMsg = `Halo ${cfg.name}, saya tertarik KPR Subsidi Type 30/60 Pesona Kahuripan dengan Tenor ${tenorYrs} Tahun (${installmentStr}/bln).\n\n` +
           `Mohon informasi ketersediaan unit dan kelengkapan berkas KPR-nya. Terima kasih!\n\n` +
           `🌐 Referensi: https://www.pesonakahuripan.biz.id/#offer`;
-        ctaBtn.href = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(fullMsg)}`;
+        ctaBtn.href = `https://api.whatsapp.com/send?phone=${cfg.phone}&text=${encodeURIComponent(fullMsg)}`;
+        const spanEl = ctaBtn.querySelector('span');
+        if (spanEl) {
+          spanEl.innerHTML = `Konsultasi KPR Subsidi dengan <span class="marketing-name-target">${cfg.name}</span>`;
+        }
       }
 
       tenorCards.forEach(function(opt) {
@@ -1426,11 +1485,9 @@ function initTampakRumahSubsidi() {
   // Sync WhatsApp marketing on CTA survey button
   const tampakSurveyBtn = document.querySelector('.btn-tampak-survey');
   if (tampakSurveyBtn) {
-    const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
-    const mPhone = mConfig.phone || "6287870988073";
-    const mName = mConfig.name || "Mas Ro'uf";
-    const waText = encodeURIComponent(`Halo ${mName}, saya tertarik survey langsung Unit Rumah Subsidi Pemerintah Pesona Kahuripan.\n\nBisa info jadwal survey lokasi terdekat?\n\nReferensi: https://www.pesonakahuripan.biz.id/#tampak-rumah`);
-    tampakSurveyBtn.href = `https://api.whatsapp.com/send?phone=${mPhone}&text=${waText}`;
+    const cfg = (typeof getMarketingConfig === 'function') ? getMarketingConfig() : (window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" });
+    const waText = encodeURIComponent(`Halo ${cfg.name}, saya tertarik survey langsung Unit Rumah Subsidi Pemerintah Pesona Kahuripan.\n\nBisa info jadwal survey lokasi terdekat?\n\nReferensi: https://www.pesonakahuripan.biz.id/#tampak-rumah`);
+    tampakSurveyBtn.href = `https://api.whatsapp.com/send?phone=${cfg.phone}&text=${waText}`;
   }
 }
 

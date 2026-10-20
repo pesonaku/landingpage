@@ -230,6 +230,10 @@ ul, ol { list-style: none; }
   font-size: 0.85em;
   opacity: 0.85;
 }
+.marketing-phone-target {
+  font-weight: 600;
+  color: inherit;
+}
 .spec-lb, .spec-lt, .spec-tidur, .spec-mandi, .spec-carport {
   display: inline-flex;
   align-items: center;
@@ -4957,6 +4961,37 @@ body.homepage #blog-single {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+}
+
+.article-consult-avatar {
+  position: relative;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+}
+
+.article-consult-avatar .marketing-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid #10b981;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.article-consult-avatar .marketing-status-pulse {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 14px;
+  height: 14px;
+  background: #10b981;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+}
+
+.article-consult-info {
+  flex: 1;
 }
 
 .article-consult-info h4 {
