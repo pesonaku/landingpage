@@ -1,8 +1,25 @@
 /*!
  * Pesona Kahuripan - Official Landing Page Interactive Script
- * Version: 3.4 (Production Interactive Bundle)
+ * Version: 3.5 (Production Interactive Bundle)
  * Repository: https://github.com/pesonaku/landingpage
  */
+
+// KAMUS ICON HUGEICONS STROKE-ROUNDED RESMI UNTUK TIPE RUMAH PILIHAN
+const SPEC_ICON_REGISTRY = {
+  lb: '<i class="hgi-stroke hgi-ruler-dimension-line"></i>',
+  lt: '<i class="hgi-stroke hgi-home-01"></i>',
+  tamu: '<i class="hgi-stroke hgi-sofa-01"></i>',
+  kamar: '<i class="hgi-stroke hgi-bed-double"></i>',
+  mandi: '<i class="hgi-stroke hgi-bathtub-01"></i>',
+  carport: '<i class="hgi-stroke hgi-car-01"></i>',
+  hebel: '<i class="hgi-stroke hgi-brick-wall"></i>',
+  dinding: '<i class="hgi-stroke hgi-brick-wall"></i>',
+  taman: '<i class="hgi-stroke hgi-leaf-01"></i>',
+  hook: '<i class="hgi-stroke hgi-leaf-01"></i>',
+  listrik: '<i class="hgi-stroke hgi-bolt"></i>',
+  air: '<i class="hgi-stroke hgi-tap-01"></i>',
+  shm: '<i class="hgi-stroke hgi-certificate-01"></i>'
+};
 
 function initLandingPage() {
   if (window._pesonaLandingPageInitialized) return;
@@ -81,29 +98,29 @@ function initLandingPage() {
       }
 
       // Inisialisasi parser Promo & Sinkronisasi WhatsApp
-      if (typeof initPromoParser === 'function') {
-        initPromoParser();
-      }
+      try {
+        if (typeof initPromoParser === 'function') initPromoParser();
+      } catch (err) { console.warn('initPromoParser error:', err); }
 
       // Inisialisasi parser Footer & Sosial Media
-      if (typeof initFooterParser === 'function') {
-        initFooterParser();
-      }
+      try {
+        if (typeof initFooterParser === 'function') initFooterParser();
+      } catch (err) { console.warn('initFooterParser error:', err); }
 
       // Inisialisasi parser Tipe Rumah & Detail Popup
-      if (typeof initUnitCardAndPopupParser === 'function') {
-        initUnitCardAndPopupParser();
-      }
+      try {
+        if (typeof initUnitCardAndPopupParser === 'function') initUnitCardAndPopupParser();
+      } catch (err) { console.warn('initUnitCardAndPopupParser error:', err); }
 
       // Inisialisasi Icon Spesifikasi Dinamis
-      if (typeof initDynamicSpecIcons === 'function') {
-        initDynamicSpecIcons();
-      }
+      try {
+        if (typeof initDynamicSpecIcons === 'function') initDynamicSpecIcons();
+      } catch (err) { console.warn('initDynamicSpecIcons error:', err); }
 
       // Inisialisasi parser harga bersih KPR
-      if (typeof initPricingTextParser === 'function') {
-        initPricingTextParser();
-      }
+      try {
+        if (typeof initPricingTextParser === 'function') initPricingTextParser();
+      } catch (err) { console.warn('initPricingTextParser error:', err); }
 
       // A. Header OnScroll Effect
       const header = document.getElementById('header');
@@ -306,8 +323,10 @@ function initLandingPage() {
               if (icon) {
                 icon.className = 'toggle-arrow hgi-stroke hgi-arrow-up-01';
               }
-              gallerySection.querySelectorAll('.widget:nth-child(n+7) .reveal').forEach(function(el) {
+              gallerySection.querySelectorAll('.widget:nth-child(n+7) .reveal, .widget:nth-child(n+7) .gallery-item').forEach(function(el) {
                 el.classList.add('active');
+                el.style.opacity = '1';
+                el.style.transform = 'none';
               });
             } else {
               gallerySection.classList.add('is-collapsed');
@@ -493,25 +512,11 @@ function initLandingPage() {
       thumbEl.classList.add('active');
     };
 
-    // KAMUS ICON HUGEICONS STROKE-ROUNDED RESMI UNTUK TIPE RUMAH PILIHAN
-    var SPEC_ICON_REGISTRY = {
-      lb: '<i class="hgi-stroke hgi-ruler-dimension-line"></i>',
-      lt: '<i class="hgi-stroke hgi-home-01"></i>',
-      tamu: '<i class="hgi-stroke hgi-sofa-01"></i>',
-      kamar: '<i class="hgi-stroke hgi-bed-double"></i>',
-      mandi: '<i class="hgi-stroke hgi-bathtub-01"></i>',
-      carport: '<i class="hgi-stroke hgi-car-01"></i>',
-      hebel: '<i class="hgi-stroke hgi-brick-wall"></i>',
-      dinding: '<i class="hgi-stroke hgi-brick-wall"></i>',
-      taman: '<i class="hgi-stroke hgi-leaf-01"></i>',
-      hook: '<i class="hgi-stroke hgi-leaf-01"></i>',
-      listrik: '<i class="hgi-stroke hgi-bolt"></i>',
-      air: '<i class="hgi-stroke hgi-tap-01"></i>',
-      shm: '<i class="hgi-stroke hgi-certificate-01"></i>'
-    };
+    // (SPEC_ICON_REGISTRY is defined at top-level scope)
 
     // Helper: Inisialisasi Icon Spesifikasi Dinamis (Auto-Detect Kata Kunci / Atribut data-icon)
     function initDynamicSpecIcons() {
+      if (typeof SPEC_ICON_REGISTRY === 'undefined' || !SPEC_ICON_REGISTRY) return;
       document.querySelectorAll('.spec-item, .service-spec-item').forEach(function(item) {
         let iconKey = (item.getAttribute('data-icon') || '').toLowerCase().trim();
         const text = (item.textContent || '').toLowerCase();
@@ -1357,20 +1362,27 @@ window.sendWhatsAppMessage = sendWhatsAppMessage;
 function initTampakRumahSubsidi() {
   const filterTabs = document.querySelectorAll('.tampak-tab-btn');
   const tampakWidgets = document.querySelectorAll('#tampak-section > .widget.Image, .tampak-section > .widget[id*="Image5"]');
+  const tampakSection = document.getElementById('tampak-section') || document.querySelector('.tampak-section');
 
   if (filterTabs.length) {
     filterTabs.forEach(function(btn) {
-      btn.addEventListener('click', function() {
+      btn.addEventListener('click', function(e) {
+        if (e) e.preventDefault();
         const filter = this.getAttribute('data-filter') || 'all';
 
         filterTabs.forEach(function(b) { b.classList.remove('active'); });
         this.classList.add('active');
+
+        if (tampakSection) {
+          tampakSection.classList.toggle('is-filtered', filter !== 'all');
+        }
 
         tampakWidgets.forEach(function(widget) {
           const card = widget.querySelector('.tampak-card');
           const cat = card ? card.getAttribute('data-category') : '';
 
           if (filter === 'all' || cat === filter) {
+            widget.classList.remove('is-hidden');
             widget.style.display = '';
             if (card) {
               card.style.opacity = '0';
@@ -1382,7 +1394,8 @@ function initTampakRumahSubsidi() {
               });
             }
           } else {
-            widget.style.display = 'none';
+            widget.classList.add('is-hidden');
+            widget.style.setProperty('display', 'none', 'important');
           }
         });
       });
@@ -1463,7 +1476,8 @@ function initLokasiProjects() {
   }
 
   tabBtns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function(e) {
+      if (e) e.preventDefault();
       tabBtns.forEach(function(b) { b.classList.remove('active'); });
       this.classList.add('active');
       currentFilter = this.getAttribute('data-filter') || 'all';
@@ -1589,18 +1603,16 @@ function initFancyboxUI() {
 }
 
 
+function bootPesonaLandingPage() {
+  try { initLandingPage(); } catch (e) { console.error('initLandingPage error:', e); }
+  try { initTampakRumahSubsidi(); } catch (e) { console.error('initTampakRumahSubsidi error:', e); }
+  try { initLokasiProjects(); } catch (e) { console.error('initLokasiProjects error:', e); }
+  try { initMitraMarquee(); } catch (e) { console.error('initMitraMarquee error:', e); }
+  try { initFancyboxUI(); } catch (e) { console.error('initFancyboxUI error:', e); }
+}
+
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', function() {
-    initLandingPage();
-    initTampakRumahSubsidi();
-    initLokasiProjects();
-    initMitraMarquee();
-    initFancyboxUI();
-  });
+  document.addEventListener('DOMContentLoaded', bootPesonaLandingPage);
 } else {
-  initLandingPage();
-  initTampakRumahSubsidi();
-  initLokasiProjects();
-  initMitraMarquee();
-  initFancyboxUI();
+  bootPesonaLandingPage();
 }

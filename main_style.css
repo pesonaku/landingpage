@@ -1,6 +1,6 @@
 /*!
  * Pesona Kahuripan - Official Landing Page Stylesheet
- * Version: 3.4 (Production Design System Bundle)
+ * Version: 3.5 (Production Design System Bundle)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -1052,6 +1052,23 @@ body:not(#layout) #header.onScroll {
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+#tampak-section > .widget.is-hidden,
+.tampak-section > .widget.is-hidden {
+  display: none !important;
+}
+
+/* Dynamic layout when Tampak filter is active */
+.tampak-section.is-filtered > .widget[id*="Image5"]:not(.is-hidden) {
+  grid-column: span 6 !important;
+  min-height: 400px;
+}
+@media (max-width: 768px) {
+  .tampak-section.is-filtered > .widget[id*="Image5"]:not(.is-hidden) {
+    grid-column: span 12 !important;
+    min-height: 320px;
+  }
 }
 
 /* Feature Highlights Strip */
