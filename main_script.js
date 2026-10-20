@@ -1,6 +1,6 @@
 /*!
  * Pesona Kahuripan - Official Landing Page Interactive Script
- * Version: 3.5.1 (Production Interactive Bundle)
+ * Version: 3.5.2 (Production Interactive Bundle)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -915,6 +915,8 @@ function initLandingPage() {
           socmed.fb = trimmed.substring(trimmed.indexOf(':') + 1).trim();
         } else if (lower.startsWith('whatsapp:') || lower.startsWith('wa:')) {
           socmed.wa = trimmed.substring(trimmed.indexOf(':') + 1).trim();
+        } else if (lower.startsWith('blog:') || lower.startsWith('artikel:')) {
+          socmed.blog = trimmed.substring(trimmed.indexOf(':') + 1).trim();
         } else if (!copyright && !lower.includes('http')) {
           copyright = trimmed;
         }
@@ -936,6 +938,10 @@ function initLandingPage() {
       if (socmed.yt) {
         const ytLink = footerWrap.querySelector('.socmed-yt');
         if (ytLink) ytLink.href = socmed.yt;
+      }
+      if (socmed.blog) {
+        const blogLink = footerWrap.querySelector('.socmed-blog');
+        if (blogLink) blogLink.href = socmed.blog;
       }
       if (socmed.fb) {
         let fbLink = footerWrap.querySelector('.socmed-fb');
@@ -1429,7 +1435,7 @@ function initTampakRumahSubsidi() {
 }
 
 
-// ================= LOKASI PROJECT 1 - 18 (FILTER & SEARCH) =================
+// ================= LOKASI PROJECT 1 - 18 (FILTER, SEARCH & SHOW MORE) =================
 function initLokasiProjects() {
   const searchInput = document.getElementById('lokasiSearchInput');
   const clearBtn = document.getElementById('lokasiSearchClear');
@@ -1437,15 +1443,20 @@ function initLokasiProjects() {
   const cards = document.querySelectorAll('.lokasi-card');
   const emptyState = document.getElementById('lokasiEmptyState');
   const totalCountEl = document.getElementById('lokasiTotalCount');
+  const toggleBtn = document.getElementById('btnLokasiToggle');
+  const actionsWrap = document.getElementById('lokasiActions');
+  const grid = document.getElementById('lokasiProjectsGrid');
 
   if (!cards.length) return;
 
   let currentFilter = 'all';
   let currentSearch = '';
+  let isCollapsed = true; // Default: hanya tampilkan 3 proyek pada "Semua Proyek"
 
   function applyFilter() {
-    let visibleCount = 0;
+    let matchCount = 0;
     const query = currentSearch.trim().toLowerCase();
+    const isDefaultAll = (currentFilter === 'all' && !query);
 
     cards.forEach(function(card) {
       const wilayah = card.getAttribute('data-wilayah');
@@ -1453,26 +1464,63 @@ function initLokasiProjects() {
 
       const matchFilter = (currentFilter === 'all') || (wilayah === currentFilter);
       const matchSearch = !query || searchData.includes(query);
+      const isMatch = matchFilter && matchSearch;
 
-      if (matchFilter && matchSearch) {
-        card.classList.remove('is-hidden');
-        visibleCount++;
+      if (isMatch) {
+        matchCount++;
+        // Jika mode default "Semua Proyek" dan masih collapsed, batasi hanya 3 kartu pertama
+        if (isDefaultAll && isCollapsed && matchCount > 3) {
+          card.classList.add('is-hidden');
+        } else {
+          card.classList.remove('is-hidden');
+          card.classList.add('active');
+        }
       } else {
         card.classList.add('is-hidden');
       }
     });
 
     if (emptyState) {
-      if (visibleCount === 0) {
-        emptyState.classList.add('is-visible');
-      } else {
-        emptyState.classList.remove('is-visible');
-      }
+      emptyState.classList.toggle('is-visible', matchCount === 0);
     }
 
     if (totalCountEl && currentFilter === 'all' && !query) {
       totalCountEl.textContent = cards.length;
     }
+
+    // Perbarui status & visibilitas tombol Show More
+    if (actionsWrap && toggleBtn) {
+      if (isDefaultAll && matchCount > 3) {
+        actionsWrap.style.display = 'flex';
+        const textSpan = toggleBtn.querySelector('.btn-text');
+        const arrowIcon = toggleBtn.querySelector('.toggle-arrow');
+        if (isCollapsed) {
+          if (textSpan) textSpan.textContent = "Lihat Semua " + cards.length + " Lokasi Proyek";
+          if (arrowIcon) arrowIcon.className = "toggle-arrow hgi-stroke hgi-arrow-down-01";
+          toggleBtn.classList.remove('expanded');
+        } else {
+          if (textSpan) textSpan.textContent = "Tampilkan Lebih Sedikit (3 Proyek)";
+          if (arrowIcon) arrowIcon.className = "toggle-arrow hgi-stroke hgi-arrow-up-01";
+          toggleBtn.classList.add('expanded');
+        }
+      } else {
+        // Sembunyikan tombol jika sedang memfilter wilayah spesifik atau mencari kata kunci
+        actionsWrap.style.display = 'none';
+      }
+    }
+  }
+
+  // Event listener tombol Show More Lokasi
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      isCollapsed = !isCollapsed;
+      applyFilter();
+      if (isCollapsed) {
+        const sec = document.getElementById('lokasi-project');
+        if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
   }
 
   tabBtns.forEach(function(btn) {
@@ -1481,6 +1529,7 @@ function initLokasiProjects() {
       tabBtns.forEach(function(b) { b.classList.remove('active'); });
       this.classList.add('active');
       currentFilter = this.getAttribute('data-filter') || 'all';
+      // Saat berpindah tab, jika kembali ke 'all' tetap collapsed default 3
       applyFilter();
     });
   });
@@ -1504,6 +1553,9 @@ function initLokasiProjects() {
       applyFilter();
     });
   }
+
+  // Terapkan filter awal (default 3 proyek)
+  applyFilter();
 
   // Dynamic WhatsApp sync on survey buttons
   const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
@@ -1559,7 +1611,7 @@ function initMitraMarquee() {
     if (isLocal) {
       img.src = rawSrc;
     } else {
-      img.src = 'https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/' + encodeURI(rawSrc);
+      img.src = 'https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.2/' + encodeURI(rawSrc);
     }
   });
 }
