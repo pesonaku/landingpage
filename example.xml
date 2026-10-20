@@ -71,17 +71,17 @@
     <link href='https://use.hugeicons.com/font/icons.css' rel='stylesheet'/>
 
     <!-- Stylesheet Utama (Separated Production Bundle) -->
-    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_style.css?v=3.5' rel='stylesheet' type='text/css'/>
+    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.0/main_style.css' rel='stylesheet' type='text/css'/>
 
     <!-- Progressive Enhancement State -->
     
 
     <b:skin><![CDATA[
-@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_style.css?v=3.5");
+@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.0/main_style.css");
 
 /*!
  * Pesona Kahuripan - Clean Modern Blogger Landing Page Template
- * Stylesheet is separated into: main_style.css?v=3.5
+ * Stylesheet is separated into: main_style.css (v3.5.0)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -4853,7 +4853,7 @@ YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
     <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js'></script>
 
     <!-- Main Interactive Script (Separated) -->
-    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/main_script.js?v=3.5'></script>
+    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.0/main_script.js'></script>
 
     
 
