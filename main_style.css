@@ -1,6 +1,6 @@
 /*!
  * Pesona Kahuripan - Official Landing Page Stylesheet
- * Version: 3.3 (Separated Production Bundle)
+ * Version: 3.4 (Production Design System Bundle)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -176,6 +176,77 @@ ul, ol { list-style: none; }
 }
 .hgi-stroke.hgi-youtube::before {
   content: "\f2a4e";
+}
+.hgi-stroke.hgi-bank::before {
+  content: "\f16bc";
+}
+.hgi-stroke.hgi-building-05::before {
+  content: "\f17ee";
+}
+.hgi-stroke.hgi-building-06::before {
+  content: "\f17ef";
+}
+.hgi-stroke.hgi-grid-view::before {
+  content: "\f1db6";
+}
+.hgi-stroke.hgi-maps-location-01::before {
+  content: "\f209f";
+}
+.hgi-stroke.hgi-pause::before {
+  content: "\f22d7";
+}
+.hgi-stroke.hgi-percent-square::before,
+.hgi-stroke.hgi-percentage-square::before {
+  content: "\f22f9";
+}
+.hgi-stroke.hgi-search-not-found::before {
+  content: "\f2546";
+}
+.hgi-stroke.hgi-shield-01::before,
+.hgi-stroke.hgi-shield-02::before,
+.hgi-stroke.hgi-shield-security::before {
+  content: "\f25a8";
+}
+.hgi-stroke.hgi-tick-02::before {
+  content: "\f282c";
+}
+.hgi-stroke.hgi-view::before {
+  content: "\f2971";
+}
+
+/* Helper & Utility Elements */
+.btn-text {
+  display: inline-block;
+  line-height: inherit;
+}
+.marketing-avatar-target {
+  display: inline-block;
+  object-fit: cover;
+}
+.marketing-name-target {
+  font-weight: 700;
+}
+.marketing-role-target {
+  font-size: 0.85em;
+  opacity: 0.85;
+}
+.spec-lb, .spec-lt, .spec-tidur, .spec-mandi, .spec-carport {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.tampak-cta-action {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+.wa-dynamic-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.25s ease;
 }
 
 svg {
