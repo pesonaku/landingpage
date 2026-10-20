@@ -1,6 +1,6 @@
 /*!
  * Pesona Kahuripan - Official Landing Page Interactive Script
- * Version: 3.5 (Production Interactive Bundle)
+ * Version: 3.5.1 (Production Interactive Bundle)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -1546,20 +1546,21 @@ function initMitraMarquee() {
                   window.location.hostname === '127.0.0.1';
 
   imgs.forEach(function(img) {
-    const localSrc = img.getAttribute('data-local-src') || img.getAttribute('src');
-    if (!localSrc) return;
+    const rawSrc = img.getAttribute('data-local-src') || img.getAttribute('src') || '';
+    if (!rawSrc) return;
 
-    if (!isLocal) {
-      const cdnUrl = 'https://raw.githubusercontent.com/pesonaku/landingpage/main/' + encodeURI(localSrc);
-      img.src = cdnUrl;
+    // Jika sudah berupa URL lengkap (http/https), langsung gunakan tanpa modifikasi
+    if (rawSrc.startsWith('http://') || rawSrc.startsWith('https://')) {
+      img.src = rawSrc;
+      return;
     }
 
-    img.addEventListener('error', function() {
-      const fallbackUrl = 'https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/' + encodeURI(localSrc);
-      if (this.src !== fallbackUrl) {
-        this.src = fallbackUrl;
-      }
-    });
+    // Jika path relatif lokal (misal: "foto mitra/..."), resolve sesuai host
+    if (isLocal) {
+      img.src = rawSrc;
+    } else {
+      img.src = 'https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/' + encodeURI(rawSrc);
+    }
   });
 }
 

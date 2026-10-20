@@ -1,6 +1,6 @@
 /*!
  * Pesona Kahuripan - Official Landing Page Stylesheet
- * Version: 3.5 (Production Design System Bundle)
+ * Version: 3.5.1 (Production Design System Bundle)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -4640,3 +4640,124 @@ body.homepage #blog-single {
   }
 }
 
+
+
+/* ================= MOBILE OPTIMIZATION: LOKASI PROJECT COMPACT ================= */
+@media (max-width: 768px) {
+  #lokasi-project {
+    padding: 38px 0 44px !important;
+  }
+  .lokasi-controls-wrap {
+    margin: 16px 0 20px !important;
+    gap: 12px !important;
+  }
+  .lokasi-search-box {
+    max-width: 100% !important;
+  }
+  .lokasi-search-input {
+    padding: 10px 38px 10px 42px !important;
+    font-size: 0.88rem !important;
+  }
+  /* Horizontal swipeable chip tabs on mobile */
+  .lokasi-filter-tabs {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    padding: 4px 2px 8px !important;
+    gap: 6px !important;
+    justify-content: flex-start !important;
+  }
+  .lokasi-filter-tabs::-webkit-scrollbar {
+    display: none !important;
+  }
+  .lokasi-tab-btn {
+    flex-shrink: 0 !important;
+    padding: 7px 12px !important;
+    font-size: 0.78rem !important;
+    white-space: nowrap !important;
+  }
+  .lokasi-tab-btn i {
+    font-size: 14px !important;
+  }
+  .lokasi-tab-count {
+    padding: 1px 6px !important;
+    font-size: 0.68rem !important;
+  }
+
+  /* Compact Lokasi Cards on Mobile */
+  .lokasi-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    margin-bottom: 24px !important;
+  }
+  .lokasi-card {
+    border-radius: 14px !important;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04) !important;
+  }
+  .lokasi-card-top {
+    padding: 10px 14px 8px !important;
+    gap: 6px !important;
+  }
+  .lokasi-card-badges {
+    gap: 6px !important;
+  }
+  .lokasi-proyek-num {
+    font-size: 0.68rem !important;
+    padding: 2px 7px !important;
+  }
+  .lokasi-status-badge {
+    font-size: 0.66rem !important;
+    padding: 2px 7px !important;
+  }
+  .lokasi-card-region {
+    font-size: 0.74rem !important;
+  }
+  .lokasi-card-region i {
+    font-size: 13px !important;
+  }
+  .lokasi-card-body {
+    padding: 8px 14px 8px !important;
+  }
+  .lokasi-card-title {
+    font-size: 1.02rem !important;
+    margin-bottom: 4px !important;
+  }
+  .lokasi-tipe-badge {
+    font-size: 0.76rem !important;
+    padding: 2px 8px !important;
+    margin-bottom: 4px !important;
+  }
+  /* Sembunyikan alamat teks panjang & tag chips berlebih di mobile agar sangat hemat ruang */
+  .lokasi-card-address {
+    display: none !important;
+  }
+  .lokasi-card-chips {
+    display: none !important;
+  }
+  .lokasi-card-footer {
+    padding: 8px 14px 10px !important;
+    gap: 8px !important;
+  }
+  .btn-cta-lokasi-map,
+  .btn-cta-lokasi-wa {
+    padding: 7px 10px !important;
+    font-size: 0.78rem !important;
+    border-radius: 8px !important;
+  }
+  .btn-cta-lokasi-map i,
+  .btn-cta-lokasi-wa i {
+    font-size: 14px !important;
+  }
+  .lokasi-bottom-callout {
+    padding: 18px 16px !important;
+    border-radius: 14px !important;
+  }
+  .lokasi-callout-text h4 {
+    font-size: 1.05rem !important;
+  }
+  .lokasi-callout-text p {
+    font-size: 0.82rem !important;
+  }
+}

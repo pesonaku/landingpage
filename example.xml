@@ -71,17 +71,17 @@
     <link href='https://use.hugeicons.com/font/icons.css' rel='stylesheet'/>
 
     <!-- Stylesheet Utama (Separated Production Bundle) -->
-    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.0/main_style.css' rel='stylesheet' type='text/css'/>
+    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/main_style.css' rel='stylesheet' type='text/css'/>
 
     <!-- Progressive Enhancement State -->
     
 
     <b:skin><![CDATA[
-@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.0/main_style.css");
+@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/main_style.css");
 
 /*!
  * Pesona Kahuripan - Clean Modern Blogger Landing Page Template
- * Stylesheet is separated into: main_style.css (v3.5.0)
+ * Stylesheet is separated into: main_style.css (v3.5.1)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -1306,7 +1306,6 @@ Carport: 1 Mobil]]></b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='section-head reveal'>
-                  <span class='section-badge'>PERUMAHAN PESONA KAHURIPAN</span>
                   <h2><b:eval expr='data:title ?: &quot;Tampak Rumah Subsidi Pemerintah&quot;'/></h2>
                   <p><b:eval expr='data:content ?: &quot;Bukti nyata hunian subsidi berkualitas komersil — arsitektur modern minimalis, double dinding hebel, interior lapang, sanitari rapi, dan sisa tanah belakang luas siap kembang.&quot;'/></p>
                 </div>
@@ -1345,35 +1344,6 @@ Carport: 1 Mobil]]></b:widget-setting>
                       <i class='hgi-stroke hgi-checkmark-circle-01'></i>
                       <span>Cicilan Flat 1,1 Jt/bln</span>
                     </div>
-                  </div>
-
-                  <div class='tampak-filter-wrapper reveal'>
-                    <div class='tampak-filter-tabs' id='tampakFilterTabs'>
-                      <button class='tampak-tab-btn active' data-filter='all' type='button'>
-                        <i class='hgi-stroke hgi-home-01'></i>
-                        <span>Semua Sudut (7 Foto)</span>
-                      </button>
-                      <button class='tampak-tab-btn' data-filter='depan' type='button'>
-                        <i class='hgi-stroke hgi-car-01'></i>
-                        <span>Tampak Depan</span>
-                      </button>
-                      <button class='tampak-tab-btn' data-filter='ruang' type='button'>
-                        <i class='hgi-stroke hgi-sofa-01'></i>
-                        <span>Ruang Utama</span>
-                      </button>
-                      <button class='tampak-tab-btn' data-filter='kamar' type='button'>
-                        <i class='hgi-stroke hgi-bed-double'></i>
-                        <span>Kamar Tidur</span>
-                      </button>
-                      <button class='tampak-tab-btn' data-filter='toilet' type='button'>
-                        <i class='hgi-stroke hgi-bathtub-01'></i>
-                        <span>Kamar Mandi</span>
-                      </button>
-                      <button class='tampak-tab-btn' data-filter='belakang' type='button'>
-                        <i class='hgi-stroke hgi-leaf-01'></i>
-                        <span>Halaman Belakang &amp; Dapur</span>
-                      </button>
-                    </div>
                   </div>]]></b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
@@ -1408,35 +1378,6 @@ Carport: 1 Mobil]]></b:widget-setting>
                     <div class='tampak-highlight-item'>
                       <i class='hgi-stroke hgi-checkmark-circle-01'></i>
                       <span>Cicilan Flat 1,1 Jt/bln</span>
-                    </div>
-                  </div>
-
-                  <div class='tampak-filter-wrapper reveal'>
-                    <div class='tampak-filter-tabs' id='tampakFilterTabs'>
-                      <button class='tampak-tab-btn active' data-filter='all' type='button'>
-                        <i class='hgi-stroke hgi-home-01'></i>
-                        <span>Semua Sudut (7 Foto)</span>
-                      </button>
-                      <button class='tampak-tab-btn' data-filter='depan' type='button'>
-                        <i class='hgi-stroke hgi-car-01'></i>
-                        <span>Tampak Depan</span>
-                      </button>
-                      <button class='tampak-tab-btn' data-filter='ruang' type='button'>
-                        <i class='hgi-stroke hgi-sofa-01'></i>
-                        <span>Ruang Utama</span>
-                      </button>
-                      <button class='tampak-tab-btn' data-filter='kamar' type='button'>
-                        <i class='hgi-stroke hgi-bed-double'></i>
-                        <span>Kamar Tidur</span>
-                      </button>
-                      <button class='tampak-tab-btn' data-filter='toilet' type='button'>
-                        <i class='hgi-stroke hgi-bathtub-01'></i>
-                        <span>Kamar Mandi</span>
-                      </button>
-                      <button class='tampak-tab-btn' data-filter='belakang' type='button'>
-                        <i class='hgi-stroke hgi-leaf-01'></i>
-                        <span>Halaman Belakang &amp; Dapur</span>
-                      </button>
                     </div>
                   </div>
                 </b:if>
@@ -3774,7 +3715,7 @@ Tipe: komersial]]></b:widget-setting>
 
               <div class='mitra-card' data-mitra-id='btn'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Bank BTN' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png' loading='lazy'/>
+                  <img alt='Bank BTN' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Mitra KPR Utama</span>
@@ -3784,7 +3725,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='bsi'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Bank Syariah Indonesia' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png' loading='lazy'/>
+                  <img alt='Bank Syariah Indonesia' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Pelopor KPR Syariah</span>
@@ -3794,7 +3735,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='nobu'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Nobu Bank' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png' loading='lazy'/>
+                  <img alt='Nobu Bank' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Bank Swasta Nasional</span>
@@ -3804,7 +3745,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='tapera'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='BP Tapera' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/bp-tapera.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/bp-tapera.png' loading='lazy'/>
+                  <img alt='BP Tapera' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/bp-tapera.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/bp-tapera.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Pengelola Dana FLPP</span>
@@ -3814,7 +3755,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='kemenpkp'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Kementerian PKP RI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' loading='lazy'/>
+                  <img alt='Kementerian PKP RI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Regulator Perumahan</span>
@@ -3824,7 +3765,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='apersi'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='APERSI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png' loading='lazy'/>
+                  <img alt='APERSI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Asosiasi Pengembang</span>
@@ -3834,7 +3775,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='btn'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Bank BTN' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png' loading='lazy'/>
+                  <img alt='Bank BTN' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Mitra KPR Utama</span>
@@ -3844,7 +3785,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='bsi'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Bank Syariah Indonesia' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png' loading='lazy'/>
+                  <img alt='Bank Syariah Indonesia' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Pelopor KPR Syariah</span>
@@ -3854,7 +3795,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='nobu'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Nobu Bank' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png' loading='lazy'/>
+                  <img alt='Nobu Bank' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Bank Swasta Nasional</span>
@@ -3864,7 +3805,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='tapera'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='BP Tapera' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/bp-tapera.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/bp-tapera.png' loading='lazy'/>
+                  <img alt='BP Tapera' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/bp-tapera.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/bp-tapera.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Pengelola Dana FLPP</span>
@@ -3874,7 +3815,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='kemenpkp'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Kementerian PKP RI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' loading='lazy'/>
+                  <img alt='Kementerian PKP RI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Regulator Perumahan</span>
@@ -3884,7 +3825,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='apersi'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='APERSI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png' loading='lazy'/>
+                  <img alt='APERSI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Asosiasi Pengembang</span>
@@ -3894,7 +3835,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='btn'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Bank BTN' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png' loading='lazy'/>
+                  <img alt='Bank BTN' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Mitra KPR Utama</span>
@@ -3904,7 +3845,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='bsi'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Bank Syariah Indonesia' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png' loading='lazy'/>
+                  <img alt='Bank Syariah Indonesia' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Pelopor KPR Syariah</span>
@@ -3914,7 +3855,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='nobu'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Nobu Bank' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png' loading='lazy'/>
+                  <img alt='Nobu Bank' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Bank Swasta Nasional</span>
@@ -3924,7 +3865,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='tapera'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='BP Tapera' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/bp-tapera.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/bp-tapera.png' loading='lazy'/>
+                  <img alt='BP Tapera' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/bp-tapera.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/bp-tapera.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Pengelola Dana FLPP</span>
@@ -3934,7 +3875,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='kemenpkp'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Kementerian PKP RI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' loading='lazy'/>
+                  <img alt='Kementerian PKP RI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Regulator Perumahan</span>
@@ -3944,7 +3885,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='apersi'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='APERSI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png' loading='lazy'/>
+                  <img alt='APERSI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Asosiasi Pengembang</span>
@@ -4010,7 +3951,7 @@ Tipe: komersial]]></b:widget-setting>
 
               <div class='mitra-card' data-mitra-id='btn'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Bank BTN' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png' loading='lazy'/>
+                  <img alt='Bank BTN' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Mitra KPR Utama</span>
@@ -4020,7 +3961,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='bsi'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Bank Syariah Indonesia' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png' loading='lazy'/>
+                  <img alt='Bank Syariah Indonesia' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Pelopor KPR Syariah</span>
@@ -4030,7 +3971,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='nobu'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Nobu Bank' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png' loading='lazy'/>
+                  <img alt='Nobu Bank' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Bank Swasta Nasional</span>
@@ -4040,7 +3981,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='tapera'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='BP Tapera' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/bp-tapera.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/bp-tapera.png' loading='lazy'/>
+                  <img alt='BP Tapera' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/bp-tapera.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/bp-tapera.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Pengelola Dana FLPP</span>
@@ -4050,7 +3991,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='kemenpkp'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Kementerian PKP RI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' loading='lazy'/>
+                  <img alt='Kementerian PKP RI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Regulator Perumahan</span>
@@ -4060,7 +4001,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='apersi'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='APERSI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png' loading='lazy'/>
+                  <img alt='APERSI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Asosiasi Pengembang</span>
@@ -4070,7 +4011,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='btn'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Bank BTN' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png' loading='lazy'/>
+                  <img alt='Bank BTN' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Mitra KPR Utama</span>
@@ -4080,7 +4021,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='bsi'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Bank Syariah Indonesia' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png' loading='lazy'/>
+                  <img alt='Bank Syariah Indonesia' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Pelopor KPR Syariah</span>
@@ -4090,7 +4031,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='nobu'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Nobu Bank' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png' loading='lazy'/>
+                  <img alt='Nobu Bank' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Bank Swasta Nasional</span>
@@ -4100,7 +4041,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='tapera'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='BP Tapera' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/bp-tapera.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/bp-tapera.png' loading='lazy'/>
+                  <img alt='BP Tapera' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/bp-tapera.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/bp-tapera.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Pengelola Dana FLPP</span>
@@ -4110,7 +4051,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='kemenpkp'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Kementerian PKP RI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' loading='lazy'/>
+                  <img alt='Kementerian PKP RI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Regulator Perumahan</span>
@@ -4120,7 +4061,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='apersi'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='APERSI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png' loading='lazy'/>
+                  <img alt='APERSI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Asosiasi Pengembang</span>
@@ -4130,7 +4071,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='btn'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Bank BTN' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png' loading='lazy'/>
+                  <img alt='Bank BTN' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-tabungan-negara.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Mitra KPR Utama</span>
@@ -4140,7 +4081,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='bsi'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Bank Syariah Indonesia' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png' loading='lazy'/>
+                  <img alt='Bank Syariah Indonesia' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/bank-syariah-nasional.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Pelopor KPR Syariah</span>
@@ -4150,7 +4091,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='nobu'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Nobu Bank' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png' loading='lazy'/>
+                  <img alt='Nobu Bank' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Bank/nobu-bank-2026-seeklogo.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Bank Swasta Nasional</span>
@@ -4160,7 +4101,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='tapera'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='BP Tapera' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/bp-tapera.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/bp-tapera.png' loading='lazy'/>
+                  <img alt='BP Tapera' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/bp-tapera.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/bp-tapera.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Pengelola Dana FLPP</span>
@@ -4170,7 +4111,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='kemenpkp'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='Kementerian PKP RI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' loading='lazy'/>
+                  <img alt='Kementerian PKP RI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/kementerian-perumahan-dan-kawasan-permukiman.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Regulator Perumahan</span>
@@ -4180,7 +4121,7 @@ Tipe: komersial]]></b:widget-setting>
               </div>
               <div class='mitra-card' data-mitra-id='apersi'>
                 <div class='mitra-card-logo-wrap'>
-                  <img alt='APERSI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@main/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png' loading='lazy'/>
+                  <img alt='APERSI' class='mitra-logo-img' data-local-src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/foto%20mitra/Mitra%20Perumahan/Logo%20Apersi.png'/>
                 </div>
                 <div class='mitra-card-meta'>
                   <span class='mitra-cat-pill'>Asosiasi Pengembang</span>
@@ -4853,7 +4794,7 @@ YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
     <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js'></script>
 
     <!-- Main Interactive Script (Separated) -->
-    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.0/main_script.js'></script>
+    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.1/main_script.js'></script>
 
     
 
