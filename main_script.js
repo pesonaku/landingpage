@@ -1,6 +1,6 @@
 /*!
  * Pesona Kahuripan - Official Landing Page Interactive Script
- * Version: 3.5.3 (Production Interactive Bundle - Unified Marketing Sync)
+ * Version: 3.5.4 (Production Interactive Bundle - Unified Marketing Sync & Robust Promo Parser)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -619,7 +619,10 @@ function initLandingPage() {
       let btnLabel = '';
       let benefits = [];
 
-      const lines = rawText.split('\n');
+      // Normalisasi baris jika key berdempetan atau memakai tag <br>
+      let normalizedText = rawText.replace(/<br\s*[\/]?>/gi, '\n');
+      normalizedText = normalizedText.replace(/(Badge:|Tag:|Deskripsi:|Keterangan:|Benefit\s*\d*:|Tombol:|CTA:)/gi, '\n$1');
+      const lines = normalizedText.split('\n');
       lines.forEach(function(line) {
         const trimmed = line.trim();
         if (!trimmed) return;
@@ -641,7 +644,7 @@ function initLandingPage() {
           const bTitle = parts[0].trim();
           const bSub = parts.length > 1 ? parts.slice(1).join('|').trim() : '';
           if (bTitle) benefits.push({ title: bTitle, sub: bSub });
-        } else if (!badge && !tag && !desc) {
+        } else if (!badge && !tag && !desc && !benefits.length) {
           desc = (desc ? desc + ' ' : '') + trimmed;
         }
       });
