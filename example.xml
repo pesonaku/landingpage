@@ -70,17 +70,17 @@
     <link href='https://use.hugeicons.com/font/icons.css' rel='stylesheet'/>
 
     <!-- Stylesheet Utama (Separated Production Bundle) -->
-    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.4/main_style.css' rel='stylesheet' type='text/css'/>
+    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.5/main_style.css' rel='stylesheet' type='text/css'/>
 
     <!-- Progressive Enhancement State -->
     
 
     <b:skin><![CDATA[
-@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.4/main_style.css");
+@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.5/main_style.css");
 
 /*!
  * Pesona Kahuripan - Clean Modern Blogger Landing Page Template
- * Stylesheet is separated into: main_style.css (v3.5.4)
+ * Stylesheet is separated into: main_style.css (v3.5.5)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -526,21 +526,21 @@ body#layout:after {
       <section id='promo'>
         <div class='wrapper'>
           <b:section class='promo-section' id='promo-section' name='[03. PROMO] Informasi Terbaru &amp; Penawaran Spesial' showaddelement='false' version='3'>
-            <b:widget id='Image15' locked='true' title='Promo Berkah Punya Rumah: Cukup Booking 1 Juta Langsung Akad!' type='Image' version='3' visible='true'>
+            <b:widget id='Image15' locked='true' title='Promo Berkah Punya Rumah: Cukup Booking 500 Ribu Langsung Akad!' type='Image' version='3' visible='true'>
               <b:widget-settings>
                 <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhf7puCtXdu77oGx2GuzcPPpD4oloa2-P0w_sYsVyxgR3Gb5Pj5pia4-6n25m-yYgB9hqqFZKk7eVCkOEQGWRkHq8_ees1pg_S9o-1WdpX7eDqXk_TTSPM5sEUyIwsK_jgscv1UmRt22V_QfYdzMUGIYRGojSq8MPhrfblMbayWfBPSwWuR5qgmbJHYjRg/s760/Gratis%20AC%20Tanpa%20Di%20Undi.png</b:widget-setting>
                 <b:widget-setting name='displayHeight'>760</b:widget-setting>
                 <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
                 <b:widget-setting name='displayWidth'>543</b:widget-setting>
-                <b:widget-setting name='link'><![CDATA[https://api.whatsapp.com/send?phone=6287870988073&text=Halo%20Mas%20Ro%27uf%2C%20saya%20ingin%20klaim%20Promo%20Spesial%20Booking%201%20Juta%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23promo]]></b:widget-setting>
+                <b:widget-setting name='link'><![CDATA[https://api.whatsapp.com/send?phone=6287870988073&text=Halo%20Mas%20Ro%27uf%2C%20saya%20ingin%20klaim%20Promo%20Spesial%20Booking%20500%20Ribu%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23promo]]></b:widget-setting>
                 <b:widget-setting name='caption'><![CDATA[Badge: PENAWARAN TERBATAS BULAN INI
-Tag: SUBSIDI DP 1% RESMI
-Deskripsi: Spesial bulan ini: Bebas Biaya BPHTB & Notaris, Subsidi DP 1%, Cicilan flat 1 jutaan/bulan dan bonus pompa air terpasang siap huni.
-Benefit 1: Cukup Booking Fee 1 Juta | Langsung pilih unit idaman & kunci blok
-Benefit 2: Gratis Biaya Notaris & Surat-Surat | Sertifikat SHM, AJB & BPHTB ditanggung developer
-Benefit 3: Bonus Pompa Air Terpasang | Air sumur jernih langsung siap dinikmati keluarga
-Tombol: Klaim Promo Spesial via WhatsApp]]></b:widget-setting>
+Tag: PROMO SUPER GRATIS
+Deskripsi: Spesial bulan ini: Gratis DP, Gratis Angsuran Pertama, Gratis Biaya Proses dan Gratis AC Tanpa di Undi.
+Benefit 1: Gratis DP | Syarat & Ketentuan Berlaku
+Benefit 2: Gratis Angsuran Pertama | Syarat & Ketentuan Berlaku
+Benefit 3: Gratis Biaya Proses | Syarat & Ketentuan Berlaku
+Tombol: Klaim Promo Spesial]]></b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='promo-card reveal'>
@@ -551,15 +551,15 @@ Tombol: Klaim Promo Spesial via WhatsApp]]></b:widget-setting>
                       <span>PENAWARAN TERBATAS BULAN INI</span>
                     </div>
                     <h2><data:title/></h2>
-                    <p class='promo-desc'>Spesial bulan ini: Bebas Biaya BPHTB &amp; Notaris, Subsidi DP 1%, Cicilan flat 1 jutaan/bulan dan bonus pompa air terpasang siap huni.</p>
+                    <p class='promo-desc'>Spesial bulan ini: Gratis DP, Gratis Angsuran Pertama, Gratis Biaya Proses dan Gratis AC Tanpa di Undi.</p>
                     <div class='promo-benefits'>
                       <div class='benefit-item'>
                         <div class='benefit-icon'>
                           <i class='hgi-stroke hgi-checkmark-badge-01'/>
                         </div>
                         <div>
-                          <strong>Cukup Booking Fee 1 Juta</strong>
-                          <small>Langsung pilih unit idaman &amp; kunci blok</small>
+                          <strong>Gratis DP</strong>
+                          <small>Syarat &amp; Ketentuan Berlaku</small>
                         </div>
                       </div>
                       <div class='benefit-item'>
@@ -567,8 +567,8 @@ Tombol: Klaim Promo Spesial via WhatsApp]]></b:widget-setting>
                           <i class='hgi-stroke hgi-checkmark-badge-01'/>
                         </div>
                         <div>
-                          <strong>Gratis Biaya Notaris &amp; Surat-Surat</strong>
-                          <small>Sertifikat SHM, AJB &amp; BPHTB ditanggung developer</small>
+                          <strong>Gratis Angsuran Pertama</strong>
+                          <small>Syarat &amp; Ketentuan Berlaku</small>
                         </div>
                       </div>
                       <div class='benefit-item'>
@@ -576,8 +576,8 @@ Tombol: Klaim Promo Spesial via WhatsApp]]></b:widget-setting>
                           <i class='hgi-stroke hgi-checkmark-badge-01'/>
                         </div>
                         <div>
-                          <strong>Bonus Pompa Air Terpasang</strong>
-                          <small>Air sumur jernih langsung siap dinikmati keluarga</small>
+                          <strong>Gratis Biaya Proses</strong>
+                          <small>Syarat &amp; Ketentuan Berlaku</small>
                         </div>
                       </div>
                     </div>
@@ -591,7 +591,7 @@ Tombol: Klaim Promo Spesial via WhatsApp]]></b:widget-setting>
                   <div class='promo-banner-visual'>
                     <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
                     <div class='promo-tag-float'>
-                      <span>SUBSIDI DP 1% RESMI</span>
+                      <span>PROMO SUPER GRATIS</span>
                     </div>
                   </div>
                 </div>
@@ -625,11 +625,11 @@ Tombol: Klaim Promo Spesial via WhatsApp]]></b:widget-setting>
           <b:section class='about-section' id='about-section' name='[04. KEUNGGULAN] 3 Nilai Plus Proyek (Zig-Zag)' showaddelement='false' version='3'>
             <b:widget id='Image21' locked='true' title='Cicilan Ringan 1 Jutaan/Bulan' type='Image' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEhZyEj8rBNZDwSwvKztR4NcCRUdW_Qr7CtrOf-YGrIerT1v_ZNk2ConOczo-aDu8Bua7C5cuFU5c8wgeGNC7LY1PTZ2Sz_SW-P2iA_0_xNeiT6a1idrKbp5spP8kkZGrQMUVxcznBT7FEKvAWHH-duek28BRa5JWGu37xmTrvKoRnLGLBOOcz5iVr5m2HY=s800</b:widget-setting>
-                <b:widget-setting name='displayHeight'>1080</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiAv-PUJKP6beE3fdd7-IawybTSx_wcUO02vmB5uSvbmk2shL1dfDaS9xqbXvewfUMKkaG0vtW9XiXYG4NM4xOr2pBUsHAJXKtKJEOGbYWjCxXl1cs8jvB5s28lBW2dbgvt5hn0EvnbZwiYU0hXNDC65gi294vpiUzWVife9pJX1nEUUEK8jUD08ABcTTk/s1600/cicilan%20ringan.jpg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>1199</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1080</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1600</b:widget-setting>
                 <b:widget-setting name='link'>#service</b:widget-setting>
                 <b:widget-setting name='caption'>Pesona Kahuripan adalah perumahan subsidi dengan skema angsuran KPR yang sangat terjangkau, flat sampai lunas hanya 1 jutaan per bulan.</b:widget-setting>
               </b:widget-settings>
@@ -683,11 +683,11 @@ Tombol: Klaim Promo Spesial via WhatsApp]]></b:widget-setting>
             </b:widget>
             <b:widget id='Image22' locked='true' title='Uang Muka (DP) Hanya 1%' type='Image' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEhYYguYlVlD6Q17fsYVzAjjirRMVwmCQGUq4fq3y1HZuHVNhP7sdeazbw71fDnXRJCtzw5aOUHie12AQhBkR9CCJ-GFISg4aztXqtkWtTJ5aogIuLOIyXzJ7eaTbJCmkSbZKaxRsgEkuSRuku-Q9y0Ha2eVCfXLG9SaUuqkhPTKH87OYGIH8o3-P_Zlr2A=s800</b:widget-setting>
-                <b:widget-setting name='displayHeight'>1080</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_Co9R1fpNM6ukS5lOxCjHZ1C9nynuh_Jypxc8vQ1Eo_slx4Mkb0MAqBuqYnKQ3TqTLjLdhCEpfauFEQSQ_dxDQXeIRFv3wtZI62Xws0iJnVOodScZEIfT3zpHmmM5OrEkd-7B93I3bujx6itnCFeMduUyNzjtp_48HGurf6_9SYyfZ0jAEkxqcErbzBQ/s1600/DP%20Hanya%201%25.jpg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>893</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1080</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1600</b:widget-setting>
                 <b:widget-setting name='link'>#service</b:widget-setting>
                 <b:widget-setting name='caption'>Kemudahan kepemilikan rumah dengan biaya uang muka ringan 1% dari total harga perumahan nasional.</b:widget-setting>
               </b:widget-settings>
@@ -741,11 +741,11 @@ Tombol: Klaim Promo Spesial via WhatsApp]]></b:widget-setting>
             </b:widget>
             <b:widget id='Image23' locked='true' title='Konstruksi Double Dinding (Hebel)' type='Image' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEiW6S9SgD3NI348DsDJvWhrYfjWrWQ3yBneuFB5v9Wite6aje3AKzRTyqNwH1aftgE7gRgPPnUsOdjB_cYIhWKrFOTlXNjtGP2tbMOq9RlsABzpIei9EZnWzVTOGofN-IUbXsoXv4TZkM1SGjqvKsy6In8tK9tOSGayCgkJzSW_Erybm2f-fz8bbBBWQvo=s800</b:widget-setting>
-                <b:widget-setting name='displayHeight'>1080</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiy93PqFg7wJDeFi0Hjz40Ow8S2jXIzuIQlIW-1gUrk3MufU2yr0hydFcz5aDBYWE1r44Nif02_zqBB5UgGaWJYJ6n0J6qWn1kVP4OeC0Pvm3qw3J9AYHEOp9xQTp6vpTMggncphoyi75D_2-9bsvj762RliWtkjQdEXC5LCtTeMlLHb5yDg1UM2OL9pPk/s1600/Double%20Dinding%20Hebel.jpg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>893</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1080</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1600</b:widget-setting>
                 <b:widget-setting name='link'>#service</b:widget-setting>
                 <b:widget-setting name='caption'>Setiap unit memiliki dinding mandiri (double dinding) sehingga lebih kedap suara, kokoh, dan privasi penghuni terjaga dengan maksimal.</b:widget-setting>
               </b:widget-settings>
@@ -819,21 +819,21 @@ Tombol: Klaim Promo Spesial via WhatsApp]]></b:widget-setting>
             </b:widget>
             <b:widget id='Image31' locked='true' title='Type 30/60' type='Image' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEjAiWMl-izhTXDQEvXwhDzb_7ucxmDCY2Ppnecuft9G9JTuBKoeiC5gwvQrS-vWVbdpnMXfK6g9WR296FvxmwHr9jwm4COLLz8FiGKdKyA3IOkilBW9IFGlJF7cJSTwiD6a394z97ur98oXrHBRuqRhtoPBYhSKFZHfHLVGXoIdJwl50_e4rF2SfzzwCGI=s1358</b:widget-setting>
-                <b:widget-setting name='displayHeight'>800</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcoi95QGlXyhtoulcMEdJtomaFAerDrj9B3K_1B5yTvY_iECuQGjR3513N6OwiAh6BFWZSewds1zoalESE2v7WBqIN-BgfRHVTlm63ndwTI0WkHoPSLWqMHEEF18Z6f3r9y5nD-q-tiibfQHtlP9ywvyXQpyS5iNbdjF2_rACq864ad6JBcu6so3af_tE/s1599/30.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>1132</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1200</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1599</b:widget-setting>
                 <b:widget-setting name='link'><![CDATA[https://api.whatsapp.com/send?phone=6287870988073&text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2030%2F60%20Rumah%20Subsidi%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service]]></b:widget-setting>
-                <b:widget-setting name='caption'>Badge: Subsidi Pemerintah
+                <b:widget-setting name='caption'><![CDATA[Badge: Subsidi Pemerintah
 Harga: Rp 185 Jt-an
 Cicilan: Cicilan Flat Mulai Rp 1,1 Jt/bln
-LB: 30 m&#178;
-LT: 60 m&#178;
+LB: 30 m²
+LT: 60 m²
 Ruang Tamu: 1 Ruang
 Kamar Tidur: 2 Kamar
 Kamar Mandi: 1 Toilet
-Carport: 1 Mobil</b:widget-setting>
+Carport: 1 Mobil]]></b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='service-card reveal' data-id='Image31'>
@@ -970,21 +970,21 @@ Carport: 1 Mobil</b:widget-setting>
             </b:widget>
             <b:widget id='Image32' locked='true' title='Type 36' type='Image' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEhkGpWfRwGxuX098WL8oo3B-Q2jr4DlHxAv58iC4nZUd41mnD_izfy-hBeKCoHWVLd26PPrtBbHaN5Br6PJ4rU5CyJmNFOh1Ud56Q36CuX7rBKgLYZ6aqUXTX90LcPCUiXFkBPRM5Oj2Eq5o6Ki6l6VFHTWMvWs-eGXGBURS-numHaK6yd8W3BgZZcpGhs=s812</b:widget-setting>
-                <b:widget-setting name='displayHeight'>800</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjBWAyQtUqlsnKgHv_PzohhETRYlHYrQlpBpIkK5LmSx_j93mQ6SyklykHZr2CarutcrOiAEY6SoQVKxqwVhiSgsiZ_SVs_s421hCEaGyalznLyW1I60GHhJYk4_YyV0pZBtFwMxM-jE7IQ570mY1WizgOQsKlISd8xVxCczEArbH5XFHWWEl8NAaUfAW4/s1599/36.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>1132</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1200</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1599</b:widget-setting>
                 <b:widget-setting name='link'><![CDATA[https://api.whatsapp.com/send?phone=6287870988073&text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2036%20Komersial%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service]]></b:widget-setting>
-                <b:widget-setting name='caption'>Badge: Komersial Minimalis
+                <b:widget-setting name='caption'><![CDATA[Badge: Komersial Minimalis
 Harga: Rp 435 Jt-an
 Cicilan: Cicilan Mulai Rp 2,2 Jt/bln
-LB: 36 m&#178;
-LT: 60 m&#178;
+LB: 36 m²
+LT: 60 m²
 Ruang Tamu: 1 Ruang
 Kamar Tidur: 2 Kamar
 Kamar Mandi: 1 Toilet
-Carport: 1 Mobil</b:widget-setting>
+Carport: 1 Mobil]]></b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='service-card reveal delay-1' data-id='Image32'>
@@ -1121,21 +1121,21 @@ Carport: 1 Mobil</b:widget-setting>
             </b:widget>
             <b:widget id='Image33' locked='true' title='Type 42' type='Image' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEi_T2ySzMuz8Rx7BU66PN9MUYsd26XqJgXxxXc1SD0Qo6q5dcWMVfrXiS3XqoaHNg1PfhUo1Ncy7UrvsytHfys5B7DJmSX0OoFs1ezWSn4ubolXaMxhxozjgwpU2EuKtQm076Ef6WVsGxmWNK7KdIIoV6unUxOsi-wH8_v2S1JsvCwPgsT1csaacwz6aqI=s1200</b:widget-setting>
-                <b:widget-setting name='displayHeight'>800</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiD8MAjCO_nl-idQEwD_7z6yFQSuUexoFMUjsISU4zJIr-5fVt4VBYZ6qFlL3yHfGigX3IQtWtPEEV0Ze7p0YvXTnHBJyvOxkgJblg08YpKhyphenhyphenoWQoi1btwSnQuld8Ny3pGrD9sjlmLvozYBaqsCKHryQBsm5abKWdOFSTgbcooTHZmkzomhZrbhJYqQvKw/s1599/42.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>1132</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1200</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1599</b:widget-setting>
                 <b:widget-setting name='link'><![CDATA[https://api.whatsapp.com/send?phone=6287870988073&text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2042%20Komersial%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service]]></b:widget-setting>
-                <b:widget-setting name='caption'>Badge: Komersial Elegan
+                <b:widget-setting name='caption'><![CDATA[Badge: Komersial Elegan
 Harga: Rp 495 Jt-an
 Cicilan: Cicilan Mulai Rp 2,6 Jt/bln
-LB: 42 m&#178;
-LT: 60 m&#178;
+LB: 42 m²
+LT: 60 m²
 Ruang Tamu: 1 Ruang
 Kamar Tidur: 2 Kamar
 Kamar Mandi: 1 Toilet
-Carport: 1 Mobil</b:widget-setting>
+Carport: 1 Mobil]]></b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='service-card reveal delay-2' data-id='Image33'>
@@ -1273,21 +1273,21 @@ Carport: 1 Mobil</b:widget-setting>
             </b:widget>
             <b:widget id='Image34' locked='true' title='Type 45' type='Image' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEgbuWiPZvdpfCPLzzSOHpLx26jpHsCz6bbnmFf58SxHxdbWHfy0T1Ab-mx1F66Plkg2m9Lnma4kzvA6HK5RZGLr0JOVG48cF6hSc19NcRC8_WHKbPIaAXDgeHo83wVK01ec4inCdWjn1BCO0CMncizsFpGVqHSMv4Hj0-BPWl-XzyE7dbwQyVfyQKWUk8A=s1018</b:widget-setting>
-                <b:widget-setting name='displayHeight'>800</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibsD3g2hQZBu72FFoy_AjCXiXvSEA0Ziyqr1VA21ze0Buk8NB0p6C8q-VsV_-AQb1GIT5mZkjKl5YSO-fDbnOsZCBuRrRHJb_UAjyLApyYKeu8op2nRXguMcUv2OdZJCl99JzHwAsZD8LHHEHvD2N5a_2RjS_dDElNLbPpdHEvQl7mbTm4uhfRD3B-Uno/s1599/4590.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>1132</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1200</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1599</b:widget-setting>
                 <b:widget-setting name='link'><![CDATA[https://api.whatsapp.com/send?phone=6287870988073&text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2045%20Komersial%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service]]></b:widget-setting>
-                <b:widget-setting name='caption'>Badge: Komersial Modern
+                <b:widget-setting name='caption'><![CDATA[Badge: Komersial Modern
 Harga: Rp 550 Jt-an
 Cicilan: Cicilan Mulai Rp 3,1 Jt/bln
-LB: 45 m&#178;
-LT: 84 m&#178;
+LB: 45 m²
+LT: 84 m²
 Ruang Tamu: 1 Ruang
 Kamar Tidur: 3 Kamar
 Kamar Mandi: 1 Toilet
-Carport: 1 Mobil</b:widget-setting>
+Carport: 1 Mobil]]></b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='service-card reveal delay-3' data-id='Image34'>
@@ -4685,13 +4685,13 @@ Tipe: komersial</b:widget-setting>
   </div>
 </b:includable>
               </b:widget>
-              <b:widget id='Image42' locked='true' title='Ibu Siti Aminah' type='Image' version='3' visible='true'>
+              <b:widget id='Image42' locked='true' title='Ibu Linda' type='Image' version='3' visible='true'>
                 <b:widget-settings>
-                  <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEh86IwbejLWRqALWMMNGzHaGGGOi3y98AjN79Hy1ihdbQoi4zCFy5kjHR5HlBVuwqS5FkKm97ML7qT-7ahoyJYYi8JfINHVe4Al9vzEoWZpjrIM-zgO87FPoDZdzHMe8wT_oFNWRvyDFcEpuNf5sxU6n-sgK78dliwCh1OggbSoze-4YxC8D8HNnSl2zWo=s200</b:widget-setting>
-                  <b:widget-setting name='displayHeight'>200</b:widget-setting>
-                  <b:widget-setting name='sectionWidth'>908</b:widget-setting>
+                  <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjXASlKRY_QCowOBZfn_ScqV1fck4oVyEeCWTiuiXNrl6l6VFDlshyu0WKVCjGiNTDXTZ09tX_z2Yh_8EnJJxND0oBnI0WPwLjPUlpbqJ9d-xvu3B-ep16mc9h_DAdQqRqDhmA3wTlPBNosYU8Uxr-YcQdv3EZyKlPSqlHnVsKKdA2p9_bmkzF9WVcSw54/s1600/Ibu%20Linda.jpeg</b:widget-setting>
+                  <b:widget-setting name='displayHeight'>1600</b:widget-setting>
+                  <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                   <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                  <b:widget-setting name='displayWidth'>200</b:widget-setting>
+                  <b:widget-setting name='displayWidth'>1600</b:widget-setting>
                   <b:widget-setting name='link'>Konsumen Pesona Kahuripan 12</b:widget-setting>
                   <b:widget-setting name='caption'>Airnya jernih, akses jalan cor beton lebar dan lingkungan tetangga sudah ramai. Sangat cocok untuk anak-anak kami tumbuh berkembang.</b:widget-setting>
                 </b:widget-settings>
@@ -4722,13 +4722,13 @@ Tipe: komersial</b:widget-setting>
   </div>
 </b:includable>
               </b:widget>
-              <b:widget id='Image43' locked='true' title='Bapak Rizal Permana' type='Image' version='3' visible='true'>
+              <b:widget id='Image43' locked='true' title='Mas Rizal Permana' type='Image' version='3' visible='true'>
                 <b:widget-settings>
-                  <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEi_T2ySzMuz8Rx7BU66PN9MUYsd26XqJgXxxXc1SD0Qo6q5dcWMVfrXiS3XqoaHNg1PfhUo1Ncy7UrvsytHfys5B7DJmSX0OoFs1ezWSn4ubolXaMxhxozjgwpU2EuKtQm076Ef6WVsGxmWNK7KdIIoV6unUxOsi-wH8_v2S1JsvCwPgsT1csaacwz6aqI=s200</b:widget-setting>
-                  <b:widget-setting name='displayHeight'>200</b:widget-setting>
-                  <b:widget-setting name='sectionWidth'>908</b:widget-setting>
+                  <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilBWBhktp7xi_t7MYtkThCGzaLmvdomCCZ7VFRp0XyFbHCDAV9nRhfUPJCY-f0V4Qygvl0fE-YSYqxTdrzzNiy4uNa8OkIYpZo8vS2HQHH2teqfJp4JTa2qb6saQ3dqBg1tx7oRXt_osGVk9i9vBAFUJNo4Pjf2K7Q5QkyeHzudHVvSm85rYhv2rRHqds/s1600/Mas%20Rizal.jpeg</b:widget-setting>
+                  <b:widget-setting name='displayHeight'>1600</b:widget-setting>
+                  <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                   <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                  <b:widget-setting name='displayWidth'>200</b:widget-setting>
+                  <b:widget-setting name='displayWidth'>1600</b:widget-setting>
                   <b:widget-setting name='link'>Konsumen Pesona Kahuripan 17</b:widget-setting>
                   <b:widget-setting name='caption'><![CDATA[Cicilannya benar-benar 1 jutaan flat, tidak terpengaruh suku bunga naik. Sangat puas dengan pelayanan ramah Mas Ro'uf!]]></b:widget-setting>
                 </b:widget-settings>
@@ -4759,13 +4759,13 @@ Tipe: komersial</b:widget-setting>
   </div>
 </b:includable>
               </b:widget>
-              <b:widget id='Image44' locked='true' title='Ibu Maya Anggraini' type='Image' version='3' visible='true'>
+              <b:widget id='Image44' locked='true' title='Mba Maya Anggraini' type='Image' version='3' visible='true'>
                 <b:widget-settings>
-                  <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEgqB2QhrvsCgDSNo4roXgoDSo7oZV9mkCZY9kHDb2I7KC3FI4SCLuyWaBXShDGHDLHLEMsHpagl_CWKf-FI37FAR6GK_0dHZwHP-oJ_n3W3WKJQznbe3MC2tsXLbXZJG_iuohb17uim3-D974PuRgXDh8sCTfppDaP7yagLsthRMrIKieG4acIPb3VAiJU=s200</b:widget-setting>
-                  <b:widget-setting name='displayHeight'>200</b:widget-setting>
-                  <b:widget-setting name='sectionWidth'>908</b:widget-setting>
+                  <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDGtc6_JAOjgFRHsaR2E9X_LKAEQWMxTzg6K25OLuAvHk52Ci_BEPwSA-bekqQckY26myeWgBlhG0X-1mJGnX4J9lKM-RMwOw-H_bPPCiXvhWb9FCKUpzSNjDJopO1txHVBMAKlX9jAIEn2mV89VVUZZJk_3cO8K6QeTMQhP8zLD1A5SdJcz4M_pUrpXc/s1600/mba%20Maya.jpeg</b:widget-setting>
+                  <b:widget-setting name='displayHeight'>1600</b:widget-setting>
+                  <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                   <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                  <b:widget-setting name='displayWidth'>200</b:widget-setting>
+                  <b:widget-setting name='displayWidth'>1600</b:widget-setting>
                   <b:widget-setting name='link'>Konsumen Pesona Kahuripan 9</b:widget-setting>
                   <b:widget-setting name='caption'><![CDATA[Akses perumahan sangat strategis dan airnya jernih. Mas Ro'uf sangat teliti mendampingi proses KPR subsidi saya dari berkas awal sampai serah terima kunci. Puas sekali!]]></b:widget-setting>
                 </b:widget-settings>
@@ -4796,13 +4796,13 @@ Tipe: komersial</b:widget-setting>
   </div>
 </b:includable>
               </b:widget>
-              <b:widget id='Image45' locked='true' title='Bapak Dedi Setiawan' type='Image' version='3' visible='true'>
+              <b:widget id='Image45' locked='true' title='Mas Andri dan Istri' type='Image' version='3' visible='true'>
                 <b:widget-settings>
-                  <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEhZyEj8rBNZDwSwvKztR4NcCRUdW_Qr7CtrOf-YGrIerT1v_ZNk2ConOczo-aDu8Bua7C5cuFU5c8wgeGNC7LY1PTZ2Sz_SW-P2iA_0_xNeiT6a1idrKbp5spP8kkZGrQMUVxcznBT7FEKvAWHH-duek28BRa5JWGu37xmTrvKoRnLGLBOOcz5iVr5m2HY=s200</b:widget-setting>
-                  <b:widget-setting name='displayHeight'>200</b:widget-setting>
-                  <b:widget-setting name='sectionWidth'>908</b:widget-setting>
+                  <b:widget-setting name='displayUrl'><![CDATA[https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhypTzrEODX45yWnOGu3m1HUt-_XCLJDrr2bQbWCmEy0cUyNk9bP5Ir7IvvXUtIMuxEFF-MJb_1IQoL0y0DSnyFCnyPF6DRAKGCqaJ3ezZVPGOdsyvtc7JhUbQgQGTuxAfEPGTaicVqeyA0BhJ_jmOvplEnkKgEDcolDwICkUy-IHjupu1TCOhRYCak3Jc/s1600/mas%20andri%20&%20istri.jpeg]]></b:widget-setting>
+                  <b:widget-setting name='displayHeight'>1600</b:widget-setting>
+                  <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                   <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                  <b:widget-setting name='displayWidth'>200</b:widget-setting>
+                  <b:widget-setting name='displayWidth'>1600</b:widget-setting>
                   <b:widget-setting name='link'>Konsumen Pesona Kahuripan 10</b:widget-setting>
                   <b:widget-setting name='caption'><![CDATA[Awalnya ragu proses KPR subsidi rumit, tapi diarahkan dan didampingi penuh oleh Mas Ro'uf sampai akad kredit lancar tanpa kendala. Bangunannya rapi dan lingkungannya asri!]]></b:widget-setting>
                 </b:widget-settings>
@@ -4835,11 +4835,11 @@ Tipe: komersial</b:widget-setting>
               </b:widget>
               <b:widget id='Image46' locked='true' title='Ibu Ratna Wahyuni' type='Image' version='3' visible='true'>
                 <b:widget-settings>
-                  <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEhkGpWfRwGxuX098WL8oo3B-Q2jr4DlHxAv58iC4nZUd41mnD_izfy-hBeKCoHWVLd26PPrtBbHaN5Br6PJ4rU5CyJmNFOh1Ud56Q36CuX7rBKgLYZ6aqUXTX90LcPCUiXFkBPRM5Oj2Eq5o6Ki6l6VFHTWMvWs-eGXGBURS-numHaK6yd8W3BgZZcpGhs=s200</b:widget-setting>
-                  <b:widget-setting name='displayHeight'>200</b:widget-setting>
-                  <b:widget-setting name='sectionWidth'>908</b:widget-setting>
+                  <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdqR-1lSpuv4b0jqI2PK8DNCCy-rUYVrM-j7YyeNX7aHz7k16TIln1iPLew-B0LjGX_h5VngDYaRkQoeQjwpTDpYi1Ljb1r8_KG_QVDt1DrdcT3F6HmyPMwCfzTbl3G9hcEdihEJo8VHh2nrjTRb4qWl39fbuHLhGBnDntvyDFQhHI5FQ0AzDN2YyfGbU/s1600/mba%20Ratna.jpeg</b:widget-setting>
+                  <b:widget-setting name='displayHeight'>1600</b:widget-setting>
+                  <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                   <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                  <b:widget-setting name='displayWidth'>200</b:widget-setting>
+                  <b:widget-setting name='displayWidth'>1600</b:widget-setting>
                   <b:widget-setting name='link'>Konsumen Pesona Kahuripan 18</b:widget-setting>
                   <b:widget-setting name='caption'><![CDATA[Lokasi perumahan sangat tenang dan bebas banjir, angsuran KPR BTN Syariah ringan sesuai budget keluarga. Terima kasih Pesona Kahuripan dan Mas Ro'uf atas pelayanan terbaiknya!]]></b:widget-setting>
                 </b:widget-settings>
@@ -5959,7 +5959,7 @@ YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
     <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js'/>
 
     <!-- Main Interactive Script (Separated) -->
-    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.4/main_script.js'/>
+    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.5/main_script.js'/>
 
     
 

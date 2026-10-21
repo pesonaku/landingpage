@@ -1,6 +1,6 @@
 /*!
  * Pesona Kahuripan - Official Landing Page Interactive Script
- * Version: 3.5.4 (Production Interactive Bundle - Unified Marketing Sync & Robust Promo Parser)
+ * Version: 3.5.5 (Production Interactive Bundle - Robust House Types & Promo Parsers)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -710,8 +710,10 @@ function initLandingPage() {
             let installment = '';
             let lb = '', lt = '', tamu = '', tidur = '', mandi = '', carport = '';
 
-            let desc = '';
-            const lines = rawText.split('\n');
+            // Normalisasi baris jika key berdempetan atau memakai tag <br>
+            let normalizedText = rawText.replace(/<br\s*[\/]?>/gi, '\n');
+            normalizedText = normalizedText.replace(/(Badge:|Harga:|Cicilan:|Angsuran:|Label:|Deskripsi:|Desc:|LB:|LT:|Bangunan:|Tanah:|Ruang Tamu:|Tamu:|Kamar Tidur:|Tidur:|Kamar:|Kamar Mandi:|Mandi:|Toilet:|Carport:|Garasi:)/gi, '\n$1');
+            const lines = normalizedText.split('\n');
             lines.forEach(function(line) {
               const trimmed = line.trim();
               if (!trimmed) return;
@@ -759,11 +761,11 @@ function initLandingPage() {
             }
             if (lb) {
               const lbEl = card.querySelector('.spec-lb strong');
-              if (lbEl) lbEl.textContent = lb;
+              if (lbEl) lbEl.innerHTML = lb.replace(/&#178;|&sup2;/g, '²');
             }
             if (lt) {
               const ltEl = card.querySelector('.spec-lt strong');
-              if (ltEl) ltEl.textContent = lt;
+              if (ltEl) ltEl.innerHTML = lt.replace(/&#178;|&sup2;/g, '²');
             }
             if (tamu) {
               const tamuEl = card.querySelector('.spec-tamu strong');
