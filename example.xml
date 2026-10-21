@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
 <!-- ==========================================================================
-  Pesona Kahuripan - Clean Modern Blogger Landing Page Template
-  Framework : Google Blogger XML Layout Version 3
-  Re-architectured : Clean, Independent, Zero-Obfuscation, High Performance
-========================================================================== --><html b:css='true' b:defaultwidgetversion='3' b:js='true' b:layoutsVersion='3' b:responsive='true' b:templateVersion='1.3.0' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+  Pesona Kahuripan - Clean Modern Landing Page Template
+  Framework : Google  XML Layout Version 3
+  Architectured : Clean, Independent, Zero-Obfuscation, High Performance
+========================================================================== -->
+<html b:css='true' b:defaultwidgetversion='3' b:js='true' b:layoutsVersion='3' b:responsive='true' b:templateVersion='1.3.0' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
   <b:attr name='xmlns' value=''/>
   <b:attr name='xmlns:b' value=''/>
   <b:attr name='xmlns:expr' value=''/>
@@ -21,14 +22,14 @@
     <link href='//blogger.googleusercontent.com' rel='dns-prefetch'/>
     <link href='//cdn.jsdelivr.net' rel='dns-prefetch'/>
 
-    <!-- Meta Title &amp; Canonical -->
+    <!-- Meta Title Canonical -->
     <title><data:view.title.escaped/></title>
     <meta expr:content='data:view.description.escaped' name='description'/>
     <link expr:href='data:view.url.canonical' rel='canonical'/>
     <link expr:href='data:blog.blogspotFaviconUrl' rel='icon' type='image/x-icon'/>
     <meta content='#0f9d58' name='theme-color'/>
 
-    <!-- Open Graph &amp; Social Sharing -->
+    <!-- Open Graph Social Sharing -->
     <meta expr:content='data:blog.localeUnderscoreDelimited' property='og:locale'/>
     <b:if cond='data:view.isHomepage'>
       <meta content='website' property='og:type'/>
@@ -64,7 +65,7 @@
     <link href='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css' rel='stylesheet'/>
 
     <!-- ======================================================================
-         CSS SKIN &amp; DESIGN SYSTEM
+         CSS SKIN & DESIGN SYSTEM
     ====================================================================== -->
         <!-- Hugeicons Stroke-Rounded (Official Webfont) -->
     <link href='https://use.hugeicons.com/font/icons.css' rel='stylesheet'/>
@@ -133,7 +134,7 @@ body#layout .section {
 ]]></b:skin>
     
     <!-- ======================================================================
-         TATA LETAK LAYOUT EDITOR BLOGGER (PENGATUR WIDGET DASBOR)
+         TATA LETAK LAYOUT EDITOR 
     ====================================================================== -->
     <b:template-skin><![CDATA[
 /* ======================================================================
@@ -356,7 +357,7 @@ body#layout:after {
   <body expr:class='data:view.isHomepage ? &quot;homepage&quot; : &quot;is-single-page&quot;' id='top' itemscope='' itemtype='https://schema.org/WebPage'>
 
     <!-- ======================================================================
-         1. HEADER &amp; NAVIGASI RESMI
+         1. HEADER NAVIGASI RESMI
     ====================================================================== -->
     <header id='header'>
       <div class='wrapper'>
@@ -522,7 +523,7 @@ body#layout:after {
         </b:section>
       </section>
 
-      <!-- ================= PROMO &amp; INFORMASI TERBARU ================= -->
+      <!-- ================= PROMO & INFORMASI TERBARU ================= -->
       <section id='promo'>
         <div class='wrapper'>
           <b:section class='promo-section' id='promo-section' name='[03. PROMO] Informasi Terbaru &amp; Penawaran Spesial' showaddelement='false' version='3'>
@@ -825,15 +826,15 @@ Tombol: Klaim Promo Spesial]]></b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
                 <b:widget-setting name='displayWidth'>1599</b:widget-setting>
                 <b:widget-setting name='link'><![CDATA[https://api.whatsapp.com/send?phone=6287870988073&text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2030%2F60%20Rumah%20Subsidi%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service]]></b:widget-setting>
-                <b:widget-setting name='caption'><![CDATA[Badge: Subsidi Pemerintah
+                <b:widget-setting name='caption'>Badge: Subsidi Pemerintah
 Harga: Rp 185 Jt-an
 Cicilan: Cicilan Flat Mulai Rp 1,1 Jt/bln
-LB: 30 m²
-LT: 60 m²
+LB: 30 m&#178;
+LT: 60 m&#178;
 Ruang Tamu: 1 Ruang
 Kamar Tidur: 2 Kamar
 Kamar Mandi: 1 Toilet
-Carport: 1 Mobil]]></b:widget-setting>
+Carport: 1 Mobil</b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='service-card reveal' data-id='Image31'>
@@ -968,7 +969,7 @@ Carport: 1 Mobil]]></b:widget-setting>
   </div>
 </b:includable>
             </b:widget>
-            <b:widget id='Image32' locked='true' title='Type 36' type='Image' version='3' visible='true'>
+            <b:widget id='Image32' locked='true' title='Type 36/66' type='Image' version='3' visible='true'>
               <b:widget-settings>
                 <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjBWAyQtUqlsnKgHv_PzohhETRYlHYrQlpBpIkK5LmSx_j93mQ6SyklykHZr2CarutcrOiAEY6SoQVKxqwVhiSgsiZ_SVs_s421hCEaGyalznLyW1I60GHhJYk4_YyV0pZBtFwMxM-jE7IQ570mY1WizgOQsKlISd8xVxCczEArbH5XFHWWEl8NAaUfAW4/s1599/36.jpeg</b:widget-setting>
                 <b:widget-setting name='displayHeight'>1132</b:widget-setting>
@@ -976,15 +977,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
                 <b:widget-setting name='displayWidth'>1599</b:widget-setting>
                 <b:widget-setting name='link'><![CDATA[https://api.whatsapp.com/send?phone=6287870988073&text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2036%20Komersial%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service]]></b:widget-setting>
-                <b:widget-setting name='caption'><![CDATA[Badge: Komersial Minimalis
-Harga: Rp 435 Jt-an
-Cicilan: Cicilan Mulai Rp 2,2 Jt/bln
-LB: 36 m²
-LT: 60 m²
-Ruang Tamu: 1 Ruang
-Kamar Tidur: 2 Kamar
-Kamar Mandi: 1 Toilet
-Carport: 1 Mobil]]></b:widget-setting>
+                <b:widget-setting name='caption'>Badge: Komersial MinimalisHarga: Rp 435 Jt-anCicilan: Cicilan Mulai Rp 2,2 Jt/blnLB: 36 m&#178;LT: 66 m&#178;Ruang Tamu: 1 RuangKamar Tidur: 2 KamarKamar Mandi: 1 ToiletCarport: 1 Mobil</b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='service-card reveal delay-1' data-id='Image32'>
@@ -1119,7 +1112,7 @@ Carport: 1 Mobil]]></b:widget-setting>
   </div>
 </b:includable>
             </b:widget>
-            <b:widget id='Image33' locked='true' title='Type 42' type='Image' version='3' visible='true'>
+            <b:widget id='Image33' locked='true' title='Type 42/90' type='Image' version='3' visible='true'>
               <b:widget-settings>
                 <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiD8MAjCO_nl-idQEwD_7z6yFQSuUexoFMUjsISU4zJIr-5fVt4VBYZ6qFlL3yHfGigX3IQtWtPEEV0Ze7p0YvXTnHBJyvOxkgJblg08YpKhyphenhyphenoWQoi1btwSnQuld8Ny3pGrD9sjlmLvozYBaqsCKHryQBsm5abKWdOFSTgbcooTHZmkzomhZrbhJYqQvKw/s1599/42.jpeg</b:widget-setting>
                 <b:widget-setting name='displayHeight'>1132</b:widget-setting>
@@ -1127,15 +1120,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
                 <b:widget-setting name='displayWidth'>1599</b:widget-setting>
                 <b:widget-setting name='link'><![CDATA[https://api.whatsapp.com/send?phone=6287870988073&text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2042%20Komersial%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service]]></b:widget-setting>
-                <b:widget-setting name='caption'><![CDATA[Badge: Komersial Elegan
-Harga: Rp 495 Jt-an
-Cicilan: Cicilan Mulai Rp 2,6 Jt/bln
-LB: 42 m²
-LT: 60 m²
-Ruang Tamu: 1 Ruang
-Kamar Tidur: 2 Kamar
-Kamar Mandi: 1 Toilet
-Carport: 1 Mobil]]></b:widget-setting>
+                <b:widget-setting name='caption'>Badge: Komersial EleganHarga: Tanya HargaCicilan: Cicilan Mulai -LB: 42 m&#178;LT: 90 m&#178;Ruang Tamu: 1 RuangKamar Tidur: 2 KamarKamar Mandi: 1 ToiletCarport: 1 Mobil</b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='service-card reveal delay-2' data-id='Image33'>
@@ -1271,7 +1256,7 @@ Carport: 1 Mobil]]></b:widget-setting>
   </div>
 </b:includable>
             </b:widget>
-            <b:widget id='Image34' locked='true' title='Type 45' type='Image' version='3' visible='true'>
+            <b:widget id='Image34' locked='true' title='Type 45/90' type='Image' version='3' visible='true'>
               <b:widget-settings>
                 <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibsD3g2hQZBu72FFoy_AjCXiXvSEA0Ziyqr1VA21ze0Buk8NB0p6C8q-VsV_-AQb1GIT5mZkjKl5YSO-fDbnOsZCBuRrRHJb_UAjyLApyYKeu8op2nRXguMcUv2OdZJCl99JzHwAsZD8LHHEHvD2N5a_2RjS_dDElNLbPpdHEvQl7mbTm4uhfRD3B-Uno/s1599/4590.jpeg</b:widget-setting>
                 <b:widget-setting name='displayHeight'>1132</b:widget-setting>
@@ -1279,15 +1264,7 @@ Carport: 1 Mobil]]></b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
                 <b:widget-setting name='displayWidth'>1599</b:widget-setting>
                 <b:widget-setting name='link'><![CDATA[https://api.whatsapp.com/send?phone=6287870988073&text=Halo%20Mas%20Ro%27uf%2C%20saya%20tertarik%20konsultasi%20Unit%20Type%2045%20Komersial%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23service]]></b:widget-setting>
-                <b:widget-setting name='caption'><![CDATA[Badge: Komersial Modern
-Harga: Rp 550 Jt-an
-Cicilan: Cicilan Mulai Rp 3,1 Jt/bln
-LB: 45 m²
-LT: 84 m²
-Ruang Tamu: 1 Ruang
-Kamar Tidur: 3 Kamar
-Kamar Mandi: 1 Toilet
-Carport: 1 Mobil]]></b:widget-setting>
+                <b:widget-setting name='caption'>Badge: Komersial ModernHarga: Tanya HargaCicilan: Cicilan Mulai -LB: 45 m&#178;LT: 90 m&#178;Ruang Tamu: 1 RuangKamar Tidur: 2 KamarKamar Mandi: 1 ToiletCarport: 1 Mobil</b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='service-card reveal delay-3' data-id='Image34'>
@@ -3371,15 +3348,15 @@ Carport: 1 Mobil]]></b:widget-setting>
             <p>Momen akad massal bersama ribuan debitur, pejabat kementerian, dan progres pembangunan kawasan.</p>
           </div>
           <b:section class='gallery-section is-collapsed' id='gallery-section' name='[06. GALERI] Dokumentasi Acara &amp; Akad Massal' showaddelement='true' version='3'>
-            <b:widget id='Image61' locked='false' title='Akad KPR Massal 324 Unit' type='Image' version='3' visible='true'>
+            <b:widget id='Image61' locked='false' title='Kunjungan Pak Prabowo Subianto' type='Image' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCy-ufFNBMfbacy2nLhvF-5k3zggivAZi_qCCHU8hKraoLtChYWOxNCCenvCKCZeVIiqqn8oXTuJFz9eXYrczUeOH9OPNAns5eq1B7eJ90nH76NkVTUsHSb-Y6pFSTq2rJxDNdhhF7HvYdQjhLjCHsTDtoHerahVBwKM2zUr635ep3RKKed7BjV9pqEhk/s1000/prabowo1.jpeg</b:widget-setting>
-                <b:widget-setting name='displayHeight'>600</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEieSUZ342qbKFsv930fI4S4jbO7fzEJisB_RuzoSkELGKVvLbvVyW2TWQ8W67ltSUrd-bYalDrTtEvukzBK40q2pgrjASasREP9_WS-ftz4y2K-gNSmIfi7v-0H5bdqCyq2ohVStdzNTG6T24bAL6kkmXN7O7hRpZ9JHo-4X1j7OKq5_3l7nJWRiejU3HI/s629/prabowo1.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>354</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1000</b:widget-setting>
+                <b:widget-setting name='displayWidth'>629</b:widget-setting>
                 <b:widget-setting name='link'>#gallery</b:widget-setting>
-                <b:widget-setting name='caption'>Disaksikan langsung oleh jajaran kementerian dan pejabat pemerintah.</b:widget-setting>
+                <b:widget-setting name='caption'/>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='gallery-item reveal'>
@@ -3407,15 +3384,15 @@ Carport: 1 Mobil]]></b:widget-setting>
   </div>
 </b:includable>
             </b:widget>
-            <b:widget id='Image62' locked='false' title='Penyerahan Kunci Rumah' type='Image' version='3' visible='true'>
+            <b:widget id='Image62' locked='false' title='Kunjungan RI 1 Ke Pesona Kahuripan' type='Image' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXEHUCe2ocMw0CiXx-fe6b__Xb7e-M8-_DbjhcWhGnNhbLrtxze8TcAUh3p26A__EDXQUoPl46yvYrDZx_eVh_rk2FaK7qJj4_t2OaBBoHKtb02RJgTqN2zBfKR5KUSoe33gYgXyFB9LioxI1Fzoecb2SvRmY3qcJN8SCN2rd1zHMpwzXoacGgBgxCUjo/s1000/prabowo2.jpeg</b:widget-setting>
-                <b:widget-setting name='displayHeight'>600</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUe5ikk4WoCWeOTIyci_1q9C7N_3ZwgGvN2-iEc2yudiPZo13X0tKqTRmLMtOlJ4u_Le6JbRn-DMJ8Kua_UN_S25WOmtZ6xg5pxyMAxjiWjS8uJxgkm8Gdb8QkyE9u5VeLXgXxFO-9CysIaH6YQ2ZHGWzKSkBqF2-B4Kvy1C3HEaiIsff5oQHql3Q7JEg/s633/prabowo22.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>356</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1000</b:widget-setting>
+                <b:widget-setting name='displayWidth'>633</b:widget-setting>
                 <b:widget-setting name='link'>#gallery</b:widget-setting>
-                <b:widget-setting name='caption'>Momen bahagia debitur menerima kunci hunian resmi Pesona Kahuripan.</b:widget-setting>
+                <b:widget-setting name='caption'/>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='gallery-item reveal delay-1'>
@@ -3443,15 +3420,15 @@ Carport: 1 Mobil]]></b:widget-setting>
   </div>
 </b:includable>
             </b:widget>
-            <b:widget id='Image63' locked='false' title='Pembangunan Berkelanjutan' type='Image' version='3' visible='true'>
+            <b:widget id='Image63' locked='false' title='Sapaan Kepada Masyarakat dari RI1' type='Image' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZ9B6ywxpmXhhVpQm9toSIwfHAnyId1AsAFFEO2Ea4uXSZ65bu49LEmyPKoCtkemlnijuVU3Fu1-im0wt6Mp2UWUbq2BWpnN5XEfoSkdW0erTBv_3evjk7fBCVTIXaTUDfalsGmabcj1_wHdFIYHjdWdigReKbj8hpb4r6A9nlbC7J5VDciNGG6ZLz3zA/s1000/prabowo3.jpeg</b:widget-setting>
-                <b:widget-setting name='displayHeight'>600</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi-atge4Ll2MXvemRZh0oS-IqKQuJ7JN4z-LSEGrH7ck3RqLnAp2beGR7Lex1vg_Xo9FsbyVDuqiVwQCagNx9vPYMqwYpMknYxNsCdg1wnMuYZ-Y9B5YHDJkNSPq68dJc0PPJ6FcEEFvIO63ODxWtYN94g65PvQpU2ceaRh1XnerK2jM3LknWJV83A2Q74/s628/prabowo3.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>353</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1000</b:widget-setting>
+                <b:widget-setting name='displayWidth'>628</b:widget-setting>
                 <b:widget-setting name='link'>#gallery</b:widget-setting>
-                <b:widget-setting name='caption'>Konstruksi kokoh dengan standar mutu material double dinding terbaik.</b:widget-setting>
+                <b:widget-setting name='caption'/>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='gallery-item reveal delay-2'>
@@ -3479,15 +3456,15 @@ Carport: 1 Mobil]]></b:widget-setting>
   </div>
 </b:includable>
             </b:widget>
-            <b:widget id='Image64' locked='false' title='Peninjauan Mutu Bangunan' type='Image' version='3' visible='true'>
+            <b:widget id='Image64' locked='false' title='Sambutan RI1' type='Image' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUg6aTu1HxSeTl-v8OpG95WuUHj73j3CO_D6i2mAJMn8OVuvV25YPhybA83zkNNZz7-ILibxcFt2BpAG4DzxqgCwF3Fo8hgcQUM9CFU9L44rhVo1X11Wx5R70QxHbFByp6UVDovn_Bl3EGPusgqplWqcMbthBrbPUOR2rbo1nRVsP5Udqc96pFEi2WNK0/s1000/prabowo5.jpeg</b:widget-setting>
-                <b:widget-setting name='displayHeight'>600</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjqyf9JraDLuBaoOPHpcgrB79Br4WGujGBmAxMfUFzv24DhrJfk-8cI3KNZOwXDosJeqIaOzpVx_OR7GSAzfm150Pjht13_pytq-s-gJR4XR8B-m1th7bna3O_iJxcRIRv7vy_A27o_sl8DdWj6Mj37I8i7it-VR-lBLXFofOHSPYhq6yb-pysN5oq7z70/s631/prabowo55.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>355</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1000</b:widget-setting>
+                <b:widget-setting name='displayWidth'>631</b:widget-setting>
                 <b:widget-setting name='link'>#gallery</b:widget-setting>
-                <b:widget-setting name='caption'>Pengawasan berkala memastikan rumah siap huni tepat waktu.</b:widget-setting>
+                <b:widget-setting name='caption'/>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='gallery-item reveal'>
@@ -3515,15 +3492,15 @@ Carport: 1 Mobil]]></b:widget-setting>
   </div>
 </b:includable>
             </b:widget>
-            <b:widget id='Image65' locked='false' title='Antusiasme Ribuan Warga' type='Image' version='3' visible='true'>
+            <b:widget id='Image65' locked='false' title='Tinjauan Rumah Pesona Kahuripan' type='Image' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhDTGgl3eUQ0m9JaaPdjuR3mK2O9U5Y_tFzBo1SwiAdQJoY6zxdzQLuzzKuyy7l2ETAatDStIB6skGabltJlW8g7b5rLQm4m3i6AIIb1HVzzEcaXS5t9Xg4BzkoGiyd6kpfmgRhb4Iaxbe3yDlUA_D7ObuNxtS4umuUSmxMwfZWL8j31jvjl8VkByAZldU/s1000/prabowo7.jpeg</b:widget-setting>
-                <b:widget-setting name='displayHeight'>600</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNFFepZMq40CY58WpJnP8xOAeatxCm9NERksKPBu4V_fgJJ6_-DRTiRHTOS8MM9hUNAVmT2i8LxV_HoMeSENTaI4Fb2rEkaTTdeSAJZ9vj0bgkC-Jt_tRkFz0C8aGuTZ8_JENnLcve_ZGT4-CRk50Oy5UNomr3-N0agRlrG2LzFQaUxWq1JmV-R2zB5lo/s632/prabowo33.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>356</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1000</b:widget-setting>
+                <b:widget-setting name='displayWidth'>632</b:widget-setting>
                 <b:widget-setting name='link'>#gallery</b:widget-setting>
-                <b:widget-setting name='caption'>Tingginya minat masyarakat pada hunian bersubsidi berkualitas.</b:widget-setting>
+                <b:widget-setting name='caption'/>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='gallery-item reveal delay-1'>
@@ -3553,13 +3530,13 @@ Carport: 1 Mobil]]></b:widget-setting>
             </b:widget>
             <b:widget id='Image66' locked='false' title='Serah Terima Simbolis' type='Image' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgklh4j_sTGmgbNQWmzxjPk1i0oQcBGFdcmV6bOYGK-ievVTE0I1yFbpgUbt4pu81LvGdETbcoYIqaMZsP6j0HcdJ_nNoNt6lbUEXGe8_uxYCrMEM546hN5-VOAN4AahUzCQkRYgZaQtn9BkeJWygXzrK8nQL-OW_5jgDCQpksm1jaJC9qOCL_OhWTTodM/s1000/prabowo8.jpeg</b:widget-setting>
-                <b:widget-setting name='displayHeight'>600</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgXcYvA7bWMAYi4N8-zBGVqpAEi1vk3mwILAMi87sqk4D_lrIpq1OSJ0OCO_cR1EamH7K_1iZwy4WjOsHZVzzCQZJ6yGu1Q-5i90AoB_gz8O4HAcRaXLyTsjELlHN1r2kZEO0IP2317GMg-7L20CjpZ0dm8_BLFbcn5bSGk5l_lAb19DqbMKzc6J-3P3MQ/s631/prabowo77.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>355</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1000</b:widget-setting>
+                <b:widget-setting name='displayWidth'>631</b:widget-setting>
                 <b:widget-setting name='link'>#gallery</b:widget-setting>
-                <b:widget-setting name='caption'>Penghargaan atas komitmen membangun kawasan perumahan terpercaya.</b:widget-setting>
+                <b:widget-setting name='caption'/>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='gallery-item reveal delay-2'>
@@ -3587,15 +3564,15 @@ Carport: 1 Mobil]]></b:widget-setting>
   </div>
 </b:includable>
             </b:widget>
-            <b:widget id='Image67' locked='false' title='Gerbang Utama &amp;amp; ROW Jalan Lebar' type='Image' version='3' visible='true'>
+            <b:widget id='Image70' locked='false' title='Penghargaan Pesona Kahuripan' type='Image' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEiBJzxa8orMGHiuVakTmRSTAHG1d0k-zZPMojZyVFac5q-z3KMiuqwU7kuEuJ-sdvW40UqFrSuEuGCOJirO_bhD-xyHh3dpZEwrLT0xapr5-o0xwKJklveX4HOviRi9SyevTI9XoZHrKnyXePjRzI4pIN6o07sY3HXqOHwtlvWGBplleGz0Ry0fc31tzGA=s1080</b:widget-setting>
-                <b:widget-setting name='displayHeight'>600</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEii_iXbX0eob9BPXbt2sO2KudXD-NjQ9ayOjaiLDs0nTMzGlRfBSvXovvFg2oK-Hnn5d505zgQLiRz5jIHm2Ab2YVaCvVXYwb3-QxyovN9hPq2FVcUyGi7BVtTjxqp4LgMbaaXTV5ocl1PpebyfiTl2qo06KubKRKjn0ah2g7fLZKZZ_O3W54XZWbHX0_8/s720/Award%20Ceremony.webp</b:widget-setting>
+                <b:widget-setting name='displayHeight'>405</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1000</b:widget-setting>
+                <b:widget-setting name='displayWidth'>720</b:widget-setting>
                 <b:widget-setting name='link'>#gallery</b:widget-setting>
-                <b:widget-setting name='caption'>Akses jalan utama cor beton lebar memudahkan mobilitas penghuni setiap hari.</b:widget-setting>
+                <b:widget-setting name='caption'/>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='gallery-item reveal'>
@@ -3623,15 +3600,15 @@ Carport: 1 Mobil]]></b:widget-setting>
   </div>
 </b:includable>
             </b:widget>
-            <b:widget id='Image68' locked='false' title='Lingkungan Asri &amp;amp; Siap Huni' type='Image' version='3' visible='true'>
+            <b:widget id='Image71' locked='false' title='Penghargaan IPBA Award' type='Image' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEimBIBT9A4vSu4f10elvZAasZwcVj4vP7xmQoO3WzEiBzZ65decFIw1WupXOrGEyLUmOisy3MX93KwqN3aZojjUoKnbjK3uKIWrESgbvloJ8HZz8K-fPioM-m_sRPITF22f2bBoneMKlR9MFUP_IWvk8G5agCjVKOc4BOM9LWDJQw3WEYaML9vP5fZz52s=s1600</b:widget-setting>
-                <b:widget-setting name='displayHeight'>600</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGvKQM_fx8hUtuesouMHoCthAXYNvn6QZjask5bRLFDzAfY7R937yPXo5zDv3-zLm9m3fENj3b6ihMlpHCPZ8WL47cxa_ELKTVwPxgPNKpl_CiZG_sIhGHJJmNfQ2xBIe-qw3XrTSukf2T7IQjmtb8hKJwT2YdXaD0UZ0ybX0jRXx-B-JJIET0NplxiC8/s599/ipba-award-2025.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>512</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1000</b:widget-setting>
+                <b:widget-setting name='displayWidth'>599</b:widget-setting>
                 <b:widget-setting name='link'>#gallery</b:widget-setting>
-                <b:widget-setting name='caption'>Kawasan tertata rapi, asri, dengan sistem drainase modern dan bebas banjir.</b:widget-setting>
+                <b:widget-setting name='caption'/>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='gallery-item reveal delay-1'>
@@ -3659,15 +3636,15 @@ Carport: 1 Mobil]]></b:widget-setting>
   </div>
 </b:includable>
             </b:widget>
-            <b:widget id='Image69' locked='false' title='Sarana Ibadah Masjid Kawasan' type='Image' version='3' visible='true'>
+            <b:widget id='Image72' locked='false' title='Meeting Group Pesona Kahuripan' type='Image' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEiqlA-RN00ExcU9M5l-zfR9MvUYUCudhVDpZwX5v0gLuANjB_Slrl4i1ixzl8voTARJXh7TGOb2PidL0qYTqkuMU3ghYwMlsr4E1o9NQV9M32Nu9PixotpY3rEs1SPSKTZRE-dR2_ZRqSuuUUgbgGVFgkCuWqyYB35AmdFV3Ml_Qp2-0_GPCkDVYGGoCRc=s1600</b:widget-setting>
-                <b:widget-setting name='displayHeight'>600</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiY38Ava1eVdekZIuYB1YiRMpO0sluUVPoT7DDgs3UlTeY8yI6yvdIu6tgqdHScbUDISak7LKNxofmDx5TET9o3yKQy1JyzYZWpd09c7H_5OtL_ck-Qd_Xc0loZypXUYHrtH_8B5MMZVRtaBTQ8efPrlUY8ISDQC5WCrmWVi5YWM_Fu52aQQzS09jtMqDI/s1320/rapat-tim-22.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>1320</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1000</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1056</b:widget-setting>
                 <b:widget-setting name='link'>#gallery</b:widget-setting>
-                <b:widget-setting name='caption'>Fasilitas masjid megah di dalam kawasan perumahan untuk kenyamanan ibadah warga.</b:widget-setting>
+                <b:widget-setting name='caption'/>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='gallery-item reveal delay-2'>
@@ -3695,15 +3672,51 @@ Carport: 1 Mobil]]></b:widget-setting>
   </div>
 </b:includable>
             </b:widget>
-            <b:widget id='Image70' locked='false' title='Keamanan Terpadu 24 Jam' type='Image' version='3' visible='true'>
+            <b:widget id='Image69' locked='false' title='Akad Unit Komersil' type='Image' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEixRPiyuYkiZ7eR4Nu2wyZKE0rdbpdtsdR74O1_BUKG-xTG6m353qVOtnKdEKvNVw7GmwiaMbKk39p72kbMGBiF0DcqKEW1aNR7euFZ-92n8LSioabV5UdU_fVjDFaKOSLgZMqDWafHGWVw4SsK1g-V5BCyMxCbRa9k8MRudgLwJ1tIKP1OCCsi_fuLAYo=s1600</b:widget-setting>
-                <b:widget-setting name='displayHeight'>600</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhItTkZZ-pE53c_1Hi4DvnGCNUEoI7Rb6IOzSarYrXa97kTdkKJvPAH7xT0G7M2t97gdcewzWdozSQwF4B7eCs4tbuTfLy85Yur1FyRlNrpI2T1y7QXSzGj1YPWkM1y74y1VXyXrfwSafcR1FOd62tZs91nhcRGTKqZf59LKOdKlvYrmIiy4GiMHCHiXi0/s1200/konsultasi-konsumen-1.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>960</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1000</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1200</b:widget-setting>
                 <b:widget-setting name='link'>#gallery</b:widget-setting>
-                <b:widget-setting name='caption'>Sistem satu pintu (one gate system) dan pos sekuriti 24 jam menjaga privasi keluarga.</b:widget-setting>
+                <b:widget-setting name='caption'/>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='gallery-item reveal delay-2'>
+                  <a data-fancybox='proyek-album' expr:data-caption='data:title + &quot; - &quot; + data:caption' expr:href='data:sourceUrl ?: data:displayUrl'>
+                    <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
+                    <div class='gallery-overlay'>
+                      <h4><data:title/></h4>
+                      <p><data:caption/></p>
+                    </div>
+                    <div class='gallery-zoom-icon'><i class='hgi-stroke hgi-search-01'/></div>
+                  </a>
+                </div>
+              </b:includable>
+              <b:includable id='content'>
+  <div class='widget-content'>
+    <b:tag cond='data:link' expr:href='data:link' name='a'>
+      <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_img&quot;' expr:src='data:sourceUrl' expr:width='data:width'>
+        <b:attr cond='data:sourceSet' expr:value='data:sourceSet' name='srcset'/>
+      </img>
+    </b:tag>
+    <br/>
+    <b:if cond='data:caption'>
+      <span class='caption'><data:caption/></span>
+    </b:if>
+  </div>
+</b:includable>
+            </b:widget>
+            <b:widget id='Image67' locked='false' title='Akad Massal Pesona Kahuripan 14' type='Image' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhu-bsX-uuNN9yVrZXRcc4EFmDEQXUYcQ_DL2_qI76C_NO_gIOznIy-hJE96rTlhuAG1aPje76dvm9kVcPrZPOyUMdqt927zTitV8ApqDc-icB2HcK9pPCkClrvHzqPvtdxm7sBtF6sZe9WqqPXSUJipui3KWYzehDOQpZ3hhz_mqqqIQY2tFsebuyaQBs/s1325/kegiatan-akad-22.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>1325</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1060</b:widget-setting>
+                <b:widget-setting name='link'>#gallery</b:widget-setting>
+                <b:widget-setting name='caption'/>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='gallery-item reveal'>
@@ -3731,54 +3744,18 @@ Carport: 1 Mobil]]></b:widget-setting>
   </div>
 </b:includable>
             </b:widget>
-            <b:widget id='Image71' locked='false' title='Fasilitas Ruang Terbuka Hijau' type='Image' version='3' visible='true'>
+            <b:widget id='Image68' locked='false' title='Akad Masal Pesona Kahuripan 14' type='Image' version='3' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEji8kvslGOMo4uERbqUfjLP2dZNzBTZW7qkA8BR9y_Z_UOfwnzGGNJWS4RIzns-5V12HBuV4Ht3d4Mp8SnwIKPiRSwSvyU9_LqXBlHilFwsRgHXBq6gI6QZElxesxmCd8qTJZhToNhjCw3xkNsQR2qzcO38HRXvEhdkRbi4NDeE-Q8J6yqFZNgWEMFRnb4=s1600</b:widget-setting>
-                <b:widget-setting name='displayHeight'>600</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgXs0fTAfpMcU57FoIt94z1JBK9M-1FPVQGqPNRi_gpQsCjGTGg32TH6LHUktJlVOWXFVe3w2sMxKQjUXm2A3U2s6CKKFxLUR-_k2Fk9Nuakp9yPjabHlZcXojTbDWGkIH8ygKNEYitdAWRCHHRgFjUm4M71tFZtgL9RiHkcClIOwCxLAODXjPuf_h0q34/s1315/kegiatan-akad-44.jpeg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>1315</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>150</b:widget-setting>
                 <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1000</b:widget-setting>
+                <b:widget-setting name='displayWidth'>1052</b:widget-setting>
                 <b:widget-setting name='link'>#gallery</b:widget-setting>
-                <b:widget-setting name='caption'>Ruang terbuka hijau dan area interaksi sosial yang ramah anak dan keluarga.</b:widget-setting>
+                <b:widget-setting name='caption'/>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='gallery-item reveal delay-1'>
-                  <a data-fancybox='proyek-album' expr:data-caption='data:title + &quot; - &quot; + data:caption' expr:href='data:sourceUrl ?: data:displayUrl'>
-                    <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
-                    <div class='gallery-overlay'>
-                      <h4><data:title/></h4>
-                      <p><data:caption/></p>
-                    </div>
-                    <div class='gallery-zoom-icon'><i class='hgi-stroke hgi-search-01'/></div>
-                  </a>
-                </div>
-              </b:includable>
-              <b:includable id='content'>
-  <div class='widget-content'>
-    <b:tag cond='data:link' expr:href='data:link' name='a'>
-      <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_img&quot;' expr:src='data:sourceUrl' expr:width='data:width'>
-        <b:attr cond='data:sourceSet' expr:value='data:sourceSet' name='srcset'/>
-      </img>
-    </b:tag>
-    <br/>
-    <b:if cond='data:caption'>
-      <span class='caption'><data:caption/></span>
-    </b:if>
-  </div>
-</b:includable>
-            </b:widget>
-            <b:widget id='Image72' locked='false' title='Masterplan Terpadu Pesona Kahuripan' type='Image' version='3' visible='true'>
-              <b:widget-settings>
-                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEjAiWMl-izhTXDQEvXwhDzb_7ucxmDCY2Ppnecuft9G9JTuBKoeiC5gwvQrS-vWVbdpnMXfK6g9WR296FvxmwHr9jwm4COLLz8FiGKdKyA3IOkilBW9IFGlJF7cJSTwiD6a394z97ur98oXrHBRuqRhtoPBYhSKFZHfHLVGXoIdJwl50_e4rF2SfzzwCGI=s1358</b:widget-setting>
-                <b:widget-setting name='displayHeight'>600</b:widget-setting>
-                <b:widget-setting name='sectionWidth'>968</b:widget-setting>
-                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                <b:widget-setting name='displayWidth'>1000</b:widget-setting>
-                <b:widget-setting name='link'>#gallery</b:widget-setting>
-                <b:widget-setting name='caption'>Pengembangan kawasan hunian terintegrasi dengan aksesibilitas prima di Bogor.</b:widget-setting>
-              </b:widget-settings>
-              <b:includable id='main'>
-                <div class='gallery-item reveal delay-2'>
                   <a data-fancybox='proyek-album' expr:data-caption='data:title + &quot; - &quot; + data:caption' expr:href='data:sourceUrl ?: data:displayUrl'>
                     <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
                     <div class='gallery-overlay'>
@@ -4997,11 +4974,11 @@ Tipe: komersial</b:widget-setting>
                       <ul class='marketing-perks'>
                         <li>
                           <i class='hgi-stroke hgi-checkmark-circle-01'/>
-                          <span>Konsultasi &amp; Pengecekan Berkas KPR 100% Gratis</span>
+                          <span>Konsultasi &amp; Pengecekan Berkas KPR</span>
                         </li>
                         <li>
                           <i class='hgi-stroke hgi-checkmark-circle-01'/>
-                          <span>Dukungan Penuh Simulasi Angsuran Flat Bank BTN &amp; BSI</span>
+                          <span>Dukungan Penuh Simulasi Angsuran Flat Bank BTN &amp; BSN</span>
                         </li>
                         <li>
                           <i class='hgi-stroke hgi-checkmark-circle-01'/>
@@ -5794,9 +5771,9 @@ Tipe: komersial</b:widget-setting>
           <b:widget id='Text91' locked='true' title='Hak Cipta &amp;amp; Sosial Media' type='Text' version='3' visible='true'>
             <b:widget-settings>
               <b:widget-setting name='content'><![CDATA[Copyright: &#169; 2025 Pesona Kahuripan Group. Seluruh Hak Cipta Dilindungi.
-Instagram: https://www.instagram.com/pesonakahuripan.tigor
-TikTok: https://www.tiktok.com/@tigorpesonakahuripan
-YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
+Instagram: https://www.instagram.com/
+TikTok: https://www.tiktok.com/
+YouTube: https://www.youtube.com/@pesonakahuripan18]]></b:widget-setting>
             </b:widget-settings>
             <b:includable id='main'>
               <div class='footer-wrap'>
@@ -5821,6 +5798,10 @@ YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
                     <i class='hgi-stroke hgi-news'/>
                     <span>Blog</span>
                   </a>
+                  <button class='footer-stats-btn' id='btnOpenStatsDashboard' title='Monitoring &amp; Analisa CTA Konsumen' type='button'>
+                    <i class='hgi-stroke hgi-chart-line-data-02'/>
+                    <span>Statistik CTA</span>
+                  </button>
                 </div>
               </div>
             </b:includable>
@@ -5952,14 +5933,11 @@ YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
     <!-- ======================================================================
          5. NATIVE JAVASCRIPT MANDIRI (LOADED VIA GITHUB CDN)
     ====================================================================== -->
-        <!-- ======================================================================
-         5. NATIVE JAVASCRIPT MANDIRI &amp; ANIMATION ENGINE (EMBEDDED PRODUCTION)
-    ====================================================================== -->
     <!-- Fancybox v5 UI (Lightbox) -->
     <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js'/>
 
     <!-- Main Interactive Script (Separated) -->
-    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.6/main_script.js'/>
+    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.7/main_script.js'/>
 
     
 
