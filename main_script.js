@@ -1816,6 +1816,26 @@ function initFancyboxUI() {
 // ======================================================================
 function initCtaAnalyticsTracker() {
   const STORAGE_KEY = 'pesonaku_cta_analytics';
+  const SYNC_CHANNEL_NAME = 'pesonaku_cta_sync_channel';
+
+  // 1. Cross-Tab Communication via BroadcastChannel
+  let syncChannel = null;
+  try {
+    if (typeof window !== 'undefined' && 'BroadcastChannel' in window) {
+      syncChannel = new BroadcastChannel(SYNC_CHANNEL_NAME);
+    }
+  } catch(e) {}
+
+  function broadcastDataChange(actionType) {
+    if (syncChannel) {
+      try {
+        syncChannel.postMessage({
+          type: actionType || 'CTA_UPDATED',
+          timestamp: Date.now()
+        });
+      } catch(e) {}
+    }
+  }
 
   function getAnalyticsData() {
     try {
@@ -1849,6 +1869,7 @@ function initCtaAnalyticsTracker() {
   function saveAnalyticsData(data) {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      broadcastDataChange('CTA_UPDATED');
     } catch(e) {
       console.warn('Gagal menyimpan data analytics:', e);
     }
@@ -1919,27 +1940,65 @@ function initCtaAnalyticsTracker() {
       } catch (err) {}
     }
 
-    // Live update UI if modal is open
-    const modalOverlay = document.getElementById('pesonaCtaModalOverlay');
-    if (modalOverlay && modalOverlay.classList.contains('active')) {
-      renderDashboardUI();
-    }
+    // Live update UI immediately in current tab if dashboard or fullpage view is present
+    renderDashboardUI();
   }
 
   // Global helper for manual dispatch
   window.trackCtaEvent = recordCtaEvent;
+  if (window._ctaQueue && window._ctaQueue.length) {
+    window._ctaQueue.forEach(function(args) { recordCtaEvent.apply(null, args); });
+    window._ctaQueue = [];
+  }
+
+  // 2. Listen to BroadcastChannel messages from other tabs/windows
+  if (syncChannel) {
+    syncChannel.onmessage = function(event) {
+      if (event && event.data && (event.data.type === 'CTA_UPDATED' || event.data.type === 'CTA_RESET')) {
+        renderDashboardUI();
+      }
+    };
+  }
+
+  // 3. Listen to window 'storage' event (Cross-tab fallback)
+  window.addEventListener('storage', function(e) {
+    if (e.key === STORAGE_KEY) {
+      renderDashboardUI();
+    }
+  });
+
+  // 4. Active heartbeat poller (guarantees update every 1s if data changes)
+  let lastKnownRawJson = '';
+  try {
+    lastKnownRawJson = localStorage.getItem(STORAGE_KEY) || '';
+  } catch(e) {}
+
+  setInterval(function() {
+    const hasView = document.getElementById('statsFullPageView') ||
+      (document.getElementById('pesonaCtaModalOverlay') && document.getElementById('pesonaCtaModalOverlay').classList.contains('active'));
+    if (hasView) {
+      try {
+        const currentRaw = localStorage.getItem(STORAGE_KEY) || '';
+        if (currentRaw !== lastKnownRawJson) {
+          lastKnownRawJson = currentRaw;
+          renderDashboardUI();
+        }
+      } catch(e) {}
+    }
+  }, 1000);
 
   // Intercept all CTA clicks
   document.addEventListener('click', function(e) {
-    // Abaikan klik yang terjadi di dalam modal dashboard analytics sendiri
-    if (e.target.closest('#pesonaCtaModalOverlay')) return;
+    // Abaikan klik yang terjadi di dalam modal dashboard analytics sendiri atau fullpage stats view
+    if (e.target.closest('#pesonaCtaModalOverlay') || e.target.closest('#statsFullPageView')) return;
 
     // Cek target CTA terdekat
     const target = e.target.closest(
       '.btn-promo-claim, .btn-promo-main, .btn-service-consult, .btn-service-detail, ' +
       '.btn-popup-wa, .btn-tampak-survey, .btn-cta-lokasi-wa, .btn-cta-lokasi-map, ' +
       '.btn-callout-wa, .btn-kpr-action, .btn-subsidi-cta, .btn-comm-cta, ' +
-      '.btn-article-wa, .chat-chip, #wa-toggle, .chat-toggle-btn, .float-wa, ' +
+      '.btn-article-wa, .chat-chip, #wa-toggle, #chat-toggle, .chat-btn, .chat-toggle-btn, .float-wa, ' +
+      '.btn-cta, .wa-dynamic-btn, [data-pop-title], ' +
       '.socmed-ig, .socmed-tiktok, .socmed-yt, .socmed-blog, [data-cta], ' +
       'a[href*="api.whatsapp.com"], a[href*="wa.me"], a[href^="tel:"]'
     );
@@ -1952,43 +2011,44 @@ function initCtaAnalyticsTracker() {
     let ctaTarget = 'Action';
 
     // 1. Promo Section
-    if (target.classList.contains('btn-promo-claim') || target.classList.contains('btn-promo-main')) {
+    if (target.classList.contains('btn-promo-claim') || target.classList.contains('btn-promo-main') || target.closest('#promo, .promo-section')) {
       ctaId = 'cta_promo_claim';
       ctaName = 'Klaim Promo Spesial';
       ctaSection = 'Promo Spesial';
       ctaTarget = 'WhatsApp';
     }
-    // 2. Tipe Rumah Konsultasi
-    else if (target.classList.contains('btn-service-consult')) {
-      const card = target.closest('.service-card') || target.closest('.widget.Image');
-      const h3 = card ? card.querySelector('h3, .service-title') : null;
-      const unitName = h3 ? h3.textContent.trim() : 'Unit Rumah';
-      ctaId = 'cta_unit_wa_' + unitName.toLowerCase().replace(/[^a-z0-9]/g, '_');
-      ctaName = 'Konsultasi ' + unitName;
-      ctaSection = 'Tipe Rumah';
+    // 2. Unit Popup Detail WA (inside .pop modal or .unit-detail-source)
+    else if (target.closest('.pop') || target.closest('.unit-detail-source') || target.classList.contains('btn-popup-wa')) {
+      const popModal = target.closest('.pop');
+      const titleEl = popModal ? popModal.querySelector('.pop-title h3, h3') : document.getElementById('popupUnitTitle');
+      const unitName = titleEl ? titleEl.textContent.replace(/^Detail Unit:\s*/i, '').trim() : 'Unit';
+      ctaId = 'cta_popup_wa_' + unitName.toLowerCase().replace(/[^a-z0-9]/g, '_');
+      ctaName = 'Konsultasi Popup ' + unitName;
+      ctaSection = 'Detail Unit Popup';
       ctaTarget = 'WhatsApp';
     }
-    // 3. Tipe Rumah Buka Detail
-    else if (target.classList.contains('btn-service-detail')) {
+    // 3. Tipe Rumah Buka Detail Popup
+    else if (target.classList.contains('btn-service-detail') || target.classList.contains('service-card-img')) {
       const card = target.closest('.service-card') || target.closest('.widget.Image');
-      const h3 = card ? card.querySelector('h3, .service-title') : null;
+      const h3 = card ? card.querySelector('h3, .service-card-title, .service-title') : null;
       const unitName = h3 ? h3.textContent.trim() : 'Unit Rumah';
       ctaId = 'cta_unit_detail_' + unitName.toLowerCase().replace(/[^a-z0-9]/g, '_');
       ctaName = 'Lihat Detail ' + unitName;
       ctaSection = 'Tipe Rumah';
       ctaTarget = 'Modal Popup';
     }
-    // 4. Modal Detail Unit WA
-    else if (target.classList.contains('btn-popup-wa')) {
-      const titleEl = document.getElementById('popupUnitTitle');
-      const unitName = titleEl ? titleEl.textContent.trim() : 'Unit';
-      ctaId = 'cta_popup_wa_' + unitName.toLowerCase().replace(/[^a-z0-9]/g, '_');
-      ctaName = 'Konsultasi Popup ' + unitName;
-      ctaSection = 'Detail Unit Popup';
+    // 4. Tipe Rumah Konsultasi WhatsApp
+    else if (target.classList.contains('btn-service-consult') || (target.closest('#service, .service-section') && (target.classList.contains('btn-cta') || target.classList.contains('wa-dynamic-btn')))) {
+      const card = target.closest('.service-card') || target.closest('.widget.Image');
+      const h3 = card ? card.querySelector('h3, .service-card-title, .service-title') : null;
+      const unitName = h3 ? h3.textContent.trim() : 'Unit Rumah';
+      ctaId = 'cta_unit_wa_' + unitName.toLowerCase().replace(/[^a-z0-9]/g, '_');
+      ctaName = 'Konsultasi ' + unitName;
+      ctaSection = 'Tipe Rumah';
       ctaTarget = 'WhatsApp';
     }
     // 5. Tampak Rumah Subsidi
-    else if (target.classList.contains('btn-tampak-survey')) {
+    else if (target.classList.contains('btn-tampak-survey') || target.closest('#tampak-section, .tampak-section')) {
       ctaId = 'cta_tampak_survey';
       ctaName = 'Jadwal Survey Rumah Subsidi';
       ctaSection = 'Tampak Rumah Subsidi';
@@ -2022,21 +2082,14 @@ function initCtaAnalyticsTracker() {
       ctaTarget = 'WhatsApp';
     }
     // 9. Simulasi KPR
-    else if (target.classList.contains('btn-kpr-action') || target.classList.contains('btn-subsidi-cta') || target.classList.contains('btn-comm-cta')) {
-      const isSubsidi = target.classList.contains('btn-subsidi-cta');
+    else if (target.classList.contains('btn-kpr-action') || target.classList.contains('btn-subsidi-cta') || target.classList.contains('btn-comm-cta') || target.closest('#kpr, .kpr-section')) {
+      const isSubsidi = target.classList.contains('btn-subsidi-cta') || (target.getAttribute('href') || '').includes('subsidi');
       ctaId = isSubsidi ? 'cta_kpr_subsidi' : 'cta_kpr_komersial';
       ctaName = isSubsidi ? 'Konsultasi KPR Subsidi Flat' : 'Konsultasi KPR Komersial';
       ctaSection = 'Simulasi KPR';
       ctaTarget = 'WhatsApp';
     }
-    // 10. Artikel WhatsApp
-    else if (target.classList.contains('btn-article-wa')) {
-      ctaId = 'cta_article_wa';
-      ctaName = 'Konsultasi via Pembaca Artikel';
-      ctaSection = 'Artikel & Berita';
-      ctaTarget = 'WhatsApp';
-    }
-    // 11. Floating Chat Quick Chips
+    // 10. Floating Chat Quick Chips
     else if (target.classList.contains('chat-chip')) {
       const chipTxt = target.textContent.trim();
       ctaId = 'cta_chip_' + chipTxt.toLowerCase().replace(/[^a-z0-9]/g, '_');
@@ -2044,14 +2097,37 @@ function initCtaAnalyticsTracker() {
       ctaSection = 'Floating Chat';
       ctaTarget = 'Chat Form';
     }
-    // 12. Floating Chat Toggle
-    else if (target.id === 'wa-toggle' || target.classList.contains('chat-toggle-btn') || target.classList.contains('float-wa') || target.closest('#floating-chat-toggle')) {
+    // 11. Floating Chat Toggle
+    else if (target.id === 'wa-toggle' || target.id === 'chat-toggle' || target.classList.contains('chat-btn') || target.classList.contains('chat-toggle-btn') || target.classList.contains('float-wa') || target.closest('#floating-chat-toggle') || target.closest('.chat-btn-wrap')) {
       ctaId = 'cta_floating_toggle';
       ctaName = 'Buka Widget Chat WhatsApp';
       ctaSection = 'Floating Chat';
       ctaTarget = 'Widget Toggle';
     }
-    // 13. Media Sosial & Kontak
+    // 12. Kontak Langsung (Kantor Pemasaran & Profil Marketing)
+    else if (target.closest('#contact, .contact-section')) {
+      if (target.closest('.marketing-profile-card')) {
+        const nameEl = target.closest('.marketing-profile-card').querySelector('.marketing-name-target');
+        const mktName = nameEl ? nameEl.textContent.trim() : "Mas Ro'uf";
+        ctaId = 'cta_contact_marketing_wa';
+        ctaName = 'Konsultasi Marketing ' + mktName;
+        ctaSection = 'Kontak Langsung';
+        ctaTarget = 'WhatsApp';
+      } else {
+        ctaId = 'cta_contact_office_survey';
+        ctaName = 'Jadwalkan Survei Kantor Pemasaran';
+        ctaSection = 'Kontak Langsung';
+        ctaTarget = 'WhatsApp';
+      }
+    }
+    // 13. Artikel WhatsApp
+    else if (target.classList.contains('btn-article-wa') || target.closest('#blog-single, .article-section')) {
+      ctaId = 'cta_article_wa';
+      ctaName = 'Konsultasi via Pembaca Artikel';
+      ctaSection = 'Artikel & Berita';
+      ctaTarget = 'WhatsApp';
+    }
+    // 14. Media Sosial
     else if (target.classList.contains('socmed-ig')) {
       ctaId = 'cta_socmed_instagram';
       ctaName = 'Kunjungi Instagram Resmi';
@@ -2076,14 +2152,14 @@ function initCtaAnalyticsTracker() {
       ctaSection = 'Artikel & Berita';
       ctaTarget = 'Blog';
     }
-    // 14. Telephone link
+    // 15. Telephone link
     else if (target.tagName.toLowerCase() === 'a' && (target.getAttribute('href') || '').startsWith('tel:')) {
       ctaId = 'cta_tel_call';
       ctaName = 'Panggilan Telepon';
       ctaSection = 'Kontak Langsung';
       ctaTarget = 'Telepon';
     }
-    // 15. Generic WhatsApp fallback
+    // 16. Generic WhatsApp fallback
     else if (target.tagName.toLowerCase() === 'a' && ((target.getAttribute('href') || '').includes('whatsapp.com') || (target.getAttribute('href') || '').includes('wa.me'))) {
       const label = target.textContent.trim().slice(0, 40) || 'Tombol WhatsApp';
       ctaId = 'cta_wa_generic_' + label.toLowerCase().replace(/[^a-z0-9]/g, '_');
@@ -2316,45 +2392,61 @@ function initCtaAnalyticsTracker() {
     const todayKey = new Date().toISOString().slice(0, 10);
     const todayCount = data.daily[todayKey] || 0;
 
-    // 1. KPI Top Row
-    const elTotal = document.getElementById('ctaKpiTotal');
-    const elToday = document.getElementById('ctaKpiToday');
-    const elTopName = document.getElementById('ctaKpiTopName');
-    const elTopCount = document.getElementById('ctaKpiTopCount');
-    const elTopLoc = document.getElementById('ctaKpiTopLoc');
-    const elTopLocCount = document.getElementById('ctaKpiTopLocCount');
+    // Helper to safely update text with bump animation
+    function setKpiValue(id, value) {
+      const strVal = String(value);
+      document.querySelectorAll('#' + id).forEach(function(el) {
+        if (el.textContent !== strVal) {
+          el.textContent = strVal;
+          el.classList.remove('cta-val-bump');
+          void el.offsetWidth;
+          el.classList.add('cta-val-bump');
+        }
+      });
+    }
 
-    if (elTotal) elTotal.textContent = total.toLocaleString('id-ID');
-    if (elToday) elToday.textContent = todayCount.toLocaleString('id-ID');
+    // 1. KPI Top Row
+    setKpiValue('ctaKpiTotal', total.toLocaleString('id-ID'));
+    setKpiValue('ctaKpiToday', todayCount.toLocaleString('id-ID'));
+
+    // Live Sync Indicator & Timestamp
+    const now = new Date();
+    const timeFormatted = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    document.querySelectorAll('#statsFpLastSync').forEach(function(el) {
+      el.innerHTML = '<span class="live-sync-indicator"></span> Live: ' + timeFormatted + ' WIB (Tersinkron Otomatis)';
+      el.classList.add('live-active');
+    });
 
     const ctaList = Object.values(data.byCta || {}).sort((a,b) => b.count - a.count);
     if (ctaList.length > 0) {
-      if (elTopName) elTopName.textContent = ctaList[0].name;
-      if (elTopCount) elTopCount.textContent = ctaList[0].count + ' klik (' + ((ctaList[0].count / total) * 100).toFixed(1) + '%)';
+      const topName = ctaList[0].name;
+      const topCount = ctaList[0].count + ' klik (' + ((ctaList[0].count / total) * 100).toFixed(1) + '%)';
+      document.querySelectorAll('#ctaKpiTopName').forEach(function(el) { el.textContent = topName; });
+      document.querySelectorAll('#ctaKpiTopCount').forEach(function(el) { el.textContent = topCount; });
     } else {
-      if (elTopName) elTopName.textContent = 'Belum Ada';
-      if (elTopCount) elTopCount.textContent = '0 klik';
+      document.querySelectorAll('#ctaKpiTopName').forEach(function(el) { el.textContent = 'Belum Ada'; });
+      document.querySelectorAll('#ctaKpiTopCount').forEach(function(el) { el.textContent = '0 klik'; });
     }
 
     // Top Location
     const locCtas = ctaList.filter(c => c.section === 'Lokasi Proyek');
     if (locCtas.length > 0) {
       const cleanLocName = locCtas[0].name.replace('Survey WA - ', '').replace('Google Maps - ', '');
-      if (elTopLoc) elTopLoc.textContent = cleanLocName;
-      if (elTopLocCount) elTopLocCount.textContent = locCtas[0].count + ' klik';
+      document.querySelectorAll('#ctaKpiTopLoc').forEach(function(el) { el.textContent = cleanLocName; });
+      document.querySelectorAll('#ctaKpiTopLocCount').forEach(function(el) { el.textContent = locCtas[0].count + ' klik'; });
     } else {
-      if (elTopLoc) elTopLoc.textContent = 'Belum Ada';
-      if (elTopLocCount) elTopLocCount.textContent = '0 klik';
+      document.querySelectorAll('#ctaKpiTopLoc').forEach(function(el) { el.textContent = 'Belum Ada'; });
+      document.querySelectorAll('#ctaKpiTopLocCount').forEach(function(el) { el.textContent = '0 klik'; });
     }
 
     // 2. Tab 1: Category Progress Bars & Insight
-    const progressWrap = document.getElementById('ctaCategoryProgressList');
-    if (progressWrap) {
+    const progressWraps = document.querySelectorAll('#ctaCategoryProgressList');
+    if (progressWraps.length) {
       const sections = Object.keys(data.bySection || {}).sort((a,b) => data.bySection[b] - data.bySection[a]);
+      let progHtml = '';
       if (sections.length === 0) {
-        progressWrap.innerHTML = '<p style="color:#94a3b8;font-size:0.86rem;">Belum ada interaksi CTA yang tercatat. Silakan coba klik tombol WhatsApp, survey lokasi, atau promo di halaman web.</p>';
+        progHtml = '<p style="color:#94a3b8;font-size:0.86rem;">Belum ada interaksi CTA yang tercatat. Silakan coba klik tombol WhatsApp, survey lokasi, atau promo di halaman web.</p>';
       } else {
-        let progHtml = '';
         sections.forEach(function(sec) {
           const count = data.bySection[sec];
           const pct = total > 0 ? ((count / total) * 100).toFixed(1) : 0;
@@ -2370,41 +2462,44 @@ function initCtaAnalyticsTracker() {
             </div>
           `;
         });
-        progressWrap.innerHTML = progHtml;
       }
+      progressWraps.forEach(function(el) { el.innerHTML = progHtml; });
     }
 
-    const insightEl = document.getElementById('ctaInsightText');
-    if (insightEl) {
+    const insightEls = document.querySelectorAll('#ctaInsightText');
+    if (insightEls.length) {
+      let insightText = '';
       if (total === 0) {
-        insightEl.textContent = 'Sistem tracking aktif secara real-time. Setiap klik konsumen pada tombol WhatsApp, promo, simulasi KPR, dan lokasi proyek akan langsung dianalisa di sini.';
+        insightText = 'Sistem tracking aktif secara real-time. Setiap klik konsumen pada tombol WhatsApp, promo, simulasi KPR, dan lokasi proyek akan langsung dianalisa di sini.';
       } else {
         const topSec = Object.keys(data.bySection || {}).sort((a,b) => data.bySection[b] - data.bySection[a])[0];
         const topCtaItem = ctaList[0];
-        let text = `Konsumen paling aktif berinteraksi pada kategori <strong>${topSec}</strong> (${data.bySection[topSec]} interaksi).`;
+        insightText = `Konsumen paling aktif berinteraksi pada kategori <strong>${topSec}</strong> (${data.bySection[topSec]} interaksi).`;
         if (topCtaItem) {
-          text += ` Tombol yang paling diminati calon pembeli adalah <strong>${topCtaItem.name}</strong> dengan kontribusi ${((topCtaItem.count / total) * 100).toFixed(1)}% dari total konversi.`;
+          insightText += ` Tombol yang paling diminati calon pembeli adalah <strong>${topCtaItem.name}</strong> dengan kontribusi ${((topCtaItem.count / total) * 100).toFixed(1)}% dari total konversi.`;
         }
         if (locCtas.length > 0) {
           const cleanLoc = locCtas[0].name.replace('Survey WA - ', '').replace('Google Maps - ', '');
-          text += ` Minat survei proyek tertinggi berada di <strong>${cleanLoc}</strong>.`;
+          insightText += ` Minat survei proyek tertinggi berada di <strong>${cleanLoc}</strong>.`;
         }
-        insightEl.innerHTML = text;
       }
+      insightEls.forEach(function(el) { el.innerHTML = insightText; });
     }
 
     // 3. Tab 2: Detail Table
     renderTableRows(ctaList, total);
 
     // 4. Tab 3: Timeline
-    const timelineWrap = document.getElementById('ctaTimelineList');
-    const timelineBadge = document.getElementById('ctaTimelineTotalBadge');
-    if (timelineBadge) timelineBadge.textContent = (data.logs || []).length + ' tercatat';
-    if (timelineWrap) {
+    const timelineWraps = document.querySelectorAll('#ctaTimelineList');
+    document.querySelectorAll('#ctaTimelineTotalBadge').forEach(function(el) {
+      el.textContent = (data.logs || []).length + ' tercatat';
+    });
+
+    if (timelineWraps.length) {
+      let listHtml = '';
       if (!data.logs || data.logs.length === 0) {
-        timelineWrap.innerHTML = '<p style="color:#94a3b8;font-size:0.86rem;text-align:center;padding:20px 0;">Belum ada log klik aktivitas.</p>';
+        listHtml = '<p style="color:#94a3b8;font-size:0.86rem;text-align:center;padding:20px 0;">Belum ada log klik aktivitas.</p>';
       } else {
-        let listHtml = '';
         data.logs.forEach(function(item) {
           listHtml += `
             <div class="cta-timeline-item">
@@ -2422,8 +2517,8 @@ function initCtaAnalyticsTracker() {
             </div>
           `;
         });
-        timelineWrap.innerHTML = listHtml;
       }
+      timelineWraps.forEach(function(el) { el.innerHTML = listHtml; });
     }
   }
 
@@ -2526,7 +2621,11 @@ function initCtaAnalyticsTracker() {
     showToast('File CSV berhasil di-download!');
   }
 
+  let dashboardEventsBound = false;
   function bindDashboardEvents() {
+    if (dashboardEventsBound) return;
+    dashboardEventsBound = true;
+
     const overlay = document.getElementById('pesonaCtaModalOverlay');
     const btnClose = document.getElementById('btnCloseCtaDashboard');
     const btnCloseBottom = document.getElementById('btnCloseCtaBottom');
@@ -2609,6 +2708,7 @@ function initCtaAnalyticsTracker() {
         if (confirm('Apakah Anda yakin ingin mereset seluruh data statistik CTA konsumen? Data yang sudah dihapus tidak dapat dikembalikan.')) {
           localStorage.removeItem(STORAGE_KEY);
           renderDashboardUI();
+          broadcastDataChange('CTA_RESET');
           showToast('Data statistik berhasil direset!');
         }
       });
@@ -2628,7 +2728,9 @@ function initCtaAnalyticsTracker() {
         search.includes('route=statistik') ||
         search.includes('page=statistik') ||
         hash === '#statistik' ||
-        hash === '#/statistik'
+        hash === '#/statistik' ||
+        document.body.classList.contains('is-statistik-page') ||
+        !!document.getElementById('statsFullPageView')
       );
     } catch(e) {
       return false;
