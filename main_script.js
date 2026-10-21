@@ -1,6 +1,6 @@
 /*!
  * Pesona Kahuripan - Official Landing Page Interactive Script
- * Version: 3.5.5 (Production Interactive Bundle - Robust House Types & Promo Parsers)
+ * Version: 3.5.6 (Production Interactive Bundle - Robust House Types & Specs Sync)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -269,13 +269,23 @@ function initLandingPage() {
         });
       });
 
-      // E. Native Modal Popup Engine (Trigger: [target^="pop-"])
+      // E. Native Modal Popup Engine (Trigger: [target^="pop-"], .service-card-img, .btn-service-detail)
       document.addEventListener('click', function(e) {
-        const btn = e.target.closest('[target^="pop-"]');
+        // Jangan buka modal jika yang diklik adalah tombol direct WhatsApp
+        if (e.target.closest('a[href*="whatsapp"], a[href*="api.whatsapp.com"], .btn-service-consult, .wa-dynamic-btn')) return;
+
+        const btn = e.target.closest('[target^="pop-"], .service-card-img, .btn-service-detail');
         if (!btn) return;
         e.preventDefault();
 
-        const popId = btn.getAttribute('target') || '';
+        let popId = btn.getAttribute('target') || '';
+        if (!popId) {
+          const parentCard = btn.closest('.service-card') || btn.closest('.widget');
+          if (parentCard) {
+            const uId = parentCard.getAttribute('data-id') || parentCard.id || parentCard.closest('.widget')?.id || '';
+            if (uId) popId = `pop-service-${uId}`;
+          }
+        }
         let source = popId ? document.getElementById(popId) : null;
         if (!source && popId) {
           // Fallback 1: Strip instance suffix if present (e.g. pop-service-Image31_0 -> pop-service-Image31)
@@ -703,85 +713,164 @@ function initLandingPage() {
       document.querySelectorAll('.service-card').forEach(function(card) {
         const rawCaptionEl = card.querySelector('.unit-raw-caption');
         if (rawCaptionEl) {
-          const rawText = (rawCaptionEl.textContent || rawCaptionEl.innerText || '').trim();
-          if (rawText) {
-            let badge = '';
-            let price = '';
-            let installment = '';
-            let lb = '', lt = '', tamu = '', tidur = '', mandi = '', carport = '';
+          // Ekstrak teks bersih: konversi <br> dan tag block jadi newline sebelum strip tag
+          let rawHtml = rawCaptionEl.innerHTML || rawCaptionEl.textContent || '';
+          let cleanText = rawHtml
+            .replace(/<br\s*[\/]?>/gi, '\n')
+            .replace(/<\/(p|div|li|tr|h\d)>/gi, '\n')
+            .replace(/<[^>]+>/g, ' ')
+            .replace(/&nbsp;/gi, ' ')
+            .replace(/&amp;/gi, '&')
+            .replace(/&#178;|&sup2;/gi, '²')
+            .replace(/&#39;/gi, "'")
+            .replace(/&quot;/gi, '"');
 
-            // Normalisasi baris jika key berdempetan atau memakai tag <br>
-            let normalizedText = rawText.replace(/<br\s*[\/]?>/gi, '\n');
-            normalizedText = normalizedText.replace(/(Badge:|Harga:|Cicilan:|Angsuran:|Label:|Deskripsi:|Desc:|LB:|LT:|Bangunan:|Tanah:|Ruang Tamu:|Tamu:|Kamar Tidur:|Tidur:|Kamar:|Kamar Mandi:|Mandi:|Toilet:|Carport:|Garasi:)/gi, '\n$1');
-            const lines = normalizedText.split('\n');
-            lines.forEach(function(line) {
-              const trimmed = line.trim();
-              if (!trimmed) return;
-              const lower = trimmed.toLowerCase();
+          // Normalisasi jika baris tergabung tanpa newline (misal export / paste Blogger dashboard)
+          cleanText = cleanText.replace(/([^\n])\s*(Badge:|Tag:|Kategori:|Harga:|Price:|Cicilan:|Angsuran:|KPR:|Label:|Deskripsi:|Desc:|Keterangan:|Luas Bangunan:|LB:|Bangunan:|Luas Tanah:|LT:|Tanah:|Ruang Tamu:|R\.?\s*Tamu:|Tamu:|Living:|Kamar Tidur:|K\.?\s*Tidur:|Tidur:|Kamar:|KT:|Bed:|Kamar Mandi:|K\.?\s*Mandi:|Mandi:|Toilet:|WC:|KM:|Carport:|Garasi:|Mobil:|Parkir:|Dinding:|Struktur:|Hebel:|Listrik:|PLN:|Watt:|Air:|Sumur:|PDAM:|Sertifikat:|Legalitas:|SHM:)/gi, '$1\n$2');
 
-              if (lower.startsWith('badge:')) {
-                badge = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-              } else if (lower.startsWith('harga:')) {
-                price = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-              } else if (lower.startsWith('cicilan:') || lower.startsWith('angsuran:') || lower.startsWith('label:')) {
-                installment = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-              } else if (lower.startsWith('deskripsi:') || lower.startsWith('desc:')) {
-                desc = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-              } else if (lower.startsWith('lb:') || lower.startsWith('bangunan:')) {
-                lb = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-              } else if (lower.startsWith('lt:') || lower.startsWith('tanah:')) {
-                lt = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-              } else if (lower.startsWith('ruang tamu:') || lower.startsWith('tamu:')) {
-                tamu = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-              } else if (lower.startsWith('kamar tidur:') || lower.startsWith('tidur:') || lower.startsWith('kamar:')) {
-                tidur = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-              } else if (lower.startsWith('kamar mandi:') || lower.startsWith('mandi:') || lower.startsWith('toilet:')) {
-                mandi = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-              } else if (lower.startsWith('carport:') || lower.startsWith('garasi:')) {
-                carport = trimmed.substring(trimmed.indexOf(':') + 1).trim();
-              }
-            });
+          let badge = '';
+          let price = '';
+          let installment = '';
+          let desc = '';
+          let lb = '', lt = '', tamu = '', tidur = '', mandi = '', carport = '';
+          let dinding = '', listrik = '', air = '', shm = '';
 
-            // Update Elemen Kartu Depan
-            if (badge) {
-              const badgeEl = card.querySelector('.service-badge');
-              if (badgeEl) badgeEl.textContent = badge;
+          const lines = cleanText.split('\n');
+          lines.forEach(function(line) {
+            const trimmed = line.trim();
+            if (!trimmed) return;
+            let sepIdx = trimmed.indexOf(':');
+            if (sepIdx === -1) sepIdx = trimmed.indexOf('=');
+            if (sepIdx === -1) return;
+
+            const key = trimmed.substring(0, sepIdx).trim().toLowerCase();
+            const val = trimmed.substring(sepIdx + 1).trim();
+            if (!val) return;
+
+            if (key === 'badge' || key === 'tag' || key === 'kategori' || key === 'status') {
+              badge = val;
+            } else if (key === 'harga' || key === 'price' || key === 'mulai' || key === 'harga mulai') {
+              price = val;
+            } else if (key === 'cicilan' || key === 'angsuran' || key === 'kpr' || key === 'label' || key === 'angsuran mulai' || key === 'cicilan mulai') {
+              installment = val;
+            } else if (key === 'deskripsi' || key === 'desc' || key === 'keterangan' || key === 'tentang') {
+              desc = val;
+            } else if (key === 'lb' || key === 'luas bangunan' || key === 'bangunan') {
+              lb = val;
+            } else if (key === 'lt' || key === 'luas tanah' || key === 'tanah') {
+              lt = val;
+            } else if (key === 'ruang tamu' || key === 'r. tamu' || key === 'r.tamu' || key === 'tamu' || key === 'living') {
+              tamu = val;
+            } else if (key === 'kamar tidur' || key === 'k. tidur' || key === 'k.tidur' || key === 'tidur' || key === 'kamar' || key === 'kt' || key === 'bed') {
+              tidur = val;
+            } else if (key === 'kamar mandi' || key === 'k. mandi' || key === 'k.mandi' || key === 'mandi' || key === 'toilet' || key === 'wc' || key === 'km' || key === 'bath') {
+              mandi = val;
+            } else if (key === 'carport' || key === 'garasi' || key === 'mobil' || key === 'parkir') {
+              carport = val;
+            } else if (key === 'dinding' || key === 'struktur' || key === 'hebel' || key === 'bata') {
+              dinding = val;
+            } else if (key === 'listrik' || key === 'pln' || key === 'watt') {
+              listrik = val;
+            } else if (key === 'air' || key === 'sumur' || key === 'pdam') {
+              air = val;
+            } else if (key === 'sertifikat' || key === 'legalitas' || key === 'shm') {
+              shm = val;
+            }
+          });
+
+          // Update Elemen Kartu Depan
+          if (badge) {
+            const badgeEl = card.querySelector('.service-badge');
+            if (badgeEl) badgeEl.textContent = badge;
+          }
+          if (desc) {
+            const descEl = card.querySelector('.service-card-desc');
+            if (descEl) descEl.textContent = desc;
+          }
+          if (price) {
+            const priceValEl = card.querySelector('.price-amount') || card.querySelector('.service-price-tag strong');
+            if (priceValEl) priceValEl.textContent = price;
+          }
+          if (installment) {
+            const instEl = card.querySelector('.price-installment') || card.querySelector('.service-price-tag small');
+            if (instEl) instEl.textContent = installment;
+          }
+          if (lb) {
+            const lbEl = card.querySelector('.spec-lb strong');
+            if (lbEl) lbEl.innerHTML = lb.replace(/&#178;|&sup2;/g, '²');
+          }
+          if (lt) {
+            const ltEl = card.querySelector('.spec-lt strong');
+            if (ltEl) ltEl.innerHTML = lt.replace(/&#178;|&sup2;/g, '²');
+          }
+          if (tamu) {
+            const tamuEl = card.querySelector('.spec-tamu strong');
+            if (tamuEl) tamuEl.textContent = tamu;
+          }
+          if (tidur) {
+            const tidurEl = card.querySelector('.spec-tidur strong');
+            if (tidurEl) tidurEl.textContent = tidur;
+          }
+          if (mandi) {
+            const mandiEl = card.querySelector('.spec-mandi strong');
+            if (mandiEl) mandiEl.textContent = mandi;
+          }
+          if (carport) {
+            const carportEl = card.querySelector('.spec-carport strong');
+            if (carportEl) carportEl.textContent = carport;
+          }
+
+          // Sinkronkan ke POPUP DETAIL MODAL terkait jika ada
+          const unitId = card.getAttribute('data-id') || card.closest('.widget')?.id || '';
+          const detailSource = unitId ? (document.getElementById(`pop-service-${unitId}`) || document.querySelector(`.unit-detail-source[data-unit-id="${unitId}"]`)) : card.closest('.widget')?.querySelector('.unit-detail-source');
+          if (detailSource) {
+            const unitTitle = (card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : '') || 'Tipe Rumah';
+            if (unitTitle) {
+              detailSource.setAttribute('data-pop-title', 'Detail Unit: ' + unitTitle + (badge ? ` (${badge})` : ''));
+              const modalH4 = detailSource.querySelector('h4');
+              if (modalH4) modalH4.textContent = unitTitle + (badge ? ` - ${badge}` : '');
             }
             if (desc) {
-              const descEl = card.querySelector('.service-card-desc');
-              if (descEl) descEl.textContent = desc;
+              const modalDesc = detailSource.querySelector('.pop-unit-desc');
+              if (modalDesc) modalDesc.textContent = desc;
             }
-            if (price) {
-              const priceValEl = card.querySelector('.price-amount') || card.querySelector('.service-price-tag strong');
-              if (priceValEl) priceValEl.textContent = price;
-            }
-            if (installment) {
-              const instEl = card.querySelector('.price-installment') || card.querySelector('.service-price-tag small');
-              if (instEl) instEl.textContent = installment;
-            }
-            if (lb) {
-              const lbEl = card.querySelector('.spec-lb strong');
-              if (lbEl) lbEl.innerHTML = lb.replace(/&#178;|&sup2;/g, '²');
-            }
-            if (lt) {
-              const ltEl = card.querySelector('.spec-lt strong');
-              if (ltEl) ltEl.innerHTML = lt.replace(/&#178;|&sup2;/g, '²');
-            }
-            if (tamu) {
-              const tamuEl = card.querySelector('.spec-tamu strong');
-              if (tamuEl) tamuEl.textContent = tamu;
-            }
-            if (tidur) {
-              const tidurEl = card.querySelector('.spec-tidur strong');
-              if (tidurEl) tidurEl.textContent = tidur;
-            }
-            if (mandi) {
-              const mandiEl = card.querySelector('.spec-mandi strong');
-              if (mandiEl) mandiEl.textContent = mandi;
-            }
-            if (carport) {
-              const carportEl = card.querySelector('.spec-carport strong');
-              if (carportEl) carportEl.textContent = carport;
+            // Update baris tabel spesifikasi di modal
+            const tableEl = detailSource.querySelector('.popup-specs-table');
+            if (tableEl) {
+              tableEl.querySelectorAll('tr').forEach(function(tr) {
+                const th = tr.querySelector('th');
+                const td = tr.querySelector('td');
+                if (!th || !td) return;
+                const label = th.textContent.toLowerCase();
+
+                if (label.includes('kategori') && badge) {
+                  td.textContent = badge;
+                } else if ((label.includes('luas') || label.includes('bangunan') || label.includes('tanah')) && (lb || lt)) {
+                  const currentLb = lb ? lb.replace(/&#178;|&sup2;/g, '²') : '';
+                  const currentLt = lt ? lt.replace(/&#178;|&sup2;/g, '²') : '';
+                  if (currentLb && currentLt) td.textContent = `${currentLb} / ${currentLt}`;
+                  else if (currentLb) td.textContent = currentLb;
+                  else if (currentLt) td.textContent = currentLt;
+                } else if (label.includes('tamu') && tamu) {
+                  td.textContent = tamu;
+                } else if ((label.includes('kamar') || label.includes('tidur') || label.includes('mandi')) && (tidur || mandi)) {
+                  if (tidur && mandi) td.textContent = `${tidur} / ${mandi}`;
+                  else if (tidur) td.textContent = tidur;
+                  else if (mandi) td.textContent = mandi;
+                } else if (label.includes('carport') && carport) {
+                  td.textContent = carport;
+                } else if (label.includes('dinding') && dinding) {
+                  td.textContent = dinding;
+                } else if ((label.includes('listrik') || label.includes('air')) && (listrik || air)) {
+                  if (listrik && air) td.textContent = `${listrik} / ${air}`;
+                  else if (listrik) td.textContent = listrik;
+                  else if (air) td.textContent = air;
+                } else if ((label.includes('cicilan') || label.includes('angsuran') || label.includes('skema')) && installment) {
+                  td.textContent = installment;
+                } else if (label.includes('legalitas') || label.includes('sertifikat')) {
+                  if (shm) td.textContent = shm;
+                }
+              });
             }
           }
         }
@@ -807,10 +896,9 @@ function initLandingPage() {
         }
       });
 
-      // 2. PARSE & SINKRONKAN WIDGET DETAIL (POPUP GALERI & SPESIFIKASI)
+      // 2. PARSE & SINKRONKAN WIDGET DETAIL CUSTOM JIKA MEMILIKI UNIT-RAW-DETAIL-CONTENT
       document.querySelectorAll('.unit-detail-source').forEach(function(detailSource) {
         const unitId = detailSource.getAttribute('data-unit-id') || '';
-        // Cari kartu depan terkait
         const matchingCard = unitId ? (document.querySelector(`.service-card[data-id="${unitId}"]`) || detailSource.closest('.widget')?.querySelector('.service-card')) : detailSource.closest('.widget')?.querySelector('.service-card');
         const unitTitle = matchingCard ? (matchingCard.querySelector('h3') ? matchingCard.querySelector('h3').textContent.trim() : '') : '';
 

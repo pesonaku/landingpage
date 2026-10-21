@@ -70,17 +70,17 @@
     <link href='https://use.hugeicons.com/font/icons.css' rel='stylesheet'/>
 
     <!-- Stylesheet Utama (Separated Production Bundle) -->
-    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.5/main_style.css' rel='stylesheet' type='text/css'/>
+    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.6/main_style.css' rel='stylesheet' type='text/css'/>
 
     <!-- Progressive Enhancement State -->
     
 
     <b:skin><![CDATA[
-@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.5/main_style.css");
+@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.6/main_style.css");
 
 /*!
  * Pesona Kahuripan - Clean Modern Blogger Landing Page Template
- * Stylesheet is separated into: main_style.css (v3.5.5)
+ * Stylesheet is separated into: main_style.css (v3.5.6)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -838,7 +838,7 @@ Carport: 1 Mobil]]></b:widget-setting>
               <b:includable id='main'>
                 <div class='service-card reveal' data-id='Image31'>
                   <div class='unit-raw-caption' style='display:none;'><data:caption/></div>
-                  <div class='service-card-img'>
+                  <div class='service-card-img' expr:target='&quot;pop-service-&quot; + data:widget.instanceId' style='cursor:pointer;' title='Klik untuk melihat galeri foto &amp; spesifikasi lengkap'>
                     <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
                     <span class='service-badge subsidi'>Subsidi Pemerintah</span>
                   </div>
@@ -989,7 +989,7 @@ Carport: 1 Mobil]]></b:widget-setting>
               <b:includable id='main'>
                 <div class='service-card reveal delay-1' data-id='Image32'>
                   <div class='unit-raw-caption' style='display:none;'><data:caption/></div>
-                  <div class='service-card-img'>
+                  <div class='service-card-img' expr:target='&quot;pop-service-&quot; + data:widget.instanceId' style='cursor:pointer;' title='Klik untuk melihat galeri foto &amp; spesifikasi lengkap'>
                     <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
                     <span class='service-badge komersil'>Komersial Minimalis</span>
                   </div>
@@ -1140,7 +1140,7 @@ Carport: 1 Mobil]]></b:widget-setting>
               <b:includable id='main'>
                 <div class='service-card reveal delay-2' data-id='Image33'>
                   <div class='unit-raw-caption' style='display:none;'><data:caption/></div>
-                  <div class='service-card-img'>
+                  <div class='service-card-img' expr:target='&quot;pop-service-&quot; + data:widget.instanceId' style='cursor:pointer;' title='Klik untuk melihat galeri foto &amp; spesifikasi lengkap'>
                     <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
                     <span class='service-badge komersil'>Komersial Elegan</span>
                   </div>
@@ -1292,7 +1292,7 @@ Carport: 1 Mobil]]></b:widget-setting>
               <b:includable id='main'>
                 <div class='service-card reveal delay-3' data-id='Image34'>
                   <div class='unit-raw-caption' style='display:none;'><data:caption/></div>
-                  <div class='service-card-img'>
+                  <div class='service-card-img' expr:target='&quot;pop-service-&quot; + data:widget.instanceId' style='cursor:pointer;' title='Klik untuk melihat galeri foto &amp; spesifikasi lengkap'>
                     <img expr:alt='data:title' expr:src='data:sourceUrl ?: data:displayUrl'/>
                     <span class='service-badge komersil'>Komersial Modern</span>
                   </div>
@@ -5959,7 +5959,7 @@ YouTube: https://www.youtube.com/pesonakuofficial]]></b:widget-setting>
     <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js'/>
 
     <!-- Main Interactive Script (Separated) -->
-    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.5/main_script.js'/>
+    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.6/main_script.js'/>
 
     
 
