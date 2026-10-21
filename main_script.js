@@ -2615,15 +2615,270 @@ function initCtaAnalyticsTracker() {
     }
   }
 
-  function openDashboard() {
-    ensureDashboardDOM();
+  function isStatistikRoute() {
+    try {
+      const path = (window.location.pathname || '').toLowerCase().replace(/\/+$/, '');
+      const search = (window.location.search || '').toLowerCase();
+      const hash = (window.location.hash || '').toLowerCase();
+      return (
+        path === '/statistik' ||
+        path.endsWith('/statistik') ||
+        path.includes('/p/statistik') ||
+        path.endsWith('/statistik.html') ||
+        search.includes('route=statistik') ||
+        search.includes('page=statistik') ||
+        hash === '#statistik' ||
+        hash === '#/statistik'
+      );
+    } catch(e) {
+      return false;
+    }
+  }
+
+  function mountFullPageStatsView() {
+    try {
+      document.title = 'Monitoring & Analisa CTA Konsumen | Pesona Kahuripan';
+    } catch(e) {}
+
+    // Sembunyikan elemen beranda / artikel biasa jika ada di DOM
+    document.querySelectorAll('#header, #hero, #about, #service, #tampak-section, #lokasi-section, #promo, #gallery, #kpr, #faq, #contact, #footer, #floating-chat, #blog-single').forEach(function(el) {
+      el.style.setProperty('display', 'none', 'important');
+    });
+
+    let container = document.getElementById('statsFullPageView');
+    if (!container) {
+      const fullPageHTML = `
+<div id="statsFullPageView" class="stats-fullpage-layout">
+  <header class="stats-fp-navbar">
+    <div class="stats-fp-nav-inner">
+      <a href="/" class="stats-fp-logo-wrap" title="Kembali ke Beranda Pesona Kahuripan">
+        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgqB2QhrvsCgDSNo4roXgoDSo7oZV9mkCZY9kHDb2I7KC3FI4SCLuyWaBXShDGHDLHLEMsHpagl_CWKf-FI37FAR6GK_0dHZwHP-oJ_n3W3WKJQznbe3MC2tsXLbXZJG_iuohb17uim3-D974PuRgXDh8sCTfppDaP7yagLsthRMrIKieG4acIPb3VAiJU=s256" alt="Pesona Kahuripan" class="stats-fp-logo" />
+        <div class="stats-fp-brand-text">
+          <span class="stats-fp-brand-title">Pesona Kahuripan</span>
+          <span class="stats-fp-brand-sub">Marketing Intelligence</span>
+        </div>
+      </a>
+      <div class="stats-fp-nav-actions">
+        <span class="cta-live-badge"><span class="cta-live-dot"></span> LIVE MONITORING CTA</span>
+        <a href="/" class="stats-btn-back-home">
+          <i class="hgi-stroke hgi-arrow-left-01"></i>
+          <span>Kembali ke Beranda</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="stats-fp-main">
+    <div class="stats-fp-container">
+      <div class="stats-fp-hero">
+        <div class="stats-fp-hero-content">
+          <span class="stats-fp-badge-top">ADMIN &amp; MARKETING DASHBOARD</span>
+          <h1 class="stats-fp-title">Monitoring &amp; Analisa CTA Konsumen</h1>
+          <p class="stats-fp-desc">Kontrol aktivitas calon pembeli, analisa konversi perumahan, dan lacak leads secara real-time di seluruh saluran Call-to-Action.</p>
+        </div>
+        <div class="stats-fp-hero-meta">
+          <span class="stats-fp-last-sync" id="statsFpLastSync">Update Real-time</span>
+        </div>
+      </div>
+
+      <div class="cta-kpi-grid">
+        <div class="cta-kpi-card kpi-total">
+          <div class="cta-kpi-icon"><i class="hgi-stroke hgi-cursor-click-02"></i></div>
+          <div class="cta-kpi-content">
+            <span class="cta-kpi-label">Total Interaksi CTA</span>
+            <h3 class="cta-kpi-val" id="ctaKpiTotal">0</h3>
+            <span class="cta-kpi-sub">Semua klik &amp; lead intent</span>
+          </div>
+        </div>
+        <div class="cta-kpi-card kpi-today">
+          <div class="cta-kpi-icon"><i class="hgi-stroke hgi-calendar-03"></i></div>
+          <div class="cta-kpi-content">
+            <span class="cta-kpi-label">Aktivitas Hari Ini</span>
+            <h3 class="cta-kpi-val" id="ctaKpiToday">0</h3>
+            <span class="cta-kpi-sub" id="ctaKpiTodayDate">Hari ini</span>
+          </div>
+        </div>
+        <div class="cta-kpi-card kpi-top">
+          <div class="cta-kpi-icon"><i class="hgi-stroke hgi-award-01"></i></div>
+          <div class="cta-kpi-content">
+            <span class="cta-kpi-label">CTA Paling Diminati</span>
+            <h4 class="cta-kpi-text-val" id="ctaKpiTopName">-</h4>
+            <span class="cta-kpi-sub" id="ctaKpiTopCount">0 klik</span>
+          </div>
+        </div>
+        <div class="cta-kpi-card kpi-loc">
+          <div class="cta-kpi-icon"><i class="hgi-stroke hgi-location-01"></i></div>
+          <div class="cta-kpi-content">
+            <span class="cta-kpi-label">Lokasi / Proyek Terfavorit</span>
+            <h4 class="cta-kpi-text-val" id="ctaKpiTopLoc">-</h4>
+            <span class="cta-kpi-sub" id="ctaKpiTopLocCount">0 klik</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-modal-tabs">
+        <button type="button" class="cta-tab-btn active" data-cta-tab="summary">
+          <i class="hgi-stroke hgi-chart-breakout-square"></i>
+          <span>Ringkasan Kategori</span>
+        </button>
+        <button type="button" class="cta-tab-btn" data-cta-tab="detail">
+          <i class="hgi-stroke hgi-task-daily-01"></i>
+          <span>Rincian Semua Tombol CTA</span>
+        </button>
+        <button type="button" class="cta-tab-btn" data-cta-tab="timeline">
+          <i class="hgi-stroke hgi-clock-01"></i>
+          <span>Log Aktivitas Terkini</span>
+        </button>
+        <button type="button" class="cta-tab-btn" data-cta-tab="ga4">
+          <i class="hgi-stroke hgi-google"></i>
+          <span>Status GA4 &amp; Panduan</span>
+        </button>
+      </div>
+
+      <div class="cta-tab-body">
+        <div class="cta-tab-pane active" id="ctaPaneSummary">
+          <div class="cta-summary-grid">
+            <div class="cta-progress-section" id="ctaCategoryProgressList"></div>
+            <div class="cta-insight-card">
+              <div class="cta-insight-header">
+                <i class="hgi-stroke hgi-sparkles"></i>
+                <h4>Analisa Minat Konsumen</h4>
+              </div>
+              <p id="ctaInsightText">Memuat ringkasan data minat konsumen...</p>
+              <div class="cta-shortcut-hint">
+                <i class="hgi-stroke hgi-information-circle"></i>
+                <span>Halaman ini dapat diakses langsung via <strong>domain.com/statistik</strong> kapan saja.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-tab-pane" id="ctaPaneDetail">
+          <div class="cta-table-toolbar">
+            <div class="cta-search-wrap">
+              <i class="hgi-stroke hgi-search-01"></i>
+              <input type="text" id="ctaTableSearchInput" placeholder="Cari tombol CTA, tipe rumah, atau lokasi..." />
+            </div>
+            <span class="cta-table-count" id="ctaTableCountText">0 tombol tercatat</span>
+          </div>
+          <div class="cta-table-container">
+            <table class="cta-table" id="ctaDetailsTable">
+              <thead>
+                <tr>
+                  <th>Nama Tombol / Aksi</th>
+                  <th>Kategori</th>
+                  <th>Target</th>
+                  <th style="text-align:center;">Total Klik</th>
+                  <th style="text-align:center;">Share (%)</th>
+                  <th>Terakhir Diklik</th>
+                </tr>
+              </thead>
+              <tbody id="ctaTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="cta-tab-pane" id="ctaPaneTimeline">
+          <div class="cta-timeline-wrap">
+            <div class="cta-timeline-header">
+              <h4>Riwayat 50 Klik Terakhir Konsumen</h4>
+              <span class="cta-timeline-badge" id="ctaTimelineTotalBadge">0 tercatat</span>
+            </div>
+            <div class="cta-timeline-list" id="ctaTimelineList"></div>
+          </div>
+        </div>
+
+        <div class="cta-tab-pane" id="ctaPaneGA4">
+          <div class="cta-ga4-wrap">
+            <div class="cta-ga4-status-card">
+              <div class="cta-ga4-icon">
+                <i class="hgi-stroke hgi-google"></i>
+              </div>
+              <div class="cta-ga4-info">
+                <h4>Google Analytics 4 &amp; Google Tag Manager Terhubung</h4>
+                <p>ID Konfigurasi: <code>AW-11372301881</code> &bull; Status: <span class="badge-status-online">● Terkoneksi Aktif</span></p>
+              </div>
+            </div>
+
+            <div class="cta-ga4-grid">
+              <div class="cta-ga4-card">
+                <h5><i class="hgi-stroke hgi-arrow-right-double"></i> Event Otomatis yang Terkirim</h5>
+                <ul>
+                  <li><strong>Event Name:</strong> <code>cta_click</code></li>
+                  <li><strong>Parameter 1:</strong> <code>event_category: 'CTA Conversion'</code></li>
+                  <li><strong>Parameter 2:</strong> <code>event_label: [Nama Tombol]</code></li>
+                  <li><strong>Parameter 3:</strong> <code>cta_section: [Bagian Web]</code></li>
+                  <li><strong>Parameter 4:</strong> <code>cta_target: [Tujuan]</code></li>
+                </ul>
+              </div>
+              <div class="cta-ga4-card">
+                <h5><i class="hgi-stroke hgi-book-open-01"></i> Cara Memantau di Google Analytics</h5>
+                <ol>
+                  <li>Buka dashboard <strong>Google Analytics 4</strong> akun Anda.</li>
+                  <li>Masuk ke menu <strong>Laporan (Reports) &gt; Keterlibatan (Engagement) &gt; Peristiwa (Events)</strong>.</li>
+                  <li>Cari peristiwa dengan nama <code>cta_click</code> untuk melihat grafik real-time konsumen dari seluruh Indonesia.</li>
+                  <li>Dapat dihubungkan ke <strong>Google Looker Studio</strong> untuk dashboard eksekutif manajemen.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-modal-footer">
+        <div class="cta-footer-left">
+          <button type="button" class="cta-btn-action cta-btn-wa-copy" id="btnCopyWaReport" title="Salin laporan WhatsApp">
+            <i class="hgi-stroke hgi-copy-01"></i>
+            <span>Salin Laporan WhatsApp</span>
+          </button>
+          <button type="button" class="cta-btn-action cta-btn-export" id="btnExportCsv" title="Download data dalam format Excel CSV">
+            <i class="hgi-stroke hgi-download-04"></i>
+            <span>Download CSV (Excel)</span>
+          </button>
+          <button type="button" class="cta-btn-action cta-btn-reset" id="btnResetStats" title="Reset data statistik">
+            <i class="hgi-stroke hgi-refresh"></i>
+            <span>Reset Data</span>
+          </button>
+        </div>
+        <a href="/" class="cta-btn-action cta-btn-close-bottom" style="text-decoration:none;">
+          <span>&larr; Kembali ke Beranda</span>
+        </a>
+      </div>
+
+      <div id="ctaToastAlert" class="cta-toast-alert" style="display:none;">
+        <i class="hgi-stroke hgi-checkmark-circle-01"></i>
+        <span id="ctaToastText">Laporan berhasil disalin!</span>
+      </div>
+    </div>
+  </main>
+</div>
+`;
+      document.body.insertAdjacentHTML('afterbegin', fullPageHTML);
+    } else {
+      container.style.display = 'flex';
+    }
+
+    bindDashboardEvents();
     renderDashboardUI();
-    const overlay = document.getElementById('pesonaCtaModalOverlay');
-    if (overlay) {
-      overlay.style.display = 'flex';
-      setTimeout(function() {
-        overlay.classList.add('active');
-      }, 10);
+  }
+
+  function openDashboard() {
+    if (isStatistikRoute()) {
+      mountFullPageStatsView();
+      return;
+    }
+    try {
+      history.pushState(null, '', '/statistik');
+      mountFullPageStatsView();
+      window.scrollTo(0, 0);
+    } catch(err) {
+      ensureDashboardDOM();
+      renderDashboardUI();
+      const overlay = document.getElementById('pesonaCtaModalOverlay');
+      if (overlay) {
+        overlay.style.display = 'flex';
+        setTimeout(function() { overlay.classList.add('active'); }, 10);
+      }
     }
   }
 
@@ -2631,9 +2886,7 @@ function initCtaAnalyticsTracker() {
     const overlay = document.getElementById('pesonaCtaModalOverlay');
     if (overlay) {
       overlay.classList.remove('active');
-      setTimeout(function() {
-        overlay.style.display = 'none';
-      }, 300);
+      setTimeout(function() { overlay.style.display = 'none'; }, 300);
     }
   }
 
@@ -2644,36 +2897,42 @@ function initCtaAnalyticsTracker() {
   document.addEventListener('keydown', function(e) {
     if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'S' || e.key === 's')) {
       e.preventDefault();
-      const overlay = document.getElementById('pesonaCtaModalOverlay');
-      if (overlay && overlay.classList.contains('active')) {
-        closeDashboard();
-      } else {
-        openDashboard();
-      }
+      openDashboard();
     } else if (e.key === 'Escape') {
       closeDashboard();
     }
   });
 
-  // Check URL hash (#statistik or #stats)
-  function checkHash() {
-    if (location.hash === '#statistik' || location.hash === '#stats') {
-      openDashboard();
+  // Handle browser Back / Forward navigation (PopState)
+  window.addEventListener('popstate', function() {
+    if (isStatistikRoute()) {
+      mountFullPageStatsView();
+    } else {
+      window.location.reload();
     }
-  }
-  window.addEventListener('hashchange', checkHash);
-  if (location.hash === '#statistik' || location.hash === '#stats') {
-    setTimeout(openDashboard, 500);
-  }
+  });
 
-  // Bind footer button if exists
+  // Intercept click on footer stats button -> direct route /statistik
   document.addEventListener('click', function(e) {
     const btn = e.target.closest('#btnOpenStatsDashboard, .footer-stats-btn');
     if (btn) {
       e.preventDefault();
-      openDashboard();
+      if (!isStatistikRoute()) {
+        try {
+          history.pushState(null, '', '/statistik');
+          mountFullPageStatsView();
+          window.scrollTo(0, 0);
+        } catch(err) {
+          window.location.href = '/statistik';
+        }
+      }
     }
   });
+
+  // Check on initial page load if route is /statistik
+  if (isStatistikRoute()) {
+    mountFullPageStatsView();
+  }
 }
 
 
