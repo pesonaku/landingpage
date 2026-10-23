@@ -71,17 +71,17 @@
     <link href='https://use.hugeicons.com/font/icons.css' rel='stylesheet'/>
 
     <!-- Stylesheet Utama (Separated Production Bundle) -->
-    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.6.0/main_style.css' rel='stylesheet' type='text/css'/>
+    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.6.1/main_style.css' rel='stylesheet' type='text/css'/>
 
     <!-- Progressive Enhancement State -->
     
 
     <b:skin><![CDATA[
-@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.6.0/main_style.css");
+@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.6.1/main_style.css");
 
 /*!
  * Pesona Kahuripan - Clean Modern Blogger Landing Page Template
- * Stylesheet is separated into: main_style.css (v3.6.0)
+ * Stylesheet is separated into: main_style.css (v3.6.1)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -150,7 +150,7 @@ body#layout {
 
 /* HEADER BRANDING DASBOR */
 body#layout:before {
-  content: '🏢 PESONA KAHURIPAN GROUP — PENGELOLA TATA LETAK TEMA';
+  content: '🏢 PENGELOLA TATA LETAK TEMA';
   display: block !important;
   font-size: 16px !important;
   font-weight: 800 !important;
@@ -5935,7 +5935,7 @@ YouTube: https://www.youtube.com/@pesonakahuripan18]]></b:widget-setting>
     <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js'/>
 
     <!-- Main Interactive Script (Separated) -->
-    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.6.0/main_script.js'/>
+    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.6.1/main_script.js'/>
 
     
 

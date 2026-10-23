@@ -15,7 +15,7 @@
   <link href="https://use.hugeicons.com/font/icons.css" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link href="main_style.css?v=3.6.0" rel="stylesheet">
+  <link href="main_style.css?v=3.6.1" rel="stylesheet">
 
   <!-- Google Tag Manager (GTAG) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11372301881"></script>
@@ -111,6 +111,11 @@
             <i class="hgi-stroke hgi-task-daily-01"></i>
             <span>Rincian Semua Tombol CTA</span>
           </button>
+          <button type="button" class="cta-tab-btn" data-cta-tab="leads">
+            <i class="hgi-stroke hgi-user-sharing"></i>
+            <span>Data Debitur &amp; Leads</span>
+            <span class="badge-tab-lead-count" id="ctaLeadTabBadge">0</span>
+          </button>
           <button type="button" class="cta-tab-btn" data-cta-tab="timeline">
             <i class="hgi-stroke hgi-clock-01"></i>
             <span>Log Aktivitas Terkini</span>
@@ -167,7 +172,33 @@
             </div>
           </div>
 
-          <!-- Tab 3: Timeline -->
+          <!-- Tab 3: Data Debitur & Leads Table -->
+          <div class="cta-tab-pane" id="ctaPaneLeads">
+            <div class="cta-table-toolbar">
+              <div class="cta-search-wrap">
+                <i class="hgi-stroke hgi-search-01"></i>
+                <input type="text" id="ctaLeadSearchInput" placeholder="Cari nama, nomor WhatsApp, atau pesan debitur..." />
+              </div>
+              <span class="cta-table-count" id="ctaLeadCountText">0 formulir tercatat</span>
+            </div>
+            <div class="cta-table-container">
+              <table class="cta-table" id="ctaLeadsTable">
+                <thead>
+                  <tr>
+                    <th style="width:40px;text-align:center;">No</th>
+                    <th style="width:145px;">Waktu Masuk</th>
+                    <th style="width:170px;">Nama Calon Debitur</th>
+                    <th style="width:170px;">Nomor WhatsApp</th>
+                    <th>Pesan / Minat Unit</th>
+                    <th style="width:130px;text-align:center;">Aksi Hubungi</th>
+                  </tr>
+                </thead>
+                <tbody id="ctaLeadTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Tab 4: Timeline -->
           <div class="cta-tab-pane" id="ctaPaneTimeline">
             <div class="cta-timeline-wrap">
               <div class="cta-timeline-header">
@@ -255,6 +286,6 @@
   </div>
 
   <!-- Main JavaScript Bundle -->
-  <script src="main_script.js?v=3.6.0"></script>
+  <script src="main_script.js?v=3.6.1"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 /*!
  * Pesona Kahuripan - Official Landing Page Interactive Script
- * Version: 3.6.0 (Production Interactive Bundle - Phone Validation & Lead Analytics)
+ * Version: 3.6.1 (Production Interactive Bundle - Realtime Debitur Phone & Leads Engine)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -1548,19 +1548,14 @@ function validateIndonesianPhone(phone) {
 
   // Operator seluler Indonesia valid diawali 08[1235789]
   if (!/^08[1235789]\d{7,11}$/.test(cleaned)) {
-    return { isValid: false, message: 'Format nomor tidak valid. Nomor HP Indonesia diawali 08 (contoh: 081234567890).' };
+    return { isValid: false, message: 'Format nomor tidak valid. Nomor HP Indonesia diawali 08 dengan 10-14 digit (contoh: 081234567890).' };
   }
 
-  // Cek nomor dummy berulang (semua digit setelah 08 sama)
+  // Cek nomor dummy berulang jika semua digit setelah 08 sama persis (contoh: 08111111111 atau 0800000000)
   const after08 = cleaned.slice(2);
   const distinctAfter08 = new Set(after08.split('')).size;
-  if (distinctAfter08 === 1) {
+  if (distinctAfter08 <= 1) {
     return { isValid: false, message: 'Nomor handphone tidak valid (digit berulang). Mohon masukkan nomor aktif Anda.' };
-  }
-
-  // Cek nomor urut / dummy berurutan (misal: 08123456789 atau 081234567890)
-  if ('12345678901234'.includes(after08) || '01234567890123'.includes(after08) || '987654321098'.includes(after08)) {
-    return { isValid: false, message: 'Nomor HP tidak valid (urutan angka acak). Mohon masukkan nomor aktif Anda.' };
   }
 
   return { isValid: true, normalized: cleaned };
@@ -1613,6 +1608,21 @@ window.validateIndonesianPhone = validateIndonesianPhone;
       const marketingName = mConfig.name || "Mas Ro'uf";
       const phone = mConfig.phone || "6287870988073";
 
+      // PENTING: Rekam data leads & nomor handphone ke CTA Analytics SEBELUM membuka tab WhatsApp
+      const ctaNameWithPhone = 'Formulir Chat: ' + name + (phoneUser ? ' (' + phoneUser + ')' : '');
+      const leadPayload = {
+        phone: phoneUser,
+        message: message,
+        userName: name
+      };
+
+      if (typeof window.trackCtaEvent === 'function') {
+        window.trackCtaEvent('cta_chat_submit', ctaNameWithPhone, 'Floating Chat', 'WhatsApp API', leadPayload);
+      } else {
+        window._ctaQueue = window._ctaQueue || [];
+        window._ctaQueue.push(['cta_chat_submit', ctaNameWithPhone, 'Floating Chat', 'WhatsApp API', leadPayload]);
+      }
+
       const fullText = `Halo ${marketingName}, saya ingin bertanya perihal perumahan Pesona Kahuripan.\n\n` +
         `👤 *Nama:* ${name}\n` +
         `📱 *No. WhatsApp:* ${phoneUser}\n` +
@@ -1620,15 +1630,8 @@ window.validateIndonesianPhone = validateIndonesianPhone;
         `🌐 *Referensi Website:* https://www.pesonakahuripan.biz.id\n\n` +
         `Mohon informasi dan tindak lanjutnya. Terima kasih!`;
 
+      // Buka API WhatsApp di jendela baru
       window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(fullText)}`, '_blank');
-
-      if (typeof window.trackCtaEvent === 'function') {
-        window.trackCtaEvent('cta_chat_submit', 'Formulir Chat: ' + name, 'Floating Chat', 'WhatsApp API', {
-          phone: phoneUser,
-          message: message,
-          userName: name
-        });
-      }
 
       if (nameInput) nameInput.value = '';
       if (phoneInput) phoneInput.value = '';
@@ -1981,6 +1984,28 @@ function initCtaAnalyticsTracker() {
           parsed.logs = Array.isArray(parsed.logs) ? parsed.logs : [];
           parsed.leads = Array.isArray(parsed.leads) ? parsed.leads : [];
           parsed.totalClicks = typeof parsed.totalClicks === 'number' ? parsed.totalClicks : 0;
+
+          // Backfill leads dari logs jika data.leads kosong tapi ada log form chat / phone
+          if (parsed.leads.length === 0 && parsed.logs.length > 0) {
+            parsed.logs.forEach(function(l) {
+              if (l.phone || (l.id === 'cta_chat_submit' && l.name)) {
+                let extractedPhone = l.phone || '';
+                if (!extractedPhone && l.name) {
+                  const m = l.name.match(/\((08\d{7,12})\)/);
+                  if (m) extractedPhone = m[1];
+                }
+                const leadName = l.userName || l.name.replace(/^Formulir Chat:\s*/i, '').replace(/\s*\([^)]*\)$/, '');
+                parsed.leads.push({
+                  name: leadName,
+                  phone: extractedPhone || '-',
+                  message: l.message || '',
+                  timestamp: l.timestamp || new Date().toISOString(),
+                  timeFormatted: l.timeFormatted || ''
+                });
+              }
+            });
+          }
+
           return parsed;
         }
       }
@@ -2036,6 +2061,14 @@ function initCtaAnalyticsTracker() {
     data.byCta[ctaId].count++;
     data.byCta[ctaId].lastClicked = timeFormatted;
 
+    // Jika ini adalah form chat debitur, selalu update nama dengan data debitur terbaru & simpan nomor HP
+    if (leadData && leadData.phone) {
+      data.byCta[ctaId].name = ctaName;
+      data.byCta[ctaId].lastPhone = leadData.phone;
+      data.byCta[ctaId].lastMessage = leadData.message || '';
+      data.byCta[ctaId].lastUserName = leadData.userName || '';
+    }
+
     const logEntry = {
       id: ctaId,
       name: ctaName,
@@ -2056,13 +2089,13 @@ function initCtaAnalyticsTracker() {
     if (leadData && leadData.phone) {
       data.leads = data.leads || [];
       data.leads.unshift({
-        name: leadData.userName || ctaName.replace(/^Formulir Chat:\s*/i, ''),
+        name: leadData.userName || ctaName.replace(/^Formulir Chat:\s*/i, '').replace(/\s*\([^)]*\)$/, ''),
         phone: leadData.phone,
         message: leadData.message || '',
         timestamp: now.toISOString(),
         timeFormatted: timeFormatted
       });
-      if (data.leads.length > 50) data.leads = data.leads.slice(0, 50);
+      if (data.leads.length > 100) data.leads = data.leads.slice(0, 100);
     }
 
     saveAnalyticsData(data);
@@ -2394,6 +2427,11 @@ function initCtaAnalyticsTracker() {
         <i class="hgi-stroke hgi-task-daily-01"></i>
         <span>Rincian Semua Tombol CTA</span>
       </button>
+      <button type="button" class="cta-tab-btn" data-cta-tab="leads">
+        <i class="hgi-stroke hgi-user-sharing"></i>
+        <span>Data Debitur &amp; Leads</span>
+        <span class="badge-tab-lead-count" id="ctaLeadTabBadge">0</span>
+      </button>
       <button type="button" class="cta-tab-btn" data-cta-tab="timeline">
         <i class="hgi-stroke hgi-clock-01"></i>
         <span>Log Aktivitas Terkini</span>
@@ -2443,6 +2481,31 @@ function initCtaAnalyticsTracker() {
               </tr>
             </thead>
             <tbody id="ctaTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="cta-tab-pane" id="ctaPaneLeads">
+        <div class="cta-table-toolbar">
+          <div class="cta-search-wrap">
+            <i class="hgi-stroke hgi-search-01"></i>
+            <input type="text" id="ctaLeadSearchInput" placeholder="Cari nama, nomor WhatsApp, atau pesan debitur..." />
+          </div>
+          <span class="cta-table-count" id="ctaLeadCountText">0 formulir tercatat</span>
+        </div>
+        <div class="cta-table-container">
+          <table class="cta-table" id="ctaLeadsTable">
+            <thead>
+              <tr>
+                <th style="width:40px;text-align:center;">No</th>
+                <th style="width:145px;">Waktu Masuk</th>
+                <th style="width:170px;">Nama Calon Debitur</th>
+                <th style="width:170px;">Nomor WhatsApp</th>
+                <th>Pesan / Minat Unit</th>
+                <th style="width:130px;text-align:center;">Aksi Hubungi</th>
+              </tr>
+            </thead>
+            <tbody id="ctaLeadTableBody"></tbody>
           </table>
         </div>
       </div>
@@ -2645,10 +2708,19 @@ function initCtaAnalyticsTracker() {
       insightEls.forEach(function(el) { el.innerHTML = insightText; });
     }
 
+    // Update badge jumlah lead form debitur
+    const leadsTotal = (data.leads || []).length;
+    document.querySelectorAll('#ctaLeadTabBadge').forEach(function(el) {
+      el.textContent = leadsTotal;
+    });
+
     // 3. Tab 2: Detail Table
     renderTableRows(ctaList, total);
 
-    // 4. Tab 3: Timeline
+    // 4. Tab 3: Data Debitur & Leads Table
+    renderLeadsTable(data.leads || []);
+
+    // 5. Tab 4: Timeline
     const timelineWraps = document.querySelectorAll('#ctaTimelineList');
     let logsToShow = data.logs || [];
     if (currentTimelineFilter === 'leads') {
@@ -2746,11 +2818,28 @@ function initCtaAnalyticsTracker() {
     let rowsHtml = '';
     filtered.forEach(function(c) {
       const pct = total > 0 ? ((c.count / total) * 100).toFixed(1) : 0;
+      const isLeadCta = c.id === 'cta_chat_submit' || !!c.lastPhone;
+      let phoneBadgeHtml = '';
+      if (isLeadCta && c.lastPhone) {
+        const cleanDigits = c.lastPhone.replace(/\D/g, '');
+        const waNum = cleanDigits.startsWith('0') ? ('62' + cleanDigits.slice(1)) : cleanDigits.startsWith('62') ? cleanDigits : ('62' + cleanDigits);
+        phoneBadgeHtml = `
+          <div class="cta-row-phone-badge">
+            <i class="hgi-stroke hgi-smart-phone-01"></i> No. HP Terkini: <strong>${escapeHtml(c.lastPhone)}</strong>
+            <a href="https://wa.me/${waNum}" target="_blank" rel="noopener" class="cta-mini-wa-btn" title="Chat WhatsApp Calon Debitur">
+              <i class="hgi-stroke hgi-whatsapp"></i> Chat
+            </a>
+          </div>
+        `;
+      }
       rowsHtml += `
         <tr>
-          <td><strong style="color:#ffffff;">${c.name}</strong></td>
-          <td><span class="badge-sec">${c.section}</span></td>
-          <td><span class="badge-target">${c.target}</span></td>
+          <td>
+            <strong style="color:#ffffff;">${escapeHtml(c.name)}</strong>
+            ${phoneBadgeHtml}
+          </td>
+          <td><span class="badge-sec">${escapeHtml(c.section)}</span></td>
+          <td><span class="badge-target">${escapeHtml(c.target)}</span></td>
           <td style="text-align:center;font-weight:700;color:#10b981;">${c.count}</td>
           <td style="text-align:center;color:#94a3b8;">${pct}%</td>
           <td style="color:#64748b;font-size:0.78rem;">${c.lastClicked || '-'}</td>
@@ -2758,6 +2847,105 @@ function initCtaAnalyticsTracker() {
       `;
     });
     tbody.innerHTML = rowsHtml;
+  }
+
+  function renderLeadsTable(leadsList) {
+    const tbody = document.getElementById('ctaLeadTableBody');
+    const countEl = document.getElementById('ctaLeadCountText');
+    const searchInput = document.getElementById('ctaLeadSearchInput');
+    const searchVal = (searchInput ? searchInput.value : '').toLowerCase().trim();
+
+    if (countEl) countEl.textContent = (leadsList.length) + ' formulir tercatat';
+    if (!tbody) return;
+
+    const filtered = searchVal ? leadsList.filter(l => 
+      (l.name && l.name.toLowerCase().includes(searchVal)) ||
+      (l.phone && l.phone.toLowerCase().includes(searchVal)) ||
+      (l.message && l.message.toLowerCase().includes(searchVal))
+    ) : leadsList;
+
+    if (filtered.length === 0) {
+      if (searchVal) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#94a3b8;padding:28px 14px;"><i class="hgi-stroke hgi-search-01" style="font-size:1.3rem;vertical-align:middle;margin-right:6px;"></i>Tidak ada data debitur yang sesuai pencarian "<strong>' + escapeHtml(searchVal) + '</strong>".</td></tr>';
+      } else {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" style="text-align:center;color:#94a3b8;padding:36px 16px;">
+              <div style="max-width:420px;margin:0 auto;">
+                <div style="width:48px;height:48px;border-radius:12px;background:rgba(16,185,129,0.12);color:#10b981;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:24px;">
+                  <i class="hgi-stroke hgi-user-sharing"></i>
+                </div>
+                <h4 style="color:#f8fafc;font-size:0.96rem;margin:0 0 6px;">Belum Ada Data Formulir Debitur</h4>
+                <p style="font-size:0.82rem;color:#64748b;line-height:1.5;margin:0;">Setiap calon debitur yang mengisi form floating WhatsApp akan otomatis tercatat nama, nomor handphone, dan pertanyaannya di sini secara real-time.</p>
+              </div>
+            </td>
+          </tr>
+        `;
+      }
+      return;
+    }
+
+    let rowsHtml = '';
+    filtered.forEach(function(lead, idx) {
+      const rawPhone = lead.phone || '-';
+      const cleanDigits = rawPhone.replace(/\D/g, '');
+      const waPhoneNum = cleanDigits.startsWith('0') ? ('62' + cleanDigits.slice(1)) : cleanDigits.startsWith('62') ? cleanDigits : ('62' + cleanDigits);
+      const greetingMsg = `Halo ${lead.name || 'Bapak/Ibu'}, terima kasih sudah mengisi formulir di website Pesona Kahuripan. Ada yang bisa kami bantu perihal unit rumah idaman Anda?`;
+      const waChatLink = cleanDigits ? `https://wa.me/${waPhoneNum}?text=${encodeURIComponent(greetingMsg)}` : '#';
+
+      rowsHtml += `
+        <tr>
+          <td style="text-align:center;color:#64748b;font-weight:600;">${idx + 1}</td>
+          <td style="color:#94a3b8;font-size:0.78rem;white-space:nowrap;">
+            <i class="hgi-stroke hgi-clock-01" style="font-size:12px;vertical-align:middle;margin-right:3px;"></i>${lead.timeFormatted || lead.timestamp || '-'}
+          </td>
+          <td>
+            <div style="font-weight:700;color:#ffffff;display:flex;align-items:center;gap:6px;">
+              <i class="hgi-stroke hgi-user" style="color:#10b981;font-size:14px;"></i>
+              <span>${escapeHtml(lead.name || 'Calon Debitur')}</span>
+            </div>
+          </td>
+          <td>
+            <div class="lead-phone-cell">
+              <strong class="lead-phone-number">${escapeHtml(lead.phone || '-')}</strong>
+              ${cleanDigits ? `
+                <button type="button" class="btn-copy-lead-phone" data-phone="${escapeHtml(lead.phone)}" title="Salin nomor WhatsApp">
+                  <i class="hgi-stroke hgi-copy-01"></i>
+                </button>
+              ` : ''}
+            </div>
+          </td>
+          <td>
+            <div class="lead-msg-cell" title="${escapeHtml(lead.message || '')}">
+              ${lead.message ? ('&ldquo;' + escapeHtml(lead.message) + '&rdquo;') : '<span style="color:#64748b;font-style:italic;">Tidak ada pesan</span>'}
+            </div>
+          </td>
+          <td style="text-align:center;white-space:nowrap;">
+            ${cleanDigits ? `
+              <a href="${waChatLink}" target="_blank" rel="noopener" class="cta-lead-action-wa" title="Hubungi Debitur via WhatsApp">
+                <i class="hgi-stroke hgi-whatsapp"></i>
+                <span>Chat WA</span>
+              </a>
+            ` : '<span style="color:#64748b;font-size:0.75rem;">-</span>'}
+          </td>
+        </tr>
+      `;
+    });
+
+    tbody.innerHTML = rowsHtml;
+
+    // Bind tombol salin nomor telepon
+    tbody.querySelectorAll('.btn-copy-lead-phone').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const p = this.getAttribute('data-phone');
+        if (p && navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(p).then(function() {
+            showToast('Nomor ' + p + ' berhasil disalin!');
+          });
+        }
+      });
+    });
   }
 
   function generateWhatsAppReportText() {
@@ -2779,16 +2967,16 @@ function initCtaAnalyticsTracker() {
       secList += `• ${sec}: *${cnt}* klik (${pct}%)\n`;
     });
 
-    const leadLogs = (data.logs || []).filter(function(l) {
+    const allLeads = (data.leads && data.leads.length > 0) ? data.leads : (data.logs || []).filter(function(l) {
       return !!(l.phone || l.message || l.id === 'cta_chat_submit');
-    }).slice(0, 5);
+    });
 
     let leadsSummary = '';
-    if (leadLogs.length > 0) {
+    if (allLeads.length > 0) {
       leadsSummary = '\n📥 *Lead Form Debitur Terkini:*\n';
-      leadLogs.forEach(function(ld) {
-        const leadName = ld.userName || ld.name.replace(/^Formulir Chat:\s*/i, '');
-        const msgSnippet = (ld.message || '').slice(0, 30) + ((ld.message || '').length > 30 ? '...' : '');
+      allLeads.slice(0, 10).forEach(function(ld) {
+        const leadName = ld.userName || ld.name.replace(/^Formulir Chat:\s*/i, '').replace(/\s*\([^)]*\)$/, '');
+        const msgSnippet = (ld.message || '').slice(0, 35) + ((ld.message || '').length > 35 ? '...' : '');
         leadsSummary += `• *${leadName}* (${ld.phone || '-'}): "${msgSnippet}"\n`;
       });
     }
@@ -2829,24 +3017,23 @@ function initCtaAnalyticsTracker() {
       ].join(',') + '\n';
     });
 
-    const leadLogs = (data.logs || []).filter(function(l) {
+    const allLeads = (data.leads && data.leads.length > 0) ? data.leads : (data.logs || []).filter(function(l) {
       return !!(l.phone || l.message || l.id === 'cta_chat_submit');
     });
 
     csvContent += '\n=== DAFTAR LEAD FORMULIR CTA DEBITUR ===\n';
-    csvContent += 'Tanggal & Waktu,Nama Debitur,Nomor WhatsApp,Pesan / Minat Unit,Kategori,Tujuan\n';
+    csvContent += 'No,Tanggal & Waktu,Nama Debitur,Nomor WhatsApp,Pesan / Minat Unit\n';
 
-    if (leadLogs.length === 0) {
+    if (allLeads.length === 0) {
       csvContent += 'Belum ada lead formulir CTA yang masuk\n';
     } else {
-      leadLogs.forEach(function(item) {
+      allLeads.forEach(function(item, idx) {
         csvContent += [
+          idx + 1,
           escape(item.timeFormatted || item.timestamp),
-          escape(item.userName || item.name.replace(/^Formulir Chat:\s*/i, '')),
+          escape(item.userName || item.name.replace(/^Formulir Chat:\s*/i, '').replace(/\s*\([^)]*\)$/, '')),
           escape(item.phone || '-'),
-          escape(item.message || '-'),
-          escape(item.section),
-          escape(item.target)
+          escape(item.message || '-')
         ].join(',') + '\n';
       });
     }
@@ -2910,12 +3097,21 @@ function initCtaAnalyticsTracker() {
       });
     });
 
-    // Search table
+    // Search CTA table
     if (searchInput) {
       searchInput.addEventListener('input', function() {
         const data = getAnalyticsData();
         const ctaList = Object.values(data.byCta || {}).sort((a,b) => b.count - a.count);
         renderTableRows(ctaList, data.totalClicks || 0);
+      });
+    }
+
+    // Search Lead table
+    const leadSearchInput = document.getElementById('ctaLeadSearchInput');
+    if (leadSearchInput) {
+      leadSearchInput.addEventListener('input', function() {
+        const data = getAnalyticsData();
+        renderLeadsTable(data.leads || []);
       });
     }
 
@@ -3082,6 +3278,11 @@ function initCtaAnalyticsTracker() {
           <i class="hgi-stroke hgi-task-daily-01"></i>
           <span>Rincian Semua Tombol CTA</span>
         </button>
+        <button type="button" class="cta-tab-btn" data-cta-tab="leads">
+          <i class="hgi-stroke hgi-user-sharing"></i>
+          <span>Data Debitur &amp; Leads</span>
+          <span class="badge-tab-lead-count" id="ctaLeadTabBadge">0</span>
+        </button>
         <button type="button" class="cta-tab-btn" data-cta-tab="timeline">
           <i class="hgi-stroke hgi-clock-01"></i>
           <span>Log Aktivitas Terkini</span>
@@ -3131,6 +3332,31 @@ function initCtaAnalyticsTracker() {
                 </tr>
               </thead>
               <tbody id="ctaTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="cta-tab-pane" id="ctaPaneLeads">
+          <div class="cta-table-toolbar">
+            <div class="cta-search-wrap">
+              <i class="hgi-stroke hgi-search-01"></i>
+              <input type="text" id="ctaLeadSearchInput" placeholder="Cari nama, nomor WhatsApp, atau pesan debitur..." />
+            </div>
+            <span class="cta-table-count" id="ctaLeadCountText">0 formulir tercatat</span>
+          </div>
+          <div class="cta-table-container">
+            <table class="cta-table" id="ctaLeadsTable">
+              <thead>
+                <tr>
+                  <th style="width:40px;text-align:center;">No</th>
+                  <th style="width:145px;">Waktu Masuk</th>
+                  <th style="width:170px;">Nama Calon Debitur</th>
+                  <th style="width:170px;">Nomor WhatsApp</th>
+                  <th>Pesan / Minat Unit</th>
+                  <th style="width:130px;text-align:center;">Aksi Hubungi</th>
+                </tr>
+              </thead>
+              <tbody id="ctaLeadTableBody"></tbody>
             </table>
           </div>
         </div>
