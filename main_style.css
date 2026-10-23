@@ -1,6 +1,6 @@
 /*!
  * Pesona Kahuripan - Official Landing Page Stylesheet
- * Version: 3.5.6 (Production Design System Bundle)
+ * Version: 3.6.0 (Production Design System Bundle)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -3453,6 +3453,20 @@ body.homepage #blog-single {
   border-color: var(--key);
   box-shadow: 0 0 0 3px rgba(15, 157, 88, 0.15);
 }
+.chat-form input.is-invalid {
+  border-color: #ef4444 !important;
+  background-color: #fef2f2 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+}
+.chat-field-error {
+  display: none;
+  font-size: 0.73rem;
+  color: #ef4444;
+  margin-top: 3px;
+  line-height: 1.35;
+  font-weight: 600;
+  animation: chatFadeIn 0.2s ease;
+}
 .chat-form textarea {
   resize: none;
 }
@@ -5541,8 +5555,15 @@ body.homepage #blog-single {
 .cta-timeline-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.cta-timeline-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .cta-timeline-header h4 {
   font-size: 0.95rem;
@@ -5550,12 +5571,48 @@ body.homepage #blog-single {
   margin: 0;
   color: #f8fafc;
 }
+.cta-timeline-filters {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.cta-timeline-filter-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+.cta-timeline-filter-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+}
+.cta-timeline-filter-btn.active {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: #10b981;
+  color: #10b981;
+}
+.cta-filter-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  display: inline-block;
+}
 .cta-timeline-badge {
   font-size: 0.76rem;
   color: #94a3b8;
   background: rgba(255, 255, 255, 0.06);
   padding: 4px 10px;
   border-radius: 12px;
+  align-self: flex-start;
 }
 .cta-timeline-list {
   display: flex;
@@ -5571,11 +5628,18 @@ body.homepage #blog-single {
   border-radius: 12px;
   padding: 10px 14px;
   gap: 12px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.cta-timeline-item.is-lead {
+  border-left: 3px solid #10b981;
+  background: rgba(16, 185, 129, 0.04);
+  align-items: flex-start;
 }
 .cta-time-left {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
+  flex: 1;
 }
 .cta-time-icon {
   width: 32px;
@@ -5588,20 +5652,111 @@ body.homepage #blog-single {
   justify-content: center;
   font-size: 16px;
   flex-shrink: 0;
+  margin-top: 2px;
+}
+.cta-time-icon.icon-lead {
+  background: rgba(16, 185, 129, 0.22);
+  color: #10b981;
+}
+.cta-time-content {
+  flex: 1;
+  min-width: 0;
 }
 .cta-time-name {
   font-size: 0.85rem;
   font-weight: 600;
   color: #f8fafc;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.badge-lead-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: rgba(16, 185, 129, 0.18);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  letter-spacing: 0.2px;
 }
 .cta-time-meta {
   font-size: 0.74rem;
   color: #94a3b8;
+  margin-top: 2px;
+}
+.cta-lead-box {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cta-lead-info-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.78rem;
+}
+.cta-lead-label {
+  color: #94a3b8;
+  font-size: 0.74rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.cta-lead-phone-text {
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+.cta-lead-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #25D366;
+  color: #ffffff !important;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.cta-lead-wa-btn:hover {
+  background: #128c7e;
+  transform: translateY(-1px);
+}
+.cta-lead-msg-row {
+  align-items: flex-start;
+}
+.cta-lead-msg-quote {
+  color: #e2e8f0;
+  font-style: italic;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 6px 10px;
+  border-radius: 6px;
+  border-left: 2px solid #10b981;
+  width: 100%;
+  word-break: break-word;
 }
 .cta-time-right {
   font-size: 0.76rem;
   color: #64748b;
   white-space: nowrap;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 4px;
 }
 
 /* Tab 4: GA4 Guide */

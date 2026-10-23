@@ -71,17 +71,17 @@
     <link href='https://use.hugeicons.com/font/icons.css' rel='stylesheet'/>
 
     <!-- Stylesheet Utama (Separated Production Bundle) -->
-    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.9/main_style.css' rel='stylesheet' type='text/css'/>
+    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.6.0/main_style.css' rel='stylesheet' type='text/css'/>
 
     <!-- Progressive Enhancement State -->
     
 
     <b:skin><![CDATA[
-@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.9/main_style.css");
+@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.6.0/main_style.css");
 
 /*!
  * Pesona Kahuripan - Clean Modern Blogger Landing Page Template
- * Stylesheet is separated into: main_style.css (v3.5.9)
+ * Stylesheet is separated into: main_style.css (v3.6.0)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -5798,10 +5798,6 @@ YouTube: https://www.youtube.com/@pesonakahuripan18]]></b:widget-setting>
                     <i class='hgi-stroke hgi-news'/>
                     <span>Blog</span>
                   </a>
-                  <a class='footer-stats-btn' href='/statistik' id='btnOpenStatsDashboard' title='Monitoring &amp; Analisa CTA Konsumen'>
-                    <i class='hgi-stroke hgi-chart-line-data-02'/>
-                    <span>Statistik CTA</span>
-                  </a>
                 </div>
               </div>
             </b:includable>
@@ -5847,7 +5843,8 @@ YouTube: https://www.youtube.com/@pesonakahuripan18]]></b:widget-setting>
               </div>
               <div class='form-group'>
                 <label for='wa-phone-user'>Nomor WhatsApp</label>
-                <input id='wa-phone-user' placeholder='Contoh: 08123456789' required='' type='tel'/>
+                <input autocomplete='tel' id='wa-phone-user' inputmode='numeric' maxlength='16' placeholder='Contoh: 081234567890' required='' type='tel'/>
+                <div class='chat-field-error' id='wa-phone-error' style='display:none;'></div>
               </div>
               <div class='form-group'>
                 <label for='wa-message'>Pertanyaan / Minat Unit</label>
@@ -5904,7 +5901,8 @@ YouTube: https://www.youtube.com/@pesonakahuripan18]]></b:widget-setting>
               </div>
               <div class='form-group'>
                 <label for='wa-phone-user'>Nomor WhatsApp</label>
-                <input id='wa-phone-user' placeholder='Contoh: 08123456789' required='' type='tel'/>
+                <input autocomplete='tel' id='wa-phone-user' inputmode='numeric' maxlength='16' placeholder='Contoh: 081234567890' required='' type='tel'/>
+                <div class='chat-field-error' id='wa-phone-error' style='display:none;'/>
               </div>
               <div class='form-group'>
                 <label for='wa-message'>Pertanyaan / Minat Unit</label>
@@ -5937,7 +5935,7 @@ YouTube: https://www.youtube.com/@pesonakahuripan18]]></b:widget-setting>
     <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js'/>
 
     <!-- Main Interactive Script (Separated) -->
-    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.5.9/main_script.js'/>
+    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.6.0/main_script.js'/>
 
     
 

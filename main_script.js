@@ -1,6 +1,6 @@
 /*!
  * Pesona Kahuripan - Official Landing Page Interactive Script
- * Version: 3.5.6 (Production Interactive Bundle - Robust House Types & Specs Sync)
+ * Version: 3.6.0 (Production Interactive Bundle - Phone Validation & Lead Analytics)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -268,6 +268,42 @@ function initLandingPage() {
           }
         });
       });
+
+      // D3. Real-time Phone Validation on Typing & Blur
+      const phoneInput = document.getElementById('wa-phone-user');
+      const phoneError = document.getElementById('wa-phone-error');
+      if (phoneInput) {
+        phoneInput.addEventListener('input', function() {
+          // Hanya izinkan angka, spasi, +, dan -
+          this.value = this.value.replace(/[^\d+\-\s]/g, '');
+          if (phoneInput.classList.contains('is-invalid')) {
+            const check = validateIndonesianPhone(this.value);
+            if (check.isValid) {
+              phoneInput.classList.remove('is-invalid');
+              if (phoneError) phoneError.style.display = 'none';
+            }
+          }
+        });
+
+        phoneInput.addEventListener('blur', function() {
+          if (this.value.trim().length > 0) {
+            const check = validateIndonesianPhone(this.value);
+            if (!check.isValid) {
+              phoneInput.classList.add('is-invalid');
+              if (phoneError) {
+                phoneError.textContent = check.message;
+                phoneError.style.display = 'block';
+              }
+            } else {
+              phoneInput.classList.remove('is-invalid');
+              if (phoneError) phoneError.style.display = 'none';
+            }
+          } else {
+            phoneInput.classList.remove('is-invalid');
+            if (phoneError) phoneError.style.display = 'none';
+          }
+        });
+      }
 
       // E. Native Modal Popup Engine (Trigger: [target^="pop-"], .service-card-img, .btn-service-detail)
       document.addEventListener('click', function(e) {
@@ -1483,19 +1519,99 @@ function initLandingPage() {
 
       updateCalculation();
     }
+// Validasi Nomor Handphone Indonesia (Operator Seluler: Telkomsel, Indosat, XL, Axis, Smartfren, Tri)
+function validateIndonesianPhone(phone) {
+  if (!phone || typeof phone !== 'string') {
+    return { isValid: false, message: 'Nomor WhatsApp wajib diisi.' };
+  }
+
+  let cleaned = phone.trim().replace(/[\s\-\.\(\)]/g, '');
+
+  if (cleaned.startsWith('+62')) {
+    cleaned = '0' + cleaned.slice(3);
+  } else if (cleaned.startsWith('62')) {
+    cleaned = '0' + cleaned.slice(2);
+  } else if (cleaned.startsWith('8')) {
+    cleaned = '08' + cleaned.slice(1);
+  }
+
+  if (!/^\d+$/.test(cleaned)) {
+    return { isValid: false, message: 'Nomor handphone hanya boleh berisi angka.' };
+  }
+
+  if (cleaned.length < 10) {
+    return { isValid: false, message: 'Nomor HP terlalu pendek (minimal 10 digit, contoh: 081234567890).' };
+  }
+  if (cleaned.length > 14) {
+    return { isValid: false, message: 'Nomor HP terlalu panjang (maksimal 14 digit).' };
+  }
+
+  // Operator seluler Indonesia valid diawali 08[1235789]
+  if (!/^08[1235789]\d{7,11}$/.test(cleaned)) {
+    return { isValid: false, message: 'Format nomor tidak valid. Nomor HP Indonesia diawali 08 (contoh: 081234567890).' };
+  }
+
+  // Cek nomor dummy berulang (semua digit setelah 08 sama)
+  const after08 = cleaned.slice(2);
+  const distinctAfter08 = new Set(after08.split('')).size;
+  if (distinctAfter08 === 1) {
+    return { isValid: false, message: 'Nomor handphone tidak valid (digit berulang). Mohon masukkan nomor aktif Anda.' };
+  }
+
+  // Cek nomor urut / dummy berurutan (misal: 08123456789 atau 081234567890)
+  if ('12345678901234'.includes(after08) || '01234567890123'.includes(after08) || '987654321098'.includes(after08)) {
+    return { isValid: false, message: 'Nomor HP tidak valid (urutan angka acak). Mohon masukkan nomor aktif Anda.' };
+  }
+
+  return { isValid: true, normalized: cleaned };
+}
+window.validateIndonesianPhone = validateIndonesianPhone;
+
 // F. Dispatch Pesan ke WhatsApp API (Dinamis dari Master Marketing & Site Link Referensi)
     function sendWhatsAppMessage(event) {
       event.preventDefault();
-      const name = document.getElementById('wa-name').value.trim();
-      const phoneUser = document.getElementById('wa-phone-user').value.trim();
-      const message = document.getElementById('wa-message').value.trim();
+      const nameInput = document.getElementById('wa-name');
+      const phoneInput = document.getElementById('wa-phone-user');
+      const messageInput = document.getElementById('wa-message');
+      const phoneError = document.getElementById('wa-phone-error');
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const phoneRaw = phoneInput ? phoneInput.value.trim() : '';
+      const message = messageInput ? messageInput.value.trim() : '';
+
+      if (!name) {
+        if (nameInput) nameInput.focus();
+        return;
+      }
+
+      // Validasi nomor handphone agar debitur tidak asal memasukkan nomor
+      const check = validateIndonesianPhone(phoneRaw);
+      if (!check.isValid) {
+        if (phoneInput) {
+          phoneInput.classList.add('is-invalid');
+          phoneInput.focus();
+        }
+        if (phoneError) {
+          phoneError.textContent = check.message;
+          phoneError.style.display = 'block';
+        }
+        return;
+      }
+
+      if (phoneInput) phoneInput.classList.remove('is-invalid');
+      if (phoneError) phoneError.style.display = 'none';
+
+      if (!message) {
+        if (messageInput) messageInput.focus();
+        return;
+      }
+
+      const phoneUser = check.normalized;
 
       // Ambil nama dan nomor dari Master Marketing Config jika ada
       const mConfig = window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" };
       const marketingName = mConfig.name || "Mas Ro'uf";
       const phone = mConfig.phone || "6287870988073";
-
-      if (!name || !phoneUser || !message) return;
 
       const fullText = `Halo ${marketingName}, saya ingin bertanya perihal perumahan Pesona Kahuripan.\n\n` +
         `👤 *Nama:* ${name}\n` +
@@ -1507,12 +1623,16 @@ function initLandingPage() {
       window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(fullText)}`, '_blank');
 
       if (typeof window.trackCtaEvent === 'function') {
-        window.trackCtaEvent('cta_chat_submit', 'Formulir Chat: ' + name, 'Floating Chat', 'WhatsApp API');
+        window.trackCtaEvent('cta_chat_submit', 'Formulir Chat: ' + name, 'Floating Chat', 'WhatsApp API', {
+          phone: phoneUser,
+          message: message,
+          userName: name
+        });
       }
 
-      document.getElementById('wa-name').value = '';
-      document.getElementById('wa-phone-user').value = '';
-      document.getElementById('wa-message').value = '';
+      if (nameInput) nameInput.value = '';
+      if (phoneInput) phoneInput.value = '';
+      if (messageInput) messageInput.value = '';
       const box = document.getElementById('chat-box');
       if (box) box.classList.remove('open');
     }
@@ -1837,6 +1957,18 @@ function initCtaAnalyticsTracker() {
     }
   }
 
+  let currentTimelineFilter = 'all';
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   function getAnalyticsData() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -1847,6 +1979,7 @@ function initCtaAnalyticsTracker() {
           parsed.byCta = parsed.byCta || {};
           parsed.daily = parsed.daily || {};
           parsed.logs = Array.isArray(parsed.logs) ? parsed.logs : [];
+          parsed.leads = Array.isArray(parsed.leads) ? parsed.leads : [];
           parsed.totalClicks = typeof parsed.totalClicks === 'number' ? parsed.totalClicks : 0;
           return parsed;
         }
@@ -1862,7 +1995,8 @@ function initCtaAnalyticsTracker() {
       daily: {},
       bySection: {},
       byCta: {},
-      logs: []
+      logs: [],
+      leads: []
     };
   }
 
@@ -1875,7 +2009,7 @@ function initCtaAnalyticsTracker() {
     }
   }
 
-  function recordCtaEvent(ctaId, ctaName, ctaSection, ctaTarget) {
+  function recordCtaEvent(ctaId, ctaName, ctaSection, ctaTarget, leadData) {
     if (!ctaId || !ctaName) return;
     const data = getAnalyticsData();
     const now = new Date();
@@ -1902,16 +2036,33 @@ function initCtaAnalyticsTracker() {
     data.byCta[ctaId].count++;
     data.byCta[ctaId].lastClicked = timeFormatted;
 
-    data.logs.unshift({
+    const logEntry = {
       id: ctaId,
       name: ctaName,
       section: ctaSection,
       target: ctaTarget || 'Action',
       timestamp: now.toISOString(),
-      timeFormatted: timeFormatted
-    });
+      timeFormatted: timeFormatted,
+      phone: (leadData && leadData.phone) ? leadData.phone : null,
+      message: (leadData && leadData.message) ? leadData.message : null,
+      userName: (leadData && leadData.userName) ? leadData.userName : null
+    };
+
+    data.logs.unshift(logEntry);
     if (data.logs.length > 50) {
       data.logs = data.logs.slice(0, 50);
+    }
+
+    if (leadData && leadData.phone) {
+      data.leads = data.leads || [];
+      data.leads.unshift({
+        name: leadData.userName || ctaName.replace(/^Formulir Chat:\s*/i, ''),
+        phone: leadData.phone,
+        message: leadData.message || '',
+        timestamp: now.toISOString(),
+        timeFormatted: timeFormatted
+      });
+      if (data.leads.length > 50) data.leads = data.leads.slice(0, 50);
     }
 
     saveAnalyticsData(data);
@@ -2299,7 +2450,15 @@ function initCtaAnalyticsTracker() {
       <div class="cta-tab-pane" id="ctaPaneTimeline">
         <div class="cta-timeline-wrap">
           <div class="cta-timeline-header">
-            <h4>Riwayat 50 Klik Terakhir Konsumen</h4>
+            <div class="cta-timeline-title-wrap">
+              <h4>Riwayat 50 Aktivitas Terakhir Konsumen</h4>
+              <div class="cta-timeline-filters">
+                <button type="button" class="cta-timeline-filter-btn active" data-filter="all">Semua Aktivitas</button>
+                <button type="button" class="cta-timeline-filter-btn" data-filter="leads">
+                  <span class="cta-filter-dot"></span> Khusus Form CTA &amp; Leads
+                </button>
+              </div>
+            </div>
             <span class="cta-timeline-badge" id="ctaTimelineTotalBadge">0 tercatat</span>
           </div>
           <div class="cta-timeline-list" id="ctaTimelineList"></div>
@@ -2491,26 +2650,72 @@ function initCtaAnalyticsTracker() {
 
     // 4. Tab 3: Timeline
     const timelineWraps = document.querySelectorAll('#ctaTimelineList');
+    let logsToShow = data.logs || [];
+    if (currentTimelineFilter === 'leads') {
+      logsToShow = logsToShow.filter(function(item) {
+        return !!(item.phone || item.message || item.id === 'cta_chat_submit');
+      });
+    }
+
     document.querySelectorAll('#ctaTimelineTotalBadge').forEach(function(el) {
-      el.textContent = (data.logs || []).length + ' tercatat';
+      el.textContent = logsToShow.length + ' tercatat';
     });
 
     if (timelineWraps.length) {
       let listHtml = '';
-      if (!data.logs || data.logs.length === 0) {
-        listHtml = '<p style="color:#94a3b8;font-size:0.86rem;text-align:center;padding:20px 0;">Belum ada log klik aktivitas.</p>';
+      if (logsToShow.length === 0) {
+        if (currentTimelineFilter === 'leads') {
+          listHtml = '<p style="color:#94a3b8;font-size:0.86rem;text-align:center;padding:24px 0;"><i class="hgi-stroke hgi-information-circle" style="font-size:1.2rem;vertical-align:middle;margin-right:6px;"></i>Belum ada data formulir CTA dari debitur.</p>';
+        } else {
+          listHtml = '<p style="color:#94a3b8;font-size:0.86rem;text-align:center;padding:20px 0;">Belum ada log klik aktivitas.</p>';
+        }
       } else {
-        data.logs.forEach(function(item) {
+        logsToShow.forEach(function(item) {
+          const isLead = !!(item.phone || item.message || item.id === 'cta_chat_submit');
+          let leadHtml = '';
+          if (isLead) {
+            const rawPhone = item.phone || '';
+            const cleanDigits = rawPhone.replace(/\D/g, '');
+            const waPhoneNum = cleanDigits.startsWith('0') ? ('62' + cleanDigits.slice(1)) : cleanDigits.startsWith('62') ? cleanDigits : ('62' + cleanDigits);
+            const waChatLink = cleanDigits ? `https://wa.me/${waPhoneNum}` : '#';
+
+            leadHtml = `
+              <div class="cta-lead-box">
+                <div class="cta-lead-info-row">
+                  <span class="cta-lead-label"><i class="hgi-stroke hgi-smart-phone-01"></i> No. HP:</span>
+                  <strong class="cta-lead-phone-text">${item.phone || 'Nomor tidak dicatat'}</strong>
+                  ${cleanDigits ? `
+                    <a href="${waChatLink}" target="_blank" rel="noopener" class="cta-lead-wa-btn" title="Kirim Pesan WhatsApp ke Debitur">
+                      <i class="hgi-stroke hgi-whatsapp"></i> Chat Debitur
+                    </a>
+                  ` : ''}
+                </div>
+                ${item.message ? `
+                  <div class="cta-lead-info-row cta-lead-msg-row">
+                    <span class="cta-lead-label"><i class="hgi-stroke hgi-bubble-chat"></i> Pesan:</span>
+                    <div class="cta-lead-msg-quote">&ldquo;${escapeHtml(item.message)}&rdquo;</div>
+                  </div>
+                ` : ''}
+              </div>
+            `;
+          }
+
           listHtml += `
-            <div class="cta-timeline-item">
+            <div class="cta-timeline-item ${isLead ? 'is-lead' : ''}">
               <div class="cta-time-left">
-                <div class="cta-time-icon"><i class="hgi-stroke hgi-cursor-click-02"></i></div>
-                <div>
-                  <div class="cta-time-name">${item.name}</div>
+                <div class="cta-time-icon ${isLead ? 'icon-lead' : ''}">
+                  <i class="hgi-stroke ${isLead ? 'hgi-user-sharing' : 'hgi-cursor-click-02'}"></i>
+                </div>
+                <div class="cta-time-content">
+                  <div class="cta-time-name">
+                    ${item.name}
+                    ${isLead ? '<span class="badge-lead-tag"><i class="hgi-stroke hgi-task-daily-01"></i> Lead Form CTA</span>' : ''}
+                  </div>
                   <div class="cta-time-meta">
                     <span class="badge-sec">${item.section}</span> &bull; 
                     <span class="badge-target">${item.target}</span>
                   </div>
+                  ${leadHtml}
                 </div>
               </div>
               <div class="cta-time-right">${item.timeFormatted || ''}</div>
@@ -2574,6 +2779,20 @@ function initCtaAnalyticsTracker() {
       secList += `• ${sec}: *${cnt}* klik (${pct}%)\n`;
     });
 
+    const leadLogs = (data.logs || []).filter(function(l) {
+      return !!(l.phone || l.message || l.id === 'cta_chat_submit');
+    }).slice(0, 5);
+
+    let leadsSummary = '';
+    if (leadLogs.length > 0) {
+      leadsSummary = '\n📥 *Lead Form Debitur Terkini:*\n';
+      leadLogs.forEach(function(ld) {
+        const leadName = ld.userName || ld.name.replace(/^Formulir Chat:\s*/i, '');
+        const msgSnippet = (ld.message || '').slice(0, 30) + ((ld.message || '').length > 30 ? '...' : '');
+        leadsSummary += `• *${leadName}* (${ld.phone || '-'}): "${msgSnippet}"\n`;
+      });
+    }
+
     return `📊 *LAPORAN MONITORING CTA KONSUMEN*\n` +
            `🌐 *Website:* https://www.pesonakahuripan.biz.id\n` +
            `📅 *Update:* ${dateNow} WIB\n` +
@@ -2582,7 +2801,8 @@ function initCtaAnalyticsTracker() {
            `⚡ *Aktivitas Hari Ini:* ${todayClicks} interaksi\n` +
            `🏆 *CTA Terfavorit:* ${topCta}\n` +
            `📍 *Lokasi Terbanyak:* ${topLoc}\n\n` +
-           `*Rincian Per Kategori:*\n${secList || '• Belum ada data interaksi\n'}\n` +
+           `*Rincian Per Kategori:*\n${secList || '• Belum ada data interaksi\n'}` +
+           leadsSummary + '\n' +
            `_Data dihasilkan otomatis dari Dashboard CTA Analytics._`;
   }
 
@@ -2590,13 +2810,14 @@ function initCtaAnalyticsTracker() {
     const data = getAnalyticsData();
     const sortedCtas = Object.values(data.byCta || {}).sort((a,b) => b.count - a.count);
     const total = data.totalClicks || 0;
+    const escape = (str) => '"' + String(str || '').replace(/"/g, '""') + '"';
 
     let csvContent = '\uFEFF'; // UTF-8 BOM
+    csvContent += '=== RINGKASAN TOMBOL CTA ===\n';
     csvContent += 'ID,Nama Tombol / Aksi,Kategori,Target,Total Klik,Persentase,Terakhir Diklik\n';
 
     sortedCtas.forEach(function(c) {
       const pct = total > 0 ? ((c.count / total) * 100).toFixed(1) + '%' : '0%';
-      const escape = (str) => '"' + String(str || '').replace(/"/g, '""') + '"';
       csvContent += [
         escape(c.id),
         escape(c.name),
@@ -2608,12 +2829,34 @@ function initCtaAnalyticsTracker() {
       ].join(',') + '\n';
     });
 
+    const leadLogs = (data.logs || []).filter(function(l) {
+      return !!(l.phone || l.message || l.id === 'cta_chat_submit');
+    });
+
+    csvContent += '\n=== DAFTAR LEAD FORMULIR CTA DEBITUR ===\n';
+    csvContent += 'Tanggal & Waktu,Nama Debitur,Nomor WhatsApp,Pesan / Minat Unit,Kategori,Tujuan\n';
+
+    if (leadLogs.length === 0) {
+      csvContent += 'Belum ada lead formulir CTA yang masuk\n';
+    } else {
+      leadLogs.forEach(function(item) {
+        csvContent += [
+          escape(item.timeFormatted || item.timestamp),
+          escape(item.userName || item.name.replace(/^Formulir Chat:\s*/i, '')),
+          escape(item.phone || '-'),
+          escape(item.message || '-'),
+          escape(item.section),
+          escape(item.target)
+        ].join(',') + '\n';
+      });
+    }
+
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     const dateStr = new Date().toISOString().slice(0, 10);
     link.setAttribute('href', url);
-    link.setAttribute('download', 'pesonaku-cta-analytics-' + dateStr + '.csv');
+    link.setAttribute('download', 'pesonaku-cta-leads-' + dateStr + '.csv');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -2675,6 +2918,18 @@ function initCtaAnalyticsTracker() {
         renderTableRows(ctaList, data.totalClicks || 0);
       });
     }
+
+    // Timeline filter buttons (All vs Form CTA Leads)
+    document.querySelectorAll('.cta-timeline-filter-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter') || 'all';
+        currentTimelineFilter = filter;
+        document.querySelectorAll('.cta-timeline-filter-btn').forEach(function(b) {
+          b.classList.toggle('active', b.getAttribute('data-filter') === filter);
+        });
+        renderDashboardUI();
+      });
+    });
 
     // Copy WA Report
     if (btnCopyWa) {
@@ -2883,7 +3138,15 @@ function initCtaAnalyticsTracker() {
         <div class="cta-tab-pane" id="ctaPaneTimeline">
           <div class="cta-timeline-wrap">
             <div class="cta-timeline-header">
-              <h4>Riwayat 50 Klik Terakhir Konsumen</h4>
+              <div class="cta-timeline-title-wrap">
+                <h4>Riwayat 50 Aktivitas Terakhir Konsumen</h4>
+                <div class="cta-timeline-filters">
+                  <button type="button" class="cta-timeline-filter-btn active" data-filter="all">Semua Aktivitas</button>
+                  <button type="button" class="cta-timeline-filter-btn" data-filter="leads">
+                    <span class="cta-filter-dot"></span> Khusus Form CTA &amp; Leads
+                  </button>
+                </div>
+              </div>
               <span class="cta-timeline-badge" id="ctaTimelineTotalBadge">0 tercatat</span>
             </div>
             <div class="cta-timeline-list" id="ctaTimelineList"></div>

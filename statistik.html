@@ -15,7 +15,7 @@
   <link href="https://use.hugeicons.com/font/icons.css" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link href="main_style.css?v=3.5.9" rel="stylesheet">
+  <link href="main_style.css?v=3.6.0" rel="stylesheet">
 
   <!-- Google Tag Manager (GTAG) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11372301881"></script>
@@ -171,7 +171,15 @@
           <div class="cta-tab-pane" id="ctaPaneTimeline">
             <div class="cta-timeline-wrap">
               <div class="cta-timeline-header">
-                <h4>Riwayat 50 Klik Terakhir Konsumen</h4>
+                <div class="cta-timeline-title-wrap">
+                  <h4>Riwayat 50 Aktivitas Terakhir Konsumen</h4>
+                  <div class="cta-timeline-filters">
+                    <button type="button" class="cta-timeline-filter-btn active" data-filter="all">Semua Aktivitas</button>
+                    <button type="button" class="cta-timeline-filter-btn" data-filter="leads">
+                      <span class="cta-filter-dot"></span> Khusus Form CTA &amp; Leads
+                    </button>
+                  </div>
+                </div>
                 <span class="cta-timeline-badge" id="ctaTimelineTotalBadge">0 tercatat</span>
               </div>
               <div class="cta-timeline-list" id="ctaTimelineList"></div>
@@ -247,6 +255,6 @@
   </div>
 
   <!-- Main JavaScript Bundle -->
-  <script src="main_script.js?v=3.5.9"></script>
+  <script src="main_script.js?v=3.6.0"></script>
 </body>
 </html>
