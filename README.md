@@ -40,22 +40,28 @@ Stylesheet dan script dari repositori ini dimuat secara instan melalui jsDelivr 
 
 ---
 
-## ☁️ Sinkronisasi Multi-Device & Database Cloud (v3.7.1)
+## ☁️ Sinkronisasi Multi-Device & Database Cloud (v3.7.2)
 
-Sistem statistik kini telah dilengkapi **Multi-Device Cloud Relay otomatis** (langsung aktif out-of-the-box tanpa konfigurasi tambahan). Seluruh interaksi CTA (Booking Unit Hero, Konsultasi WhatsApp, Tipe Rumah, Lokasi, Simulasi KPR, Formulir Chat leads) yang dibuka dari perangkat atau browser lain (HP pengunjung, laptop, dsb.) akan langsung tersinkronisasi dan dapat dilihat di dashboard `domain.com/statistik` dari perangkat mana pun.
+Sistem statistik dilengkapi engine **Multi-Device Cloud Sync terintegrasi Google Sheets**. Seluruh interaksi CTA (Booking Unit Hero, Konsultasi WhatsApp, Tipe Rumah, Lokasi Google Maps, Simulasi KPR, dan Formulir Chat leads) yang dibuka dari perangkat atau browser lain (HP pengunjung, tablet, laptop, dsb.) langsung tersimpan ke Google Sheets dan tersinkronisasi secara real-time ke dashboard `domain.com/statistik` di semua perangkat.
 
-### Opsi Integrasi Google Sheets (Private Spreadsheet)
-Jika Anda juga ingin menyimpan arsip seluruh klik & database leads calon pembeli langsung ke Google Drive pribadi Anda:
+### Panduan Integrasi Google Sheets & Sinkronisasi Semua Perangkat (2 Menit):
 1. Buka [sheets.new](https://sheets.new) di browser Anda untuk membuat Google Spreadsheet baru.
 2. Klik menu **Ekstensi (Extensions) > Apps Script**.
-3. Salin seluruh isi berkas [`google-apps-script.js`](./google-apps-script.js) dan tempel di Apps Script.
+3. Salin seluruh isi berkas [`google-apps-script.js`](./google-apps-script.js) dan tempel di editor Apps Script.
 4. Klik tombol **Terapkan (Deploy) > Penerapan baru (New deployment)**:
    - Jenis: **Aplikasi Web (Web App)**
    - Jalankan sebagai: **Saya**
-   - Yang memiliki akses: **Siapa saja (Anyone)**
+   - Yang memiliki akses: **Siapa saja (Anyone)** *(Wajib agar pengunjung website dapat mengirim interaksi & data formulir)*
 5. Salin URL Aplikasi Web yang berakhiran `/exec`.
-6. Buka halaman monitoring di website Anda (`domain.com/statistik` atau tekan `Ctrl + Shift + S`) > buka tab **Cloud Sync & Google Sheets** > tempel URL tersebut lalu klik **Simpan & Hubungkan**.
-7. Data akan dicatat secara otomatis ke Google Sheets sekaligus disinkronkan secara real-time ke semua perangkat.
+6. **Langkah Kunci Agar Browser Lain & HP Konsumen Tercatat Otomatis**:
+   - Tempelkan URL tersebut ke berkas [`example.xml`](./example.xml) atau Template Blogger Anda (Theme > Edit HTML) pada baris:
+     ```html
+     <script>
+       window.PESONA_CLOUD_ENDPOINT = 'https://script.google.com/macros/s/.../exec';
+     </script>
+     ```
+   - Dan simpan juga di dashboard `domain.com/statistik` pada tab **Cloud Sync Google Sheets**.
+7. Selesai! Semua klik dan formulir debitur dari semua browser dan perangkat pengunjung akan langsung tercatat ke Google Sheets Anda dan tampil di dashboard statistik secara real-time.
 
 ---
 

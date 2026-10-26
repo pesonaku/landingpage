@@ -1,7 +1,7 @@
 /**
  * ======================================================================
  * PESONA KAHURIPAN - CLOUD SYNC & LEADS BACKEND ENGINE (Google Apps Script)
- * Version: 3.7.1
+ * Version: 3.7.2
  * Website: https://www.pesonakahuripan.biz.id
  * Repository: https://github.com/pesonaku/landingpage
  * ======================================================================
@@ -15,13 +15,18 @@
  * 6. Klik tombol biru "Terapkan" (Deploy) di kanan atas > pilih "Penerapan baru" (New deployment).
  * 7. Pada ikon Gerigi (Select type), pilih "Aplikasi Web" (Web app).
  * 8. Konfigurasi:
- *    - Deskripsi: "Pesona Kahuripan Cloud Sync v3.7.1"
+ *    - Deskripsi: "Pesona Kahuripan Cloud Sync v3.7.2"
  *    - Jalankan sebagai (Execute as): "Saya" (Me / akun Google Anda)
  *    - Yang memiliki akses (Who has access): "Siapa saja" (Anyone) -> *PENTING agar pengunjung web bisa kirim leads*
  * 9. Klik "Terapkan" (Deploy) > Berikan izin (Authorize access) jika diminta.
  * 10. Salin URL Aplikasi Web yang berakhiran "/exec", lalu:
  *     - Buka menu statistik di website Anda: domain.com/statistik (atau Ctrl + Shift + S)
- *     - Masukkan URL tersebut pada tab "Cloud Sync & GA4" lalu klik "Simpan & Hubungkan"!
+ *     - Masukkan URL tersebut pada tab "Cloud Sync Google Sheets" lalu klik "Simpan & Hubungkan"!
+ * 11. LANGKAH WAJIB UNTUK BROWSER LAIN / HP KONSUMEN:
+ *     - Tempelkan URL tersebut ke Template Blogger Anda (Theme > Edit HTML / example.xml):
+ *       <script>
+ *         window.PESONA_CLOUD_ENDPOINT = 'https://script.google.com/macros/s/.../exec';
+ *       </script>
  * 
  * Selesai! Semua klik CTA dan data formulir calon pembeli dari perangkat mana pun
  * akan otomatis tercatat ke Spreadsheet ini dan terbaca secara real-time di semua perangkat.
@@ -285,7 +290,7 @@ function getOrRebuildStatsData() {
 
 function getInitialStatsObject() {
   return {
-    version: '3.7.0',
+    version: '3.7.2',
     firstTracked: new Date().toISOString(),
     lastUpdated: new Date().toISOString(),
     totalClicks: 0,
