@@ -71,17 +71,17 @@
     <link href='https://use.hugeicons.com/font/icons.css' rel='stylesheet'/>
 
     <!-- Stylesheet Utama (Separated Production Bundle) -->
-    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.6.1/main_style.css' rel='stylesheet' type='text/css'/>
+    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.6.2/main_style.css' rel='stylesheet' type='text/css'/>
 
     <!-- Progressive Enhancement State -->
     
 
     <b:skin><![CDATA[
-@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.6.1/main_style.css");
+@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.6.2/main_style.css");
 
 /*!
  * Pesona Kahuripan - Clean Modern Blogger Landing Page Template
- * Stylesheet is separated into: main_style.css (v3.6.1)
+ * Stylesheet is separated into: main_style.css (v3.6.2)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -4916,7 +4916,7 @@ Tipe: komersial</b:widget-setting>
                       </div>
                     </div>
                     <div style='margin-top:20px;'>
-                      <a class='btn-cta wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20ingin%20jadwalkan%20kunjungan%20survei%20ke%20kantor%20pemasaran%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23contact' style='width:100%; box-sizing:border-box; text-align:center;' target='_blank'><span>Jadwalkan Survei</span><i class='hgi-stroke hgi-whatsapp'/></a>
+                      <a class='btn-cta wa-dynamic-btn' expr:href='&quot;https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20ingin%20jadwalkan%20kunjungan%20survei%20ke%20kantor%20pemasaran%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20&quot; + data:blog.canonicalHomepageUrl + &quot;%23contact&quot;' style='width:100%; box-sizing:border-box; text-align:center;' target='_blank'><span>Jadwalkan Survei</span><i class='hgi-stroke hgi-whatsapp'/></a>
                     </div>
                   </div>
                 </div>
@@ -4988,7 +4988,7 @@ Tipe: komersial</b:widget-setting>
                     </div>
 
                     <div style='margin-top:20px;'>
-                      <a class='btn-cta wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20ingin%20konsultasi%20langsung%20perumahan%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20https%3A%2F%2Fwww.pesonakahuripan.biz.id%2F%23contact' style='width:100%; box-sizing:border-box; text-align:center; background:linear-gradient(135deg, #10b981 0%, #059669 100%); display:flex; align-items:center; justify-content:center; gap:8px;' target='_blank'>
+                      <a class='btn-cta wa-dynamic-btn' expr:href='&quot;https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20ingin%20konsultasi%20langsung%20perumahan%20Pesona%20Kahuripan.%0A%0AReferensi%3A%20&quot; + data:blog.canonicalHomepageUrl + &quot;%23contact&quot;' style='width:100%; box-sizing:border-box; text-align:center; background:linear-gradient(135deg, #10b981 0%, #059669 100%); display:flex; align-items:center; justify-content:center; gap:8px;' target='_blank'>
                         <i class='hgi-stroke hgi-whatsapp'/>
                         <span>Konsultasi dengan <span class='marketing-name-target'><data:title/></span></span>
                       </a>
@@ -5935,7 +5935,7 @@ YouTube: https://www.youtube.com/@pesonakahuripan18]]></b:widget-setting>
     <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js'/>
 
     <!-- Main Interactive Script (Separated) -->
-    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.6.1/main_script.js'/>
+    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.6.2/main_script.js'/>
 
     
 

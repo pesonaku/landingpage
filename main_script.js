@@ -1,8 +1,36 @@
 /*!
  * Pesona Kahuripan - Official Landing Page Interactive Script
- * Version: 3.6.1 (Production Interactive Bundle - Realtime Debitur Phone & Leads Engine)
+ * Version: 3.6.2 (Production Interactive Bundle - Dynamic Domain & Subdomain Sitelink Engine)
  * Repository: https://github.com/pesonaku/landingpage
  */
+
+// ================= ACTIVE DOMAIN & SITELINK RESOLVER =================
+function getActiveSiteOrigin() {
+  try {
+    if (typeof window !== 'undefined' && window.location) {
+      const origin = window.location.origin || (window.location.protocol + '//' + window.location.host);
+      if (origin && !origin.startsWith('file:') && origin !== 'null') {
+        return origin.replace(/\/+$/, '');
+      }
+    }
+  } catch (e) {}
+  return 'https://www.pesonakahuripan.biz.id';
+}
+
+function getActiveSiteLink(hashOrPath) {
+  const origin = getActiveSiteOrigin();
+  if (!hashOrPath) return origin;
+  if (hashOrPath.startsWith('#')) {
+    return origin + '/' + hashOrPath;
+  }
+  if (hashOrPath.startsWith('/')) {
+    return origin + hashOrPath;
+  }
+  return origin + '/' + hashOrPath;
+}
+
+window.getActiveSiteOrigin = getActiveSiteOrigin;
+window.getActiveSiteLink = getActiveSiteLink;
 
 // KAMUS ICON HUGEICONS STROKE-ROUNDED RESMI UNTUK TIPE RUMAH PILIHAN
 const SPEC_ICON_REGISTRY = {
@@ -107,7 +135,9 @@ function initLandingPage() {
       p.innerHTML = p.dataset.origHtml.replace(/Mas\s+Ro['&#39;]*uf/gi, cfg.name);
     });
 
-    // 7. Sinkronkan SEMUA Tombol Direct WhatsApp di Seluruh Halaman
+    // 7. Sinkronkan SEMUA Tombol Direct WhatsApp & Sitelink Referensi di Seluruh Halaman
+    const currentOrigin = getActiveSiteOrigin();
+
     document.querySelectorAll('a[href*="whatsapp.com"], a[href*="wa.me"], a.wa-dynamic-btn').forEach(function(link) {
       let href = link.getAttribute('href');
       if (href) {
@@ -115,17 +145,24 @@ function initLandingPage() {
         href = href.replace(/phone=[0-9]+/g, 'phone=' + cfg.phone);
         href = href.replace(/wa\.me\/[0-9]+/g, 'wa.me/' + cfg.phone);
 
-        // Update sapaan nama di teks WhatsApp URL
+        // Update sapaan nama di teks WhatsApp URL dan sesuaikan domain/subdomain referensi aktif
         try {
           let urlObj = new URL(href);
           let textParam = urlObj.searchParams.get('text');
           if (textParam) {
             textParam = textParam.replace(/Halo\s+(Mas\s+)?(Ro['&#39;]*uf|[^,]+),/gi, 'Halo ' + cfg.name + ',');
+            // Ganti domain referensi website di dalam teks pesan dengan domain/subdomain aktif
+            textParam = textParam.replace(/(Referensi(?:\s+Website)?:\s*)https?:\/\/[^\s\n#]+(\/#[^\s\n]+|#[^\s\n]+)?/gi, function(match, prefix, hash) {
+              return prefix + currentOrigin + (hash ? (hash.startsWith('/') ? hash : '/' + hash) : '');
+            });
+            textParam = textParam.replace(/https?:\/\/(?:www\.)?pesonakahuripan\.biz\.id/gi, currentOrigin);
             urlObj.searchParams.set('text', textParam);
             href = urlObj.toString();
           }
         } catch (err) {
           href = href.replace(/Halo(%20|\s+)(Mas(%20|\s+))?(Ro['&#39;%27]*uf|[^,%]+)(%2C|,)/gi, 'Halo%20' + encodeURIComponent(cfg.name) + '%2C');
+          href = href.replace(/https?:\/\/(?:www\.)?pesonakahuripan\.biz\.id/gi, currentOrigin);
+          href = href.replace(/https%3A%2F%2F(?:www\.)?pesonakahuripan\.biz\.id/gi, encodeURIComponent(currentOrigin));
         }
         link.setAttribute('href', href);
       }
@@ -363,7 +400,7 @@ function initLandingPage() {
         if (ctaBtn) {
           const cfg = (typeof getMarketingConfig === 'function') ? getMarketingConfig() : (window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" });
           const unitName = title.replace(/^Detail Unit:\s*/i, '');
-          const waText = `Halo ${cfg.name}, saya tertarik konsultasi Unit ${unitName} Pesona Kahuripan.\n\nReferensi: https://www.pesonakahuripan.biz.id/#service`;
+          const waText = `Halo ${cfg.name}, saya tertarik konsultasi Unit ${unitName} Pesona Kahuripan.\n\nReferensi: ${getActiveSiteLink('#service')}`;
           ctaBtn.href = `https://api.whatsapp.com/send?phone=${cfg.phone}&text=${encodeURIComponent(waText)}`;
           const spanEl = ctaBtn.querySelector('span');
           if (spanEl) {
@@ -738,7 +775,7 @@ function initLandingPage() {
         const promoH2 = promoCard.querySelector('h2');
         const promoTitle = promoH2 ? promoH2.textContent.trim() : 'Promo Spesial';
         const cfg = (typeof getMarketingConfig === 'function') ? getMarketingConfig() : (window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" });
-        const waText = `Halo ${cfg.name}, saya ingin klaim ${promoTitle} Pesona Kahuripan.\n\nReferensi: https://www.pesonakahuripan.biz.id/#promo`;
+        const waText = `Halo ${cfg.name}, saya ingin klaim ${promoTitle} Pesona Kahuripan.\n\nReferensi: ${getActiveSiteLink('#promo')}`;
         promoBtn.href = `https://api.whatsapp.com/send?phone=${cfg.phone}&text=${encodeURIComponent(waText)}`;
       }
     }
@@ -916,7 +953,7 @@ function initLandingPage() {
         const cardWaBtn = card.querySelector('.btn-service-consult') || card.querySelector('.btn-service-wa');
         if (cardWaBtn) {
           const cfg = (typeof getMarketingConfig === 'function') ? getMarketingConfig() : (window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" });
-          const cardWaText = `Halo ${cfg.name}, saya tertarik konsultasi Unit ${cardTitle} Pesona Kahuripan.\n\nReferensi: https://www.pesonakahuripan.biz.id/#service`;
+          const cardWaText = `Halo ${cfg.name}, saya tertarik konsultasi Unit ${cardTitle} Pesona Kahuripan.\n\nReferensi: ${getActiveSiteLink('#service')}`;
           cardWaBtn.href = `https://api.whatsapp.com/send?phone=${cfg.phone}&text=${encodeURIComponent(cardWaText)}`;
         }
       });
@@ -1057,7 +1094,7 @@ function initLandingPage() {
           const cfg = (typeof getMarketingConfig === 'function') ? getMarketingConfig() : (window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" });
           const modalH4 = detailSource.querySelector('h4');
           const finalTitle = (modalH4 ? modalH4.textContent.trim() : '') || unitTitle || 'Tipe Rumah';
-          const waText = `Halo ${cfg.name}, saya tertarik konsultasi Unit ${finalTitle} Pesona Kahuripan.\n\nReferensi: https://www.pesonakahuripan.biz.id/#service`;
+          const waText = `Halo ${cfg.name}, saya tertarik konsultasi Unit ${finalTitle} Pesona Kahuripan.\n\nReferensi: ${getActiveSiteLink('#service')}`;
           ctaBtn.href = `https://api.whatsapp.com/send?phone=${cfg.phone}&text=${encodeURIComponent(waText)}`;
           const spanEl = ctaBtn.querySelector('span');
           if (spanEl) {
@@ -1233,7 +1270,7 @@ function initLandingPage() {
         const cfg = (typeof getMarketingConfig === 'function') ? getMarketingConfig() : (window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" });
         const fullMsg = `Halo ${cfg.name}, saya tertarik KPR Subsidi Type 30/60 Pesona Kahuripan dengan Tenor ${tenorYrs} Tahun (${installmentStr}/bln).\n\n` +
           `Mohon informasi ketersediaan unit dan kelengkapan berkas KPR-nya. Terima kasih!\n\n` +
-          `🌐 Referensi: https://www.pesonakahuripan.biz.id/#offer`;
+          `🌐 Referensi: ${getActiveSiteLink('#offer')}`;
         ctaBtn.href = `https://api.whatsapp.com/send?phone=${cfg.phone}&text=${encodeURIComponent(fullMsg)}`;
         const spanEl = ctaBtn.querySelector('span');
         if (spanEl) {
@@ -1438,7 +1475,7 @@ function initLandingPage() {
           `📈 *Suku Bunga Bank:* ${currentRate.toFixed(2)}% (${bankText})\n` +
           `📊 *Estimasi Cicilan:* ${fmtRupiah(installment)} / bln\n` +
           `👥 *Estimasi Gaji Min.:* ${fmtRupiah(minIncome)} / bln\n\n` +
-          `🌐 *Referensi Website:* https://www.pesonakahuripan.biz.id/#offer\n\n` +
+          `🌐 *Referensi Website:* ${getActiveSiteLink('#offer')}\n\n` +
           `Mohon dibantu info ketersediaan unit dan pengajuan berkasnya. Terima kasih!`;
 
         if (ctaCommWa) {
@@ -1627,7 +1664,7 @@ window.validateIndonesianPhone = validateIndonesianPhone;
         `👤 *Nama:* ${name}\n` +
         `📱 *No. WhatsApp:* ${phoneUser}\n` +
         `💬 *Pertanyaan:* ${message}\n\n` +
-        `🌐 *Referensi Website:* https://www.pesonakahuripan.biz.id\n\n` +
+        `🌐 *Referensi Website:* ${getActiveSiteOrigin()}\n\n` +
         `Mohon informasi dan tindak lanjutnya. Terima kasih!`;
 
       // Buka API WhatsApp di jendela baru
@@ -1706,7 +1743,7 @@ function initTampakRumahSubsidi() {
   const tampakSurveyBtn = document.querySelector('.btn-tampak-survey');
   if (tampakSurveyBtn) {
     const cfg = (typeof getMarketingConfig === 'function') ? getMarketingConfig() : (window.MARKETING_CONFIG || { name: "Mas Ro'uf", phone: "6287870988073" });
-    const waText = encodeURIComponent(`Halo ${cfg.name}, saya tertarik survey langsung Unit Rumah Subsidi Pemerintah Pesona Kahuripan.\n\nBisa info jadwal survey lokasi terdekat?\n\nReferensi: https://www.pesonakahuripan.biz.id/#tampak-rumah`);
+    const waText = encodeURIComponent(`Halo ${cfg.name}, saya tertarik survey langsung Unit Rumah Subsidi Pemerintah Pesona Kahuripan.\n\nBisa info jadwal survey lokasi terdekat?\n\nReferensi: ${getActiveSiteLink('#tampak-rumah')}`);
     tampakSurveyBtn.href = `https://api.whatsapp.com/send?phone=${cfg.phone}&text=${waText}`;
   }
 }
@@ -1844,7 +1881,7 @@ function initLokasiProjects() {
     if (card) {
       const pName = card.querySelector('.lokasi-card-title') ? card.querySelector('.lokasi-card-title').textContent.trim() : 'Pesona Kahuripan';
       const rName = card.querySelector('.lokasi-card-region span') ? card.querySelector('.lokasi-card-region span').textContent.trim() : '';
-      const waText = encodeURIComponent("Halo " + mName + ", saya tertarik informasi unit & jadwal survey lokasi di " + pName + " (" + rName + "). Bisa dibantu jadwal surveinya?");
+      const waText = encodeURIComponent("Halo " + mName + ", saya tertarik informasi unit & jadwal survey lokasi di " + pName + " (" + rName + "). Bisa dibantu jadwal surveinya?\n\nReferensi: " + getActiveSiteLink('#lokasi-project'));
       btn.href = "https://api.whatsapp.com/send?phone=" + mPhone + "&text=" + waText;
     }
   });
@@ -2982,7 +3019,7 @@ function initCtaAnalyticsTracker() {
     }
 
     return `📊 *LAPORAN MONITORING CTA KONSUMEN*\n` +
-           `🌐 *Website:* https://www.pesonakahuripan.biz.id\n` +
+           `🌐 *Website:* ${getActiveSiteOrigin()}\n` +
            `📅 *Update:* ${dateNow} WIB\n` +
            `----------------------------------------\n` +
            `📈 *Total Klik CTA:* ${data.totalClicks || 0} interaksi\n` +
