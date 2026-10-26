@@ -71,17 +71,17 @@
     <link href='https://use.hugeicons.com/font/icons.css' rel='stylesheet'/>
 
     <!-- Stylesheet Utama (Separated Production Bundle) -->
-    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.7.0/main_style.css' rel='stylesheet' type='text/css'/>
+    <link href='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.7.1/main_style.css' rel='stylesheet' type='text/css'/>
 
     <!-- Progressive Enhancement State -->
     
 
     <b:skin><![CDATA[
-@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.7.0/main_style.css");
+@import url("https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.7.1/main_style.css");
 
 /*!
  * Pesona Kahuripan - Clean Modern Blogger Landing Page Template
- * Stylesheet is separated into: main_style.css (v3.7.0)
+ * Stylesheet is separated into: main_style.css (v3.7.1)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -5934,14 +5934,14 @@ YouTube: https://www.youtube.com/@pesonakahuripan18]]></b:widget-setting>
     <!-- Fancybox v5 UI (Lightbox) -->
     <script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js'/>
 
-    <!-- Konfigurasi Cloud Sync Multi-Device Google Sheets (v3.7.0) -->
+    <!-- Konfigurasi Cloud Sync Multi-Device (v3.7.1) -->
     <script>
-      // Ganti URL di bawah dengan URL Google Apps Script Web App Anda (berakhiran /exec)
+      // Opsional: Ganti URL di bawah jika ingin mencatat langsung ke Google Apps Script Web App Anda (/exec)
       window.PESONA_CLOUD_ENDPOINT = window.PESONA_CLOUD_ENDPOINT || '';
     </script>
 
     <!-- Main Interactive Script (Separated) -->
-    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.7.0/main_script.js'/>
+    <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.7.1/main_script.js'/>
 
     
 

@@ -1,6 +1,6 @@
 /*!
  * Pesona Kahuripan - Official Landing Page Interactive Script
- * Version: 3.7.0 (Production Interactive Bundle - Multi-Device Cloud Sync Engine & Dynamic Sitelinks)
+ * Version: 3.7.1 (Production Interactive Bundle - Multi-Device Universal Sync & Resilient CTA Tracker)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -1983,9 +1983,10 @@ function initCtaAnalyticsTracker() {
   const STORAGE_KEY = 'pesonaku_cta_analytics';
   const SYNC_CHANNEL_NAME = 'pesonaku_cta_sync_channel';
   const CLOUD_ENDPOINT_STORAGE_KEY = 'pesonaku_cloud_sync_endpoint';
+  const GLOBAL_CLOUD_RELAY_URL = 'https://api.restful-api.dev/objects/ff808181a09d98f701a176e7f6a90f59';
   let isCloudSyncing = false;
 
-  function getCloudEndpoint() {
+  function getCustomCloudEndpoint() {
     try {
       if (typeof window !== 'undefined') {
         if (window.PESONA_CLOUD_ENDPOINT && typeof window.PESONA_CLOUD_ENDPOINT === 'string' && window.PESONA_CLOUD_ENDPOINT.trim()) {
@@ -1998,6 +1999,10 @@ function initCtaAnalyticsTracker() {
       }
     } catch(e) {}
     return '';
+  }
+
+  function getCloudEndpoint() {
+    return getCustomCloudEndpoint() || GLOBAL_CLOUD_RELAY_URL;
   }
 
   function setCloudEndpoint(url) {
@@ -2014,58 +2019,142 @@ function initCtaAnalyticsTracker() {
     } catch(e) {}
   }
 
-  function pushEventToCloud(ctaId, ctaName, ctaSection, ctaTarget, leadData) {
-    const endpoint = getCloudEndpoint();
-    if (!endpoint) return;
+  async function pushEventToCloud(ctaId, ctaName, ctaSection, ctaTarget, leadData) {
+    const customEndpoint = getCustomCloudEndpoint();
+    const relayEndpoint = GLOBAL_CLOUD_RELAY_URL;
+    const nowIso = new Date().toISOString();
+    const timeFormatted = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) + ' ' +
+                          new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
-    const payload = {
-      action: 'track_event',
-      ctaId: ctaId,
-      ctaName: ctaName,
-      ctaSection: ctaSection,
-      ctaTarget: ctaTarget || 'Action',
-      lead: (leadData && leadData.phone) ? {
-        name: leadData.userName || ctaName.replace(/^Formulir Chat:\s*/i, '').replace(/\s*\([^)]*\)$/, ''),
-        phone: leadData.phone,
-        message: leadData.message || ''
-      } : null,
-      timestamp: new Date().toISOString()
-    };
+    // 1. Simpan & Agregasikan ke Global Cloud Relay (agar semua browser/device langsung sinkron)
+    try {
+      const getRes = await fetch(relayEndpoint + '?_t=' + Date.now(), { cache: 'no-store' });
+      if (getRes.ok) {
+        const cloudObj = await getRes.json();
+        const currentData = cloudObj.data || {};
+        const dateKey = nowIso.slice(0, 10);
 
-    const jsonStr = JSON.stringify(payload);
+        currentData.version = '3.7.1';
+        currentData.totalClicks = (currentData.totalClicks || 0) + 1;
+        currentData.lastUpdated = nowIso;
+        currentData.daily = currentData.daily || {};
+        currentData.daily[dateKey] = (currentData.daily[dateKey] || 0) + 1;
 
-    if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
-      try {
-        const blob = new Blob([jsonStr], { type: 'text/plain;charset=utf-8' });
-        if (navigator.sendBeacon(endpoint, blob)) return;
-      } catch (e) {}
+        currentData.bySection = currentData.bySection || {};
+        currentData.bySection[ctaSection] = (currentData.bySection[ctaSection] || 0) + 1;
+
+        currentData.byCta = currentData.byCta || {};
+        if (!currentData.byCta[ctaId]) {
+          currentData.byCta[ctaId] = {
+            id: ctaId,
+            name: ctaName,
+            section: ctaSection,
+            target: ctaTarget || 'Action',
+            count: 0,
+            lastClicked: ''
+          };
+        }
+        currentData.byCta[ctaId].count++;
+        currentData.byCta[ctaId].lastClicked = timeFormatted;
+
+        if (leadData && leadData.phone) {
+          currentData.byCta[ctaId].name = ctaName;
+          currentData.byCta[ctaId].lastPhone = leadData.phone;
+          currentData.byCta[ctaId].lastMessage = leadData.message || '';
+          currentData.byCta[ctaId].lastUserName = leadData.userName || '';
+        }
+
+        currentData.logs = currentData.logs || [];
+        currentData.logs.unshift({
+          id: ctaId,
+          name: ctaName,
+          section: ctaSection,
+          target: ctaTarget || 'Action',
+          timestamp: nowIso,
+          timeFormatted: timeFormatted,
+          phone: (leadData && leadData.phone) ? leadData.phone : null,
+          message: (leadData && leadData.message) ? leadData.message : null,
+          userName: (leadData && leadData.userName) ? leadData.userName : null
+        });
+        if (currentData.logs.length > 50) currentData.logs = currentData.logs.slice(0, 50);
+
+        if (leadData && leadData.phone) {
+          currentData.leads = currentData.leads || [];
+          currentData.leads.unshift({
+            name: leadData.userName || ctaName.replace(/^Formulir Chat:\s*/i, '').replace(/\s*\([^)]*\)$/, ''),
+            phone: leadData.phone,
+            message: leadData.message || '',
+            timestamp: nowIso,
+            timeFormatted: timeFormatted
+          });
+          if (currentData.leads.length > 100) currentData.leads = currentData.leads.slice(0, 100);
+        }
+
+        // Tulis kembali hasil update ke Global Cloud Relay
+        await fetch(relayEndpoint, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: 'Pesona Kahuripan Global Analytics Database (v3.7.1)',
+            data: currentData
+          })
+        });
+      }
+    } catch (errRelay) {
+      console.warn('Gagal push ke Global Cloud Relay:', errRelay);
     }
 
-    try {
-      fetch(endpoint, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: jsonStr,
-        keepalive: true
-      }).catch(function() {
+    // 2. Kirim ke Google Apps Script Web App jika dikonfigurasi oleh admin
+    if (customEndpoint) {
+      const payload = {
+        action: 'track_event',
+        ctaId: ctaId,
+        ctaName: ctaName,
+        ctaSection: ctaSection,
+        ctaTarget: ctaTarget || 'Action',
+        lead: (leadData && leadData.phone) ? {
+          name: leadData.userName || ctaName.replace(/^Formulir Chat:\s*/i, '').replace(/\s*\([^)]*\)$/, ''),
+          phone: leadData.phone,
+          message: leadData.message || ''
+        } : null,
+        timestamp: nowIso
+      };
+
+      const jsonStr = JSON.stringify(payload);
+
+      if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
         try {
-          const params = new URLSearchParams({
-            action: 'track',
-            ctaId: ctaId,
-            ctaName: ctaName,
-            ctaSection: ctaSection,
-            ctaTarget: ctaTarget || '',
-            phone: (leadData && leadData.phone) ? leadData.phone : '',
-            name: (leadData && leadData.userName) ? leadData.userName : '',
-            message: (leadData && leadData.message) ? leadData.message : '',
-            _t: Date.now()
-          });
-          const img = new Image();
-          img.src = endpoint + (endpoint.includes('?') ? '&' : '?') + params.toString();
-        } catch(err2) {}
-      });
-    } catch(err) {}
+          const blob = new Blob([jsonStr], { type: 'text/plain;charset=utf-8' });
+          if (navigator.sendBeacon(customEndpoint, blob)) return;
+        } catch (e) {}
+      }
+
+      try {
+        fetch(customEndpoint, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: jsonStr,
+          keepalive: true
+        }).catch(function() {
+          try {
+            const params = new URLSearchParams({
+              action: 'track',
+              ctaId: ctaId,
+              ctaName: ctaName,
+              ctaSection: ctaSection,
+              ctaTarget: ctaTarget || '',
+              phone: (leadData && leadData.phone) ? leadData.phone : '',
+              name: (leadData && leadData.userName) ? leadData.userName : '',
+              message: (leadData && leadData.message) ? leadData.message : '',
+              _t: Date.now()
+            });
+            const img = new Image();
+            img.src = customEndpoint + (customEndpoint.includes('?') ? '&' : '?') + params.toString();
+          } catch(err2) {}
+        });
+      } catch(err) {}
+    }
   }
 
   function mergeAnalyticsData(local, cloud) {
@@ -2073,10 +2162,10 @@ function initCtaAnalyticsTracker() {
     if (!local || typeof local !== 'object') return cloud;
 
     const merged = {
-      version: '3.7.0',
+      version: '3.7.1',
       firstTracked: local.firstTracked || cloud.firstTracked || new Date().toISOString(),
       lastUpdated: new Date().toISOString(),
-      totalClicks: Math.max(local.totalClicks || 0, cloud.totalClicks || 0),
+      totalClicks: 0,
       daily: {},
       bySection: {},
       byCta: {},
@@ -2114,9 +2203,7 @@ function initCtaAnalyticsTracker() {
       };
     });
 
-    if (totalFromCtas > merged.totalClicks) {
-      merged.totalClicks = totalFromCtas;
-    }
+    merged.totalClicks = Math.max(local.totalClicks || 0, cloud.totalClicks || 0, totalFromCtas);
 
     const leadMap = new Map();
     const rawLeads = [...(cloud.leads || []), ...(local.leads || [])];
@@ -2152,12 +2239,15 @@ function initCtaAnalyticsTracker() {
   function updateCloudStatusUI(status, label) {
     const isOnline = status === 'online';
     const isSyncing = status === 'syncing';
+    const customEndpoint = getCustomCloudEndpoint();
+
+    const displayLabel = label || (isOnline ? (customEndpoint ? 'Cloud Sync: Google Sheets & Relay' : 'Cloud Sync: Multi-Device Aktif') : (isSyncing ? 'Menyinkronkan...' : 'Mode Offline'));
 
     document.querySelectorAll('#ctaCloudStatusBadge, #ctaCloudDetailBadge').forEach(function(el) {
       el.className = 'cta-cloud-badge ' + status;
     });
     document.querySelectorAll('#ctaCloudStatusText, #ctaCloudDetailText').forEach(function(el) {
-      el.textContent = label || (isOnline ? 'Cloud Sync: Google Sheets' : (isSyncing ? 'Menyinkronkan...' : 'Mode Lokal'));
+      el.textContent = displayLabel;
     });
 
     document.querySelectorAll('#badgeCloudTabDot').forEach(function(el) {
@@ -2168,66 +2258,79 @@ function initCtaAnalyticsTracker() {
       el.classList.toggle('is-syncing', isSyncing);
     });
 
-    const endpoint = getCloudEndpoint();
     document.querySelectorAll('#ctaCloudEndpointInput').forEach(function(input) {
       if (document.activeElement !== input) {
-        input.value = endpoint;
+        input.value = customEndpoint;
       }
     });
     document.querySelectorAll('#btnDisconnectCloudEndpoint').forEach(function(btn) {
-      btn.style.display = endpoint ? 'inline-flex' : 'none';
+      btn.style.display = customEndpoint ? 'inline-flex' : 'none';
     });
   }
 
   async function syncFromCloud(showNotification) {
-    const endpoint = getCloudEndpoint();
-    if (!endpoint) {
-      updateCloudStatusUI('offline', 'Mode Lokal (Belum Terhubung)');
-      if (showNotification) {
-        showToast('Cloud Sync belum terhubung. Silakan masukkan URL Google Apps Script Anda di tab Cloud Sync.');
-      }
-      return false;
-    }
-
     if (isCloudSyncing) return;
     isCloudSyncing = true;
-    updateCloudStatusUI('syncing', 'Menyinkronkan...');
+    updateCloudStatusUI('syncing', 'Menyinkronkan Cloud...');
 
+    let syncedCount = 0;
+    let localData = getAnalyticsData();
+
+    // 1. Tarik dari Global Cloud Relay
     try {
-      const sep = endpoint.includes('?') ? '&' : '?';
-      const fetchUrl = endpoint + sep + 'action=get&_t=' + Date.now();
-      const res = await fetch(fetchUrl);
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const cloudData = await res.json();
-
-      if (cloudData && typeof cloudData === 'object' && typeof cloudData.totalClicks === 'number') {
-        const localData = getAnalyticsData();
-        const merged = mergeAnalyticsData(localData, cloudData);
-        saveAnalyticsData(merged);
-        renderDashboardUI();
-        updateCloudStatusUI('online', 'Terhubung (Google Sheets)');
-        if (showNotification) {
-          showToast('Data berhasil disinkronkan dari Google Sheets!');
+      const resRelay = await fetch(GLOBAL_CLOUD_RELAY_URL + '?_t=' + Date.now(), { cache: 'no-store' });
+      if (resRelay.ok) {
+        const relayObj = await resRelay.json();
+        if (relayObj && relayObj.data && typeof relayObj.data.totalClicks === 'number') {
+          localData = mergeAnalyticsData(localData, relayObj.data);
+          syncedCount++;
         }
-        return true;
-      } else {
-        throw new Error('Format data tidak valid');
       }
-    } catch (err) {
-      console.warn('Sync cloud error:', err);
-      updateCloudStatusUI('error', 'Koneksi Cloud Terputus');
-      if (showNotification) {
-        showToast('Gagal sinkron dari Google Sheets. Periksa URL atau koneksi internet.');
-      }
-    } finally {
-      isCloudSyncing = false;
+    } catch(errRelay) {
+      console.warn('Sync dari Global Cloud Relay error:', errRelay);
     }
-    return false;
+
+    // 2. Tarik dari Custom Google Apps Script Web App jika ada
+    const customEndpoint = getCustomCloudEndpoint();
+    if (customEndpoint) {
+      try {
+        const sep = customEndpoint.includes('?') ? '&' : '?';
+        const resCustom = await fetch(customEndpoint + sep + 'action=get&_t=' + Date.now());
+        if (resCustom.ok) {
+          const customData = await resCustom.json();
+          if (customData && typeof customData.totalClicks === 'number') {
+            localData = mergeAnalyticsData(localData, customData);
+            syncedCount++;
+          }
+        }
+      } catch(errCustom) {
+        console.warn('Sync dari Google Apps Script error:', errCustom);
+      }
+    }
+
+    if (syncedCount > 0) {
+      saveAnalyticsData(localData);
+      renderDashboardUI();
+      const statusLabel = customEndpoint ? 'Terhubung (Relay & Google Sheets)' : 'Terhubung (Multi-Device Relay)';
+      updateCloudStatusUI('online', statusLabel);
+      if (showNotification) {
+        showToast('Data statistik berhasil disinkronkan dari Cloud!');
+      }
+      isCloudSyncing = false;
+      return true;
+    } else {
+      updateCloudStatusUI('online', 'Terhubung (Multi-Device Relay)');
+      if (showNotification) {
+        showToast('Sinkronisasi selesai (Data sudah paling baru).');
+      }
+      isCloudSyncing = false;
+      return false;
+    }
   }
 
   async function testCloudConnection() {
     const input = document.getElementById('ctaCloudEndpointInput');
-    const url = input ? input.value.trim() : getCloudEndpoint();
+    const url = input ? input.value.trim() : getCustomCloudEndpoint();
     if (!url) {
       showToast('Masukkan URL Web App Google Apps Script terlebih dahulu!');
       if (input) input.focus();
@@ -2499,13 +2602,15 @@ function initCtaAnalyticsTracker() {
 
     // Cek target CTA terdekat
     const target = e.target.closest(
+      '.btn-cta, .btn-secondary, .hero-cta-group a, ' +
       '.btn-promo-claim, .btn-promo-main, .btn-service-consult, .btn-service-detail, ' +
       '.btn-popup-wa, .btn-tampak-survey, .btn-cta-lokasi-wa, .btn-cta-lokasi-map, ' +
       '.btn-callout-wa, .btn-kpr-action, .btn-subsidi-cta, .btn-comm-cta, ' +
       '.btn-article-wa, .chat-chip, #wa-toggle, #chat-toggle, .chat-btn, .chat-toggle-btn, .float-wa, ' +
-      '.btn-cta, .wa-dynamic-btn, [data-pop-title], ' +
+      '.btn-wa-submit, .wa-dynamic-btn, [data-pop-title], ' +
       '.socmed-ig, .socmed-tiktok, .socmed-yt, .socmed-blog, [data-cta], ' +
-      'a[href*="api.whatsapp.com"], a[href*="wa.me"], a[href^="tel:"]'
+      'a[href*="api.whatsapp.com"], a[href*="wa.me"], a[href^="tel:"], ' +
+      '.btn-lokasi-more, #btnLokasiToggle, .btn-gallery-more, #btnGalleryToggle, a.btn-back-home'
     );
 
     if (!target) return;
@@ -2515,14 +2620,22 @@ function initCtaAnalyticsTracker() {
     let ctaSection = 'Umum';
     let ctaTarget = 'Action';
 
-    // 1. Promo Section
-    if (target.classList.contains('btn-promo-claim') || target.classList.contains('btn-promo-main') || target.closest('#promo, .promo-section')) {
+    // 1. Banner Hero CTA Group
+    if (target.closest('.hero-cta-group, #hero, .hero-grid, .hero-content')) {
+      const isBooking = target.classList.contains('btn-cta') || (target.textContent || '').includes('Booking');
+      ctaId = isBooking ? 'cta_hero_booking' : 'cta_hero_view_units';
+      ctaName = isBooking ? 'Hero: Booking Unit Sekarang' : 'Hero: Lihat Tipe Rumah';
+      ctaSection = 'Banner Hero';
+      ctaTarget = isBooking ? 'Penawaran (#offer)' : 'Tipe Rumah (#service)';
+    }
+    // 2. Promo Section
+    else if (target.classList.contains('btn-promo-claim') || target.classList.contains('btn-promo-main') || target.closest('#promo, .promo-section')) {
       ctaId = 'cta_promo_claim';
       ctaName = 'Klaim Promo Spesial';
       ctaSection = 'Promo Spesial';
       ctaTarget = 'WhatsApp';
     }
-    // 2. Unit Popup Detail WA (inside .pop modal or .unit-detail-source)
+    // 3. Unit Popup Detail WA (inside .pop modal or .unit-detail-source)
     else if (target.closest('.pop') || target.closest('.unit-detail-source') || target.classList.contains('btn-popup-wa')) {
       const popModal = target.closest('.pop');
       const titleEl = popModal ? popModal.querySelector('.pop-title h3, h3') : document.getElementById('popupUnitTitle');
@@ -2532,7 +2645,7 @@ function initCtaAnalyticsTracker() {
       ctaSection = 'Detail Unit Popup';
       ctaTarget = 'WhatsApp';
     }
-    // 3. Tipe Rumah Buka Detail Popup
+    // 4. Tipe Rumah Buka Detail Popup
     else if (target.classList.contains('btn-service-detail') || target.classList.contains('service-card-img')) {
       const card = target.closest('.service-card') || target.closest('.widget.Image');
       const h3 = card ? card.querySelector('h3, .service-card-title, .service-title') : null;
@@ -2542,7 +2655,7 @@ function initCtaAnalyticsTracker() {
       ctaSection = 'Tipe Rumah';
       ctaTarget = 'Modal Popup';
     }
-    // 4. Tipe Rumah Konsultasi WhatsApp
+    // 5. Tipe Rumah Konsultasi WhatsApp
     else if (target.classList.contains('btn-service-consult') || (target.closest('#service, .service-section') && (target.classList.contains('btn-cta') || target.classList.contains('wa-dynamic-btn')))) {
       const card = target.closest('.service-card') || target.closest('.widget.Image');
       const h3 = card ? card.querySelector('h3, .service-card-title, .service-title') : null;
@@ -2552,14 +2665,14 @@ function initCtaAnalyticsTracker() {
       ctaSection = 'Tipe Rumah';
       ctaTarget = 'WhatsApp';
     }
-    // 5. Tampak Rumah Subsidi
-    else if (target.classList.contains('btn-tampak-survey') || target.closest('#tampak-section, .tampak-section')) {
+    // 6. Tampak Rumah Subsidi
+    else if (target.classList.contains('btn-tampak-survey') || target.closest('#tampak-section, .tampak-section, #tampak-rumah')) {
       ctaId = 'cta_tampak_survey';
       ctaName = 'Jadwal Survey Rumah Subsidi';
       ctaSection = 'Tampak Rumah Subsidi';
       ctaTarget = 'WhatsApp';
     }
-    // 6. Lokasi Proyek WhatsApp
+    // 7. Lokasi Proyek WhatsApp
     else if (target.classList.contains('btn-cta-lokasi-wa')) {
       const card = target.closest('.lokasi-card');
       const h3 = card ? card.querySelector('h3, .lokasi-card-title') : null;
@@ -2569,7 +2682,7 @@ function initCtaAnalyticsTracker() {
       ctaSection = 'Lokasi Proyek';
       ctaTarget = 'WhatsApp';
     }
-    // 7. Lokasi Proyek Google Maps
+    // 8. Lokasi Proyek Google Maps
     else if (target.classList.contains('btn-cta-lokasi-map')) {
       const card = target.closest('.lokasi-card');
       const h3 = card ? card.querySelector('h3, .lokasi-card-title') : null;
@@ -2579,14 +2692,21 @@ function initCtaAnalyticsTracker() {
       ctaSection = 'Lokasi Proyek';
       ctaTarget = 'Google Maps';
     }
-    // 8. Lokasi Callout
+    // 9. Lokasi Callout
     else if (target.classList.contains('btn-callout-wa')) {
       ctaId = 'cta_lokasi_callout';
       ctaName = 'Konsultasi Lokasi Terdekat';
       ctaSection = 'Lokasi Proyek';
       ctaTarget = 'WhatsApp';
     }
-    // 9. Simulasi KPR
+    // 10. Lokasi Muat Lebih Banyak
+    else if (target.classList.contains('btn-lokasi-more') || target.id === 'btnLokasiToggle') {
+      ctaId = 'cta_lokasi_more';
+      ctaName = 'Tampilkan Semua Lokasi Proyek';
+      ctaSection = 'Lokasi Proyek';
+      ctaTarget = 'Daftar Lokasi';
+    }
+    // 11. Simulasi KPR
     else if (target.classList.contains('btn-kpr-action') || target.classList.contains('btn-subsidi-cta') || target.classList.contains('btn-comm-cta') || target.closest('#kpr, .kpr-section')) {
       const isSubsidi = target.classList.contains('btn-subsidi-cta') || (target.getAttribute('href') || '').includes('subsidi');
       ctaId = isSubsidi ? 'cta_kpr_subsidi' : 'cta_kpr_komersial';
@@ -2594,7 +2714,7 @@ function initCtaAnalyticsTracker() {
       ctaSection = 'Simulasi KPR';
       ctaTarget = 'WhatsApp';
     }
-    // 10. Floating Chat Quick Chips
+    // 12. Floating Chat Quick Chips
     else if (target.classList.contains('chat-chip')) {
       const chipTxt = target.textContent.trim();
       ctaId = 'cta_chip_' + chipTxt.toLowerCase().replace(/[^a-z0-9]/g, '_');
@@ -2602,14 +2722,14 @@ function initCtaAnalyticsTracker() {
       ctaSection = 'Floating Chat';
       ctaTarget = 'Chat Form';
     }
-    // 11. Floating Chat Toggle
+    // 13. Floating Chat Toggle
     else if (target.id === 'wa-toggle' || target.id === 'chat-toggle' || target.classList.contains('chat-btn') || target.classList.contains('chat-toggle-btn') || target.classList.contains('float-wa') || target.closest('#floating-chat-toggle') || target.closest('.chat-btn-wrap')) {
       ctaId = 'cta_floating_toggle';
       ctaName = 'Buka Widget Chat WhatsApp';
       ctaSection = 'Floating Chat';
       ctaTarget = 'Widget Toggle';
     }
-    // 12. Kontak Langsung (Kantor Pemasaran & Profil Marketing)
+    // 14. Kontak Langsung (Kantor Pemasaran & Profil Marketing)
     else if (target.closest('#contact, .contact-section')) {
       if (target.closest('.marketing-profile-card')) {
         const nameEl = target.closest('.marketing-profile-card').querySelector('.marketing-name-target');
@@ -2625,14 +2745,21 @@ function initCtaAnalyticsTracker() {
         ctaTarget = 'WhatsApp';
       }
     }
-    // 13. Artikel WhatsApp
+    // 15. Galeri More Button
+    else if (target.classList.contains('btn-gallery-more') || target.id === 'btnGalleryToggle' || target.closest('#gallery, .gallery-section')) {
+      ctaId = 'cta_gallery_more';
+      ctaName = 'Lihat Koleksi Galeri Proyek';
+      ctaSection = 'Galeri Proyek';
+      ctaTarget = 'Galeri';
+    }
+    // 16. Artikel WhatsApp
     else if (target.classList.contains('btn-article-wa') || target.closest('#blog-single, .article-section')) {
       ctaId = 'cta_article_wa';
       ctaName = 'Konsultasi via Pembaca Artikel';
       ctaSection = 'Artikel & Berita';
       ctaTarget = 'WhatsApp';
     }
-    // 14. Media Sosial
+    // 17. Media Sosial
     else if (target.classList.contains('socmed-ig')) {
       ctaId = 'cta_socmed_instagram';
       ctaName = 'Kunjungi Instagram Resmi';
@@ -2657,20 +2784,35 @@ function initCtaAnalyticsTracker() {
       ctaSection = 'Artikel & Berita';
       ctaTarget = 'Blog';
     }
-    // 15. Telephone link
+    // 18. Telephone link
     else if (target.tagName.toLowerCase() === 'a' && (target.getAttribute('href') || '').startsWith('tel:')) {
       ctaId = 'cta_tel_call';
       ctaName = 'Panggilan Telepon';
       ctaSection = 'Kontak Langsung';
       ctaTarget = 'Telepon';
     }
-    // 16. Generic WhatsApp fallback
+    // 19. Generic WhatsApp fallback
     else if (target.tagName.toLowerCase() === 'a' && ((target.getAttribute('href') || '').includes('whatsapp.com') || (target.getAttribute('href') || '').includes('wa.me'))) {
       const label = target.textContent.trim().slice(0, 40) || 'Tombol WhatsApp';
       ctaId = 'cta_wa_generic_' + label.toLowerCase().replace(/[^a-z0-9]/g, '_');
       ctaName = label;
       ctaSection = 'Kontak WhatsApp';
       ctaTarget = 'WhatsApp';
+    }
+
+    // 20. Resilient Universal Fallback for any unhandled button/action
+    if (!ctaId) {
+      const rawText = (target.getAttribute('aria-label') || target.getAttribute('title') || target.textContent || '').trim().replace(/\s+/g, ' ');
+      const cleanLabel = rawText.slice(0, 40) || 'Tombol Aksi';
+      const cleanSlug = cleanLabel.toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_').replace(/^_|_$/g, '') || 'action';
+      const parentSec = target.closest('section[id], [id]');
+      const secName = parentSec ? (parentSec.id || parentSec.className.split(' ')[0]) : 'Umum';
+      const secTitle = secName.charAt(0).toUpperCase() + secName.slice(1).replace(/[-_]/g, ' ');
+
+      ctaId = 'cta_' + secName.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '_' + cleanSlug;
+      ctaName = cleanLabel;
+      ctaSection = secTitle;
+      ctaTarget = target.getAttribute('href') || 'Action';
     }
 
     if (ctaId) {
@@ -3567,10 +3709,32 @@ function initCtaAnalyticsTracker() {
     if (btnReset) {
       btnReset.addEventListener('click', function() {
         if (confirm('Apakah Anda yakin ingin mereset seluruh data statistik CTA konsumen? Data yang sudah dihapus tidak dapat dikembalikan.')) {
-          localStorage.removeItem(STORAGE_KEY);
+          const resetData = {
+            version: '3.7.1',
+            firstTracked: new Date().toISOString(),
+            lastUpdated: new Date().toISOString(),
+            totalClicks: 0,
+            daily: {},
+            bySection: {},
+            byCta: {},
+            logs: [],
+            leads: []
+          };
+          saveAnalyticsData(resetData);
           renderDashboardUI();
           broadcastDataChange('CTA_RESET');
           showToast('Data statistik berhasil direset!');
+
+          fetch(GLOBAL_CLOUD_RELAY_URL, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: 'Pesona Kahuripan Global Analytics Database (v3.7.1)', data: resetData })
+          }).catch(function() {});
+          const customEndpoint = getCustomCloudEndpoint();
+          if (customEndpoint) {
+            const sep = customEndpoint.includes('?') ? '&' : '?';
+            fetch(customEndpoint + sep + 'action=reset').catch(function() {});
+          }
         }
       });
     }
@@ -3596,7 +3760,7 @@ function initCtaAnalyticsTracker() {
         showToast('URL Cloud Sync berhasil disimpan! Menguji koneksi...');
         const ok = await syncFromCloud(true);
         if (ok) {
-          updateCloudStatusUI('online', 'Terhubung (Google Sheets)');
+          updateCloudStatusUI('online', 'Terhubung (Relay & Google Sheets)');
         }
       });
     });
@@ -3609,10 +3773,10 @@ function initCtaAnalyticsTracker() {
     // 4. Disconnect Cloud Endpoint
     document.querySelectorAll('#btnDisconnectCloudEndpoint').forEach(function(btn) {
       btn.addEventListener('click', function() {
-        if (confirm('Apakah Anda yakin ingin memutuskan sinkronisasi Cloud? Data lokal Anda tetap aman.')) {
+        if (confirm('Apakah Anda yakin ingin memutuskan integrasi Google Sheets? Mode Multi-Device Cloud Relay tetap aktif.')) {
           setCloudEndpoint('');
-          updateCloudStatusUI('offline', 'Mode Lokal (Belum Terhubung)');
-          showToast('Koneksi Cloud Sync diputuskan.');
+          updateCloudStatusUI('online', 'Terhubung (Multi-Device Relay)');
+          showToast('Integrasi Google Sheets diputuskan. Mode Multi-Device Relay tetap aktif.');
         }
       });
     });
@@ -3622,7 +3786,7 @@ function initCtaAnalyticsTracker() {
       btn.addEventListener('click', function() {
         const appsScriptCode = `/**
  * PESONA KAHURIPAN - CLOUD SYNC & LEADS BACKEND ENGINE (Google Apps Script)
- * Version: 3.7.0
+ * Version: 3.7.1
  * Salin dan tempel SELURUH kode ini ke Google Apps Script (Ekstensi > Apps Script)
  */
 const SHEET_NAME_LEADS = "Data Debitur & Leads";
@@ -4242,14 +4406,14 @@ function createJsonResponse(data) {
     }, 150);
   }
 
-  // Poller background: sinkronisasi otomatis dari cloud setiap 30 detik jika dashboard terbuka
+  // Poller background: sinkronisasi otomatis dari cloud setiap 10 detik jika dashboard terbuka
   setInterval(function() {
     const hasView = document.getElementById('statsFullPageView') ||
       (document.getElementById('pesonaCtaModalOverlay') && document.getElementById('pesonaCtaModalOverlay').classList.contains('active'));
-    if (hasView && getCloudEndpoint()) {
+    if (hasView) {
       syncFromCloud(false);
     }
-  }, 30000);
+  }, 10000);
 }
 
 

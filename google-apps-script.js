@@ -1,7 +1,7 @@
 /**
  * ======================================================================
  * PESONA KAHURIPAN - CLOUD SYNC & LEADS BACKEND ENGINE (Google Apps Script)
- * Version: 3.7.0
+ * Version: 3.7.1
  * Website: https://www.pesonakahuripan.biz.id
  * Repository: https://github.com/pesonaku/landingpage
  * ======================================================================
@@ -15,7 +15,7 @@
  * 6. Klik tombol biru "Terapkan" (Deploy) di kanan atas > pilih "Penerapan baru" (New deployment).
  * 7. Pada ikon Gerigi (Select type), pilih "Aplikasi Web" (Web app).
  * 8. Konfigurasi:
- *    - Deskripsi: "Pesona Kahuripan Cloud Sync v3.7.0"
+ *    - Deskripsi: "Pesona Kahuripan Cloud Sync v3.7.1"
  *    - Jalankan sebagai (Execute as): "Saya" (Me / akun Google Anda)
  *    - Yang memiliki akses (Who has access): "Siapa saja" (Anyone) -> *PENTING agar pengunjung web bisa kirim leads*
  * 9. Klik "Terapkan" (Deploy) > Berikan izin (Authorize access) jika diminta.

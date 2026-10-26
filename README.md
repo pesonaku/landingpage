@@ -40,9 +40,12 @@ Stylesheet dan script dari repositori ini dimuat secara instan melalui jsDelivr 
 
 ---
 
-## ☁️ Sinkronisasi Multi-Device & Database Google Sheets (v3.7.0)
+## ☁️ Sinkronisasi Multi-Device & Database Cloud (v3.7.1)
 
-Untuk memantau aktivitas konsumen dari perangkat mana pun (PC kantor, HP marketing, tablet) secara terpusat:
+Sistem statistik kini telah dilengkapi **Multi-Device Cloud Relay otomatis** (langsung aktif out-of-the-box tanpa konfigurasi tambahan). Seluruh interaksi CTA (Booking Unit Hero, Konsultasi WhatsApp, Tipe Rumah, Lokasi, Simulasi KPR, Formulir Chat leads) yang dibuka dari perangkat atau browser lain (HP pengunjung, laptop, dsb.) akan langsung tersinkronisasi dan dapat dilihat di dashboard `domain.com/statistik` dari perangkat mana pun.
+
+### Opsi Integrasi Google Sheets (Private Spreadsheet)
+Jika Anda juga ingin menyimpan arsip seluruh klik & database leads calon pembeli langsung ke Google Drive pribadi Anda:
 1. Buka [sheets.new](https://sheets.new) di browser Anda untuk membuat Google Spreadsheet baru.
 2. Klik menu **Ekstensi (Extensions) > Apps Script**.
 3. Salin seluruh isi berkas [`google-apps-script.js`](./google-apps-script.js) dan tempel di Apps Script.
@@ -51,8 +54,8 @@ Untuk memantau aktivitas konsumen dari perangkat mana pun (PC kantor, HP marketi
    - Jalankan sebagai: **Saya**
    - Yang memiliki akses: **Siapa saja (Anyone)**
 5. Salin URL Aplikasi Web yang berakhiran `/exec`.
-6. Buka halaman monitoring di website Anda (`domain.com/statistik` atau tekan `Ctrl + Shift + S`) > buka tab **Cloud Sync Google Sheets** > tempel URL tersebut lalu klik **Simpan & Hubungkan**.
-7. Seluruh klik CTA dan form chat debitur akan otomatis tercatat ke Spreadsheet Google Drive dan terbaca secara real-time di semua perangkat.
+6. Buka halaman monitoring di website Anda (`domain.com/statistik` atau tekan `Ctrl + Shift + S`) > buka tab **Cloud Sync & Google Sheets** > tempel URL tersebut lalu klik **Simpan & Hubungkan**.
+7. Data akan dicatat secara otomatis ke Google Sheets sekaligus disinkronkan secara real-time ke semua perangkat.
 
 ---
 
