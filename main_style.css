@@ -1,6 +1,6 @@
 /*!
  * Pesona Kahuripan - Official Landing Page Stylesheet
- * Version: 3.6.2 (Production Design System Bundle - Debitur Leads Dashboard)
+ * Version: 3.7.0 (Production Design System Bundle - Multi-Device Cloud Sync Engine)
  * Repository: https://github.com/pesonaku/landingpage
  */
 
@@ -6285,6 +6285,279 @@ body.homepage #blog-single {
   box-shadow: 0 4px 14px rgba(37, 211, 102, 0.45);
   transform: translateY(-1px);
 }
+
+/* ======================================================================
+   CLOUD SYNC (GOOGLE SHEETS) MULTI-DEVICE STYLES (v3.7.0)
+   ====================================================================== */
+.cta-cloud-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  user-select: none;
+}
+.cta-cloud-badge.online {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+.cta-cloud-badge.offline {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+.cta-cloud-badge.syncing {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+.cta-cloud-badge.error {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.cta-cloud-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.cta-cloud-badge.online .cta-cloud-dot {
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+.cta-cloud-badge.offline .cta-cloud-dot {
+  background: #f59e0b;
+  box-shadow: 0 0 6px #f59e0b;
+}
+.cta-cloud-badge.syncing .cta-cloud-dot {
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+  animation: liveDotGlow 0.8s infinite ease-in-out;
+}
+.cta-cloud-badge.error .cta-cloud-dot {
+  background: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+}
+
+.cta-btn-sync {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25) !important;
+}
+.cta-btn-sync:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #075985 100%) !important;
+  transform: translateY(-1px);
+}
+.cta-btn-sync.is-syncing i {
+  animation: spinSync 0.9s linear infinite;
+}
+
+@keyframes spinSync {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.badge-tab-sync-status {
+  font-size: 0.65rem;
+  margin-left: 4px;
+}
+.badge-tab-sync-status.online { color: #10b981; }
+.badge-tab-sync-status.offline { color: #f59e0b; }
+.badge-tab-sync-status.syncing { color: #38bdf8; }
+
+/* Cloud Settings Pane */
+.cta-cloud-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.cta-cloud-hero-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.85) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.cta-cloud-hero-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.cta-cloud-hero-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+.cta-cloud-hero-info h4 {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+.cta-cloud-hero-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  line-height: 1.45;
+}
+
+.cta-cloud-form-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 22px;
+}
+.cta-cloud-form-card h5 {
+  margin: 0 0 12px;
+  color: #f8fafc;
+  font-size: 0.96rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cta-cloud-input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.cta-cloud-input {
+  flex: 1;
+  min-width: 280px;
+  background: rgba(11, 17, 32, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #ffffff;
+  font-family: monospace;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.cta-cloud-input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+.cta-btn-cloud-action {
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+.cta-btn-cloud-save {
+  background: #10b981;
+  color: #ffffff;
+}
+.cta-btn-cloud-save:hover {
+  background: #059669;
+}
+.cta-btn-cloud-test {
+  background: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.cta-btn-cloud-test:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+.cta-btn-cloud-disconnect {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+.cta-btn-cloud-disconnect:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.cta-cloud-guide-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 22px;
+}
+.cta-cloud-guide-card h5 {
+  margin: 0 0 14px;
+  color: #f8fafc;
+  font-size: 0.96rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cta-cloud-steps {
+  margin: 0;
+  padding-left: 20px;
+  color: #cbd5e1;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+.cta-cloud-steps strong {
+  color: #38bdf8;
+}
+.cta-code-preview-wrap {
+  margin-top: 14px;
+  background: #0b1120;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.cta-code-preview-text {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.btn-copy-code-action {
+  background: #38bdf8;
+  color: #0b1120;
+  font-weight: 700;
+  font-size: 0.78rem;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.btn-copy-code-action:hover {
+  background: #7dd3fc;
+  transform: translateY(-1px);
+}
+
 
 
 

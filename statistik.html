@@ -15,7 +15,7 @@
   <link href="https://use.hugeicons.com/font/icons.css" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link href="main_style.css?v=3.6.2" rel="stylesheet">
+  <link href="main_style.css?v=3.7.0" rel="stylesheet">
 
   <!-- Google Tag Manager (GTAG) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11372301881"></script>
@@ -41,7 +41,11 @@
           </div>
         </a>
         <div class="stats-fp-nav-actions">
-          <span class="cta-live-badge"><span class="cta-live-dot"></span> LIVE MONITORING CTA</span>
+          <div class="cta-cloud-badge offline" id="ctaCloudStatusBadge" title="Status Sinkronisasi Multi-Device Google Sheets">
+            <span class="cta-cloud-dot"></span>
+            <span id="ctaCloudStatusText">Cloud Sync: Memeriksa...</span>
+          </div>
+          <span class="cta-live-badge"><span class="cta-live-dot"></span> LIVE MONITORING</span>
           <a href="/" class="stats-btn-back-home">
             <i class="hgi-stroke hgi-arrow-left-01"></i>
             <span>Kembali ke Beranda</span>
@@ -119,6 +123,11 @@
           <button type="button" class="cta-tab-btn" data-cta-tab="timeline">
             <i class="hgi-stroke hgi-clock-01"></i>
             <span>Log Aktivitas Terkini</span>
+          </button>
+          <button type="button" class="cta-tab-btn" data-cta-tab="cloud">
+            <i class="hgi-stroke hgi-cloud-sync"></i>
+            <span>Cloud Sync Google Sheets</span>
+            <span class="badge-tab-sync-status offline" id="badgeCloudTabDot">●</span>
           </button>
           <button type="button" class="cta-tab-btn" data-cta-tab="ga4">
             <i class="hgi-stroke hgi-google"></i>
@@ -253,11 +262,86 @@
               </div>
             </div>
           </div>
+
+          <!-- Tab 5: Cloud Sync Google Sheets -->
+          <div class="cta-tab-pane" id="ctaPaneCloud">
+            <div class="cta-cloud-pane">
+              <div class="cta-cloud-hero-card">
+                <div class="cta-cloud-hero-left">
+                  <div class="cta-cloud-hero-icon">
+                    <i class="hgi-stroke hgi-cloud-sync"></i>
+                  </div>
+                  <div class="cta-cloud-hero-info">
+                    <h4 id="ctaCloudHeroTitle">Sinkronisasi Multi-Device: Google Sheets</h4>
+                    <p id="ctaCloudHeroDesc">Mencatat seluruh klik CTA dan formulir leads calon pembeli dari perangkat mana pun ke Spreadsheet Google Drive secara real-time.</p>
+                  </div>
+                </div>
+                <div class="cta-cloud-hero-status">
+                  <div class="cta-cloud-badge offline" id="ctaCloudDetailBadge">
+                    <span class="cta-cloud-dot"></span>
+                    <span id="ctaCloudDetailText">Belum Terhubung</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cta-cloud-form-card">
+                <h5><i class="hgi-stroke hgi-link-02"></i> URL Web App Google Apps Script</h5>
+                <div class="cta-cloud-input-group">
+                  <input type="url" id="ctaCloudEndpointInput" class="cta-cloud-input" placeholder="Tempel URL Web App Google Apps Script (berakhiran /exec)..." />
+                  <button type="button" class="cta-btn-cloud-action cta-btn-cloud-save" id="btnSaveCloudEndpoint">
+                    <i class="hgi-stroke hgi-floppy-disk"></i>
+                    <span>Simpan &amp; Hubungkan</span>
+                  </button>
+                  <button type="button" class="cta-btn-cloud-action cta-btn-cloud-test" id="btnTestCloudEndpoint">
+                    <i class="hgi-stroke hgi-wifi-01"></i>
+                    <span>Tes Koneksi</span>
+                  </button>
+                  <button type="button" class="cta-btn-cloud-action cta-btn-cloud-disconnect" id="btnDisconnectCloudEndpoint" style="display:none;">
+                    <i class="hgi-stroke hgi-delete-02"></i>
+                    <span>Putuskan</span>
+                  </button>
+                </div>
+                <small style="color:#94a3b8;font-size:0.78rem;">
+                  URL ini akan disimpan di browser ini dan otomatis digunakan untuk sinkronisasi data antar seluruh perangkat (laptop, HP, tablet).
+                </small>
+              </div>
+
+              <div class="cta-cloud-guide-card">
+                <h5><i class="hgi-stroke hgi-book-open-01"></i> Panduan Pasang Google Sheets Backend (Hanya 2 Menit)</h5>
+                <ol class="cta-cloud-steps">
+                  <li>Buka <strong>https://sheets.new</strong> di browser Anda (login dengan Google). Beri nama spreadsheet, contoh: <em>Database Leads Pesona Kahuripan</em>.</li>
+                  <li>Di menu atas Google Sheets, klik menu <strong>Ekstensi (Extensions) &gt; Apps Script</strong>.</li>
+                  <li>Hapus semua baris kode di Apps Script, lalu tempel (paste) kode backend dari berkas <code>google-apps-script.js</code> di repositori ini.</li>
+                  <li>Klik tombol biru <strong>Terapkan (Deploy) &gt; Penerapan Baru (New deployment)</strong>.</li>
+                  <li>Pilih jenis <strong>Aplikasi Web (Web App)</strong>. Atur:
+                    <ul style="margin:4px 0;padding-left:18px;">
+                      <li>Jalankan sebagai: <strong>Saya (akun Google Anda)</strong></li>
+                      <li>Akses: <strong>Siapa saja (Anyone)</strong> <em>(Wajib agar pengunjung web bisa mengirim data lead)</em></li>
+                    </ul>
+                  </li>
+                  <li>Klik <strong>Terapkan (Deploy)</strong> &gt; berikan izin akses &gt; salin <strong>URL Aplikasi Web</strong> yang berakhiran <code>/exec</code>.</li>
+                  <li>Tempel URL tersebut pada kolom input di atas lalu klik <strong>Simpan &amp; Hubungkan</strong>.</li>
+                </ol>
+
+                <div class="cta-code-preview-wrap">
+                  <span class="cta-code-preview-text">Berkas backend siap pakai: <code>google-apps-script.js</code></span>
+                  <button type="button" class="btn-copy-code-action" id="btnCopyAppsScriptCode">
+                    <i class="hgi-stroke hgi-copy-01"></i>
+                    <span>Salin Kode Apps Script</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Action Toolbar -->
         <div class="cta-modal-footer">
           <div class="cta-footer-left">
+            <button type="button" class="cta-btn-action cta-btn-sync" id="btnSyncCloud" title="Sinkronkan data dari Google Sheets sekarang">
+              <i class="hgi-stroke hgi-cloud-sync"></i>
+              <span>Sinkronkan Sekarang</span>
+            </button>
             <button type="button" class="cta-btn-action cta-btn-wa-copy" id="btnCopyWaReport" title="Salin laporan WhatsApp">
               <i class="hgi-stroke hgi-copy-01"></i>
               <span>Salin Laporan WhatsApp</span>
@@ -286,6 +370,6 @@
   </div>
 
   <!-- Main JavaScript Bundle -->
-  <script src="main_script.js?v=3.6.2"></script>
+  <script src="main_script.js?v=3.7.0"></script>
 </body>
 </html>

@@ -1,8 +1,13 @@
 /*!
  * Pesona Kahuripan - Official Landing Page Interactive Script
- * Version: 3.6.2 (Production Interactive Bundle - Dynamic Domain & Subdomain Sitelink Engine)
+ * Version: 3.7.0 (Production Interactive Bundle - Multi-Device Cloud Sync Engine & Dynamic Sitelinks)
  * Repository: https://github.com/pesonaku/landingpage
  */
+
+// ================= CLOUD SYNC CONFIGURATION (MULTI-DEVICE) =================
+// Masukkan URL Google Apps Script Web App Anda di bawah ini, atau atur via domain.com/statistik
+window.PESONA_CLOUD_ENDPOINT = window.PESONA_CLOUD_ENDPOINT || '';
+
 
 // ================= ACTIVE DOMAIN & SITELINK RESOLVER =================
 function getActiveSiteOrigin() {
@@ -1971,12 +1976,288 @@ function initFancyboxUI() {
 
 
 // ======================================================================
-// 6. CTA ANALYTICS, MONITORING & CONSUMER INSIGHT ENGINE (v3.5.7)
-// Integrated with Google Analytics 4 (AW-11372301881) & LocalStorage
+// 6. CTA ANALYTICS, MONITORING & CONSUMER INSIGHT ENGINE (v3.7.0)
+// Integrated with Google Analytics 4 (AW-11372301881), Google Sheets Cloud Sync & LocalStorage
 // ======================================================================
 function initCtaAnalyticsTracker() {
   const STORAGE_KEY = 'pesonaku_cta_analytics';
   const SYNC_CHANNEL_NAME = 'pesonaku_cta_sync_channel';
+  const CLOUD_ENDPOINT_STORAGE_KEY = 'pesonaku_cloud_sync_endpoint';
+  let isCloudSyncing = false;
+
+  function getCloudEndpoint() {
+    try {
+      if (typeof window !== 'undefined') {
+        if (window.PESONA_CLOUD_ENDPOINT && typeof window.PESONA_CLOUD_ENDPOINT === 'string' && window.PESONA_CLOUD_ENDPOINT.trim()) {
+          return window.PESONA_CLOUD_ENDPOINT.trim();
+        }
+        const saved = localStorage.getItem(CLOUD_ENDPOINT_STORAGE_KEY);
+        if (saved && typeof saved === 'string') {
+          return saved.trim();
+        }
+      }
+    } catch(e) {}
+    return '';
+  }
+
+  function setCloudEndpoint(url) {
+    try {
+      if (url && typeof url === 'string' && url.trim()) {
+        const clean = url.trim();
+        localStorage.setItem(CLOUD_ENDPOINT_STORAGE_KEY, clean);
+        window.PESONA_CLOUD_ENDPOINT = clean;
+      } else {
+        localStorage.removeItem(CLOUD_ENDPOINT_STORAGE_KEY);
+        window.PESONA_CLOUD_ENDPOINT = '';
+      }
+      broadcastDataChange('CLOUD_ENDPOINT_CHANGED');
+    } catch(e) {}
+  }
+
+  function pushEventToCloud(ctaId, ctaName, ctaSection, ctaTarget, leadData) {
+    const endpoint = getCloudEndpoint();
+    if (!endpoint) return;
+
+    const payload = {
+      action: 'track_event',
+      ctaId: ctaId,
+      ctaName: ctaName,
+      ctaSection: ctaSection,
+      ctaTarget: ctaTarget || 'Action',
+      lead: (leadData && leadData.phone) ? {
+        name: leadData.userName || ctaName.replace(/^Formulir Chat:\s*/i, '').replace(/\s*\([^)]*\)$/, ''),
+        phone: leadData.phone,
+        message: leadData.message || ''
+      } : null,
+      timestamp: new Date().toISOString()
+    };
+
+    const jsonStr = JSON.stringify(payload);
+
+    if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
+      try {
+        const blob = new Blob([jsonStr], { type: 'text/plain;charset=utf-8' });
+        if (navigator.sendBeacon(endpoint, blob)) return;
+      } catch (e) {}
+    }
+
+    try {
+      fetch(endpoint, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: jsonStr,
+        keepalive: true
+      }).catch(function() {
+        try {
+          const params = new URLSearchParams({
+            action: 'track',
+            ctaId: ctaId,
+            ctaName: ctaName,
+            ctaSection: ctaSection,
+            ctaTarget: ctaTarget || '',
+            phone: (leadData && leadData.phone) ? leadData.phone : '',
+            name: (leadData && leadData.userName) ? leadData.userName : '',
+            message: (leadData && leadData.message) ? leadData.message : '',
+            _t: Date.now()
+          });
+          const img = new Image();
+          img.src = endpoint + (endpoint.includes('?') ? '&' : '?') + params.toString();
+        } catch(err2) {}
+      });
+    } catch(err) {}
+  }
+
+  function mergeAnalyticsData(local, cloud) {
+    if (!cloud || typeof cloud !== 'object') return local;
+    if (!local || typeof local !== 'object') return cloud;
+
+    const merged = {
+      version: '3.7.0',
+      firstTracked: local.firstTracked || cloud.firstTracked || new Date().toISOString(),
+      lastUpdated: new Date().toISOString(),
+      totalClicks: Math.max(local.totalClicks || 0, cloud.totalClicks || 0),
+      daily: {},
+      bySection: {},
+      byCta: {},
+      logs: [],
+      leads: []
+    };
+
+    const allDays = new Set([...Object.keys(local.daily || {}), ...Object.keys(cloud.daily || {})]);
+    allDays.forEach(function(day) {
+      merged.daily[day] = Math.max(local.daily?.[day] || 0, cloud.daily?.[day] || 0);
+    });
+
+    const allSecs = new Set([...Object.keys(local.bySection || {}), ...Object.keys(cloud.bySection || {})]);
+    allSecs.forEach(function(sec) {
+      merged.bySection[sec] = Math.max(local.bySection?.[sec] || 0, cloud.bySection?.[sec] || 0);
+    });
+
+    const allCtas = new Set([...Object.keys(local.byCta || {}), ...Object.keys(cloud.byCta || {})]);
+    let totalFromCtas = 0;
+    allCtas.forEach(function(cId) {
+      const loc = local.byCta?.[cId] || {};
+      const cld = cloud.byCta?.[cId] || {};
+      const maxCount = Math.max(loc.count || 0, cld.count || 0);
+      totalFromCtas += maxCount;
+      merged.byCta[cId] = {
+        id: cId,
+        name: cld.name || loc.name || 'CTA Button',
+        section: cld.section || loc.section || 'General',
+        target: cld.target || loc.target || 'Action',
+        count: maxCount,
+        lastClicked: cld.lastClicked || loc.lastClicked || '',
+        lastPhone: cld.lastPhone || loc.lastPhone || '',
+        lastMessage: cld.lastMessage || loc.lastMessage || '',
+        lastUserName: cld.lastUserName || loc.lastUserName || ''
+      };
+    });
+
+    if (totalFromCtas > merged.totalClicks) {
+      merged.totalClicks = totalFromCtas;
+    }
+
+    const leadMap = new Map();
+    const rawLeads = [...(cloud.leads || []), ...(local.leads || [])];
+    rawLeads.forEach(function(item) {
+      if (!item) return;
+      const phoneNorm = (item.phone || '').replace(/[^0-9]/g, '');
+      const timeKey = (item.timestamp || '').slice(0, 16);
+      const key = phoneNorm ? (phoneNorm + '_' + timeKey) : ('lead_' + (item.timestamp || Math.random()));
+      if (!leadMap.has(key)) {
+        leadMap.set(key, item);
+      }
+    });
+    merged.leads = Array.from(leadMap.values()).sort(function(a, b) {
+      return new Date(b.timestamp || 0) - new Date(a.timestamp || 0);
+    }).slice(0, 100);
+
+    const logMap = new Map();
+    const rawLogs = [...(cloud.logs || []), ...(local.logs || [])];
+    rawLogs.forEach(function(l) {
+      if (!l) return;
+      const key = (l.id || 'log') + '_' + (l.timestamp || Math.random());
+      if (!logMap.has(key)) {
+        logMap.set(key, l);
+      }
+    });
+    merged.logs = Array.from(logMap.values()).sort(function(a, b) {
+      return new Date(b.timestamp || 0) - new Date(a.timestamp || 0);
+    }).slice(0, 50);
+
+    return merged;
+  }
+
+  function updateCloudStatusUI(status, label) {
+    const isOnline = status === 'online';
+    const isSyncing = status === 'syncing';
+
+    document.querySelectorAll('#ctaCloudStatusBadge, #ctaCloudDetailBadge').forEach(function(el) {
+      el.className = 'cta-cloud-badge ' + status;
+    });
+    document.querySelectorAll('#ctaCloudStatusText, #ctaCloudDetailText').forEach(function(el) {
+      el.textContent = label || (isOnline ? 'Cloud Sync: Google Sheets' : (isSyncing ? 'Menyinkronkan...' : 'Mode Lokal'));
+    });
+
+    document.querySelectorAll('#badgeCloudTabDot').forEach(function(el) {
+      el.className = 'badge-tab-sync-status ' + status;
+    });
+
+    document.querySelectorAll('#btnSyncCloud').forEach(function(el) {
+      el.classList.toggle('is-syncing', isSyncing);
+    });
+
+    const endpoint = getCloudEndpoint();
+    document.querySelectorAll('#ctaCloudEndpointInput').forEach(function(input) {
+      if (document.activeElement !== input) {
+        input.value = endpoint;
+      }
+    });
+    document.querySelectorAll('#btnDisconnectCloudEndpoint').forEach(function(btn) {
+      btn.style.display = endpoint ? 'inline-flex' : 'none';
+    });
+  }
+
+  async function syncFromCloud(showNotification) {
+    const endpoint = getCloudEndpoint();
+    if (!endpoint) {
+      updateCloudStatusUI('offline', 'Mode Lokal (Belum Terhubung)');
+      if (showNotification) {
+        showToast('Cloud Sync belum terhubung. Silakan masukkan URL Google Apps Script Anda di tab Cloud Sync.');
+      }
+      return false;
+    }
+
+    if (isCloudSyncing) return;
+    isCloudSyncing = true;
+    updateCloudStatusUI('syncing', 'Menyinkronkan...');
+
+    try {
+      const sep = endpoint.includes('?') ? '&' : '?';
+      const fetchUrl = endpoint + sep + 'action=get&_t=' + Date.now();
+      const res = await fetch(fetchUrl);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const cloudData = await res.json();
+
+      if (cloudData && typeof cloudData === 'object' && typeof cloudData.totalClicks === 'number') {
+        const localData = getAnalyticsData();
+        const merged = mergeAnalyticsData(localData, cloudData);
+        saveAnalyticsData(merged);
+        renderDashboardUI();
+        updateCloudStatusUI('online', 'Terhubung (Google Sheets)');
+        if (showNotification) {
+          showToast('Data berhasil disinkronkan dari Google Sheets!');
+        }
+        return true;
+      } else {
+        throw new Error('Format data tidak valid');
+      }
+    } catch (err) {
+      console.warn('Sync cloud error:', err);
+      updateCloudStatusUI('error', 'Koneksi Cloud Terputus');
+      if (showNotification) {
+        showToast('Gagal sinkron dari Google Sheets. Periksa URL atau koneksi internet.');
+      }
+    } finally {
+      isCloudSyncing = false;
+    }
+    return false;
+  }
+
+  async function testCloudConnection() {
+    const input = document.getElementById('ctaCloudEndpointInput');
+    const url = input ? input.value.trim() : getCloudEndpoint();
+    if (!url) {
+      showToast('Masukkan URL Web App Google Apps Script terlebih dahulu!');
+      if (input) input.focus();
+      return;
+    }
+
+    showToast('Menguji koneksi ke Google Apps Script...');
+    updateCloudStatusUI('syncing', 'Menguji Koneksi...');
+
+    try {
+      const sep = url.includes('?') ? '&' : '?';
+      const testUrl = url + sep + 'action=ping&_t=' + Date.now();
+      const res = await fetch(testUrl);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      if (data && data.status === 'success') {
+        updateCloudStatusUI('online', 'Terhubung (Google Sheets)');
+        showToast('Koneksi sukses! Google Apps Script siap digunakan.');
+      } else {
+        throw new Error('Respon tidak valid');
+      }
+    } catch(e) {
+      updateCloudStatusUI('error', 'Tes Gagal');
+      showToast('Tes koneksi gagal: ' + (e.message || 'Periksa kembali URL'));
+    }
+  }
+
+  window.syncCtaCloud = syncFromCloud;
+  window.testCtaCloud = testCloudConnection;
+
 
   // 1. Cross-Tab Communication via BroadcastChannel
   let syncChannel = null;
@@ -2136,6 +2417,9 @@ function initCtaAnalyticsTracker() {
     }
 
     saveAnalyticsData(data);
+
+    // Kirim event secara real-time ke Google Sheets Cloud Database (Multi-Device)
+    pushEventToCloud(ctaId, ctaName, ctaSection, ctaTarget, leadData);
 
     // Google Tag Manager / GA4 dispatch
     if (typeof window.gtag === 'function') {
@@ -2413,6 +2697,10 @@ function initCtaAnalyticsTracker() {
         </div>
       </div>
       <div class="cta-header-actions">
+        <div class="cta-cloud-badge offline" id="ctaCloudStatusBadge" title="Status Sinkronisasi Multi-Device Google Sheets">
+          <span class="cta-cloud-dot"></span>
+          <span id="ctaCloudStatusText">Cloud Sync: Memeriksa...</span>
+        </div>
         <span class="cta-live-badge"><span class="cta-live-dot"></span> LIVE MONITORING</span>
         <button type="button" class="cta-modal-close" id="btnCloseCtaDashboard" aria-label="Tutup Dashboard">
           <i class="hgi-stroke hgi-cancel-01"></i>
@@ -2472,6 +2760,11 @@ function initCtaAnalyticsTracker() {
       <button type="button" class="cta-tab-btn" data-cta-tab="timeline">
         <i class="hgi-stroke hgi-clock-01"></i>
         <span>Log Aktivitas Terkini</span>
+      </button>
+      <button type="button" class="cta-tab-btn" data-cta-tab="cloud">
+        <i class="hgi-stroke hgi-cloud-sync"></i>
+        <span>Cloud Sync Google Sheets</span>
+        <span class="badge-tab-sync-status offline" id="badgeCloudTabDot">●</span>
       </button>
       <button type="button" class="cta-tab-btn" data-cta-tab="ga4">
         <i class="hgi-stroke hgi-google"></i>
@@ -2565,6 +2858,77 @@ function initCtaAnalyticsTracker() {
         </div>
       </div>
 
+      <!-- Tab 5: Cloud Sync Google Sheets -->
+      <div class="cta-tab-pane" id="ctaPaneCloud">
+        <div class="cta-cloud-pane">
+          <div class="cta-cloud-hero-card">
+            <div class="cta-cloud-hero-left">
+              <div class="cta-cloud-hero-icon">
+                <i class="hgi-stroke hgi-cloud-sync"></i>
+              </div>
+              <div class="cta-cloud-hero-info">
+                <h4 id="ctaCloudHeroTitle">Sinkronisasi Multi-Device: Google Sheets</h4>
+                <p id="ctaCloudHeroDesc">Mencatat seluruh klik CTA dan formulir leads calon pembeli dari perangkat mana pun ke Spreadsheet Google Drive secara real-time.</p>
+              </div>
+            </div>
+            <div class="cta-cloud-hero-status">
+              <div class="cta-cloud-badge offline" id="ctaCloudDetailBadge">
+                <span class="cta-cloud-dot"></span>
+                <span id="ctaCloudDetailText">Belum Terhubung</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta-cloud-form-card">
+            <h5><i class="hgi-stroke hgi-link-02"></i> URL Web App Google Apps Script</h5>
+            <div class="cta-cloud-input-group">
+              <input type="url" id="ctaCloudEndpointInput" class="cta-cloud-input" placeholder="Tempel URL Web App Google Apps Script (berakhiran /exec)..." />
+              <button type="button" class="cta-btn-cloud-action cta-btn-cloud-save" id="btnSaveCloudEndpoint">
+                <i class="hgi-stroke hgi-floppy-disk"></i>
+                <span>Simpan &amp; Hubungkan</span>
+              </button>
+              <button type="button" class="cta-btn-cloud-action cta-btn-cloud-test" id="btnTestCloudEndpoint">
+                <i class="hgi-stroke hgi-wifi-01"></i>
+                <span>Tes Koneksi</span>
+              </button>
+              <button type="button" class="cta-btn-cloud-action cta-btn-cloud-disconnect" id="btnDisconnectCloudEndpoint" style="display:none;">
+                <i class="hgi-stroke hgi-delete-02"></i>
+                <span>Putuskan</span>
+              </button>
+            </div>
+            <small style="color:#94a3b8;font-size:0.78rem;">
+              URL ini akan disimpan di browser ini dan otomatis digunakan untuk sinkronisasi data antar seluruh perangkat (laptop, HP, tablet).
+            </small>
+          </div>
+
+          <div class="cta-cloud-guide-card">
+            <h5><i class="hgi-stroke hgi-book-open-01"></i> Panduan Pasang Google Sheets Backend (Hanya 2 Menit)</h5>
+            <ol class="cta-cloud-steps">
+              <li>Buka <strong>https://sheets.new</strong> di browser Anda (login dengan Google). Beri nama spreadsheet, contoh: <em>Database Leads Pesona Kahuripan</em>.</li>
+              <li>Di menu atas Google Sheets, klik menu <strong>Ekstensi (Extensions) &gt; Apps Script</strong>.</li>
+              <li>Hapus semua baris kode di Apps Script, lalu tempel (paste) kode backend dari berkas <code>google-apps-script.js</code> di repositori ini.</li>
+              <li>Klik tombol biru <strong>Terapkan (Deploy) &gt; Penerapan Baru (New deployment)</strong>.</li>
+              <li>Pilih jenis <strong>Aplikasi Web (Web App)</strong>. Atur:
+                <ul style="margin:4px 0;padding-left:18px;">
+                  <li>Jalankan sebagai: <strong>Saya (akun Google Anda)</strong></li>
+                  <li>Akses: <strong>Siapa saja (Anyone)</strong> <em>(Wajib agar pengunjung web bisa mengirim data lead)</em></li>
+                </ul>
+              </li>
+              <li>Klik <strong>Terapkan (Deploy)</strong> &gt; berikan izin akses &gt; salin <strong>URL Aplikasi Web</strong> yang berakhiran <code>/exec</code>.</li>
+              <li>Tempel URL tersebut pada kolom input di atas lalu klik <strong>Simpan &amp; Hubungkan</strong>.</li>
+            </ol>
+
+            <div class="cta-code-preview-wrap">
+              <span class="cta-code-preview-text">Berkas backend siap pakai: <code>google-apps-script.js</code></span>
+              <button type="button" class="btn-copy-code-action" id="btnCopyAppsScriptCode">
+                <i class="hgi-stroke hgi-copy-01"></i>
+                <span>Salin Kode Apps Script</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="cta-tab-pane" id="ctaPaneGA4">
         <div class="cta-ga4-wrap">
           <div class="cta-ga4-status-card">
@@ -2604,6 +2968,10 @@ function initCtaAnalyticsTracker() {
 
     <div class="cta-modal-footer">
       <div class="cta-footer-left">
+        <button type="button" class="cta-btn-action cta-btn-sync" id="btnSyncCloud" title="Sinkronkan data dari Google Sheets sekarang">
+          <i class="hgi-stroke hgi-cloud-sync"></i>
+          <span>Sinkronkan Sekarang</span>
+        </button>
         <button type="button" class="cta-btn-action cta-btn-wa-copy" id="btnCopyWaReport" title="Salin laporan WhatsApp">
           <i class="hgi-stroke hgi-copy-01"></i>
           <span>Salin Laporan WhatsApp</span>
@@ -2675,6 +3043,10 @@ function initCtaAnalyticsTracker() {
       el.innerHTML = '<span class="live-sync-indicator"></span> Live: ' + timeFormatted + ' WIB (Tersinkron Otomatis)';
       el.classList.add('live-active');
     });
+
+    // Update Cloud Status UI
+    const currentEndpoint = getCloudEndpoint();
+    updateCloudStatusUI(currentEndpoint ? 'online' : 'offline', currentEndpoint ? 'Cloud Sync: Google Sheets' : 'Mode Lokal');
 
     const ctaList = Object.values(data.byCta || {}).sort((a,b) => b.count - a.count);
     if (ctaList.length > 0) {
@@ -3129,7 +3501,8 @@ function initCtaAnalyticsTracker() {
         document.querySelectorAll('.cta-tab-pane').forEach(function(pane) {
           pane.classList.remove('active');
         });
-        const activePane = document.getElementById('ctaPane' + targetTab.charAt(0).toUpperCase() + targetTab.slice(1));
+        let activePane = document.getElementById('ctaPane' + targetTab.charAt(0).toUpperCase() + targetTab.slice(1));
+        if (!activePane && targetTab.toLowerCase() === 'ga4') activePane = document.getElementById('ctaPaneGA4');
         if (activePane) activePane.classList.add('active');
       });
     });
@@ -3201,6 +3574,225 @@ function initCtaAnalyticsTracker() {
         }
       });
     }
+
+    // 1. Sync Cloud Button
+    document.querySelectorAll('#btnSyncCloud').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        syncFromCloud(true);
+      });
+    });
+
+    // 2. Save Cloud Endpoint
+    document.querySelectorAll('#btnSaveCloudEndpoint').forEach(function(btn) {
+      btn.addEventListener('click', async function() {
+        const input = document.getElementById('ctaCloudEndpointInput');
+        const url = input ? input.value.trim() : '';
+        if (!url) {
+          showToast('Masukkan URL Web App Google Apps Script Anda!');
+          if (input) input.focus();
+          return;
+        }
+        setCloudEndpoint(url);
+        showToast('URL Cloud Sync berhasil disimpan! Menguji koneksi...');
+        const ok = await syncFromCloud(true);
+        if (ok) {
+          updateCloudStatusUI('online', 'Terhubung (Google Sheets)');
+        }
+      });
+    });
+
+    // 3. Test Cloud Endpoint
+    document.querySelectorAll('#btnTestCloudEndpoint').forEach(function(btn) {
+      btn.addEventListener('click', testCloudConnection);
+    });
+
+    // 4. Disconnect Cloud Endpoint
+    document.querySelectorAll('#btnDisconnectCloudEndpoint').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (confirm('Apakah Anda yakin ingin memutuskan sinkronisasi Cloud? Data lokal Anda tetap aman.')) {
+          setCloudEndpoint('');
+          updateCloudStatusUI('offline', 'Mode Lokal (Belum Terhubung)');
+          showToast('Koneksi Cloud Sync diputuskan.');
+        }
+      });
+    });
+
+    // 5. Copy Google Apps Script Code
+    document.querySelectorAll('#btnCopyAppsScriptCode').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const appsScriptCode = `/**
+ * PESONA KAHURIPAN - CLOUD SYNC & LEADS BACKEND ENGINE (Google Apps Script)
+ * Version: 3.7.0
+ * Salin dan tempel SELURUH kode ini ke Google Apps Script (Ekstensi > Apps Script)
+ */
+const SHEET_NAME_LEADS = "Data Debitur & Leads";
+const SHEET_NAME_LOGS = "Riwayat Log CTA";
+const PROP_KEY_STATS = "PESONAKU_CTA_STATS_JSON";
+
+function doGet(e) {
+  try {
+    e = e || { parameter: {} };
+    const action = (e.parameter && e.parameter.action) ? e.parameter.action.toLowerCase() : 'get';
+    if (action === 'ping') {
+      return createJsonResponse({ status: 'success', message: 'Google Apps Script Cloud Sync aktif!', timestamp: new Date().toISOString() });
+    }
+    if (action === 'track') {
+      return processTrackEvent({
+        action: 'track_event',
+        ctaId: e.parameter.ctaId || 'unknown_cta',
+        ctaName: e.parameter.ctaName || 'Tombol CTA',
+        ctaSection: e.parameter.ctaSection || 'General',
+        ctaTarget: e.parameter.ctaTarget || 'Action',
+        lead: e.parameter.phone ? { name: e.parameter.name || '', phone: e.parameter.phone, message: e.parameter.message || '' } : null
+      });
+    }
+    if (action === 'reset') {
+      const resetData = getInitialStatsObject();
+      PropertiesService.getScriptProperties().setProperty(PROP_KEY_STATS, JSON.stringify(resetData));
+      return createJsonResponse({ status: 'success', message: 'Data statistik di cloud berhasil direset!' });
+    }
+    return createJsonResponse(getOrRebuildStatsData());
+  } catch (err) {
+    return createJsonResponse({ status: 'error', message: err.toString() });
+  }
+}
+
+function doPost(e) {
+  try {
+    let payload = {};
+    if (e && e.postData && e.postData.contents) {
+      try { payload = JSON.parse(e.postData.contents); } catch (err) { payload = e.parameter || {}; }
+    } else if (e && e.parameter) {
+      payload = e.parameter;
+    }
+    if (payload.action === 'reset') {
+      const resetData = getInitialStatsObject();
+      PropertiesService.getScriptProperties().setProperty(PROP_KEY_STATS, JSON.stringify(resetData));
+      return createJsonResponse({ status: 'success', message: 'Data statistik di cloud berhasil direset!' });
+    }
+    return processTrackEvent(payload);
+  } catch (err) {
+    return createJsonResponse({ status: 'error', message: err.toString() });
+  }
+}
+
+function processTrackEvent(payload) {
+  const ctaId = payload.ctaId || 'cta_unknown';
+  const ctaName = payload.ctaName || 'Tombol CTA';
+  const ctaSection = payload.ctaSection || 'General';
+  const ctaTarget = payload.ctaTarget || 'WhatsApp API';
+  const lead = payload.lead || null;
+
+  const now = new Date();
+  const timeFormatted = Utilities.formatDate(now, "GMT+7", "d MMM yyyy, HH:mm:ss") + " WIB";
+  const dateKey = Utilities.formatDate(now, "GMT+7", "yyyy-MM-dd");
+
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+
+  if (lead && lead.phone) {
+    const leadsSheet = getOrCreateSheet(ss, SHEET_NAME_LEADS, ["No", "Waktu Masuk", "Nama Calon Debitur", "Nomor WhatsApp", "Pesan / Minat Unit", "Tombol CTA", "Kategori / Bagian Web"]);
+    const nextRow = leadsSheet.getLastRow() + 1;
+    leadsSheet.appendRow([Math.max(1, nextRow - 1), timeFormatted, lead.name || payload.userName || "Calon Debitur", "'" + lead.phone, lead.message || "-", ctaName, ctaSection]);
+  }
+
+  const logsSheet = getOrCreateSheet(ss, SHEET_NAME_LOGS, ["Waktu", "Aksi / Tombol CTA", "Kategori", "Tujuan", "No. WhatsApp Debitur (Jika Ada)"]);
+  logsSheet.appendRow([timeFormatted, ctaName, ctaSection, ctaTarget, (lead && lead.phone) ? "'" + lead.phone : "-"]);
+
+  const stats = getOrRebuildStatsData();
+  stats.totalClicks = (stats.totalClicks || 0) + 1;
+  stats.lastUpdated = now.toISOString();
+  stats.daily = stats.daily || {};
+  stats.daily[dateKey] = (stats.daily[dateKey] || 0) + 1;
+  stats.bySection = stats.bySection || {};
+  stats.bySection[ctaSection] = (stats.bySection[ctaSection] || 0) + 1;
+  stats.byCta = stats.byCta || {};
+  if (!stats.byCta[ctaId]) {
+    stats.byCta[ctaId] = { id: ctaId, name: ctaName, section: ctaSection, target: ctaTarget, count: 0, lastClicked: '' };
+  }
+  stats.byCta[ctaId].count++;
+  stats.byCta[ctaId].lastClicked = timeFormatted;
+  if (lead && lead.phone) {
+    stats.byCta[ctaId].name = ctaName;
+    stats.byCta[ctaId].lastPhone = lead.phone;
+    stats.byCta[ctaId].lastMessage = lead.message || '';
+    stats.byCta[ctaId].lastUserName = lead.name || '';
+  }
+
+  stats.logs = stats.logs || [];
+  stats.logs.unshift({ id: ctaId, name: ctaName, section: ctaSection, target: ctaTarget, timestamp: now.toISOString(), timeFormatted: timeFormatted, phone: (lead && lead.phone) ? lead.phone : null, message: (lead && lead.message) ? lead.message : null, userName: (lead && lead.name) ? lead.name : null });
+  if (stats.logs.length > 50) stats.logs = stats.logs.slice(0, 50);
+
+  if (lead && lead.phone) {
+    stats.leads = stats.leads || [];
+    stats.leads.unshift({ name: lead.name || ctaName.replace(/^Formulir Chat:\\s*/i, '').replace(/\\s*\\([^)]*\\)$/, ''), phone: lead.phone, message: lead.message || '', timestamp: now.toISOString(), timeFormatted: timeFormatted });
+    if (stats.leads.length > 100) stats.leads = stats.leads.slice(0, 100);
+  }
+
+  PropertiesService.getScriptProperties().setProperty(PROP_KEY_STATS, JSON.stringify(stats));
+  return createJsonResponse({ status: 'success', totalClicks: stats.totalClicks, leadsCount: (stats.leads || []).length, timestamp: timeFormatted });
+}
+
+function getOrRebuildStatsData() {
+  const props = PropertiesService.getScriptProperties();
+  const raw = props.getProperty(PROP_KEY_STATS);
+  if (raw) {
+    try {
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === 'object') return parsed;
+    } catch (e) {}
+  }
+  const initial = getInitialStatsObject();
+  props.setProperty(PROP_KEY_STATS, JSON.stringify(initial));
+  return initial;
+}
+
+function getInitialStatsObject() {
+  return { version: '3.7.0', firstTracked: new Date().toISOString(), lastUpdated: new Date().toISOString(), totalClicks: 0, daily: {}, bySection: {}, byCta: {}, logs: [], leads: [] };
+}
+
+function getOrCreateSheet(spreadsheet, sheetName, headers) {
+  let sheet = spreadsheet.getSheetByName(sheetName);
+  if (!sheet) {
+    sheet = spreadsheet.insertSheet(sheetName);
+    if (headers && headers.length > 0) {
+      sheet.appendRow(headers);
+      const headerRange = sheet.getRange(1, 1, 1, headers.length);
+      headerRange.setFontWeight("bold");
+      headerRange.setBackground("#0f172a");
+      headerRange.setFontColor("#38bdf8");
+      headerRange.setHorizontalAlignment("center");
+      sheet.setFrozenRows(1);
+    }
+  }
+  return sheet;
+}
+
+function createJsonResponse(data) {
+  return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
+}`;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(appsScriptCode).then(function() {
+            showToast('Kode Apps Script berhasil disalin! Silakan tempel di Google Sheets Anda.');
+          }).catch(function() {
+            promptCopy(appsScriptCode);
+          });
+        } else {
+          promptCopy(appsScriptCode);
+        }
+      });
+    });
+
+    // 6. Klik pada Cloud Status Badge langsung pindah ke Tab Cloud Sync
+    document.querySelectorAll('#ctaCloudStatusBadge, #ctaCloudDetailBadge').forEach(function(badge) {
+      badge.addEventListener('click', function() {
+        tabs.forEach(t => t.classList.remove('active'));
+        const cloudTabBtn = document.querySelector('.cta-tab-btn[data-cta-tab="cloud"]');
+        if (cloudTabBtn) cloudTabBtn.classList.add('active');
+        document.querySelectorAll('.cta-tab-pane').forEach(p => p.classList.remove('active'));
+        const cloudPane = document.getElementById('ctaPaneCloud');
+        if (cloudPane) cloudPane.classList.add('active');
+      });
+    });
   }
 
   function isStatistikRoute() {
@@ -3249,7 +3841,11 @@ function initCtaAnalyticsTracker() {
         </div>
       </a>
       <div class="stats-fp-nav-actions">
-        <span class="cta-live-badge"><span class="cta-live-dot"></span> LIVE MONITORING CTA</span>
+        <div class="cta-cloud-badge offline" id="ctaCloudStatusBadge" title="Status Sinkronisasi Multi-Device Google Sheets">
+          <span class="cta-cloud-dot"></span>
+          <span id="ctaCloudStatusText">Cloud Sync: Memeriksa...</span>
+        </div>
+        <span class="cta-live-badge"><span class="cta-live-dot"></span> LIVE MONITORING</span>
         <a href="/" class="stats-btn-back-home">
           <i class="hgi-stroke hgi-arrow-left-01"></i>
           <span>Kembali ke Beranda</span>
@@ -3323,6 +3919,11 @@ function initCtaAnalyticsTracker() {
         <button type="button" class="cta-tab-btn" data-cta-tab="timeline">
           <i class="hgi-stroke hgi-clock-01"></i>
           <span>Log Aktivitas Terkini</span>
+        </button>
+        <button type="button" class="cta-tab-btn" data-cta-tab="cloud">
+          <i class="hgi-stroke hgi-cloud-sync"></i>
+          <span>Cloud Sync Google Sheets</span>
+          <span class="badge-tab-sync-status offline" id="badgeCloudTabDot">●</span>
         </button>
         <button type="button" class="cta-tab-btn" data-cta-tab="ga4">
           <i class="hgi-stroke hgi-google"></i>
@@ -3416,6 +4017,77 @@ function initCtaAnalyticsTracker() {
           </div>
         </div>
 
+        <!-- Tab 5: Cloud Sync Google Sheets -->
+        <div class="cta-tab-pane" id="ctaPaneCloud">
+          <div class="cta-cloud-pane">
+            <div class="cta-cloud-hero-card">
+              <div class="cta-cloud-hero-left">
+                <div class="cta-cloud-hero-icon">
+                  <i class="hgi-stroke hgi-cloud-sync"></i>
+                </div>
+                <div class="cta-cloud-hero-info">
+                  <h4 id="ctaCloudHeroTitle">Sinkronisasi Multi-Device: Google Sheets</h4>
+                  <p id="ctaCloudHeroDesc">Mencatat seluruh klik CTA dan formulir leads calon pembeli dari perangkat mana pun ke Spreadsheet Google Drive secara real-time.</p>
+                </div>
+              </div>
+              <div class="cta-cloud-hero-status">
+                <div class="cta-cloud-badge offline" id="ctaCloudDetailBadge">
+                  <span class="cta-cloud-dot"></span>
+                  <span id="ctaCloudDetailText">Belum Terhubung</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="cta-cloud-form-card">
+              <h5><i class="hgi-stroke hgi-link-02"></i> URL Web App Google Apps Script</h5>
+              <div class="cta-cloud-input-group">
+                <input type="url" id="ctaCloudEndpointInput" class="cta-cloud-input" placeholder="Tempel URL Web App Google Apps Script (berakhiran /exec)..." />
+                <button type="button" class="cta-btn-cloud-action cta-btn-cloud-save" id="btnSaveCloudEndpoint">
+                  <i class="hgi-stroke hgi-floppy-disk"></i>
+                  <span>Simpan &amp; Hubungkan</span>
+                </button>
+                <button type="button" class="cta-btn-cloud-action cta-btn-cloud-test" id="btnTestCloudEndpoint">
+                  <i class="hgi-stroke hgi-wifi-01"></i>
+                  <span>Tes Koneksi</span>
+                </button>
+                <button type="button" class="cta-btn-cloud-action cta-btn-cloud-disconnect" id="btnDisconnectCloudEndpoint" style="display:none;">
+                  <i class="hgi-stroke hgi-delete-02"></i>
+                  <span>Putuskan</span>
+                </button>
+              </div>
+              <small style="color:#94a3b8;font-size:0.78rem;">
+                URL ini akan disimpan di browser ini dan otomatis digunakan untuk sinkronisasi data antar seluruh perangkat (laptop, HP, tablet).
+              </small>
+            </div>
+
+            <div class="cta-cloud-guide-card">
+              <h5><i class="hgi-stroke hgi-book-open-01"></i> Panduan Pasang Google Sheets Backend (Hanya 2 Menit)</h5>
+              <ol class="cta-cloud-steps">
+                <li>Buka <strong>https://sheets.new</strong> di browser Anda (login dengan Google). Beri nama spreadsheet, contoh: <em>Database Leads Pesona Kahuripan</em>.</li>
+                <li>Di menu atas Google Sheets, klik menu <strong>Ekstensi (Extensions) &gt; Apps Script</strong>.</li>
+                <li>Hapus semua baris kode di Apps Script, lalu tempel (paste) kode backend dari berkas <code>google-apps-script.js</code> di repositori ini.</li>
+                <li>Klik tombol biru <strong>Terapkan (Deploy) &gt; Penerapan Baru (New deployment)</strong>.</li>
+                <li>Pilih jenis <strong>Aplikasi Web (Web App)</strong>. Atur:
+                  <ul style="margin:4px 0;padding-left:18px;">
+                    <li>Jalankan sebagai: <strong>Saya (akun Google Anda)</strong></li>
+                    <li>Akses: <strong>Siapa saja (Anyone)</strong> <em>(Wajib agar pengunjung web bisa mengirim data lead)</em></li>
+                  </ul>
+                </li>
+                <li>Klik <strong>Terapkan (Deploy)</strong> &gt; berikan izin akses &gt; salin <strong>URL Aplikasi Web</strong> yang berakhiran <code>/exec</code>.</li>
+                <li>Tempel URL tersebut pada kolom input di atas lalu klik <strong>Simpan &amp; Hubungkan</strong>.</li>
+              </ol>
+
+              <div class="cta-code-preview-wrap">
+                <span class="cta-code-preview-text">Berkas backend siap pakai: <code>google-apps-script.js</code></span>
+                <button type="button" class="btn-copy-code-action" id="btnCopyAppsScriptCode">
+                  <i class="hgi-stroke hgi-copy-01"></i>
+                  <span>Salin Kode Apps Script</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="cta-tab-pane" id="ctaPaneGA4">
           <div class="cta-ga4-wrap">
             <div class="cta-ga4-status-card">
@@ -3455,6 +4127,10 @@ function initCtaAnalyticsTracker() {
 
       <div class="cta-modal-footer">
         <div class="cta-footer-left">
+          <button type="button" class="cta-btn-action cta-btn-sync" id="btnSyncCloud" title="Sinkronkan data dari Google Sheets sekarang">
+            <i class="hgi-stroke hgi-cloud-sync"></i>
+            <span>Sinkronkan Sekarang</span>
+          </button>
           <button type="button" class="cta-btn-action cta-btn-wa-copy" id="btnCopyWaReport" title="Salin laporan WhatsApp">
             <i class="hgi-stroke hgi-copy-01"></i>
             <span>Salin Laporan WhatsApp</span>
@@ -3560,7 +4236,20 @@ function initCtaAnalyticsTracker() {
   // Check on initial page load if route is /statistik
   if (isStatistikRoute()) {
     mountFullPageStatsView();
+    // Auto-sync data dari cloud di background saat membuka halaman statistik
+    setTimeout(function() {
+      syncFromCloud(false);
+    }, 150);
   }
+
+  // Poller background: sinkronisasi otomatis dari cloud setiap 30 detik jika dashboard terbuka
+  setInterval(function() {
+    const hasView = document.getElementById('statsFullPageView') ||
+      (document.getElementById('pesonaCtaModalOverlay') && document.getElementById('pesonaCtaModalOverlay').classList.contains('active'));
+    if (hasView && getCloudEndpoint()) {
+      syncFromCloud(false);
+    }
+  }, 30000);
 }
 
 
