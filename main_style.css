@@ -5917,7 +5917,7 @@ body.homepage #blog-single {
 
 /* Toast Alert */
 .cta-toast-alert {
-  position: absolute;
+  position: fixed;
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
@@ -5931,7 +5931,11 @@ body.homepage #blog-single {
   align-items: center;
   gap: 8px;
   box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
-  z-index: 10;
+  z-index: 99999;
+  max-width: calc(100vw - 32px);
+  box-sizing: border-box;
+  text-align: center;
+  justify-content: center;
   animation: ctaToastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 @keyframes ctaToastIn {
@@ -6442,7 +6446,7 @@ body.homepage #blog-single {
 }
 .cta-cloud-input {
   flex: 1;
-  min-width: 280px;
+  min-width: 0;
   background: rgba(11, 17, 32, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 8px;
@@ -6558,6 +6562,681 @@ body.homepage #blog-single {
   transform: translateY(-1px);
 }
 
+/* ======================================================================
+   RESPONSIVE MOBILE DASHBOARD STYLES (domain.com/statistik)
+   Optimized for Smartphone & Tablet Viewports (320px - 768px)
+   ====================================================================== */
 
+/* Body & Layout Setup for Statistik Page */
+body.is-statistik-page {
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
 
+/* Base button text variants */
+.btn-text-mobile {
+  display: none;
+}
+.cta-mobile-scroll-hint {
+  display: none;
+}
 
+/* Touch feedback for buttons */
+.cta-btn-action:active,
+.cta-tab-btn:active,
+.cta-btn-cloud-action:active,
+.btn-copy-code-action:active,
+.stats-btn-back-home:active,
+.cta-lead-action-wa:active,
+.cta-mini-wa-btn:active,
+.btn-copy-lead-phone:active {
+  transform: scale(0.96) !important;
+}
+
+/* ----------------------------------------------------------------------
+   Tablet & Mobile Shared Rules (<= 820px)
+   ---------------------------------------------------------------------- */
+@media (max-width: 820px) {
+  .cta-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cta-summary-grid {
+    grid-template-columns: 1fr;
+  }
+  .cta-ga4-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ----------------------------------------------------------------------
+   Handphone & Small Screen Rules (<= 680px)
+   ---------------------------------------------------------------------- */
+@media (max-width: 680px) {
+  /* Layout & Container */
+  .stats-fp-main {
+    padding: 12px 10px calc(24px + env(safe-area-inset-bottom, 0px));
+  }
+  .stats-fp-container {
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Hero Header */
+  .stats-fp-hero {
+    padding: 16px 14px 14px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .stats-fp-badge-top {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    margin-bottom: 4px;
+  }
+  .stats-fp-title {
+    font-size: 1.25rem;
+    line-height: 1.25;
+    margin-bottom: 4px;
+  }
+  .stats-fp-desc {
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+  .stats-fp-hero-meta {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 2px;
+  }
+  .stats-fp-last-sync {
+    font-size: 0.72rem;
+    padding: 4px 10px;
+  }
+
+  /* 4 KPI Cards: Compact 2-Column Grid on Mobile */
+  .cta-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px;
+    gap: 8px;
+  }
+  .cta-kpi-card {
+    padding: 10px 8px;
+    gap: 8px;
+    border-radius: 12px;
+    min-width: 0;
+  }
+  .cta-kpi-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+  .cta-kpi-content {
+    min-width: 0;
+    flex: 1;
+  }
+  .cta-kpi-label {
+    font-size: 0.64rem;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .cta-kpi-val {
+    font-size: 1.2rem;
+    line-height: 1.15;
+  }
+  .cta-kpi-text-val {
+    font-size: 0.78rem;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .cta-kpi-sub {
+    font-size: 0.64rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Tab Navigation: Native Mobile App Bar with Smooth Scroll */
+  .cta-modal-tabs {
+    padding: 8px 10px;
+    gap: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x proximity;
+  }
+  .cta-modal-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .cta-tab-btn {
+    padding: 7px 12px;
+    font-size: 0.76rem;
+    border-radius: 999px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    min-height: 34px;
+    scroll-snap-align: start;
+  }
+  .cta-tab-btn i {
+    font-size: 14px;
+  }
+
+  /* Tab Body */
+  .cta-tab-body {
+    padding: 14px 10px 18px;
+    min-height: 200px;
+  }
+
+  /* Tab 1: Summary */
+  .cta-prog-item {
+    margin-bottom: 10px;
+  }
+  .cta-prog-info {
+    font-size: 0.8rem;
+  }
+  .cta-prog-bar-bg {
+    height: 6px;
+  }
+  .cta-insight-card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+  .cta-insight-header h4 {
+    font-size: 0.88rem;
+  }
+  #ctaInsightText {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  .cta-shortcut-hint {
+    font-size: 0.72rem;
+    padding: 8px 10px;
+    border-radius: 8px;
+  }
+
+  /* Tab 2: CTA Buttons Table */
+  .cta-table-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .cta-search-wrap {
+    width: 100%;
+    padding: 7px 12px;
+    box-sizing: border-box;
+  }
+  .cta-search-wrap input {
+    font-size: 0.82rem;
+  }
+  .cta-table-count {
+    font-size: 0.74rem;
+    text-align: right;
+  }
+  .cta-mobile-scroll-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px dashed rgba(56, 189, 248, 0.25);
+    border-radius: 8px;
+    padding: 6px 10px;
+    margin-bottom: 8px;
+    animation: pulseHint 2.5s infinite;
+  }
+  @keyframes pulseHint {
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 1; }
+  }
+  .cta-table-container {
+    max-height: 400px;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 10px;
+  }
+  .cta-table th, .cta-table td {
+    padding: 8px 10px;
+    font-size: 0.78rem;
+  }
+  #ctaDetailsTable th:nth-child(1), #ctaDetailsTable td:nth-child(1) { min-width: 140px; }
+  #ctaDetailsTable th:nth-child(2), #ctaDetailsTable td:nth-child(2) { min-width: 85px; }
+  #ctaDetailsTable th:nth-child(3), #ctaDetailsTable td:nth-child(3) { min-width: 80px; }
+  #ctaDetailsTable th:nth-child(4), #ctaDetailsTable td:nth-child(4) { min-width: 65px; }
+  #ctaDetailsTable th:nth-child(5), #ctaDetailsTable td:nth-child(5) { min-width: 60px; }
+  #ctaDetailsTable th:nth-child(6), #ctaDetailsTable td:nth-child(6) { min-width: 105px; }
+
+  /* Tab 3: CRM Card View for Leads on Mobile */
+  #ctaPaneLeads .cta-table-container {
+    border: none;
+    background: transparent;
+    max-height: none;
+    overflow-x: visible;
+  }
+  #ctaLeadsTable {
+    display: block;
+    width: 100%;
+  }
+  #ctaLeadsTable thead {
+    display: none;
+  }
+  #ctaLeadTableBody {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  #ctaLeadTableBody tr {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "name time"
+      "phone action"
+      "msg msg";
+    gap: 8px 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+  }
+  #ctaLeadTableBody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(16, 185, 129, 0.3);
+  }
+  #ctaLeadTableBody tr:has(> td[colspan]) {
+    display: block;
+    background: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+  }
+  #ctaLeadTableBody tr td {
+    border: none !important;
+    padding: 0 !important;
+    display: block;
+  }
+  #ctaLeadTableBody tr td:nth-child(1) {
+    display: none;
+  }
+  #ctaLeadTableBody tr td:nth-child(2) {
+    grid-area: time;
+    justify-self: end;
+    font-size: 0.72rem !important;
+  }
+  #ctaLeadTableBody tr td:nth-child(3) {
+    grid-area: name;
+    font-size: 0.88rem;
+    min-width: 0;
+  }
+  #ctaLeadTableBody tr td:nth-child(3) > div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #ctaLeadTableBody tr td:nth-child(4) {
+    grid-area: phone;
+    min-width: 0;
+  }
+  #ctaLeadTableBody tr td:nth-child(5) {
+    grid-area: msg;
+    width: 100%;
+  }
+  #ctaLeadTableBody tr td:nth-child(5) .lead-msg-cell {
+    max-width: 100%;
+    -webkit-line-clamp: 3;
+    font-size: 0.76rem;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 8px 10px;
+    border-radius: 6px;
+    border-left: 2px solid #10b981;
+    margin-top: 2px;
+  }
+  #ctaLeadTableBody tr td:nth-child(6) {
+    grid-area: action;
+    justify-self: end;
+  }
+  #ctaLeadTableBody tr td:nth-child(6) .cta-lead-action-wa {
+    padding: 6px 12px;
+    font-size: 0.74rem;
+  }
+
+  /* Tab 4: Timeline on Mobile */
+  .cta-timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .cta-timeline-filters {
+    gap: 5px;
+  }
+  .cta-timeline-filter-btn {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+  }
+  .cta-timeline-badge {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+  .cta-timeline-item {
+    position: relative;
+    padding: 12px 10px;
+    gap: 8px;
+    border-radius: 10px;
+    align-items: flex-start;
+  }
+  .cta-time-left {
+    gap: 8px;
+    width: 100%;
+  }
+  .cta-time-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+    border-radius: 7px;
+    margin-top: 2px;
+  }
+  .cta-time-name {
+    font-size: 0.8rem;
+    padding-right: 65px;
+  }
+  .cta-time-right {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    font-size: 0.68rem;
+    color: #64748b;
+    margin-top: 0;
+  }
+  .cta-lead-box {
+    margin-top: 6px;
+    padding: 8px 10px;
+  }
+  .cta-lead-info-row {
+    font-size: 0.74rem;
+    gap: 6px;
+  }
+
+  /* Tab 5: Cloud Sync on Mobile */
+  .cta-cloud-pane {
+    gap: 14px;
+  }
+  .cta-cloud-hero-card {
+    padding: 14px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    border-radius: 12px;
+  }
+  .cta-cloud-hero-left {
+    gap: 10px;
+  }
+  .cta-cloud-hero-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
+  }
+  .cta-cloud-hero-info h4 {
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+  }
+  .cta-cloud-hero-info p {
+    font-size: 0.78rem;
+  }
+  .cta-cloud-hero-status {
+    width: 100%;
+  }
+  #ctaCloudDetailBadge {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.72rem;
+    padding: 6px 10px;
+    box-sizing: border-box;
+  }
+  .cta-cloud-form-card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+  .cta-cloud-form-card h5 {
+    font-size: 0.88rem;
+    margin-bottom: 8px;
+  }
+  .cta-cloud-input-group {
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .cta-cloud-input {
+    min-width: 0 !important;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.78rem;
+    padding: 9px 12px;
+  }
+  .cta-btn-cloud-action {
+    width: 100%;
+    justify-content: center;
+    padding: 9px 14px;
+    font-size: 0.8rem;
+  }
+  .cta-cloud-template-card {
+    padding: 12px !important;
+    border-radius: 10px !important;
+  }
+  .cta-cloud-template-card > div {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+  #ctaCloudSnippetCode {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  #btnCopyTemplateSnippet {
+    width: 100%;
+    justify-content: center;
+    padding: 8px 12px;
+  }
+  .cta-cloud-guide-card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+  .cta-cloud-steps {
+    padding-left: 16px;
+    font-size: 0.78rem;
+    line-height: 1.55;
+  }
+  .cta-code-preview-wrap {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 10px;
+  }
+  .cta-code-preview-text {
+    text-align: center;
+    font-size: 0.74rem;
+  }
+  #btnCopyAppsScriptCode {
+    width: 100%;
+    justify-content: center;
+    padding: 8px 12px;
+  }
+
+  /* Tab 6: GA4 on Mobile */
+  .cta-ga4-wrap {
+    gap: 12px;
+  }
+  .cta-ga4-status-card {
+    padding: 12px 14px;
+    gap: 10px;
+    border-radius: 12px;
+  }
+  .cta-ga4-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+  .cta-ga4-info h4 {
+    font-size: 0.88rem;
+  }
+  .cta-ga4-info p {
+    font-size: 0.76rem;
+  }
+  .cta-ga4-card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+  .cta-ga4-card h5 {
+    font-size: 0.84rem;
+    margin-bottom: 8px;
+  }
+  .cta-ga4-card ul, .cta-ga4-card ol {
+    padding-left: 16px;
+    font-size: 0.76rem;
+    line-height: 1.55;
+  }
+
+  /* Modal Footer Actions Grid on Mobile */
+  .cta-modal-footer {
+    padding: 12px 12px calc(12px + env(safe-area-inset-bottom, 0px));
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .cta-footer-left {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+  }
+  .cta-btn-action {
+    width: 100%;
+    padding: 9px 8px;
+    font-size: 0.76rem;
+    border-radius: 8px;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .cta-btn-sync {
+    grid-column: 1 / -1;
+    font-size: 0.82rem;
+    padding: 10px 14px;
+  }
+  .cta-btn-reset {
+    grid-column: 1 / -1;
+    padding: 8px 12px;
+  }
+  .cta-btn-close-bottom {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.78rem;
+    padding: 9px 12px;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+}
+
+/* ----------------------------------------------------------------------
+   Smartphone Specific Rules (<= 480px)
+   ---------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  /* Navbar Compact Mobile */
+  .stats-fp-nav-inner {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  .stats-fp-logo {
+    height: 30px;
+  }
+  .stats-fp-brand-title {
+    font-size: 0.95rem;
+    line-height: 1.1;
+  }
+  .stats-fp-brand-sub {
+    font-size: 0.65rem;
+    letter-spacing: 0.4px;
+  }
+  .stats-fp-nav-actions {
+    gap: 6px;
+  }
+  .stats-fp-navbar .cta-cloud-badge {
+    padding: 5px 8px;
+    font-size: 0.68rem;
+    max-width: 110px;
+  }
+  .stats-btn-back-home {
+    padding: 7px 10px;
+    font-size: 0.78rem;
+    border-radius: 18px;
+  }
+  .stats-btn-back-home .btn-text-full {
+    display: none;
+  }
+  .stats-btn-back-home .btn-text-mobile {
+    display: inline;
+  }
+
+  /* Container */
+  .stats-fp-main {
+    padding: 10px 6px 30px;
+  }
+  .stats-fp-container {
+    border-radius: 12px;
+  }
+
+  /* KPI Grid */
+  .cta-kpi-grid {
+    padding: 8px 6px;
+    gap: 6px;
+  }
+  .cta-kpi-card {
+    padding: 8px 8px;
+    gap: 6px;
+  }
+  .cta-kpi-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+  .cta-kpi-val {
+    font-size: 1.15rem;
+  }
+  .cta-kpi-text-val {
+    font-size: 0.75rem;
+  }
+
+  /* Tab body */
+  .cta-tab-body {
+    padding: 12px 8px 16px;
+  }
+}
+
+/* ----------------------------------------------------------------------
+   Extra Narrow Smartphone Rules (<= 380px)
+   ---------------------------------------------------------------------- */
+@media (max-width: 380px) {
+  .stats-btn-back-home .btn-text-mobile {
+    display: none;
+  }
+  .stats-btn-back-home {
+    padding: 7px 9px;
+  }
+  .stats-fp-navbar .cta-cloud-badge #ctaCloudStatusText {
+    max-width: 60px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

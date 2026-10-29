@@ -5954,13 +5954,11 @@ YouTube: https://www.youtube.com/@pesonakahuripan18]]></b:widget-setting>
     ====================================================================== -->
     <script>
       // Tempelkan URL Google Apps Script Web App (/exec) Anda di dalam tanda petik:
-      window.PESONA_CLOUD_ENDPOINT = window.PESONA_CLOUD_ENDPOINT || '';
+      window.PESONA_CLOUD_ENDPOINT = window.PESONA_CLOUD_ENDPOINT || 'https://script.google.com/macros/s/AKfycbwAYfNbEPX2XiqOocdkNUuuCVsmMEvmvEMgaRQ4wajLDuaMC_6lREihGUV9LOcksBQ4fQ/exec';
     </script>
 
     <!-- Main Interactive Script (Separated) -->
     <script defer='defer' src='https://cdn.jsdelivr.net/gh/pesonaku/landingpage@v3.7.2/main_script.js'/>
-
-    
 
     &lt;!--</body>--&gt;
   &lt;/body&gt;
