@@ -5250,7 +5250,7 @@ Tipe: komersial</b:widget-setting>
                                   <div class='blog-card-footer'>
                                     <div class='blog-card-author'>
                                       <img alt='Mas Ro&apos;uf' class='blog-author-avatar' src='https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s100'/>
-                                      <span class='blog-author-name'><data:post.author.name ?: &quot;Mas Ro&#39;uf&quot;/></span>
+                                      <span class='blog-author-name'><b:eval expr='data:post.author.name'/></span>
                                     </div>
                                     <a class='blog-card-link' expr:href='data:post.url'>
                                       <span>Baca Selengkapnya</span>
@@ -5339,7 +5339,7 @@ Tipe: komersial</b:widget-setting>
                             <div class='article-meta-author' itemprop='author' itemscope='' itemtype='https://schema.org/Person'>
                               <img alt='Mas Ro&apos;uf' class='article-author-img' src='https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s100'/>
                               <div>
-                                <span class='article-author-name' itemprop='name'><data:post.author.name ?: &quot;Mas Ro&#39;uf&quot;/></span>
+                                <span class='article-author-name' itemprop='name'><b:eval expr='data:post.author.name'/></span>
                                 <span class='article-author-badge'><i class='hgi-stroke hgi-tick-02'/> Konsultan KPR Resmi</span>
                               </div>
                             </div>
