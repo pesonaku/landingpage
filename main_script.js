@@ -4404,6 +4404,214 @@ function createJsonResponse(data) {
 }
 
 
+/* ==========================================================================
+   BLOG & ARTICLE READER ENGINE (v3.8.0)
+   - Dynamic Table of Contents (TOC) with IntersectionObserver Scrollspy
+   - Reading Time Estimation for Single Article & Blog Cards
+   - Social Sharing & Clipboard Copy with Toast Feedback
+   - Reading Progress Bar
+   - Article Image Lightbox Integration
+   - Navigation Link Router for Non-Homepage Views
+========================================================================== */
+function showBlogToast(msg) {
+  let toast = document.getElementById('blogToastAlert');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'blogToastAlert';
+    toast.className = 'blog-toast-alert';
+    document.body.appendChild(toast);
+  }
+  toast.innerHTML = '<i class="hgi-stroke hgi-tick-02"></i> <span>' + msg + '</span>';
+  toast.classList.add('show');
+  clearTimeout(toast._timer);
+  toast._timer = setTimeout(function() {
+    toast.classList.remove('show');
+  }, 3200);
+}
+
+function initBlogEngine() {
+  // 1. Single Article Table of Contents (TOC)
+  const articleBody = document.querySelector('.article-body');
+  const tocBox = document.getElementById('article-toc-box');
+  const tocContent = document.getElementById('article-toc-content');
+
+  if (articleBody && tocBox && tocContent) {
+    const headings = articleBody.querySelectorAll('h2, h3');
+    if (headings.length >= 2) {
+      tocBox.style.display = 'block';
+      const rootList = document.createElement('ul');
+      rootList.className = 'toc-list-root';
+
+      headings.forEach(function(heading, index) {
+        if (!heading.id) {
+          const rawSlug = (heading.textContent || '')
+            .toLowerCase()
+            .replace(/[^a-z0-9\s-]/g, '')
+            .trim()
+            .replace(/\s+/g, '-');
+          heading.id = (rawSlug || 'section') + '-' + (index + 1);
+        }
+
+        const li = document.createElement('li');
+        li.className = 'toc-item ' + (heading.tagName.toLowerCase() === 'h3' ? 'toc-sub-item' : 'toc-main-item');
+
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.className = 'toc-link';
+        a.textContent = (heading.textContent || '').trim();
+
+        a.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.getElementById(heading.id);
+          if (target) {
+            const headerOffset = 85;
+            const elemPos = target.getBoundingClientRect().top;
+            const offsetPos = elemPos + window.pageYOffset - headerOffset;
+            window.scrollTo({
+              top: offsetPos,
+              behavior: 'smooth'
+            });
+            if (history.pushState) {
+              history.pushState(null, null, '#' + heading.id);
+            }
+          }
+        });
+
+        li.appendChild(a);
+        rootList.appendChild(li);
+      });
+
+      tocContent.innerHTML = '';
+      tocContent.appendChild(rootList);
+
+      // TOC Toggle Button (Collapse / Expand)
+      const toggleHeader = document.getElementById('article-toc-toggle');
+      if (toggleHeader) {
+        toggleHeader.addEventListener('click', function() {
+          tocBox.classList.toggle('toc-collapsed');
+          const toggleText = tocBox.querySelector('.toc-toggle-text');
+          if (toggleText) {
+            toggleText.textContent = tocBox.classList.contains('toc-collapsed') ? 'Tampilkan' : 'Sembunyikan';
+          }
+        });
+      }
+
+      // IntersectionObserver for highlighting active section in TOC
+      if ('IntersectionObserver' in window) {
+        const tocLinks = tocContent.querySelectorAll('.toc-link');
+        const headingObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              const activeId = entry.target.id;
+              tocLinks.forEach(function(link) {
+                if (link.getAttribute('href') === '#' + activeId) {
+                  link.classList.add('toc-link-active');
+                } else {
+                  link.classList.remove('toc-link-active');
+                }
+              });
+            }
+          });
+        }, { rootMargin: '0px 0px -65% 0px' });
+
+        headings.forEach(function(h) {
+          headingObserver.observe(h);
+        });
+      }
+    } else {
+      tocBox.style.display = 'none';
+    }
+  }
+
+  // 2. Reading Time Calculator
+  if (articleBody) {
+    const fullText = articleBody.innerText || articleBody.textContent || '';
+    const wordCount = fullText.trim().split(/\s+/).filter(Boolean).length;
+    const estMinutes = Math.max(1, Math.ceil(wordCount / 200));
+    document.querySelectorAll('.article-meta-readtime .readtime-text').forEach(function(el) {
+      el.textContent = estMinutes + ' Menit Baca';
+    });
+  }
+
+  // Blog Cards Reading Time
+  document.querySelectorAll('.blog-card').forEach(function(card) {
+    const snippetEl = card.querySelector('.blog-card-snippet');
+    const readtimeEl = card.querySelector('.blog-meta-readtime .readtime-text');
+    if (snippetEl && readtimeEl) {
+      const words = (snippetEl.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+      const mins = Math.max(2, Math.min(6, Math.ceil(words / 25) + 1));
+      readtimeEl.textContent = mins + ' mnt baca';
+    }
+  });
+
+  // 3. Social Sharing & Copy Link
+  document.querySelectorAll('.share-copy').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const shareUrl = this.getAttribute('data-url') || window.location.href;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareUrl).then(function() {
+          showBlogToast('Tautan artikel berhasil disalin ke clipboard!');
+        }).catch(function() {
+          window.prompt('Salin tautan artikel:', shareUrl);
+          showBlogToast('Tautan artikel siap dibagikan!');
+        });
+      } else {
+        window.prompt('Salin tautan artikel:', shareUrl);
+        showBlogToast('Tautan artikel siap dibagikan!');
+      }
+    });
+  });
+
+  // 4. Reading Progress Bar (Single Article Reader)
+  const articleWrap = document.querySelector('.article-wrap');
+  const progressBar = document.getElementById('reading-progress-bar');
+  if (articleWrap && progressBar) {
+    window.addEventListener('scroll', function() {
+      const rect = articleWrap.getBoundingClientRect();
+      const wrapTop = rect.top + window.pageYOffset;
+      const wrapHeight = rect.height;
+      const windowHeight = window.innerHeight;
+      const scrollTop = window.pageYOffset;
+
+      if (scrollTop < wrapTop) {
+        progressBar.style.width = '0%';
+      } else if (scrollTop > (wrapTop + wrapHeight - windowHeight)) {
+        progressBar.style.width = '100%';
+      } else {
+        const scrolled = (scrollTop - wrapTop) / (wrapHeight - windowHeight);
+        const percent = Math.min(100, Math.max(0, Math.round(scrolled * 100)));
+        progressBar.style.width = percent + '%';
+      }
+    }, { passive: true });
+  }
+
+  // 5. Automatic Lightbox for Article Images
+  if (articleBody && window.Fancybox) {
+    articleBody.querySelectorAll('img').forEach(function(img) {
+      if (!img.closest('a')) {
+        const wrapper = document.createElement('a');
+        wrapper.href = img.src;
+        wrapper.setAttribute('data-fancybox', 'article-gallery');
+        wrapper.setAttribute('data-caption', img.alt || 'Pesona Kahuripan');
+        img.parentNode.insertBefore(wrapper, img);
+        wrapper.appendChild(img);
+      }
+    });
+  }
+
+  // 6. Navigation Link Router for Non-Homepage (Fix anchor hashes like #promo -> /#promo)
+  const isHomepage = document.body.classList.contains('homepage');
+  if (!isHomepage) {
+    document.querySelectorAll('#main-menu a, .menu a, .header-section a').forEach(function(link) {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#') && href.length > 1) {
+        link.setAttribute('href', '/' + href);
+      }
+    });
+  }
+}
+
 function bootPesonaLandingPage() {
   try { initLandingPage(); } catch (e) { console.error('initLandingPage error:', e); }
   try { initTampakRumahSubsidi(); } catch (e) { console.error('initTampakRumahSubsidi error:', e); }
@@ -4411,6 +4619,7 @@ function bootPesonaLandingPage() {
   try { initMitraMarquee(); } catch (e) { console.error('initMitraMarquee error:', e); }
   try { initFancyboxUI(); } catch (e) { console.error('initFancyboxUI error:', e); }
   try { initCtaAnalyticsTracker(); } catch (e) { console.error('initCtaAnalyticsTracker error:', e); }
+  try { initBlogEngine(); } catch (e) { console.error('initBlogEngine error:', e); }
 }
 
 if (document.readyState === 'loading') {

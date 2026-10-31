@@ -8,11 +8,12 @@ Repositori resmi untuk berkas template, style (CSS), dan skrip interaktif (JS) w
 
 | Berkas | Keterangan |
 | :--- | :--- |
-| `example.xml` | Template tema XML Blogger (Blogspot) yang modular, ringan, dan bebas kode usang |
-| `main_style.css` | Stylesheet CSS utama (Design System, tata letak responsif, kartu promo, ulasan, & kontak) |
-| `main_script.js` | Skrip JavaScript interaktif (Sinkronisasi marketing dinamis, kalkulator KPR, galeri, FAQ, popup, WhatsApp, & Cloud Sync) |
+| `example.xml` | Template tema XML Blogger (Blogspot) modular & responsif dengan Engine Blog Modern & Schema.org SEO |
+| `main_style.css` | Stylesheet CSS utama (Design System, landing page, blog grid, single article reader, kartu promo, ulasan, & kontak) |
+| `main_script.js` | Skrip JavaScript interaktif (TOC generator artikel, reading time, share link, marketing sync, kalkulator KPR, galeri, FAQ, popup, WhatsApp, & Cloud Sync) |
 | `statistik.html` | Halaman monitoring analytics mandiri (`domain.com/statistik`) untuk pelacakan CTA & Leads calon debitur |
 | `google-apps-script.js` | Backend Google Apps Script untuk sinkronisasi multi-device & pencatatan otomatis ke Google Sheets |
+| `blog_preview.html` | Halaman pratinjau lokal mandiri untuk menguji tampilan Blog Index dan Single Reader |
 
 ---
 

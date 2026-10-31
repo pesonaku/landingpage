@@ -62,6 +62,75 @@
     </b:if>
     <b:tag cond='data:view.featuredImage' expr:content='data:view.featuredImage resizeImage 1600' name='meta' property='twitter:image'/>
 
+    <!-- Schema.org JSON-LD Structured Data for SEO & Rich Snippets -->
+    <b:if cond='data:view.isSingleItem'>
+      <script type='application/ld+json'>
+      {
+        &quot;@context&quot;: &quot;https://schema.org&quot;,
+        &quot;@type&quot;: &quot;BlogPosting&quot;,
+        &quot;mainEntityOfPage&quot;: {
+          &quot;@type&quot;: &quot;WebPage&quot;,
+          &quot;@id&quot;: &quot;<data:view.url.canonical/>&quot;
+        },
+        &quot;headline&quot;: &quot;<data:view.title.escaped/>&quot;,
+        &quot;description&quot;: &quot;<data:view.description.escaped/>&quot;,
+        <b:if cond='data:view.featuredImage'>
+        &quot;image&quot;: [&quot;<data:view.featuredImage resizeImage 1200/>&quot;],
+        </b:if>
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Person&quot;,
+          &quot;name&quot;: &quot;Mas Ro&#39;uf&quot;,
+          &quot;jobTitle&quot;: &quot;Konsultan KPR Resmi&quot;,
+          &quot;url&quot;: &quot;<data:blog.canonicalHomepageUrl/>&quot;
+        },
+        &quot;publisher&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;<data:blog.title.escaped/>&quot;,
+          &quot;logo&quot;: {
+            &quot;@type&quot;: &quot;ImageObject&quot;,
+            &quot;url&quot;: &quot;https://blogger.googleusercontent.com/img/a/AVvXsEgqB2QhrvsCgDSNo4roXgoDSo7oZV9mkCZY9kHDb2I7KC3FI4SCLuyWaBXShDGHDLHLEMsHpagl_CWKf-FI37FAR6GK_0dHZwHP-oJ_n3W3WKJQznbe3MC2tsXLbXZJG_iuohb17uim3-D974PuRgXDh8sCTfppDaP7yagLsthRMrIKieG4acIPb3VAiJU=s256&quot;
+          }
+        }
+      }
+      </script>
+      <script type='application/ld+json'>
+      {
+        &quot;@context&quot;: &quot;https://schema.org&quot;,
+        &quot;@type&quot;: &quot;BreadcrumbList&quot;,
+        &quot;itemListElement&quot;: [
+          {
+            &quot;@type&quot;: &quot;ListItem&quot;,
+            &quot;position&quot;: 1,
+            &quot;name&quot;: &quot;Beranda&quot;,
+            &quot;item&quot;: &quot;<data:blog.canonicalHomepageUrl/>&quot;
+          },
+          {
+            &quot;@type&quot;: &quot;ListItem&quot;,
+            &quot;position&quot;: 2,
+            &quot;name&quot;: &quot;Blog &amp; Edukasi KPR&quot;,
+            &quot;item&quot;: &quot;<data:blog.canonicalHomepageUrl/>search&quot;
+          },
+          {
+            &quot;@type&quot;: &quot;ListItem&quot;,
+            &quot;position&quot;: 3,
+            &quot;name&quot;: &quot;<data:view.title.escaped/>&quot;,
+            &quot;item&quot;: &quot;<data:view.url.canonical/>&quot;
+          }
+        ]
+      }
+      </script>
+    <b:elseif cond='data:view.isMultipleItems and !data:view.isHomepage'/>
+      <script type='application/ld+json'>
+      {
+        &quot;@context&quot;: &quot;https://schema.org&quot;,
+        &quot;@type&quot;: &quot;CollectionPage&quot;,
+        &quot;name&quot;: &quot;Blog &amp; Edukasi Properti Pesona Kahuripan&quot;,
+        &quot;description&quot;: &quot;Pusat panduan lengkap seputar KPR subsidi &amp; komersial, tips lolos BI checking, simulasi angsuran, serta pembaruan proyek Pesona Kahuripan di Bogor.&quot;,
+        &quot;url&quot;: &quot;<data:view.url.canonical/>&quot;
+      }
+      </script>
+    </b:if>
+
     <data:blog.feedLinks/><data:blog.meTag/>
 
     <!-- Google Tag Manager (GTAG) -->
@@ -419,7 +488,7 @@ body#layout:after {
     </h1>
   </b:includable>
           </b:widget>
-          <b:widget cond='data:view.isHomepage' id='LinkList1' locked='true' title='Navigasi Beranda' type='LinkList' version='3' visible='true'>
+          <b:widget id='LinkList1' locked='true' title='Navigasi Beranda' type='LinkList' version='3' visible='true'>
             <b:widget-settings>
               <b:widget-setting name='link-5'>#faq</b:widget-setting>
               <b:widget-setting name='link-6'>#contact</b:widget-setting>
@@ -441,9 +510,11 @@ body#layout:after {
               <button aria-label='Buka Menu' class='menu-toggle' id='menu-toggle'><i class='hgi-stroke hgi-menu-01'/></button>
               <nav class='menu' id='main-menu'>
                 <ul>
+                  <li><a expr:class='data:view.isHomepage ? &quot;nav-home active-nav&quot; : &quot;nav-home&quot;' expr:href='data:blog.homepageUrl'>Beranda</a></li>
                   <b:loop values='data:links' var='link'>
-                    <li><a expr:href='data:link.target'><data:link.name/></a></li>
+                    <li><a expr:href='data:view.isHomepage ? data:link.target : data:blog.canonicalHomepageUrl + data:link.target'><data:link.name/></a></li>
                   </b:loop>
+                  <li><a expr:class='!data:view.isHomepage ? &quot;nav-blog active-nav&quot; : &quot;nav-blog&quot;' expr:href='data:blog.canonicalHomepageUrl + &quot;search&quot;'>Blog &amp; Edukasi</a></li>
                 </ul>
               </nav>
             </b:includable>
@@ -5063,56 +5134,344 @@ Tipe: komersial</b:widget-setting>
                     <b:widget-setting name='showReactions'>false</b:widget-setting>
                   </b:widget-settings>
                   <b:includable id='main'>
-                    <b:loop values='data:posts' var='post'>
-                      <article class='article-wrap'>
-                        <nav aria-label='Breadcrumb' class='article-breadcrumb'>
-                          <a expr:href='data:blog.homepageUrl'><i class='hgi-stroke hgi-home-01'/> Beranda</a>
-                          <span>/</span>
-                          <a expr:href='data:blog.canonicalHomepageUrl + &quot;search&quot;'>Artikel &amp; Edukasi KPR</a>
-                          <span>/</span>
-                          <span><data:post.title/></span>
-                        </nav>
-                        <h1><data:post.title/></h1>
-                        <div class='article-meta'>
-                          <span class='article-meta-item'><i class='hgi-stroke hgi-calendar-03'/> <data:post.date/></span>
-                          <span class='article-meta-item'><i class='hgi-stroke hgi-user'/> <data:post.author.name/></span>
-                          <span class='article-meta-item'><i class='hgi-stroke hgi-tick-02'/> Informasi Resmi</span>
-                        </div>
-                        <b:if cond='data:post.featuredImage'>
-                          <img class='article-feat-img' expr:alt='data:post.title' expr:src='data:post.featuredImage'/>
+                    <!-- READING PROGRESS BAR (ONLY ON SINGLE POST) -->
+                    <b:if cond='data:view.isSingleItem'>
+                      <div class='article-reading-progress' id='reading-progress-bar'/>
+                    </b:if>
+
+                    <!-- ==========================================================
+                         VIEW 1: MULTIPLE ITEMS (BLOG INDEX / CATEGORY / SEARCH)
+                    ========================================================== -->
+                    <b:if cond='data:view.isMultipleItems'>
+                      <div class='blog-index-container'>
+                        <!-- BLOG HERO HEADER -->
+                        <header class='blog-hero'>
+                          <div class='blog-hero-badge'>
+                            <i class='hgi-stroke hgi-book-open-01'/>
+                            <span>Jurnal &amp; Edukasi Properti</span>
+                          </div>
+                          <h1 class='blog-hero-title'>Artikel &amp; Panduan KPR Pesona Kahuripan</h1>
+                          <p class='blog-hero-desc'>
+                            Pusat informasi terlengkap seputar syarat berkas KPR subsidi &amp; komersial, tips lolos BI checking, simulasi angsuran, serta pembaruan progres proyek Pesona Kahuripan di Bogor.
+                          </p>
+
+                          <!-- SEARCH BAR -->
+                          <div class='blog-search-wrap'>
+                            <form action='/search' class='blog-search-box' method='get'>
+                              <i class='hgi-stroke hgi-search-01 blog-search-icon'/>
+                              <input aria-label='Cari artikel' autocomplete='off' class='blog-search-input' expr:value='data:view.isSearch ? data:view.search.query : &quot;&quot;' name='q' placeholder='Cari artikel, tips KPR, syarat berkas, lokasi...' type='search'/>
+                              <button aria-label='Submit Pencarian' class='blog-search-btn' type='submit'>
+                                <span>Cari</span>
+                                <i class='hgi-stroke hgi-arrow-right-01'/>
+                              </button>
+                            </form>
+                          </div>
+
+                          <!-- QUICK CATEGORY PILLS -->
+                          <div class='blog-category-nav'>
+                            <a expr:class='!data:view.isLabelSearch ? &quot;cat-pill active&quot; : &quot;cat-pill&quot;' expr:href='data:blog.canonicalHomepageUrl + &quot;search&quot;'>Semua Artikel</a>
+                            <a expr:class='data:view.search.label == &quot;KPR Subsidi&quot; ? &quot;cat-pill active&quot; : &quot;cat-pill&quot;' expr:href='data:blog.canonicalHomepageUrl + &quot;search/label/KPR%20Subsidi&quot;'>KPR Subsidi</a>
+                            <a expr:class='data:view.search.label == &quot;KPR Komersil&quot; ? &quot;cat-pill active&quot; : &quot;cat-pill&quot;' expr:href='data:blog.canonicalHomepageUrl + &quot;search/label/KPR%20Komersil&quot;'>KPR Komersil</a>
+                            <a expr:class='data:view.search.label == &quot;Tips KPR&quot; ? &quot;cat-pill active&quot; : &quot;cat-pill&quot;' expr:href='data:blog.canonicalHomepageUrl + &quot;search/label/Tips%20KPR&quot;'>Tips &amp; Panduan</a>
+                            <a expr:class='data:view.search.label == &quot;Syarat KPR&quot; ? &quot;cat-pill active&quot; : &quot;cat-pill&quot;' expr:href='data:blog.canonicalHomepageUrl + &quot;search/label/Syarat%20KPR&quot;'>Syarat Berkas</a>
+                            <a expr:class='data:view.search.label == &quot;Info Proyek&quot; ? &quot;cat-pill active&quot; : &quot;cat-pill&quot;' expr:href='data:blog.canonicalHomepageUrl + &quot;search/label/Info%20Proyek&quot;'>Info Proyek</a>
+                            <a expr:class='data:view.search.label == &quot;Promo&quot; ? &quot;cat-pill active&quot; : &quot;cat-pill&quot;' expr:href='data:blog.canonicalHomepageUrl + &quot;search/label/Promo&quot;'>Promo Unit</a>
+                          </div>
+
+                          <!-- ACTIVE FILTER STATUS -->
+                          <b:if cond='data:view.isSearch'>
+                            <div class='blog-filter-alert'>
+                              <span>Menampilkan hasil pencarian untuk: <strong>&quot;<data:view.search.query/>&quot;</strong></span>
+                              <a class='btn-clear-filter' expr:href='data:blog.canonicalHomepageUrl + &quot;search&quot;'><i class='hgi-stroke hgi-cancel-01'/> Reset</a>
+                            </div>
+                          <b:elseif cond='data:view.isLabelSearch'/>
+                            <div class='blog-filter-alert'>
+                              <span>Kategori Terpilih: <strong>&quot;<data:view.search.label/>&quot;</strong></span>
+                              <a class='btn-clear-filter' expr:href='data:blog.canonicalHomepageUrl + &quot;search&quot;'><i class='hgi-stroke hgi-cancel-01'/> Tampilkan Semua</a>
+                            </div>
+                          </b:if>
+                        </header>
+
+                        <!-- POSTS GRID OR EMPTY STATE -->
+                        <b:if cond='data:posts.empty'>
+                          <div class='blog-empty-state'>
+                            <div class='empty-icon-wrap'>
+                              <i class='hgi-stroke hgi-search-01'/>
+                            </div>
+                            <h3>Belum Ada Artikel Ditemukan</h3>
+                            <p>Coba gunakan kata kunci pencarian yang berbeda atau kembali ke daftar seluruh artikel edukasi properti.</p>
+                            <a class='btn-blog-primary' expr:href='data:blog.canonicalHomepageUrl + &quot;search&quot;'>
+                              <i class='hgi-stroke hgi-arrow-left-01'/>
+                              <span>Lihat Semua Artikel</span>
+                            </a>
+                          </div>
+                        <b:else/>
+                          <div class='blog-grid' id='blog-grid'>
+                            <b:loop values='data:posts' var='post'>
+                              <article class='blog-card'>
+                                <div class='blog-card-thumb-wrap'>
+                                  <a expr:href='data:post.url' expr:title='data:post.title' tabindex='-1'>
+                                    <b:if cond='data:post.featuredImage'>
+                                      <img class='blog-card-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage resizeImage 600' loading='lazy'/>
+                                    <b:else/>
+                                      <img class='blog-card-thumb' expr:alt='data:post.title' loading='lazy' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh4ctsAhzllKHqKKRDad3pZodK-il4f2A9XW-uHgPZ49H1brEGbpDePbOpedsy4qLBTfj6b54qfdMj7yyiZhiqvWJr3Nf0isj8zTGdHWDJiSkInO20l99jbPK_dcgmcqo8wL5UmsaGvVN8rzqJKbliL7gwYYMPimJPMfzWV3tCMzzkNKy19D91-Yyf0YvI/s800/cover%20pesona%20kahuripan.jpg'/>
+                                    </b:if>
+                                  </a>
+                                  <b:if cond='data:post.labels'>
+                                    <b:loop index='i' values='data:post.labels' var='label'>
+                                      <b:if cond='data:i == 0'>
+                                        <a class='blog-card-badge' expr:href='data:label.url'><data:label.name/></a>
+                                      </b:if>
+                                    </b:loop>
+                                  <b:else/>
+                                    <span class='blog-card-badge'>Edukasi KPR</span>
+                                  </b:if>
+                                </div>
+
+                                <div class='blog-card-body'>
+                                  <div class='blog-card-meta'>
+                                    <span class='blog-meta-date'><i class='hgi-stroke hgi-calendar-03'/> <data:post.date/></span>
+                                    <span class='blog-meta-dot'>•</span>
+                                    <span class='blog-meta-readtime'><i class='hgi-stroke hgi-clock-01'/> <span class='readtime-text'>3 mnt baca</span></span>
+                                  </div>
+
+                                  <h2 class='blog-card-title'>
+                                    <a expr:href='data:post.url' expr:title='data:post.title'><data:post.title/></a>
+                                  </h2>
+
+                                  <p class='blog-card-snippet'>
+                                    <b:if cond='data:post.snippet'>
+                                      <data:post.snippet/>
+                                    <b:else/>
+                                      <b:eval expr='data:post.body snippet { length: 130, links: false, linebreaks: false, ellipsis: true }'/>
+                                    </b:if>
+                                  </p>
+
+                                  <div class='blog-card-footer'>
+                                    <div class='blog-card-author'>
+                                      <img alt='Mas Ro&apos;uf' class='blog-author-avatar' src='https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s100'/>
+                                      <span class='blog-author-name'><data:post.author.name ?: &quot;Mas Ro&#39;uf&quot;/></span>
+                                    </div>
+                                    <a class='blog-card-link' expr:href='data:post.url'>
+                                      <span>Baca Selengkapnya</span>
+                                      <i class='hgi-stroke hgi-arrow-right-01'/>
+                                    </a>
+                                  </div>
+                                </div>
+                              </article>
+                            </b:loop>
+                          </div>
+
+                          <!-- BLOG PAGINATION -->
+                          <b:if cond='data:newerPageUrl or data:olderPageUrl'>
+                            <div class='blog-pagination'>
+                              <b:if cond='data:newerPageUrl'>
+                                <a class='btn-pager newer' expr:href='data:newerPageUrl'>
+                                  <i class='hgi-stroke hgi-arrow-left-01'/>
+                                  <span>Artikel Lebih Baru</span>
+                                </a>
+                              </b:if>
+                              <b:if cond='data:olderPageUrl'>
+                                <a class='btn-pager older' expr:href='data:olderPageUrl'>
+                                  <span>Artikel Sebelumnya</span>
+                                  <i class='hgi-stroke hgi-arrow-right-01'/>
+                                </a>
+                              </b:if>
+                            </div>
+                          </b:if>
                         </b:if>
-                        <div class='article-body'>
-                          <data:post.body/>
-                        </div>
+                      </div>
+                    </b:if>
 
-                        <!-- Kotak Konsultasi Marketing di Akhir Artikel -->
-                        <div class='article-consult-box'>
-                          <div class='article-consult-avatar'>
-                            <img alt='Mas Ro&apos;uf' class='marketing-avatar marketing-avatar-target' src='https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s100'/>
-                            <span class='marketing-status-pulse'/>
-                          </div>
-                          <div class='article-consult-info'>
-                            <h4>Punya Pertanyaan Seputar KPR &amp; Survei Lokasi?</h4>
-                            <p>Konsultasikan syarat berkas KPR Subsidi/Komersial atau jadwalkan survei gratis langsung bersama <strong class='marketing-name-target'>Mas Ro&#39;uf</strong> (<span class='marketing-role-target'>Konsultan KPR Resmi Pesona Kahuripan</span>).</p>
-                          </div>
-                          <a class='btn-article-wa wa-dynamic-btn' href='https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20membaca%20artikel%20di%20website%20Pesona%20Kahuripan%20dan%20ingin%20konsultasi%20KPR.' rel='noopener' target='_blank'>
-                            <i class='hgi-stroke hgi-whatsapp'/>
-                            <span>Konsultasi dengan <span class='marketing-name-target'>Mas Ro&#39;uf</span></span>
-                          </a>
-                        </div>
+                    <!-- ==========================================================
+                         VIEW 2: SINGLE ITEM (SINGLE POST / ARTIKEL HALAMAN DALAM)
+                    ========================================================== -->
+                    <b:if cond='!data:view.isMultipleItems'>
+                      <b:loop values='data:posts' var='post'>
+                        <article class='article-wrap' itemscope='' itemtype='https://schema.org/BlogPosting'>
+                          <!-- META SEO HIDDEN SCHEMA -->
+                          <meta expr:content='data:post.title' itemprop='headline'/>
+                          <meta expr:content='data:post.url.canonical' itemprop='mainEntityOfPage'/>
+                          <meta expr:content='data:post.date.iso8601' itemprop='datePublished'/>
+                          <meta expr:content='data:post.lastUpdated.iso8601 ?: data:post.date.iso8601' itemprop='dateModified'/>
+                          <b:if cond='data:post.featuredImage'>
+                            <meta expr:content='data:post.featuredImage' itemprop='image'/>
+                          </b:if>
 
-                        <div class='article-back-nav'>
-                          <a class='btn-back-home' expr:href='data:blog.homepageUrl'>
-                            <i class='hgi-stroke hgi-arrow-left-01'/>
-                            <span>Kembali ke Beranda</span>
-                          </a>
-                          <a class='btn-back-home' expr:href='data:blog.canonicalHomepageUrl + &quot;search&quot;'>
-                            <span>Lihat Artikel Lainnya</span>
-                            <i class='hgi-stroke hgi-arrow-right-01'/>
-                          </a>
-                        </div>
-                      </article>
-                    </b:loop>
+                          <!-- BREADCRUMB WITH MICRODATA -->
+                          <nav aria-label='Breadcrumb' class='article-breadcrumb' itemscope='' itemtype='https://schema.org/BreadcrumbList'>
+                            <span itemprop='itemListElement' itemscope='' itemtype='https://schema.org/ListItem'>
+                              <a expr:href='data:blog.homepageUrl' itemprop='item'><span itemprop='name'><i class='hgi-stroke hgi-home-01'/> Beranda</span></a>
+                              <meta content='1' itemprop='position'/>
+                            </span>
+                            <span class='bc-sep'>/</span>
+                            <span itemprop='itemListElement' itemscope='' itemtype='https://schema.org/ListItem'>
+                              <a expr:href='data:blog.canonicalHomepageUrl + &quot;search&quot;' itemprop='item'><span itemprop='name'>Blog &amp; Edukasi KPR</span></a>
+                              <meta content='2' itemprop='position'/>
+                            </span>
+                            <b:if cond='data:post.labels'>
+                              <span class='bc-sep'>/</span>
+                              <b:loop index='i' values='data:post.labels' var='label'>
+                                <b:if cond='data:i == 0'>
+                                  <span itemprop='itemListElement' itemscope='' itemtype='https://schema.org/ListItem'>
+                                    <a expr:href='data:label.url' itemprop='item'><span itemprop='name'><data:label.name/></span></a>
+                                    <meta content='3' itemprop='position'/>
+                                  </span>
+                                </b:if>
+                              </b:loop>
+                            </b:if>
+                          </nav>
+
+                          <!-- CATEGORY BADGES -->
+                          <b:if cond='data:post.labels'>
+                            <div class='article-labels-top'>
+                              <b:loop values='data:post.labels' var='label'>
+                                <a class='article-cat-tag' expr:href='data:label.url'><data:label.name/></a>
+                              </b:loop>
+                            </div>
+                          </b:if>
+
+                          <!-- ARTICLE TITLE -->
+                          <h1 class='article-title' itemprop='name'><data:post.title/></h1>
+
+                          <!-- AUTHOR & META BAR -->
+                          <div class='article-meta-bar'>
+                            <div class='article-meta-author' itemprop='author' itemscope='' itemtype='https://schema.org/Person'>
+                              <img alt='Mas Ro&apos;uf' class='article-author-img' src='https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s100'/>
+                              <div>
+                                <span class='article-author-name' itemprop='name'><data:post.author.name ?: &quot;Mas Ro&#39;uf&quot;/></span>
+                                <span class='article-author-badge'><i class='hgi-stroke hgi-tick-02'/> Konsultan KPR Resmi</span>
+                              </div>
+                            </div>
+                            <div class='article-meta-details'>
+                              <span class='article-meta-date'><i class='hgi-stroke hgi-calendar-03'/> <data:post.date/></span>
+                              <span class='article-meta-readtime'><i class='hgi-stroke hgi-clock-01'/> <span class='readtime-text'>4 Menit Baca</span></span>
+                            </div>
+                          </div>
+
+                          <!-- SOCIAL SHARE BAR (TOP) -->
+                          <div class='article-share-top'>
+                            <span class='share-label'><i class='hgi-stroke hgi-share-01'/> Bagikan:</span>
+                            <div class='share-buttons-group'>
+                              <a class='btn-share share-wa' expr:href='&quot;https://api.whatsapp.com/send?text=&quot; + data:post.title + &quot;%20-%20&quot; + data:post.url' rel='noopener' target='_blank' title='Bagikan ke WhatsApp'>
+                                <i class='hgi-stroke hgi-whatsapp'/>
+                                <span>WhatsApp</span>
+                              </a>
+                              <a class='btn-share share-fb' expr:href='&quot;https://www.facebook.com/sharer/sharer.php?u=&quot; + data:post.url' rel='noopener' target='_blank' title='Bagikan ke Facebook'>
+                                <i class='hgi-stroke hgi-facebook-02'/>
+                                <span>Facebook</span>
+                              </a>
+                              <a class='btn-share share-tw' expr:href='&quot;https://twitter.com/intent/tweet?text=&quot; + data:post.title + &quot;&amp;url=&quot; + data:post.url' rel='noopener' target='_blank' title='Bagikan ke X / Twitter'>
+                                <i class='hgi-stroke hgi-new-twitter'/>
+                                <span>Twitter</span>
+                              </a>
+                              <button aria-label='Salin Link Artikel' class='btn-share share-copy' expr:data-url='data:post.url' type='button'>
+                                <i class='hgi-stroke hgi-copy-01'/>
+                                <span>Salin Tautan</span>
+                              </button>
+                            </div>
+                          </div>
+
+                          <!-- FEATURED IMAGE -->
+                          <b:if cond='data:post.featuredImage'>
+                            <figure class='article-feat-figure'>
+                              <img class='article-feat-img' expr:alt='data:post.title' expr:src='data:post.featuredImage resizeImage 1200' itemprop='image' loading='eager'/>
+                            </figure>
+                          </b:if>
+
+                          <!-- TABLE OF CONTENTS (AUTO GENERATED BY JS) -->
+                          <div class='article-toc-container' id='article-toc-box' style='display:none;'>
+                            <div class='article-toc-header' id='article-toc-toggle'>
+                              <div class='article-toc-title'>
+                                <i class='hgi-stroke hgi-book-open-01'/>
+                                <span>Daftar Isi Artikel</span>
+                              </div>
+                              <button aria-label='Buka/Tutup Daftar Isi' class='article-toc-btn' type='button'>
+                                <span class='toc-toggle-text'>Sembunyikan</span>
+                                <i class='hgi-stroke hgi-arrow-down-01 toc-chevron'/>
+                              </button>
+                            </div>
+                            <div class='article-toc-list' id='article-toc-content'/>
+                          </div>
+
+                          <!-- ARTICLE BODY CONTENT -->
+                          <div class='article-body entry-content' itemprop='articleBody'>
+                            <data:post.body/>
+                          </div>
+
+                          <!-- ARTICLE TAGS / LABELS AT BOTTOM -->
+                          <b:if cond='data:post.labels'>
+                            <div class='article-tags-bottom'>
+                              <span class='tags-label'><i class='hgi-stroke hgi-tag-01'/> Topik Terkait:</span>
+                              <div class='tags-list'>
+                                <b:loop values='data:post.labels' var='label'>
+                                  <a class='tag-pill' expr:href='data:label.url'>#<data:label.name/></a>
+                                </b:loop>
+                              </div>
+                            </div>
+                          </b:if>
+
+                          <!-- AUTHOR BIO BOX -->
+                          <div class='article-author-box'>
+                            <div class='author-box-avatar'>
+                              <img alt='Mas Ro&apos;uf' class='marketing-avatar marketing-avatar-target' src='https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s120'/>
+                              <span class='author-status-pulse'/>
+                            </div>
+                            <div class='author-box-content'>
+                              <div class='author-box-role'>
+                                <span class='role-badge'><i class='hgi-stroke hgi-tick-02'/> Penulis &amp; Konsultan KPR Terverifikasi</span>
+                              </div>
+                              <h4 class='author-box-name marketing-name-target'>Mas Ro&#39;uf</h4>
+                              <p class='author-box-bio'>
+                                Konsultan KPR Resmi Pesona Kahuripan yang telah berpengalaman lebih dari 8 tahun membantu ratusan calon debitur mewujudkan rumah impian. Berpengalaman dalam pendampingan berkas KPR subsidi maupun komersial, pengecekan SLIK OJK/BI Checking, hingga proses akad kredit selesai.
+                              </p>
+                              <div class='author-box-actions'>
+                                <a class='btn-author-wa wa-dynamic-btn' expr:href='&quot;https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20membaca%20artikel%20%22&quot; + data:post.title + &quot;%22%20dan%20ingin%20konsultasi%20KPR%20Pesona%20Kahuripan.&quot;' rel='noopener' target='_blank'>
+                                  <i class='hgi-stroke hgi-whatsapp'/>
+                                  <span>Konsultasi Gratis dengan Mas Ro&#39;uf</span>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- HIGH-CONVERTING CONSULTATION CTA BOX -->
+                          <div class='article-consult-box'>
+                            <div class='article-consult-avatar'>
+                              <img alt='Mas Ro&apos;uf' class='marketing-avatar marketing-avatar-target' src='https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s100'/>
+                              <span class='marketing-status-pulse'/>
+                            </div>
+                            <div class='article-consult-info'>
+                              <h4>Ingin Survei Lokasi atau Cek Simulasi Angsuran Rumah?</h4>
+                              <p>Booking unit mulai <strong>Rp 500 Ribu</strong>, angsuran flat <strong>1 Jutaan/bulan</strong>. Konsultasikan gratis bersama <strong class='marketing-name-target'>Mas Ro&#39;uf</strong> (<span class='marketing-role-target'>Konsultan KPR Resmi Pesona Kahuripan</span>).</p>
+                            </div>
+                            <a class='btn-article-wa wa-dynamic-btn' expr:href='&quot;https://api.whatsapp.com/send?phone=6287870988073&amp;text=Halo%20Mas%20Ro%27uf%2C%20saya%20membaca%20artikel%20%22&quot; + data:post.title + &quot;%22%20di%20website%20Pesona%20Kahuripan%20dan%20ingin%20konsultasi%20KPR.&quot;' rel='noopener' target='_blank'>
+                              <i class='hgi-stroke hgi-whatsapp'/>
+                              <span>Konsultasi dengan <span class='marketing-name-target'>Mas Ro&#39;uf</span></span>
+                            </a>
+                          </div>
+
+                          <!-- BACK & NEXT NAVIGATION -->
+                          <div class='article-back-nav'>
+                            <a class='btn-back-home' expr:href='data:blog.homepageUrl'>
+                              <i class='hgi-stroke hgi-arrow-left-01'/>
+                              <span>Kembali ke Beranda</span>
+                            </a>
+                            <a class='btn-back-home' expr:href='data:blog.canonicalHomepageUrl + &quot;search&quot;'>
+                              <span>Lihat Artikel Edukasi Lainnya</span>
+                              <i class='hgi-stroke hgi-arrow-right-01'/>
+                            </a>
+                          </div>
+
+                          <!-- COMMENTS SECTION -->
+                          <b:if cond='data:post.allowComments'>
+                            <div class='article-comments-wrap' id='comments-area'>
+                              <h3 class='comments-title'><i class='hgi-stroke hgi-message-01'/> Diskusi &amp; Pertanyaan Pembaca</h3>
+                              <b:include data='post' name='commentPicker'/>
+                            </div>
+                          </b:if>
+                        </article>
+                      </b:loop>
+                    </b:if>
                   </b:includable>
                   <b:includable id='aboutPostAuthor'>
   <div class='author-name'>

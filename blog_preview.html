@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview Blog Pesona Kahuripan - Desain Modern & SEO Friendly</title>
+  <link href="https://use.hugeicons.com/font/icons.css" rel="stylesheet">
+  <link href="./main_style.css" rel="stylesheet">
+  <style>
+    /* Demo preview switcher */
+    .preview-mode-bar {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 9999999;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 6px;
+      border-radius: 9999px;
+      display: flex;
+      gap: 6px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+    .preview-mode-btn {
+      padding: 8px 16px;
+      border-radius: 9999px;
+      border: none;
+      background: transparent;
+      color: #94a3b8;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .preview-mode-btn.active {
+      background: #10b981;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    }
+  </style>
+</head>
+<body class="is-single-page" id="top">
+
+  <!-- Demo Switcher -->
+  <div class="preview-mode-bar">
+    <button class="preview-mode-btn active" id="btnShowIndex" onclick="switchView('index')">1. Halaman Blog (Index / Grid)</button>
+    <button class="preview-mode-btn" id="btnShowSingle" onclick="switchView('single')">2. Halaman Artikel (Single Reader)</button>
+  </div>
+
+  <!-- Header Navigasi -->
+  <header id="header">
+    <div class="wrapper">
+      <div class="header-section">
+        <a class="logo" href="#top">
+          <img alt="Pesona Kahuripan" src="https://blogger.googleusercontent.com/img/a/AVvXsEgqB2QhrvsCgDSNo4roXgoDSo7oZV9mkCZY9kHDb2I7KC3FI4SCLuyWaBXShDGHDLHLEMsHpagl_CWKf-FI37FAR6GK_0dHZwHP-oJ_n3W3WKJQznbe3MC2tsXLbXZJG_iuohb17uim3-D974PuRgXDh8sCTfppDaP7yagLsthRMrIKieG4acIPb3VAiJU=s256">
+        </a>
+        <button aria-label="Buka Menu" class="menu-toggle" id="menu-toggle"><i class="hgi-stroke hgi-menu-01"></i></button>
+        <nav class="menu" id="main-menu">
+          <ul>
+            <li><a href="#top" class="nav-home">Beranda</a></li>
+            <li><a href="#promo">Promo</a></li>
+            <li><a href="#about">Keunggulan</a></li>
+            <li><a href="#service">Tipe Rumah</a></li>
+            <li><a href="#tampak-rumah">Tampak Rumah</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Kontak</a></li>
+            <li><a href="#blog" class="nav-blog active-nav">Blog &amp; Edukasi</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Reading Progress Bar -->
+  <div class="article-reading-progress" id="reading-progress-bar"></div>
+
+  <main id="main">
+    <section id="blog-single">
+      <div class="wrapper">
+
+        <!-- ========================================================
+             VIEW 1: BLOG INDEX / ARCHIVE / MULTIPLE ITEMS
+        ======================================================== -->
+        <div class="blog-index-container" id="viewIndex">
+          <!-- BLOG HERO -->
+          <header class="blog-hero">
+            <div class="blog-hero-badge">
+              <i class="hgi-stroke hgi-book-open-01"></i>
+              <span>Jurnal &amp; Edukasi Properti</span>
+            </div>
+            <h1 class="blog-hero-title">Artikel &amp; Panduan KPR Pesona Kahuripan</h1>
+            <p class="blog-hero-desc">
+              Pusat informasi terlengkap seputar syarat berkas KPR subsidi &amp; komersial, tips lolos BI checking, simulasi angsuran, serta pembaruan progres proyek Pesona Kahuripan di Bogor.
+            </p>
+
+            <!-- Search Bar -->
+            <div class="blog-search-wrap">
+              <form action="#" class="blog-search-box" onsubmit="event.preventDefault();">
+                <i class="hgi-stroke hgi-search-01 blog-search-icon"></i>
+                <input aria-label="Cari artikel" class="blog-search-input" placeholder="Cari artikel, tips KPR, syarat berkas, lokasi..." type="search">
+                <button aria-label="Submit Pencarian" class="blog-search-btn" type="button">
+                  <span>Cari</span>
+                  <i class="hgi-stroke hgi-arrow-right-01"></i>
+                </button>
+              </form>
+            </div>
+
+            <!-- Quick Category Pills -->
+            <div class="blog-category-nav">
+              <a class="cat-pill active" href="#">Semua Artikel</a>
+              <a class="cat-pill" href="#">KPR Subsidi</a>
+              <a class="cat-pill" href="#">KPR Komersil</a>
+              <a class="cat-pill" href="#">Tips &amp; Panduan</a>
+              <a class="cat-pill" href="#">Syarat Berkas</a>
+              <a class="cat-pill" href="#">Info Proyek</a>
+              <a class="cat-pill" href="#">Promo Unit</a>
+            </div>
+          </header>
+
+          <!-- BLOG CARDS GRID -->
+          <div class="blog-grid" id="blog-grid">
+            <!-- Card 1 -->
+            <article class="blog-card">
+              <div class="blog-card-thumb-wrap">
+                <a href="#" onclick="switchView('single'); return false;">
+                  <img class="blog-card-thumb" alt="Syarat Lengkap Pengajuan KPR Subsidi 2026" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh4ctsAhzllKHqKKRDad3pZodK-il4f2A9XW-uHgPZ49H1brEGbpDePbOpedsy4qLBTfj6b54qfdMj7yyiZhiqvWJr3Nf0isj8zTGdHWDJiSkInO20l99jbPK_dcgmcqo8wL5UmsaGvVN8rzqJKbliL7gwYYMPimJPMfzWV3tCMzzkNKy19D91-Yyf0YvI/s800/cover%20pesona%20kahuripan.jpg">
+                </a>
+                <a class="blog-card-badge" href="#">KPR Subsidi</a>
+              </div>
+              <div class="blog-card-body">
+                <div class="blog-card-meta">
+                  <span class="blog-meta-date"><i class="hgi-stroke hgi-calendar-03"></i> 24 Okt 2026</span>
+                  <span class="blog-meta-dot">•</span>
+                  <span class="blog-meta-readtime"><i class="hgi-stroke hgi-clock-01"></i> <span class="readtime-text">4 mnt baca</span></span>
+                </div>
+                <h2 class="blog-card-title">
+                  <a href="#" onclick="switchView('single'); return false;">Syarat Lengkap Pengajuan KPR Subsidi 2026: Gaji, Dokumen &amp; Tips Lolos Bank</a>
+                </h2>
+                <p class="blog-card-snippet">
+                  Panduan lengkap persyaratan debitur rumah subsidi pemerintah. Simak batas gaji maksimal, dokumen wajib, verifikasi SLIK OJK, dan strategi agar pengajuan langsung di-ACC bank.
+                </p>
+                <div class="blog-card-footer">
+                  <div class="blog-card-author">
+                    <img alt="Mas Ro'uf" class="blog-author-avatar" src="https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s100">
+                    <span class="blog-author-name">Mas Ro'uf</span>
+                  </div>
+                  <a class="blog-card-link" href="#" onclick="switchView('single'); return false;">
+                    <span>Baca Selengkapnya</span>
+                    <i class="hgi-stroke hgi-arrow-right-01"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="blog-card">
+              <div class="blog-card-thumb-wrap">
+                <a href="#" onclick="switchView('single'); return false;">
+                  <img class="blog-card-thumb" alt="Kelebihan Dinding Hebel Double Dinding" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhf7puCtXdu77oGx2GuzcPPpD4oloa2-P0w_sYsVyxgR3Gb5Pj5pia4-6n25m-yYgB9hqqFZKk7eVCkOEQGWRkHq8_ees1pg_S9o-1WdpX7eDqXk_TTSPM5sEUyIwsK_jgscv1UmRt22V_QfYdzMUGIYRGojSq8MPhrfblMbayWfBPSwWuR5qgmbJHYjRg/s760/Gratis%20AC%20Tanpa%20Di%20Undi.png">
+                </a>
+                <a class="blog-card-badge" href="#">Konstruksi</a>
+              </div>
+              <div class="blog-card-body">
+                <div class="blog-card-meta">
+                  <span class="blog-meta-date"><i class="hgi-stroke hgi-calendar-03"></i> 20 Okt 2026</span>
+                  <span class="blog-meta-dot">•</span>
+                  <span class="blog-meta-readtime"><i class="hgi-stroke hgi-clock-01"></i> <span class="readtime-text">3 mnt baca</span></span>
+                </div>
+                <h2 class="blog-card-title">
+                  <a href="#" onclick="switchView('single'); return false;">Mengapa Double Dinding Hebel Jauh Lebih Kokoh &amp; Kedap Suara?</a>
+                </h2>
+                <p class="blog-card-snippet">
+                  Kenali spesifikasi unggulan Pesona Kahuripan yang menggunakan struktur double hebel antar unit. Privasi keluarga lebih terjaga, rumah adem, dan minim risiko retak rambut.
+                </p>
+                <div class="blog-card-footer">
+                  <div class="blog-card-author">
+                    <img alt="Mas Ro'uf" class="blog-author-avatar" src="https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s100">
+                    <span class="blog-author-name">Mas Ro'uf</span>
+                  </div>
+                  <a class="blog-card-link" href="#" onclick="switchView('single'); return false;">
+                    <span>Baca Selengkapnya</span>
+                    <i class="hgi-stroke hgi-arrow-right-01"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="blog-card">
+              <div class="blog-card-thumb-wrap">
+                <a href="#" onclick="switchView('single'); return false;">
+                  <img class="blog-card-thumb" alt="Simulasi Cicilan KPR Flat 1 Jutaan" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiAv-PUJKP6beE3fdd7-IawybTSx_wcUO02vmB5uSvbmk2shL1dfDaS9xqbXvewfUMKkaG0vtW9XiXYG4NM4xOr2pBUsHAJXKtKJEOGbYWjCxXl1cs8jvB5s28lBW2dbgvt5hn0EvnbZwiYU0hXNDC65gi294vpiUzWVife9pJX1nEUUEK8jUD08ABcTTk/s1600/cicilan%20ringan.jpg">
+                </a>
+                <a class="blog-card-badge" href="#">Simulasi KPR</a>
+              </div>
+              <div class="blog-card-body">
+                <div class="blog-card-meta">
+                  <span class="blog-meta-date"><i class="hgi-stroke hgi-calendar-03"></i> 15 Okt 2026</span>
+                  <span class="blog-meta-dot">•</span>
+                  <span class="blog-meta-readtime"><i class="hgi-stroke hgi-clock-01"></i> <span class="readtime-text">5 mnt baca</span></span>
+                </div>
+                <h2 class="blog-card-title">
+                  <a href="#" onclick="switchView('single'); return false;">Tabel Angsuran KPR Subsidi Flat Sampai Lunas: Pilihan Tenor 10, 15, &amp; 20 Tahun</a>
+                </h2>
+                <p class="blog-card-snippet">
+                  Kalkulasi lengkap cicilan bulanan rumah subsidi bunga tetap 5% per tahun. Pelajari perbandingan total pengembalian dan tips mengalokasikan gaji bulanan dengan aman.
+                </p>
+                <div class="blog-card-footer">
+                  <div class="blog-card-author">
+                    <img alt="Mas Ro'uf" class="blog-author-avatar" src="https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s100">
+                    <span class="blog-author-name">Mas Ro'uf</span>
+                  </div>
+                  <a class="blog-card-link" href="#" onclick="switchView('single'); return false;">
+                    <span>Baca Selengkapnya</span>
+                    <i class="hgi-stroke hgi-arrow-right-01"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Pagination -->
+          <div class="blog-pagination">
+            <a class="btn-pager newer" href="#"><i class="hgi-stroke hgi-arrow-left-01"></i> <span>Artikel Lebih Baru</span></a>
+            <a class="btn-pager older" href="#"><span>Artikel Sebelumnya</span> <i class="hgi-stroke hgi-arrow-right-01"></i></a>
+          </div>
+        </div>
+
+        <!-- ========================================================
+             VIEW 2: SINGLE ARTICLE READER
+        ======================================================== -->
+        <div id="viewSingle" style="display: none;">
+          <article class="article-wrap" itemscope="" itemtype="https://schema.org/BlogPosting">
+            <meta content="Syarat Lengkap Pengajuan KPR Subsidi 2026: Gaji, Dokumen &amp; Tips Lolos Bank" itemprop="headline">
+            <meta content="https://www.pesonakahuripan.biz.id/search" itemprop="mainEntityOfPage">
+            <meta content="2026-10-24T10:00:00+07:00" itemprop="datePublished">
+            <meta content="2026-10-24T12:00:00+07:00" itemprop="dateModified">
+
+            <!-- Breadcrumb -->
+            <nav aria-label="Breadcrumb" class="article-breadcrumb" itemscope="" itemtype="https://schema.org/BreadcrumbList">
+              <span itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                <a href="#" itemprop="item"><span itemprop="name"><i class="hgi-stroke hgi-home-01"></i> Beranda</span></a>
+                <meta content="1" itemprop="position">
+              </span>
+              <span class="bc-sep">/</span>
+              <span itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                <a href="#" onclick="switchView('index'); return false;" itemprop="item"><span itemprop="name">Blog &amp; Edukasi KPR</span></a>
+                <meta content="2" itemprop="position">
+              </span>
+              <span class="bc-sep">/</span>
+              <span itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                <a href="#" itemprop="item"><span itemprop="name">KPR Subsidi</span></a>
+                <meta content="3" itemprop="position">
+              </span>
+            </nav>
+
+            <!-- Category Badges -->
+            <div class="article-labels-top">
+              <a class="article-cat-tag" href="#">KPR Subsidi</a>
+              <a class="article-cat-tag" href="#">Tips Finansial</a>
+              <a class="article-cat-tag" href="#">Panduan Pembeli Rumah</a>
+            </div>
+
+            <!-- Title -->
+            <h1 class="article-title" itemprop="name">Syarat Lengkap Pengajuan KPR Subsidi 2026: Gaji, Dokumen &amp; Tips Lolos Bank</h1>
+
+            <!-- Meta Bar -->
+            <div class="article-meta-bar">
+              <div class="article-meta-author" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+                <img alt="Mas Ro'uf" class="article-author-img" src="https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s100">
+                <div>
+                  <span class="article-author-name" itemprop="name">Mas Ro'uf</span>
+                  <span class="article-author-badge"><i class="hgi-stroke hgi-tick-02"></i> Konsultan KPR Resmi</span>
+                </div>
+              </div>
+              <div class="article-meta-details">
+                <span class="article-meta-date"><i class="hgi-stroke hgi-calendar-03"></i> 24 Oktober 2026</span>
+                <span class="article-meta-readtime"><i class="hgi-stroke hgi-clock-01"></i> <span class="readtime-text">4 Menit Baca</span></span>
+              </div>
+            </div>
+
+            <!-- Share Buttons Top -->
+            <div class="article-share-top">
+              <span class="share-label"><i class="hgi-stroke hgi-share-01"></i> Bagikan:</span>
+              <div class="share-buttons-group">
+                <a class="btn-share share-wa" href="#" target="_blank" title="Bagikan ke WhatsApp">
+                  <i class="hgi-stroke hgi-whatsapp"></i> <span>WhatsApp</span>
+                </a>
+                <a class="btn-share share-fb" href="#" target="_blank" title="Bagikan ke Facebook">
+                  <i class="hgi-stroke hgi-facebook-02"></i> <span>Facebook</span>
+                </a>
+                <a class="btn-share share-tw" href="#" target="_blank" title="Bagikan ke X / Twitter">
+                  <i class="hgi-stroke hgi-new-twitter"></i> <span>Twitter</span>
+                </a>
+                <button class="btn-share share-copy" data-url="https://pesonakahuripan.biz.id/2026/10/syarat-kpr-subsidi.html" type="button">
+                  <i class="hgi-stroke hgi-copy-01"></i> <span>Salin Tautan</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Featured Image -->
+            <figure class="article-feat-figure">
+              <img alt="Syarat Pengajuan KPR Subsidi Pesona Kahuripan" class="article-feat-img" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh4ctsAhzllKHqKKRDad3pZodK-il4f2A9XW-uHgPZ49H1brEGbpDePbOpedsy4qLBTfj6b54qfdMj7yyiZhiqvWJr3Nf0isj8zTGdHWDJiSkInO20l99jbPK_dcgmcqo8wL5UmsaGvVN8rzqJKbliL7gwYYMPimJPMfzWV3tCMzzkNKy19D91-Yyf0YvI/s800/cover%20pesona%20kahuripan.jpg">
+            </figure>
+
+            <!-- Table of Contents (Auto Populated by JS) -->
+            <div class="article-toc-container" id="article-toc-box">
+              <div class="article-toc-header" id="article-toc-toggle">
+                <div class="article-toc-title">
+                  <i class="hgi-stroke hgi-book-open-01"></i>
+                  <span>Daftar Isi Artikel</span>
+                </div>
+                <button aria-label="Buka/Tutup Daftar Isi" class="article-toc-btn" type="button">
+                  <span class="toc-toggle-text">Sembunyikan</span>
+                  <i class="hgi-stroke hgi-arrow-down-01 toc-chevron"></i>
+                </button>
+              </div>
+              <div class="article-toc-list" id="article-toc-content"></div>
+            </div>
+
+            <!-- Body -->
+            <div class="article-body entry-content" itemprop="articleBody">
+              <p>Membeli rumah pertama merupakan salah satu keputusan finansial terbesar dalam hidup. Pemerintah Indonesia melalui program Fasilitas Likuiditas Pembiayaan Perumahan (FLPP) memberikan kemudahan luar biasa bagi masyarakat berpenghasilan rendah (MBR) untuk memiliki hunian berkualitas dengan suku bunga tetap 5% hingga lunas.</p>
+
+              <h2>1. Kriteria Utama Penerima KPR Subsidi 2026</h2>
+              <p>Untuk dapat mengajukan KPR Subsidi, pemohon harus memenuhi sejumlah kriteria normatif yang telah diatur oleh Kementerian PUPR dan BP Tapera:</p>
+              <ul>
+                <li>Warga Negara Indonesia (WNI) berusia minimal 21 tahun atau sudah menikah.</li>
+                <li>Belum pernah memiliki rumah pribadi yang dibuktikan dengan Surat Keterangan Belum Memiliki Rumah dari kelurahan.</li>
+                <li>Belum pernah menerima subsidi perumahan dari pemerintah dalam bentuk apa pun.</li>
+                <li>Penghasilan pokok maksimal Rp 8.000.000/bulan (atau sesuai regulasi zonasi terbaru untuk keluarga).</li>
+                <li>Memiliki rekam jejak kredit bersih di SLIK OJK (tidak ada tunggakan pinjaman online atau kartu kredit macet).</li>
+              </ul>
+
+              <blockquote>
+                "Kunci utama kelulusan pengajuan KPR bukan semata-mata pada tingginya penghasilan, melainkan kedisiplinan riwayat transaksi dan kelengkapan dokumen administratif yang terverifikasi."
+              </blockquote>
+
+              <h2>2. Berkas dan Dokumen yang Wajib Disiapkan</h2>
+              <p>Persiapkan berkas-berkas berikut dalam bentuk fotokopi dan dokumen asli saat survei atau wawancara dengan perbankan mitra penyalur KPR:</p>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Jenis Berkas</th>
+                    <th>Karyawan / Pegawai Tetap</th>
+                    <th>Wiraswasta / Pekerja Informal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Identitas Diri</td>
+                    <td>KTP Pemohon &amp; Pasangan, KK, Buku Nikah/Akta Cerai</td>
+                    <td>KTP Pemohon &amp; Pasangan, KK, Buku Nikah/Akta Cerai</td>
+                  </tr>
+                  <tr>
+                    <td>Pekerjaan</td>
+                    <td>Surat Keterangan Kerja (SK) &amp; Slip Gaji 3 Bulan Terakhir</td>
+                    <td>Surat Izin Usaha (NIB/SKU), Foto Tempat Usaha &amp; Bukti Pembukuan</td>
+                  </tr>
+                  <tr>
+                    <td>Perbankan</td>
+                    <td>Rekening Koran Tabungan Gaji 3 Bulan Terakhir</td>
+                    <td>Rekening Koran Operasional Usaha 6 Bulan Terakhir</td>
+                  </tr>
+                  <tr>
+                    <td>Pajak</td>
+                    <td>NPWP Pribadi &amp; SPT Tahunan PPh 21</td>
+                    <td>NPWP Pribadi &amp; SPT Tahunan</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h2>3. Strategi Efektif Agar Pengajuan Langsung Di-ACC Bank</h2>
+              <p>Banyak calon konsumen yang sebenarnya berhak namun tertolak karena kesalahan teknis kecil. Berikut adalah 3 tips penting dari Mas Ro'uf:</p>
+              <ul>
+                <li><strong>Cek SLIK OJK Mandiri:</strong> Lakukan pengecekan SLIK sebelum booking unit untuk memastikan skor kolektibilitas Anda Kol 1 (Lancar).</li>
+                <li><strong>Jaga Rasio Cicilan (DSR):</strong> Total angsuran rumah dan cicilan lain sebaiknya tidak melebihi 35% - 40% dari total pemasukan bersih bulanan.</li>
+                <li><strong>Konsultasikan Terlebih Dahulu:</strong> Diskusikan profil keuangan Anda dengan tim marketing resmi kami agar dipilihkan bank pelaksana yang paling sesuai (BTN, BTN Syariah, BSI, atau Mandiri).</li>
+              </ul>
+            </div>
+
+            <!-- Tags -->
+            <div class="article-tags-bottom">
+              <span class="tags-label"><i class="hgi-stroke hgi-tag-01"></i> Topik Terkait:</span>
+              <div class="tags-list">
+                <a class="tag-pill" href="#">#KPRSubsidi</a>
+                <a class="tag-pill" href="#">#TipsKPR</a>
+                <a class="tag-pill" href="#">#PesonaKahuripan</a>
+                <a class="tag-pill" href="#">#RumahBogor</a>
+              </div>
+            </div>
+
+            <!-- Author Box -->
+            <div class="article-author-box">
+              <div class="author-box-avatar">
+                <img alt="Mas Ro'uf" class="marketing-avatar" src="https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s120">
+                <span class="author-status-pulse"></span>
+              </div>
+              <div class="author-box-content">
+                <div class="author-box-role">
+                  <span class="role-badge"><i class="hgi-stroke hgi-tick-02"></i> Penulis &amp; Konsultan KPR Terverifikasi</span>
+                </div>
+                <h4 class="author-box-name">Mas Ro'uf</h4>
+                <p class="author-box-bio">
+                  Konsultan KPR Resmi Pesona Kahuripan yang telah berpengalaman lebih dari 8 tahun membantu ratusan calon debitur mewujudkan rumah impian. Berpengalaman dalam pendampingan berkas KPR subsidi maupun komersial, pengecekan SLIK OJK/BI Checking, hingga proses akad kredit selesai.
+                </p>
+                <div class="author-box-actions">
+                  <a class="btn-author-wa" href="https://api.whatsapp.com/send?phone=6287870988073&text=Halo%20Mas%20Ro%27uf%2C%20saya%20membaca%20artikel%20syarat%20KPR%20dan%20ingin%20konsultasi." target="_blank">
+                    <i class="hgi-stroke hgi-whatsapp"></i>
+                    <span>Konsultasi Gratis dengan Mas Ro'uf</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Consultation Box -->
+            <div class="article-consult-box">
+              <div class="article-consult-avatar">
+                <img alt="Mas Ro'uf" class="marketing-avatar" src="https://blogger.googleusercontent.com/img/a/AVvXsEhYAwg4DAJhqn6ndZIAE2n5KdMonV9vOAnqoXxYV6vW3-LT_k6fpkjvxewI6YCIplv-vq3nAGWYA4pfxqleBp-fuNXj-aSn4H1zwq18PJWIdp7gskj-2TMkYDk5WKzEgrniImkt7uKfbVLV7kjudk-VfA8IFLTHlhPwm7K_bxAwICrNBDVlsvS6V9k_Vlg=s100">
+                <span class="marketing-status-pulse"></span>
+              </div>
+              <div class="article-consult-info">
+                <h4>Ingin Survei Lokasi atau Cek Simulasi Angsuran Rumah?</h4>
+                <p>Booking unit mulai <strong>Rp 500 Ribu</strong>, angsuran flat <strong>1 Jutaan/bulan</strong>. Konsultasikan gratis bersama <strong class="marketing-name-target">Mas Ro'uf</strong> (<span>Konsultan KPR Resmi Pesona Kahuripan</span>).</p>
+              </div>
+              <a class="btn-article-wa" href="https://api.whatsapp.com/send?phone=6287870988073&text=Halo%20Mas%20Ro%27uf%2C%20saya%20membaca%20artikel%20di%20website%20dan%20ingin%20konsultasi%20KPR." target="_blank">
+                <i class="hgi-stroke hgi-whatsapp"></i>
+                <span>Konsultasi dengan Mas Ro'uf</span>
+              </a>
+            </div>
+
+            <!-- Back Nav -->
+            <div class="article-back-nav">
+              <a class="btn-back-home" href="#" onclick="switchView('index'); return false;">
+                <i class="hgi-stroke hgi-arrow-left-01"></i>
+                <span>Kembali ke Daftar Artikel</span>
+              </a>
+              <a class="btn-back-home" href="#" onclick="switchView('index'); return false;">
+                <span>Lihat Artikel Edukasi Lainnya</span>
+                <i class="hgi-stroke hgi-arrow-right-01"></i>
+              </a>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="./main_script.js"></script>
+  <script>
+    function switchView(mode) {
+      const viewIndex = document.getElementById('viewIndex');
+      const viewSingle = document.getElementById('viewSingle');
+      const btnIndex = document.getElementById('btnShowIndex');
+      const btnSingle = document.getElementById('btnShowSingle');
+
+      if (mode === 'single') {
+        viewIndex.style.display = 'none';
+        viewSingle.style.display = 'block';
+        btnIndex.classList.remove('active');
+        btnSingle.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Re-run TOC
+        if (typeof initBlogEngine === 'function') {
+          initBlogEngine();
+        }
+      } else {
+        viewIndex.style.display = 'block';
+        viewSingle.style.display = 'none';
+        btnIndex.classList.add('active');
+        btnSingle.classList.remove('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+</html>
